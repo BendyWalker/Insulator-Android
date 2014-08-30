@@ -1,0 +1,16 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Margin to go above and below horizontal rules -->
+    <dimen name="line_horizontal_margin">12dp</dimen>
+
+    <!-- Margin to separate breakdown sections -->
+    <dimen name="breakdown_margin">0dp</dimen>
+
+    <!-- Text Entry Fields width -->
+    <dimen name="entry_width">80dp</dimen>
+
+</resources>

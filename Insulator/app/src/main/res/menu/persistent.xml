@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/action_activity_tdd"
+        android:title="@string/title_activity_tdd"/>
+    <item
+        android:id="@+id/action_activity_icr"
+        android:title="@string/title_activity_icr"/>
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/title_activity_settings"/>
+
+</menu>

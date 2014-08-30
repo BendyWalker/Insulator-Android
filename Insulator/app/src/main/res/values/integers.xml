@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Weights for labels and entry fields -->
+    <integer name="label_weight">70</integer>
+    <integer name="entry_weight">30</integer>
+
+</resources>
