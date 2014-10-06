@@ -27,7 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 @SuppressLint("SimpleDateFormat")
-public class MainActivity extends Activity implements OnClickListener {
+public class OldMainActivity extends Activity implements OnClickListener {
 
 	// Declare variables
 	public static final String PREFS_NAME = "savedPrefs";
@@ -63,7 +63,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_main_old);
 
 		// Prevents keyboard from being displayed when activity is opened
 		this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
