@@ -14,7 +14,11 @@
     <dimen name="entry_width">100dp</dimen>
 
     <!-- Spacing -->
-    <dimen name="spacing_default">16dp</dimen>
-    <dimen name="spacing_default_half">8dp</dimen>
+    <dimen name="spacing_default_200_percent">32dp</dimen>
+    <dimen name="spacing_default_150_percent">24dp</dimen>
+    <dimen name="spacing_default_100_percent">16dp</dimen>
+    <dimen name="spacing_default_75_percent">12dp</dimen>
+    <dimen name="spacing_default_50_percent">8dp</dimen>
+    <dimen name="spacing_default_25_percent">4dp</dimen>
 
 </resources>

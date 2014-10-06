@@ -23,12 +23,13 @@
     <string name="heading_supper">Supper Doses</string>
     <string name="heading_longacting">Long-Acting Dose</string>
 
-    <!-- Labels for five text entry fields -->
-    <string name="label_carbs">Total Carbs in Meal</string>
-    <string name="label_ratio">Insulin-to-Carb Ratio</string>
-    <string name="label_current">Current Blood Sugar</string>
-    <string name="label_desired">Desired Blood Sugar</string>
-    <string name="label_tdd">Total Daily Dose</string>
+    <!-- Labels for text entry fields -->
+    <string name="label_carbohydrates_in_meal">Total Carbohydrates in Meal</string>
+    <string name="label_carbohydrate_factor">Carbohydrate Factor</string>
+    <string name="label_current_blood_glucose_level">Current Blood Glucose Level</string>
+    <string name="label_desired_blood_glucose_level">Desired Blood Glucose Level</string>
+    <string name="label_total_daily_dose">Total Daily Dose</string>
+    <string name="label_corrective_factor">Corrective Factor</string>
 
     <!-- Text Entry Field Hints -->
     <string name="hint_mmol">mmol/L</string>
@@ -37,8 +38,7 @@
     <string name="hint_mgdl">mg/dl</string>
 
     <!-- Labels for insulin suggestion -->
-    <string name="label_inject">Inject</string>
-    <string name="label_units">Units</string>
+    <string name="label_suggested_dose">Suggested Dose</string>
 
     <!-- Labels for insulin suggestion breakdown -->
     <string name="label_breakdown_dose_carbs">Carbohydrate Dose (units)</string>
@@ -66,6 +66,7 @@
     <string name="info_current_mgdl">Enter your current blood sugar in mg/dl.</string>
     <string name="info_desired_mmol">Enter your desired blood sugar in mmol/L (6.0 is a healthy level).</string>
     <string name="info_desired_mgdl">Enter your desired blood sugar in mg/dl (108 is a healthy level).</string>
+    <string name="info_corrective_factor">Enter the amount 1 unit of fast-acting insulin lowers your blood glucose level by.</string>
     <string name="info_ratiox2c_radio">How many units needed to cover 10 grams of carbohydrates. For example, 1.2 units.</string>
     <string name="info_ratioi2x_radio">How many grams of carbohydrates covered by 1 unit of insulin. For example, 5 grams.</string>
     <string name="info_mmol_common">Millimoles per litre. Commonly used in the UK.</string>
