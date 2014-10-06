@@ -1,214 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="top"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:id="@+id/section_bloodmeasurement"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="top"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin" >
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/section_bloodmeasurement"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textview_bloodmeasurement"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/textview_bloodmeasurement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/line_horizontal_margin"
-                android:text="@string/heading_bloodmeasurement"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
-
-            <RadioGroup
-                android:id="@+id/radio_group_bloodmeasurement"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <RadioButton
-                    android:id="@+id/radio_button_mmol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/hint_mmol"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/info_bloodmeasurement_mmol"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/info_mmol_common"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="italic" />
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="@dimen/line_horizontal_margin"
-                    android:layout_marginTop="@dimen/line_horizontal_margin"
-                    android:background="#000000" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_mgdl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/hint_mgdl"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/info_bloodmeasurement_mgdl"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/info_mgdl_common"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="italic" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
             android:layout_marginBottom="@dimen/line_horizontal_margin"
-            android:layout_marginTop="@dimen/line_horizontal_margin"
-            android:background="#000000" />
+            android:text="@string/heading_bloodmeasurement"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
 
-        <LinearLayout
-            android:id="@+id/section_preferredratio"
+        <RadioGroup
+            android:id="@+id/radio_group_bloodmeasurement"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textview_preferredratio"
+            <RadioButton
+                android:id="@+id/radio_button_mmol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/line_horizontal_margin"
-                android:text="@string/heading_preferred"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
-
-            <RadioGroup
-                android:id="@+id/radio_group_icr"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <RadioButton
-                    android:id="@+id/radio_button_carbs2X"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/label_carbs2X"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/info_ratiox2c_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/info_ratiox2c_radio"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="italic" />
-
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="@dimen/line_horizontal_margin"
-                    android:layout_marginTop="@dimen/line_horizontal_margin"
-                    android:background="#000000" />
-
-                <RadioButton
-                    android:id="@+id/radio_button_insulin2X"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/label_insulin2X"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <TextView
-                    android:id="@+id/info_ratioi2x_radio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/info_ratioi2x_radio"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:textStyle="italic" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:layout_marginBottom="@dimen/line_horizontal_margin"
-            android:layout_marginTop="@dimen/line_horizontal_margin"
-            android:background="#000000" />
-
-        <LinearLayout
-            android:id="@+id/section_halfunits"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/hint_mmol"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
-                android:id="@+id/textview_halfunits"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/line_horizontal_margin"
-                android:text="@string/heading_halfunits"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/section_halfunits_select"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textview_current"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="65"
-                    android:text="@string/label_halfunits_switch"
-                    android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                <Switch
-                    android:id="@+id/switch_halfunits"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="35"
-                    android:checked="false"/>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/info_halfunits"
+                android:id="@+id/info_bloodmeasurement_mmol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
-                android:text="@string/info_halfunits"
+                android:text="@string/info_mmol_common"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:textStyle="italic" />
-        </LinearLayout>
 
-        <Button
-            android:id="@+id/button_save_settings"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="@string/button_save_continue"
-            android:visibility="gone"
-            android:textStyle="bold" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/line_horizontal_margin"
+                android:layout_marginTop="@dimen/line_horizontal_margin"
+                android:background="#000000" />
+
+            <RadioButton
+                android:id="@+id/radio_button_mgdl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/hint_mgdl"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/info_bloodmeasurement_mgdl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/info_mgdl_common"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="italic" />
+        </RadioGroup>
     </LinearLayout>
 
-</ScrollView>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="@dimen/line_horizontal_margin"
+        android:layout_marginTop="@dimen/line_horizontal_margin"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:id="@+id/section_preferredratio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_preferredratio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/line_horizontal_margin"
+            android:text="@string/heading_preferred"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_icr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/radio_button_carbs2X"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_carbs2X"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/info_ratiox2c_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/info_ratiox2c_radio"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="italic" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="@dimen/line_horizontal_margin"
+                android:layout_marginTop="@dimen/line_horizontal_margin"
+                android:background="#000000" />
+
+            <RadioButton
+                android:id="@+id/radio_button_insulin2X"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/label_insulin2X"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+                android:id="@+id/info_ratioi2x_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/info_ratioi2x_radio"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textStyle="italic" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="@dimen/line_horizontal_margin"
+        android:layout_marginTop="@dimen/line_horizontal_margin"
+        android:background="#000000" />
+
+    <LinearLayout
+        android:id="@+id/section_halfunits"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_halfunits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/line_horizontal_margin"
+            android:text="@string/heading_halfunits"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/section_halfunits_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textview_current"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="65"
+                android:text="@string/label_halfunits_switch"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Switch
+                android:id="@+id/switch_halfunits"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="35"
+                android:checked="false" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/info_halfunits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/info_halfunits"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_save_settings"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/button_save_continue"
+        android:visibility="gone"
+        android:textStyle="bold" />
+</LinearLayout>

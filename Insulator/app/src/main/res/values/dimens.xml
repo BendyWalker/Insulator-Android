@@ -11,6 +11,10 @@
     <dimen name="breakdown_margin">0dp</dimen>
 
     <!-- Text Entry Fields width -->
-    <dimen name="entry_width">80dp</dimen>
+    <dimen name="entry_width">100dp</dimen>
+
+    <!-- Spacing -->
+    <dimen name="spacing_default">16dp</dimen>
+    <dimen name="spacing_default_half">8dp</dimen>
 
 </resources>
