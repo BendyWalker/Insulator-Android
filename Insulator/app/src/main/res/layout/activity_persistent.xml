@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/default_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/card_carbohydrate_factor"
+        android:layout_width="match_parent"
+        android:background="@drawable/card"
+        android:paddingLeft="@dimen/spacing_default_200_percent"
+        android:paddingBottom="@dimen/spacing_default_150_percent"
+        android:paddingRight="@dimen/spacing_default_200_percent"
+        android:paddingTop="@dimen/spacing_default_150_percent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/label_carbohydrate_factor"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/label_carbohydrate_factor"
+            android:paddingBottom="@dimen/spacing_default_25_percent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableBottom="@color/card_detailing"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/divider_carbohydrate_factor"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/card_detailing"
+            android:layout_below="@+id/label_carbohydrate_factor" />
+
+        <EditText
+            android:id="@+id/entry_carbohydrate_factor"
+            android:layout_width="@dimen/entry_width"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_default_50_percent"
+            android:layout_weight="@integer/entry_weight"
+            android:layout_below="@+id/divider_carbohydrate_factor"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/hint_grams"
+            android:inputType="number"
+            android:selectAllOnFocus="true" />
+
+        <TextView
+            android:id="@+id/info_carbohydrate_factor"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/entry_carbohydrate_factor"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/info_ratioi2x"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="italic" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/card_corrective_factor"
+        android:layout_width="match_parent"
+        android:background="@drawable/card"
+        android:paddingLeft="@dimen/spacing_default_200_percent"
+        android:paddingBottom="@dimen/spacing_default_150_percent"
+        android:paddingRight="@dimen/spacing_default_200_percent"
+        android:paddingTop="@dimen/spacing_default_150_percent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/label_corrective_factor"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/label_corrective_factor"
+            android:paddingBottom="@dimen/spacing_default_25_percent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableBottom="@color/card_detailing"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/divider_corrective_factor"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/card_detailing"
+            android:layout_below="@+id/label_corrective_factor" />
+
+        <EditText
+            android:id="@+id/entry_corrective_factor"
+            android:layout_width="@dimen/entry_width"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_default_50_percent"
+            android:layout_weight="@integer/entry_weight"
+            android:layout_below="@+id/divider_corrective_factor"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/hint_mmol"
+            android:inputType="number"
+            android:selectAllOnFocus="true" />
+
+        <TextView
+            android:id="@+id/info_corrective_factor"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/entry_corrective_factor"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/info_corrective_factor"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="italic" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/card_desired_blood_glucose_level"
+        android:layout_width="match_parent"
+        android:background="@drawable/card"
+        android:paddingLeft="@dimen/spacing_default_200_percent"
+        android:paddingBottom="@dimen/spacing_default_150_percent"
+        android:paddingRight="@dimen/spacing_default_200_percent"
+        android:paddingTop="@dimen/spacing_default_150_percent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/label_desired_blood_glucose_level"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/label_desired_blood_glucose_level"
+            android:paddingBottom="@dimen/spacing_default_25_percent"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:drawableBottom="@color/card_detailing"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:id="@+id/divider_desired_blood_glucose_level"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/card_detailing"
+            android:layout_below="@+id/label_desired_blood_glucose_level" />
+
+        <EditText
+            android:id="@+id/entry_desired_blood_glucose_level"
+            android:layout_width="@dimen/entry_width"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/spacing_default_50_percent"
+            android:layout_weight="@integer/entry_weight"
+            android:layout_below="@+id/divider_desired_blood_glucose_level"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:hint="@string/hint_mmol"
+            android:inputType="number"
+            android:selectAllOnFocus="true" />
+
+        <TextView
+            android:id="@+id/info_desired_blood_glucose_level"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/entry_desired_blood_glucose_level"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="@string/info_desired_mmol"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="italic" />
+    </RelativeLayout>
+
+</LinearLayout>
