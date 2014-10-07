@@ -1,10 +1,16 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/action_calculate"
+        android:title="@string/button_calculate" />
+    <item
+        android:id="@+id/action_reset"
+        android:title="@string/button_reset" />
+    <item
         android:id="@+id/action_activity_persistent"
-        android:title="@string/title_activity_persistent"/>
+        android:title="@string/title_activity_persistent" />
     <item
         android:id="@+id/action_settings"
-        android:title="@string/title_activity_settings"/>
+        android:title="@string/title_activity_settings" />
 
 </menu>
