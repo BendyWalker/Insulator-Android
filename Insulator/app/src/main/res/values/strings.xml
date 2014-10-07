@@ -35,7 +35,7 @@
     <string name="hint_mmol">mmol/L</string>
     <string name="hint_units">units</string>
     <string name="hint_grams">grams</string>
-    <string name="hint_mgdl">mg/dl</string>
+    <string name="hint_mgdl">mg/dL</string>
 
     <!-- Labels for insulin suggestion -->
     <string name="label_suggested_dose">Suggested Dose</string>
@@ -63,9 +63,9 @@
     <string name="info_tdd_supper">Use the fields below to enter your supper fast-acting insulin doses for the past 7 days.</string>
     <string name="info_tdd_long">Enter your long-acting insulin dose into the field below.</string>
     <string name="info_current_mmol">Enter your current blood sugar in mmol/L.</string>
-    <string name="info_current_mgdl">Enter your current blood sugar in mg/dl.</string>
-    <string name="info_desired_mmol">Enter your desired blood sugar in mmol/L (6.0 is a healthy level).</string>
-    <string name="info_desired_mgdl">Enter your desired blood sugar in mg/dl (108 is a healthy level).</string>
+    <string name="info_current_mgdl">Enter your current blood sugar in mg/dL.</string>
+    <string name="info_desired_mmol">Enter your desired blood sugar in mmol/L.</string>
+    <string name="info_desired_mgdl">Enter your desired blood sugar in mg/dL.</string>
     <string name="info_corrective_factor">Enter the amount 1 unit of fast-acting insulin lowers your blood glucose level by.</string>
     <string name="info_ratiox2c_radio">How many units needed to cover 10 grams of carbohydrates. For example, 1.2 units.</string>
     <string name="info_ratioi2x_radio">How many grams of carbohydrates covered by 1 unit of insulin. For example, 5 grams.</string>
