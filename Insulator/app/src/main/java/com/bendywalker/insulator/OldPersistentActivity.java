@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class PersistentActivity extends Activity implements OnClickListener, TextWatcher
+public class OldPersistentActivity extends Activity implements OnClickListener, TextWatcher
 {
 
 	// Declare variables
@@ -41,7 +41,7 @@ public class PersistentActivity extends Activity implements OnClickListener, Tex
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_persistent);
+		setContentView(R.layout.activity_persistent_old);
 
 		// Prevents keyboard from being displayed when activity is opened
 		this.getWindow()
@@ -190,7 +190,7 @@ public class PersistentActivity extends Activity implements OnClickListener, Tex
 				editor.putBoolean("firstTimeOpen", false);
 				editor.commit();
 
-				Intent i = new Intent(this, MainActivity.class);
+				Intent i = new Intent(this, OldMainActivity.class);
 				startActivity(i);
 				break;
 		}
@@ -220,14 +220,14 @@ public class PersistentActivity extends Activity implements OnClickListener, Tex
 		{
 			if ((desiredEditText.length() > 0) && (savedValues.getBoolean("mmol", true)))
 			{
-				MainActivity.addDecimalPlace(s, desiredEditText);
+				OldMainActivity.addDecimalPlace(s, desiredEditText);
 			}
 		}
 		else if (ratioEditText.hasFocus())
 		{
 			if (ratioEditText.length() > 0)
 			{
-				MainActivity.addDecimalPlace(s, ratioEditText);
+				OldMainActivity.addDecimalPlace(s, ratioEditText);
 			}
 		}
 	}
@@ -240,7 +240,7 @@ public class PersistentActivity extends Activity implements OnClickListener, Tex
 	 */
 	public boolean isTDDFilled()
 	{
-		if (MainActivity.isReady(tddEditText))
+		if (OldMainActivity.isReady(tddEditText))
 		{
 			return true;
 		}
@@ -258,7 +258,7 @@ public class PersistentActivity extends Activity implements OnClickListener, Tex
 	 */
 	public boolean isRatioFilled()
 	{
-		if (MainActivity.isReady(ratioEditText))
+		if (OldMainActivity.isReady(ratioEditText))
 		{
 			return true;
 		}
@@ -276,7 +276,7 @@ public class PersistentActivity extends Activity implements OnClickListener, Tex
 	 */
 	public boolean isDesiredFilled()
 	{
-		if (MainActivity.isReady(desiredEditText))
+		if (OldMainActivity.isReady(desiredEditText))
 		{
 			return true;
 		}
