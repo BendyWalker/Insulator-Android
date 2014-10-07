@@ -7,6 +7,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/card_desired_blood_glucose_level"
         android:layout_width="match_parent"
         android:background="@drawable/card"
         android:paddingLeft="@dimen/spacing_default_200_percent"
@@ -58,6 +59,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/card_current_blood_glucose_level"
         android:layout_width="match_parent"
         android:background="@drawable/card"
         android:paddingLeft="@dimen/spacing_default_200_percent"
@@ -109,6 +111,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/card_carbohydrates_in_meal"
         android:layout_width="match_parent"
         android:background="@drawable/card"
         android:paddingLeft="@dimen/spacing_default_200_percent"

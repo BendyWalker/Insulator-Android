@@ -19,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.bendywalker.insulator.PersistentActivity"
+            android:name=".OldPersistentActivity"
             android:label="@string/title_activity_persistent"
             android:parentActivityName=".OldMainActivity" >
             <meta-data
@@ -29,7 +29,7 @@
         <activity
             android:name="com.bendywalker.insulator.ICRActivity"
             android:label="@string/title_activity_icr"
-            android:parentActivityName="com.bendywalker.insulator.PersistentActivity" >
+            android:parentActivityName=".OldPersistentActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bendywalker.insulator.PersistentActivity" />
@@ -49,7 +49,7 @@
         <activity
             android:name="com.bendywalker.insulator.TDDActivity"
             android:label="@string/title_activity_tdd"
-            android:parentActivityName="com.bendywalker.insulator.PersistentActivity" >
+            android:parentActivityName=".OldPersistentActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.bendywalker.insulator.PersistentActivity" />

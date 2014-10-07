@@ -253,7 +253,7 @@ public class OldMainActivity extends Activity implements OnClickListener {
 
 		switch (item.getItemId()) {
 		case R.id.action_activity_persistent: /** Opens PersistentActivity */
-			Intent i = new Intent(this, PersistentActivity.class);
+			Intent i = new Intent(this, OldPersistentActivity.class);
 			startActivity(i);
 			return true;
 
