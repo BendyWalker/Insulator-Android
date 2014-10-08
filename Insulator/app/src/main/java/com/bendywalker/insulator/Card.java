@@ -68,6 +68,11 @@ public class Card extends RelativeLayout {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (entry.length() > 0) {
                 addDecimalPlace(s, entry);
+                entry.setBackground(getResources().getDrawable(android.R.color.transparent));
+           entry.setTextSize(42);
+            } else {
+                entry.setBackground(getResources().getDrawable(android.R.drawable.edit_text));
+           entry.setTextSize(22);
             }
         }
 

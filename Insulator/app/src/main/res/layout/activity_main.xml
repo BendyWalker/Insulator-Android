@@ -2,21 +2,13 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:background="@color/default_background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/default_background"
         android:orientation="vertical">
-
-        <com.bendywalker.insulator.Card
-            android:id="@+id/card_desired_blood_glucose_level"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            custom:hintText="@string/hint_mmol"
-            custom:infoText="@string/info_desired_mmol"
-            custom:labelText="@string/label_desired_blood_glucose_level" />
 
         <com.bendywalker.insulator.Card
             android:id="@+id/card_current_blood_glucose_level"
@@ -35,20 +27,15 @@
             custom:labelText="@string/label_carbohydrates_in_meal" />
 
         <RelativeLayout
+            style="@style/CardBase"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/layerlist_card"
-            android:paddingBottom="@dimen/spacing_default_150_percent"
-            android:paddingLeft="@dimen/spacing_default_200_percent"
-            android:paddingRight="@dimen/spacing_default_200_percent"
-            android:paddingTop="@dimen/spacing_default_150_percent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/label_suggested_dose"
                 style="@style/CardTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:layout_marginBottom="@dimen/spacing_default_100_percent"
                 android:text="@string/label_suggested_dose" />
 
@@ -60,7 +47,7 @@
                 android:layout_marginRight="@dimen/spacing_default_25_percent"
                 android:fontFamily="sans-serif"
                 android:text="0.0"
-                android:textSize="48sp" />
+                android:textSize="54sp" />
 
             <TextView
                 android:id="@+id/units_suggested_dose"
@@ -70,7 +57,7 @@
                 android:layout_toRightOf="@id/display_suggested_dose"
                 android:paddingLeft="@dimen/spacing_default_25_percent"
                 android:text="@string/hint_units"
-                android:textSize="30sp" />
+                android:textSize="32sp" />
 
         </RelativeLayout>
 

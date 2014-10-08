@@ -11,7 +11,7 @@
     <dimen name="breakdown_margin">0dp</dimen>
 
     <!-- Text Entry Fields width -->
-    <dimen name="entry_width">100dp</dimen>
+    <dimen name="card_entry_width">100dp</dimen>
 
     <!-- Text -->
     <dimen name="text_card_title">28sp</dimen>

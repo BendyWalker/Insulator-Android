@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/CardBase"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@drawable/layerlist_card"
-    android:paddingBottom="@dimen/spacing_default_150_percent"
-    android:paddingLeft="@dimen/spacing_default_200_percent"
-    android:paddingRight="@dimen/spacing_default_200_percent"
-    android:paddingTop="@dimen/spacing_default_150_percent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/card_title"
@@ -26,13 +22,11 @@
         <EditText
             android:id="@+id/card_entry"
             style="@style/CardEntryText"
-            android:layout_width="@dimen/entry_width"
+            android:layout_width="@dimen/card_entry_width"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/spacing_default_100_percent"
-            android:gravity="center"
-            android:hint="@string/hint_mmol"
-            android:inputType="number" />
+            android:hint="@string/hint_mmol" />
 
         <TextView
             android:id="@+id/card_info"
