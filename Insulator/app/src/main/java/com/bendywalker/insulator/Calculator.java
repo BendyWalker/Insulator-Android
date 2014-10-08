@@ -8,10 +8,6 @@ import android.preference.PreferenceManager;
  * Created by Ben on 06/10/2014.
  */
 public class Calculator {
-    public static final String CARBOHYRATE_FACTOR = "CARBOHYDRATE_FACTOR";
-    public static final String CORRECTIVE_FACTOR = "CORRECTIVE_FACTOR";
-    public static final String DESIRED_BLOOD_GLUCOSE_LEVEL = "DESIRED_BLOOD_GLUCOSE_LEVEL";
-
     private float carbohydrateFactor;
     private float correctiveFactor;
     private float desiredBloodGlucoseLevel;
@@ -29,14 +25,14 @@ public class Calculator {
     public Calculator(float currentBloodGlucoseLevel, float carbohydratesInMeal, Context context) {
         this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        this.currentBloodGlucoseLevel = convertMgdlToMmol(currentBloodGlucoseLevel);
+        this.currentBloodGlucoseLevel = checkBloodGlucoseMeasurement(currentBloodGlucoseLevel);
         this.carbohydratesInMeal = carbohydratesInMeal;
-        this.carbohydrateFactor = preferences.getFloat(CARBOHYRATE_FACTOR, 0);
-        this.correctiveFactor = preferences.getFloat(CORRECTIVE_FACTOR, 0);
-        this.desiredBloodGlucoseLevel = convertMgdlToMmol(preferences.getFloat(DESIRED_BLOOD_GLUCOSE_LEVEL, 0));
+        this.carbohydrateFactor = preferences.getFloat(context.getString(R.string.preference_carbohydrate_factor), 0);
+        this.correctiveFactor = preferences.getFloat(context.getString(R.string.preference_corrective_factor), 0);
+        this.desiredBloodGlucoseLevel = checkBloodGlucoseMeasurement(preferences.getFloat(context.getString(R.string.preference_desired_blood_glucose_level), 0));
     }
 
-    private float convertMgdlToMmol(float bloodGlucoseInMgdl) {
+    private float checkBloodGlucoseMeasurement(float bloodGlucoseInMgdl) {
         if (true) { // TODO: change to correct preference, mg/dl
             return bloodGlucoseInMgdl / 18;
         }
