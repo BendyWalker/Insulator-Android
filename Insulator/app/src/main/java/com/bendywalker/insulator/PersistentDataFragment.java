@@ -1,6 +1,7 @@
 package com.bendywalker.insulator;
 
-import android.app.Fragment;
+import android.os.AsyncTask;
+import android.support.v4.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -22,13 +23,13 @@ public class PersistentDataFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_persistent, null);
+        View view = inflater.inflate(R.layout.fragment_persistent, container, false);
 
         desiredBloodGlucoseLevelCard = (Card) view.findViewById(R.id.card_desired_blood_glucose_level);
         carbohydrateFactorCard = (Card) view.findViewById(R.id.card_carbohydrate_factor);
         correctiveFactorCard = (Card) view.findViewById(R.id.card_corrective_factor);
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return view;
     }
 
     @Override

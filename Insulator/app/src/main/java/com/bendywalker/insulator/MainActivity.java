@@ -1,18 +1,19 @@
 package com.bendywalker.insulator;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 
-public class MainActivity extends Activity {
-    Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
-    TextView suggestedInsulinDose;
-    float currentBloodGlucoseLevel, carbohydratesInMeal;
-    Calculator calculator = new Calculator();
-
+public class MainActivity extends FragmentActivity {
+    ViewPager pager;
+    PagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,46 +21,52 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        currentBloodGlucoseLevelCard = (Card) findViewById(R.id.card_current_blood_glucose_level);
-        carbohydratesInMealCard = (Card) findViewById(R.id.card_carbohydrates_in_meal);
-        suggestedInsulinDose = (TextView) findViewById(R.id.display_suggested_dose);
+        pager = (ViewPager) findViewById(R.id.pager);
+        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        pager.setAdapter(pagerAdapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
 
-        menu.findItem(R.id.action_calculate).setEnabled(isCalculateEnabled());
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_calculate:
-                calculator = new Calculator(currentBloodGlucoseLevel,
-                        carbohydratesInMeal, this.getApplicationContext());
-                suggestedInsulinDose.setText(String.valueOf
-                        (calculator.getCalculatedInsulinDose()));
-                return true;
-
-            case R.id.action_reset:
-                resetFields();
-                return true;
+            default:
+                break;
         }
 
         return false;
     }
 
-    private void resetFields() {
-        currentBloodGlucoseLevelCard.resetEntry();
-        carbohydratesInMealCard.resetEntry();
-        suggestedInsulinDose.setText("0.0");
-    }
+    private static final int NUM_PAGES = 2;
 
-    private boolean isCalculateEnabled() {
-        return ((currentBloodGlucoseLevelCard.isEntryFilled()) &&
-                (carbohydratesInMealCard.isEntryFilled()));
+    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new VariableDataFragment();
+
+                case 1:
+                    return new PersistentDataFragment();
+
+                default:
+                    return null;
+            }
+        }
+
+        @Override
+        public int getCount() {
+            return NUM_PAGES;
+        }
     }
 }
