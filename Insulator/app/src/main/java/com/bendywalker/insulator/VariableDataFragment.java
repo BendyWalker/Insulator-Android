@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-public class VariableDataFragment extends Fragment implements Card.OnTextChangedListener {
+public class VariableDataFragment extends Fragment {
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView;
 
@@ -26,15 +26,5 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChanged
         suggestedInsulinDoseTextView = (TextView) view.findViewById(R.id.display_suggested_dose);
 
         return view;
-    }
-
-    @Override
-    public void performCalculation() {
-        float currentBloodGlucoseLevel = Float.valueOf(currentBloodGlucoseLevelCard.getStringFromEntry());
-        float carbohydratesInMeal = Float.valueOf(carbohydratesInMealCard.getStringFromEntry());
-
-        Calculator calculator = new Calculator(currentBloodGlucoseLevel, carbohydratesInMeal, getActivity());
-
-        suggestedInsulinDoseTextView.setText(String.valueOf(calculator.getCalculatedInsulinDose()));
     }
 }
