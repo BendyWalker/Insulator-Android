@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="preference_blood_glucose_units_entries">
+        <item>"mmol/L</item>
+        <item>mg/dL</item>
+    </string-array>
+
+    <string-array name="preference_blood_glucose_units_entryvalues">
+        <item>mmol</item>
+        <item>mgdl</item>
+    </string-array>
+</resources>
