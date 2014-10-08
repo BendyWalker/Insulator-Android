@@ -38,4 +38,11 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="CardButton">
+        <item name="android:textColor">@drawable/selector_button</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:textSize">@dimen/text_card_button</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
 </resources>

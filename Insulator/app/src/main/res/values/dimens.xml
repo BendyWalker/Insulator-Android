@@ -17,6 +17,7 @@
     <dimen name="text_card_title">28sp</dimen>
     <dimen name="text_card_info">16sp</dimen>
     <dimen name="text_card_entry">22sp</dimen>
+    <dimen name="text_card_button">16sp</dimen>
 
     <!-- Spacing -->
     <dimen name="spacing_default_200_percent">32dp</dimen>
