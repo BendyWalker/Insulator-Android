@@ -1,73 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/default_background"
-    android:orientation="vertical">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <com.bendywalker.insulator.Card
-        android:id="@+id/card_desired_blood_glucose_level"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:hintText="@string/hint_mmol"
-        custom:infoText="@string/info_desired_mmol"
-        custom:labelText="@string/label_desired_blood_glucose_level" />
+        android:layout_height="match_parent"
+        android:background="@color/default_background"
+        android:orientation="vertical">
 
-    <com.bendywalker.insulator.Card
-        android:id="@+id/card_current_blood_glucose_level"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:hintText="@string/hint_mmol"
-        custom:infoText="@string/info_current_mmol"
-        custom:labelText="@string/label_current_blood_glucose_level" />
-
-    <com.bendywalker.insulator.Card
-        android:id="@+id/card_carbohydrates_in_meal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:hintText="@string/hint_grams"
-        custom:infoText="@string/info_carbs"
-        custom:labelText="@string/label_carbohydrates_in_meal" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/card"
-        android:paddingBottom="@dimen/spacing_default_150_percent"
-        android:paddingLeft="@dimen/spacing_default_200_percent"
-        android:paddingRight="@dimen/spacing_default_200_percent"
-        android:paddingTop="@dimen/spacing_default_150_percent">
-
-        <TextView
-            android:id="@+id/label_suggested_dose"
-            android:layout_width="wrap_content"
+        <com.bendywalker.insulator.Card
+            android:id="@+id/card_desired_blood_glucose_level"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/display_suggested_dose"
-            android:layout_alignParentLeft="true"
-            android:text="@string/label_suggested_dose"
-            android:textAppearance="?android:textAppearanceMedium" />
+            custom:hintText="@string/hint_mmol"
+            custom:infoText="@string/info_desired_mmol"
+            custom:labelText="@string/label_desired_blood_glucose_level" />
 
-        <TextView
-            android:id="@+id/display_suggested_dose"
-            android:layout_width="wrap_content"
+        <com.bendywalker.insulator.Card
+            android:id="@+id/card_current_blood_glucose_level"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toLeftOf="@+id/units_suggested_dose"
-            android:text="0.0"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:textStyle="bold" />
+            custom:hintText="@string/hint_mmol"
+            custom:infoText="@string/info_current_mmol"
+            custom:labelText="@string/label_current_blood_glucose_level" />
 
-        <TextView
-            android:id="@+id/units_suggested_dose"
-            android:layout_width="wrap_content"
+        <com.bendywalker.insulator.Card
+            android:id="@+id/card_carbohydrates_in_meal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@id/display_suggested_dose"
-            android:layout_alignParentRight="true"
-            android:paddingLeft="@dimen/spacing_default_25_percent"
-            android:text="@string/hint_units"
-            android:textAppearance="?android:textAppearanceMedium" />
+            custom:hintText="@string/hint_grams"
+            custom:infoText="@string/info_carbs"
+            custom:labelText="@string/label_carbohydrates_in_meal" />
 
-    </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layerlist_card"
+            android:paddingBottom="@dimen/spacing_default_150_percent"
+            android:paddingLeft="@dimen/spacing_default_200_percent"
+            android:paddingRight="@dimen/spacing_default_200_percent"
+            android:paddingTop="@dimen/spacing_default_150_percent">
 
-</LinearLayout>
+            <TextView
+                android:id="@+id/label_suggested_dose"
+                style="@style/CardTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="@dimen/spacing_default_100_percent"
+                android:text="@string/label_suggested_dose" />
+
+            <TextView
+                android:id="@+id/display_suggested_dose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/label_suggested_dose"
+                android:layout_marginRight="@dimen/spacing_default_25_percent"
+                android:fontFamily="sans-serif"
+                android:text="0.0"
+                android:textSize="48sp" />
+
+            <TextView
+                android:id="@+id/units_suggested_dose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/display_suggested_dose"
+                android:layout_toRightOf="@id/display_suggested_dose"
+                android:paddingLeft="@dimen/spacing_default_25_percent"
+                android:text="@string/hint_units"
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>
