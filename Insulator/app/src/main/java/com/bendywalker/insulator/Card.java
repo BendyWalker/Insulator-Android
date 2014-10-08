@@ -57,6 +57,9 @@ public class Card extends RelativeLayout {
         return entry.getText().toString();
     }
 
+    public float getFloatFromEntry() {
+        return Float.valueOf(entry.getText().toString());
+    }
 
     public class MyTextWatcher implements TextWatcher {
 
