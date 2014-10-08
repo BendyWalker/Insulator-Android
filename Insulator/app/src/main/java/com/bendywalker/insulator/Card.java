@@ -6,6 +6,7 @@ import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
@@ -68,11 +69,12 @@ public class Card extends RelativeLayout {
         public void onTextChanged(CharSequence s, int start, int before, int count) {
             if (entry.length() > 0) {
                 addDecimalPlace(s, entry);
-                entry.setBackground(getResources().getDrawable(android.R.color.transparent));
-           entry.setTextSize(42);
+                entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimension(R.dimen.text_card_entry_filled));
             } else {
-                entry.setBackground(getResources().getDrawable(android.R.drawable.edit_text));
-           entry.setTextSize(22);
+                entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimension(R.dimen.text_card_entry_empty));
+                ;
             }
         }
 

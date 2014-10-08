@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
-    Card desiredBloodGlucoseLevelCard, currentBloodGlucoseLevelCard, carbohydratesInMealCard;
+    Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDose;
     float currentBloodGlucoseLevel, carbohydratesInMeal;
     Calculator calculator = new Calculator();
@@ -20,7 +20,6 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        desiredBloodGlucoseLevelCard = (Card) findViewById(R.id.card_desired_blood_glucose_level);
         currentBloodGlucoseLevelCard = (Card) findViewById(R.id.card_current_blood_glucose_level);
         carbohydratesInMealCard = (Card) findViewById(R.id.card_carbohydrates_in_meal);
         suggestedInsulinDose = (TextView) findViewById(R.id.display_suggested_dose);
@@ -60,8 +59,7 @@ public class MainActivity extends Activity {
     }
 
     private boolean isCalculateEnabled() {
-        return ((desiredBloodGlucoseLevelCard.isEntryFilled()) &&
-                (currentBloodGlucoseLevelCard.isEntryFilled()) &&
+        return ((currentBloodGlucoseLevelCard.isEntryFilled()) &&
                 (carbohydratesInMealCard.isEntryFilled()));
     }
 }

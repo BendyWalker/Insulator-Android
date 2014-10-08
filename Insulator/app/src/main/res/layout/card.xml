@@ -33,6 +33,7 @@
             style="@style/CardInfoText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/card_entry"
             android:text="This is placeholder description text. It can span multiple lines depending on how long it is." />
     </RelativeLayout>

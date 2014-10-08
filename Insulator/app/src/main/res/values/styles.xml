@@ -42,9 +42,10 @@
 
     <style name="CardEntryText">
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textSize">@dimen/text_card_entry</item>
+        <item name="android:textSize">@dimen/text_card_entry_empty</item>
         <item name="android:textColor">@color/card_text_primary</item>
         <item name="android:inputType">number</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="android:textColorHint">@color/card_text_secondary</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:gravity">center</item>
