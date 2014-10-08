@@ -1,9 +1,8 @@
 package com.bendywalker.insulator;
 
-import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -133,8 +132,8 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 
 		case R.id.button_save_settings:
-			Intent i = new Intent(this, TDDActivity.class);
-			startActivity(i);
+			//Intent i = new Intent(this, TDDActivity.class);
+			//startActivity(i);
 
 		case R.id.switch_halfunits:
 			if (halfUnitsSwitch.isChecked()) {
