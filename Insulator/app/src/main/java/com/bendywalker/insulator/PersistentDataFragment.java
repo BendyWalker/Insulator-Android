@@ -34,6 +34,23 @@ public class PersistentDataFragment extends Fragment {
         carbohydrateFactorCard = (Card) view.findViewById(R.id.card_carbohydrate_factor);
         correctiveFactorCard = (Card) view.findViewById(R.id.card_corrective_factor);
 
+        float savedDesiredBloodGlucoseLevelFloat = preferences.getFloat(desiredBloodGlucoseLevelKey, 0);
+        float savedCarbohydrateFactorFloat = preferences.getFloat(carbohydrateFactorKey, 0);
+        float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
+
+        if (savedDesiredBloodGlucoseLevelFloat != 0) {
+            desiredBloodGlucoseLevelCard.setEntry(savedDesiredBloodGlucoseLevelFloat);
+        }
+
+        if (savedCarbohydrateFactorFloat != 0) {
+            carbohydrateFactorCard.setEntry(savedCarbohydrateFactorFloat);
+        }
+
+        if (savedCorrectiveFactorFloat != 0) {
+            correctiveFactorCard.setEntry(savedCorrectiveFactorFloat);
+        }
+
         return view;
     }
+
 }

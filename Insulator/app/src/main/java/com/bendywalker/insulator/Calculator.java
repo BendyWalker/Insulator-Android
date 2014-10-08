@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-/**
- * Created by Ben on 06/10/2014.
- */
 public class Calculator {
     private float carbohydrateFactor;
     private float correctiveFactor;
@@ -15,7 +12,7 @@ public class Calculator {
     private float carbohydratesInMeal;
 
     SharedPreferences preferences;
-
+    Context context;
 
     // Constructors
     public Calculator() {
@@ -24,6 +21,7 @@ public class Calculator {
 
     public Calculator(float currentBloodGlucoseLevel, float carbohydratesInMeal, Context context) {
         this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        this.context = context;
 
         this.currentBloodGlucoseLevel = checkBloodGlucoseMeasurement(currentBloodGlucoseLevel);
         this.carbohydratesInMeal = carbohydratesInMeal;
@@ -33,7 +31,9 @@ public class Calculator {
     }
 
     private float checkBloodGlucoseMeasurement(float bloodGlucoseInMgdl) {
-        if (true) { // TODO: change to correct preference, mg/dl
+        String bloodGlucoseUnit = preferences.getString(context.getString(R.string.preference_blood_glucose_units), "mmol");
+
+        if (bloodGlucoseUnit.equals("mgdl")) { // TODO: change to correct preference, mg/dl
             return bloodGlucoseInMgdl / 18;
         }
 
@@ -43,11 +43,11 @@ public class Calculator {
     public float calculateCarbohydrateDose() {
         float carbohydrateDose = 0;
 
-        if (true) { // TODO: change to correct preference, kind of insulin-to-carb ratio
-            carbohydrateDose = (carbohydrateFactor * carbohydratesInMeal) / 10;
-        } else {
-            carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
-        }
+//        if (true) { // TODO: change to correct preference, kind of insulin-to-carb ratio
+//            carbohydrateDose = (carbohydrateFactor * carbohydratesInMeal) / 10;
+//        } else {
+        carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
+//        }
 
         return carbohydrateDose;
     }
@@ -63,7 +63,7 @@ public class Calculator {
         if (total < 0) {
             total = 0;
         } else {
-            if (true) { // TODO: change to correct preference, half units
+            if (preferences.getBoolean(context.getString(R.string.preference_half_units), false)) {
                 total = (Math.round(total * 2)) * 0.5;
             } else {
                 total = Math.round(total);

@@ -1,13 +1,16 @@
 package com.bendywalker.insulator;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
+import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +23,9 @@ public class Card extends RelativeLayout {
 
     private TextView label, info;
     private EditText entry;
+    private String prefKey;
+
+    private SharedPreferences preferences;
 
     static boolean textChangeRunning;
 
@@ -29,17 +35,22 @@ public class Card extends RelativeLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.card, this);
 
+        preferences = PreferenceManager.getDefaultSharedPreferences(context);
+
         label = (TextView) findViewById(R.id.card_title);
         info = (TextView) findViewById(R.id.card_info);
         entry = (EditText) findViewById(R.id.card_entry);
 
+        entry.addTextChangedListener(new MyTextWatcher());
+        entry.setOnFocusChangeListener(new MyOnFocusChangeListener());
+
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Card, 0, 0);
 
         try {
+            prefKey = typedArray.getString(R.styleable.Card_prefKey);
             label.setText(typedArray.getString(R.styleable.Card_labelText));
             info.setText(typedArray.getString(R.styleable.Card_infoText));
             entry.setHint(typedArray.getString(R.styleable.Card_hintText));
-            entry.addTextChangedListener(new MyTextWatcher());
         } finally {
             typedArray.recycle();
         }
@@ -58,10 +69,20 @@ public class Card extends RelativeLayout {
     }
 
     public float getFloatFromEntry() {
-        return Float.valueOf(entry.getText().toString());
+        String string = entry.getText().toString();
+
+        if (string.isEmpty()) {
+            return 0;
+        } else {
+            return Float.valueOf(string);
+        }
     }
 
-    public class MyTextWatcher implements TextWatcher {
+    public void setEntry(Float flo) {
+        entry.setText(String.valueOf(flo));
+    }
+
+    private class MyTextWatcher implements TextWatcher {
 
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
@@ -87,6 +108,18 @@ public class Card extends RelativeLayout {
         }
     }
 
+    private class MyOnFocusChangeListener implements OnFocusChangeListener {
+
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
+                float entryFloat = getFloatFromEntry();
+                if (entryFloat != 0 && prefKey != null) {
+                    preferences.edit().putFloat(prefKey, getFloatFromEntry()).commit();
+                }
+            }
+        }
+    }
 
     /**
      * Adds a point to one decimal place of a string of characters.
@@ -130,4 +163,5 @@ public class Card extends RelativeLayout {
 
         }
     }
+
 }

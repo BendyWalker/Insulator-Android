@@ -51,7 +51,7 @@
     <string name="hint_mgdl">mg/dL</string>
 
     <!-- Labels for insulin suggestion -->
-    <string name="label_suggested_dose">Suggested Dose</string>
+    <string name="label_suggested_dose">Suggested dose</string>
 
     <!-- Labels for insulin suggestion breakdown -->
     <string name="label_breakdown_dose_carbs">Carbohydrate Dose (units)</string>

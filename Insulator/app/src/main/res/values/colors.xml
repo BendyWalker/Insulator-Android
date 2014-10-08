@@ -3,6 +3,7 @@
     <color name="default_background">#e5e5e5</color>
     <color name="default_tint">#ff4815</color>
     <color name="default_tint_pressed">#b22700</color>
+    <color name="default_highlight">#ffe1d9</color>
 
     <!-- Card Colors -->
     <color name="card_background">#ffffff</color>
