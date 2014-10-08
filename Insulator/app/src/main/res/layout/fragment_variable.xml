@@ -47,6 +47,7 @@
                 android:layout_marginRight="@dimen/spacing_default_25_percent"
                 android:fontFamily="sans-serif"
                 android:text="0.0"
+                android:textColor="@color/card_text_primary"
                 android:textSize="54sp" />
 
             <TextView
@@ -57,7 +58,16 @@
                 android:layout_toRightOf="@id/display_suggested_dose"
                 android:paddingLeft="@dimen/spacing_default_25_percent"
                 android:text="@string/hint_units"
+                android:textColor="@color/card_text_primary"
                 android:textSize="32sp" />
+
+            <Button android:id="@+id/button_calculate"
+                style="@style/CardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/display_suggested_dose"
+                android:layout_alignParentRight="true"
+                android:text="@string/button_calculate" />
 
         </RelativeLayout>
 
