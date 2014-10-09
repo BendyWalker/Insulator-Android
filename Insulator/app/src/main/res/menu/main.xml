@@ -1,14 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/action_calculate"
-        android:title="@string/button_calculate" />
-    <item
         android:id="@+id/action_reset"
+        android:icon="@drawable/ic_action_remove"
+        android:showAsAction="always"
         android:title="@string/button_reset" />
-    <item
-        android:id="@+id/action_activity_persistent"
-        android:title="@string/title_activity_persistent" />
     <item
         android:id="@+id/action_settings"
         android:title="@string/title_activity_settings" />

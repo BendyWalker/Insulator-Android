@@ -2,8 +2,8 @@ package com.bendywalker.insulator;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,6 +18,7 @@ public class VariableDataFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -32,6 +33,21 @@ public class VariableDataFragment extends Fragment {
         calculateButton.setOnClickListener(new MyOnClickListener());
 
         return view;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_reset:
+                resetCards();
+        }
+        return false;
+    }
+
+    private void resetCards() {
+        currentBloodGlucoseLevelCard.resetEntry();
+        carbohydratesInMealCard.resetEntry();
+        suggestedInsulinDoseTextView.setText("0.0");
     }
 
     public class MyOnClickListener implements View.OnClickListener {
