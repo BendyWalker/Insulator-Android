@@ -58,7 +58,7 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         carbohydratesInMealCard.resetEntry();
         suggestedInsulinDoseTextView.setText("0.0");
         carbohydrateDoseTextView.setText("0.0");
-        carbohydrateDoseTextView.setText("0.0");
+        correctiveDoseTextView.setText("0.0");
     }
 
     @Override
