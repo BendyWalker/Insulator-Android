@@ -107,7 +107,10 @@ public class Card extends RelativeLayout {
                 ;
             }
 
-            //listener.onTextChange();
+            if (listener != null)
+            {
+                listener.onTextChange();
+            }
         }
 
         @Override
@@ -116,11 +119,16 @@ public class Card extends RelativeLayout {
         }
     }
 
-//    OnTextChangeListener listener;
+    OnTextChangeListener listener;
 
-//    public interface OnTextChangeListener {
-//        void onTextChange();
-//    }
+    public void setOnTextChangeListener(OnTextChangeListener listener)
+    {
+        this.listener = listener;
+    }
+
+    public interface OnTextChangeListener {
+        void onTextChange();
+    }
 
     private class MyOnFocusChangeListener implements OnFocusChangeListener {
 

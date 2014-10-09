@@ -6,16 +6,13 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 
-public class VariableDataFragment extends Fragment {
-    //implements Card.OnTextChangeListener
+public class VariableDataFragment extends Fragment implements Card.OnTextChangeListener {
 
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView;
-    Button calculateButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,9 +27,9 @@ public class VariableDataFragment extends Fragment {
         currentBloodGlucoseLevelCard = (Card) view.findViewById(R.id.card_current_blood_glucose_level);
         carbohydratesInMealCard = (Card) view.findViewById(R.id.card_carbohydrates_in_meal);
         suggestedInsulinDoseTextView = (TextView) view.findViewById(R.id.display_suggested_dose);
-        calculateButton = (Button) view.findViewById(R.id.button_calculate);
 
-        calculateButton.setOnClickListener(new MyOnClickListener());
+        currentBloodGlucoseLevelCard.setOnTextChangeListener(this);
+        carbohydratesInMealCard.setOnTextChangeListener(this);
 
         return view;
     }
@@ -52,18 +49,13 @@ public class VariableDataFragment extends Fragment {
         suggestedInsulinDoseTextView.setText("0.0");
     }
 
-//    @Override
-//    public void onTextChange() {
-//        Calculator calculator = new Calculator(currentBloodGlucoseLevelCard.getFloatFromEntry(), carbohydratesInMealCard.getFloatFromEntry(), getActivity());
-//        suggestedInsulinDoseTextView.setText(String.valueOf(calculator.getCalculatedInsulinDose()));
-//    }
+    @Override
+    public void onTextChange() {
+        float currentBloodGlucoseLevel = currentBloodGlucoseLevelCard.getFloatFromEntry();
+        float carbohydratesInMeal = carbohydratesInMealCard.getFloatFromEntry();
 
-    public class MyOnClickListener implements View.OnClickListener {
+        Calculator calculator = new Calculator(currentBloodGlucoseLevel, carbohydratesInMeal, getActivity());
 
-        @Override
-        public void onClick(View v) {
-            Calculator calculator = new Calculator(currentBloodGlucoseLevelCard.getFloatFromEntry(), carbohydratesInMealCard.getFloatFromEntry(), getActivity());
-            suggestedInsulinDoseTextView.setText(String.valueOf(calculator.getCalculatedInsulinDose()));
-        }
+        suggestedInsulinDoseTextView.setText(String.valueOf(calculator.getCalculatedInsulinDose()));
     }
 }
