@@ -30,14 +30,14 @@ public class Calculator {
         this.desiredBloodGlucoseLevel = checkBloodGlucoseMeasurement(preferences.getFloat(context.getString(R.string.preference_desired_blood_glucose_level), 0));
     }
 
-    private float checkBloodGlucoseMeasurement(float bloodGlucoseInMgdl) {
+    private float checkBloodGlucoseMeasurement(float bloodGlucose) {
         String bloodGlucoseUnit = preferences.getString(context.getString(R.string.preference_blood_glucose_units), "mmol");
 
         if (bloodGlucoseUnit.equals("mgdl")) { // TODO: change to correct preference, mg/dl
-            return bloodGlucoseInMgdl / 18;
+            return bloodGlucose / 18;
+        } else {
+            return bloodGlucose;
         }
-
-        return bloodGlucoseInMgdl;
     }
 
     public float calculateCarbohydrateDose() {
