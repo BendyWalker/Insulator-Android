@@ -52,5 +52,4 @@ public class PersistentDataFragment extends Fragment {
 
         return view;
     }
-
 }
