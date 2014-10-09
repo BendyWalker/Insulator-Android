@@ -32,36 +32,84 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/label_suggested_dose"
+                android:id="@+id/title_suggested_dose"
                 style="@style/CardTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_default_100_percent"
                 android:text="@string/label_suggested_dose" />
 
-            <TextView
-                android:id="@+id/display_suggested_dose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/label_suggested_dose"
-                android:layout_marginRight="@dimen/spacing_default_25_percent"
-                android:fontFamily="sans-serif"
-                android:text="0.0"
-                android:textColor="@color/card_text_primary"
-                android:textSize="54sp" />
 
-            <TextView
-                android:id="@+id/units_suggested_dose"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/display_suggested_dose"
-                android:layout_toRightOf="@id/display_suggested_dose"
-                android:paddingLeft="@dimen/spacing_default_25_percent"
-                android:text="@string/hint_units"
-                android:textColor="@color/card_text_primary"
-                android:textSize="32sp" />
+                android:layout_below="@id/title_suggested_dose">
 
+                <TextView
+                    android:id="@+id/suggested_dose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/spacing_default_25_percent"
+                    android:fontFamily="sans-serif"
+                    android:text="0.0"
+                    android:textColor="@color/card_text_primary"
+                    android:textSize="54sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/carbohydrate_dose_label"
+                            style="@style/CardInfoText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/spacing_default_50_percent"
+                            android:text="Carbohydrate Dose" />
+
+                        <TextView
+                            android:id="@+id/carbohydrate_dose_display"
+                            style="@style/CardInfoText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="0.00" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/corrective_dose_label"
+                            style="@style/CardInfoText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/spacing_default_50_percent"
+                            android:text="Corrective Dose" />
+
+                        <TextView
+                            android:id="@+id/corrective_dose_display"
+                            style="@style/CardInfoText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                            android:text="0.00" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
         </RelativeLayout>
-
     </LinearLayout>
 </ScrollView>

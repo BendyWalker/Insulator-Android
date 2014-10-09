@@ -13,7 +13,7 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
 {
 
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
-    TextView suggestedInsulinDoseTextView;
+    TextView suggestedInsulinDoseTextView, carbohydrateDoseTextView, correctiveDoseTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -31,7 +31,9 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         currentBloodGlucoseLevelCard = (Card) view
                 .findViewById(R.id.card_current_blood_glucose_level);
         carbohydratesInMealCard = (Card) view.findViewById(R.id.card_carbohydrates_in_meal);
-        suggestedInsulinDoseTextView = (TextView) view.findViewById(R.id.display_suggested_dose);
+        suggestedInsulinDoseTextView = (TextView) view.findViewById(R.id.suggested_dose);
+        carbohydrateDoseTextView = (TextView) view.findViewById(R.id.carbohydrate_dose_display);
+        correctiveDoseTextView = (TextView) view.findViewById(R.id.corrective_dose_display);
 
         currentBloodGlucoseLevelCard.setOnTextChangeListener(this);
         carbohydratesInMealCard.setOnTextChangeListener(this);
@@ -55,6 +57,8 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         currentBloodGlucoseLevelCard.resetEntry();
         carbohydratesInMealCard.resetEntry();
         suggestedInsulinDoseTextView.setText("0.0");
+        carbohydrateDoseTextView.setText("0.0");
+        carbohydrateDoseTextView.setText("0.0");
     }
 
     @Override
@@ -66,6 +70,11 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         Calculator calculator = new Calculator(currentBloodGlucoseLevel, carbohydratesInMeal,
                                                getActivity());
 
-        suggestedInsulinDoseTextView.setText(String.valueOf(calculator.getCalculatedInsulinDose()));
+        suggestedInsulinDoseTextView
+                .setText(String.valueOf(calculator.getCalculatedInsulinDose(true)));
+        carbohydrateDoseTextView.setText(String.valueOf(calculator.getCalculatedCarbohydrateDose(
+                true)));
+        correctiveDoseTextView
+                .setText(String.valueOf(calculator.getCalculatedCorrectiveDose(true)));
     }
 }
