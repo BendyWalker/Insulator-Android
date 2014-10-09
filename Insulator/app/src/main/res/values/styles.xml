@@ -47,6 +47,7 @@
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColorHint">@drawable/selector_card_entry_hint</item>
         <item name="android:textColorHighlight">@color/default_highlight</item>
+        <item name="android:maxLength">5</item>
         <item name="android:cursorVisible">false</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:gravity">center</item>
