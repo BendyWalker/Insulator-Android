@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
@@ -16,7 +17,7 @@
             android:layout_height="wrap_content"
             custom:hintText="@string/hint_mmol"
             custom:infoText="@string/info_current_blood_glucose_level"
-            custom:labelText="@string/label_current_blood_glucose_level" />
+            custom:labelText="@string/label_current_blood_glucose_level"/>
 
         <com.bendywalker.insulator.Card
             android:id="@+id/card_carbohydrates_in_meal"
@@ -24,7 +25,7 @@
             android:layout_height="wrap_content"
             custom:hintText="@string/hint_grams"
             custom:infoText="@string/info_carbohydrates_in_meal"
-            custom:labelText="@string/label_carbohydrates_in_meal" />
+            custom:labelText="@string/label_carbohydrates_in_meal"/>
 
         <RelativeLayout
             style="@style/CardBase"
@@ -37,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing_default_100_percent"
-                android:text="@string/label_suggested_dose" />
+                android:text="@string/label_suggested_dose"/>
 
 
             <RelativeLayout
@@ -55,7 +56,7 @@
                     android:fontFamily="sans-serif"
                     android:text="0.0"
                     android:textColor="@color/card_text_primary"
-                    android:textSize="54sp" />
+                    android:textSize="54sp"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -76,7 +77,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/spacing_default_50_percent"
-                            android:text="Carbohydrate Dose" />
+                            android:text="Carbohydrate Dose"/>
 
                         <TextView
                             android:id="@+id/carbohydrate_dose_display"
@@ -84,7 +85,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
-                            android:text="0.00" />
+                            android:text="0.00"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -98,7 +99,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/spacing_default_50_percent"
-                            android:text="Corrective Dose" />
+                            android:text="Corrective Dose"/>
 
                         <TextView
                             android:id="@+id/corrective_dose_display"
@@ -106,7 +107,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
-                            android:text="0.00" />
+                            android:text="0.00"/>
                     </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>

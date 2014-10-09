@@ -22,7 +22,9 @@
 
     <!-- Spacing -->
     <dimen name="spacing_default_200_percent">32dp</dimen>
+    <dimen name="spacing_default_175_percent">28dp</dimen>
     <dimen name="spacing_default_150_percent">24dp</dimen>
+    <dimen name="spacing_default_125_percent">20dp</dimen>
     <dimen name="spacing_default_100_percent">16dp</dimen>
     <dimen name="spacing_default_75_percent">12dp</dimen>
     <dimen name="spacing_default_50_percent">8dp</dimen>

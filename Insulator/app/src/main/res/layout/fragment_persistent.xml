@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             custom:hintText="@string/hint_grams"
-            custom:infoText="@string/info_ratioi2x"
+            custom:infoText="@string/info_carbohydrate_factor"
             custom:labelText="@string/label_carbohydrate_factor"
             custom:prefKey="@string/preference_carbohydrate_factor" />
 
