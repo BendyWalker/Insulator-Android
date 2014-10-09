@@ -106,6 +106,8 @@ public class Card extends RelativeLayout {
                         getResources().getDimension(R.dimen.text_card_entry_empty));
                 ;
             }
+
+            //listener.onTextChange();
         }
 
         @Override
@@ -113,6 +115,12 @@ public class Card extends RelativeLayout {
 
         }
     }
+
+//    OnTextChangeListener listener;
+
+//    public interface OnTextChangeListener {
+//        void onTextChange();
+//    }
 
     private class MyOnFocusChangeListener implements OnFocusChangeListener {
 

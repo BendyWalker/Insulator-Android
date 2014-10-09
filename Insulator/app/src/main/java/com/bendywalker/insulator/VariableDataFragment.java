@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 
 public class VariableDataFragment extends Fragment {
+    //implements Card.OnTextChangeListener
+
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView;
     Button calculateButton;
@@ -49,6 +51,12 @@ public class VariableDataFragment extends Fragment {
         carbohydratesInMealCard.resetEntry();
         suggestedInsulinDoseTextView.setText("0.0");
     }
+
+//    @Override
+//    public void onTextChange() {
+//        Calculator calculator = new Calculator(currentBloodGlucoseLevelCard.getFloatFromEntry(), carbohydratesInMealCard.getFloatFromEntry(), getActivity());
+//        suggestedInsulinDoseTextView.setText(String.valueOf(calculator.getCalculatedInsulinDose()));
+//    }
 
     public class MyOnClickListener implements View.OnClickListener {
 
