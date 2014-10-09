@@ -23,14 +23,14 @@ public class Calculator {
         this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
         this.context = context;
 
-        this.currentBloodGlucoseLevel = checkBloodGlucoseMeasurement(currentBloodGlucoseLevel);
+        this.currentBloodGlucoseLevel = convertBloodGlucoseMeasurement(currentBloodGlucoseLevel);
         this.carbohydratesInMeal = carbohydratesInMeal;
         this.carbohydrateFactor = preferences.getFloat(context.getString(R.string.preference_carbohydrate_factor), 0);
-        this.correctiveFactor = checkBloodGlucoseMeasurement(preferences.getFloat(context.getString(R.string.preference_corrective_factor), 0));
-        this.desiredBloodGlucoseLevel = checkBloodGlucoseMeasurement(preferences.getFloat(context.getString(R.string.preference_desired_blood_glucose_level), 0));
+        this.correctiveFactor = convertBloodGlucoseMeasurement(preferences.getFloat(context.getString(R.string.preference_corrective_factor), 0));
+        this.desiredBloodGlucoseLevel = convertBloodGlucoseMeasurement(preferences.getFloat(context.getString(R.string.preference_desired_blood_glucose_level), 0));
     }
 
-    private float checkBloodGlucoseMeasurement(float bloodGlucose) {
+    private float convertBloodGlucoseMeasurement(float bloodGlucose) {
         String bloodGlucoseUnit = preferences.getString(context.getString(R.string.preference_blood_glucose_units), "mmol");
 
         if (bloodGlucoseUnit.equals("mgdl")) {
