@@ -12,12 +12,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends FragmentActivity
+{
+    private static final int NUM_PAGES = 2;
     ViewPager pager;
     PagerAdapter pagerAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -28,15 +31,18 @@ public class MainActivity extends FragmentActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
             case R.id.action_reset:
 
                 break;
@@ -53,16 +59,18 @@ public class MainActivity extends FragmentActivity {
         return false;
     }
 
-    private static final int NUM_PAGES = 2;
-
-    private class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fragmentManager) {
+    private class ScreenSlidePagerAdapter extends FragmentPagerAdapter
+    {
+        public ScreenSlidePagerAdapter(FragmentManager fragmentManager)
+        {
             super(fragmentManager);
         }
 
         @Override
-        public Fragment getItem(int position) {
-            switch (position) {
+        public Fragment getItem(int position)
+        {
+            switch (position)
+            {
                 case 0:
                     return new VariableDataFragment();
 
@@ -75,7 +83,8 @@ public class MainActivity extends FragmentActivity {
         }
 
         @Override
-        public int getCount() {
+        public int getCount()
+        {
             return NUM_PAGES;
         }
     }

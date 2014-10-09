@@ -7,13 +7,16 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class WelcomeActivity extends Activity implements OnClickListener {
+
+public class WelcomeActivity extends Activity implements OnClickListener
+{
 
     // Declare variables
     Button continueOn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
@@ -23,8 +26,10 @@ public class WelcomeActivity extends Activity implements OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
 
             case R.id.button_continue:
                 Intent i = new Intent(this, MainActivity.class);

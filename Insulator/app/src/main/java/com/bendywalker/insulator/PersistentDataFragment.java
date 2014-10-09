@@ -9,14 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class PersistentDataFragment extends Fragment {
+public class PersistentDataFragment extends Fragment
+{
     Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
     SharedPreferences preferences;
 
     String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -27,10 +29,13 @@ public class PersistentDataFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.fragment_persistent, container, false);
 
-        desiredBloodGlucoseLevelCard = (Card) view.findViewById(R.id.card_desired_blood_glucose_level);
+        desiredBloodGlucoseLevelCard = (Card) view
+                .findViewById(R.id.card_desired_blood_glucose_level);
         carbohydrateFactorCard = (Card) view.findViewById(R.id.card_carbohydrate_factor);
         correctiveFactorCard = (Card) view.findViewById(R.id.card_corrective_factor);
 
@@ -39,14 +44,17 @@ public class PersistentDataFragment extends Fragment {
     }
 
     @Override
-    public void onResume() {
+    public void onResume()
+    {
         restoreValuesToCards();
 
         super.onResume();
     }
 
-    private void restoreValuesToCards() {
-        float savedDesiredBloodGlucoseLevelFloat = preferences.getFloat(desiredBloodGlucoseLevelKey, 0);
+    private void restoreValuesToCards()
+    {
+        float savedDesiredBloodGlucoseLevelFloat = preferences
+                .getFloat(desiredBloodGlucoseLevelKey, 0);
         float savedCarbohydrateFactorFloat = preferences.getFloat(carbohydrateFactorKey, 0);
         float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
 
@@ -58,16 +66,19 @@ public class PersistentDataFragment extends Fragment {
 //           savedCorrectiveFactorFloat = savedCorrectiveFactorFloat / 18;
 //       }
 
-        if (savedDesiredBloodGlucoseLevelFloat != 0) {
-            desiredBloodGlucoseLevelCard.setEntry(savedDesiredBloodGlucoseLevelFloat);
+        if (savedDesiredBloodGlucoseLevelFloat != 0)
+        {
+            desiredBloodGlucoseLevelCard.setEntryFromFloat(savedDesiredBloodGlucoseLevelFloat);
         }
 
-        if (savedCarbohydrateFactorFloat != 0) {
-            carbohydrateFactorCard.setEntry(savedCarbohydrateFactorFloat);
+        if (savedCarbohydrateFactorFloat != 0)
+        {
+            carbohydrateFactorCard.setEntryFromFloat(savedCarbohydrateFactorFloat);
         }
 
-        if (savedCorrectiveFactorFloat != 0) {
-            correctiveFactorCard.setEntry(savedCorrectiveFactorFloat);
+        if (savedCorrectiveFactorFloat != 0)
+        {
+            correctiveFactorCard.setEntryFromFloat(savedCorrectiveFactorFloat);
         }
     }
 }
