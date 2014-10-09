@@ -9,11 +9,11 @@
         android:title="@string/preference_half_units_title" />
 
     <ListPreference
-        android:defaultValue="mgdl"
+        android:defaultValue="mmol"
         android:dialogTitle="@string/preference_blood_glucose_units_title"
         android:entries="@array/preference_blood_glucose_units_entries"
         android:entryValues="@array/preference_blood_glucose_units_entryvalues"
-        android:key="preference_blood_glucose_units"
+        android:key="@string/preference_blood_glucose_units"
         android:summary="%s"
         android:title="@string/preference_blood_glucose_units_title" />
 
