@@ -16,8 +16,7 @@ public class SettingsActivity extends Activity
         setContentView(R.layout.activity_settings);
 
         FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                       .replace(R.id.container, new SettingsFragment(), "FRAGMENT_TAG").commit();
+        fragmentManager.beginTransaction().replace(R.id.container, new SettingsFragment()).commit();
     }
 
     @Override
