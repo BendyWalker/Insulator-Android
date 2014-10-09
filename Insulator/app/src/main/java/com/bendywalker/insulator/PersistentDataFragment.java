@@ -34,9 +34,29 @@ public class PersistentDataFragment extends Fragment {
         carbohydrateFactorCard = (Card) view.findViewById(R.id.card_carbohydrate_factor);
         correctiveFactorCard = (Card) view.findViewById(R.id.card_corrective_factor);
 
+        restoreValuesToCards();
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        restoreValuesToCards();
+
+        super.onResume();
+    }
+
+    private void restoreValuesToCards() {
         float savedDesiredBloodGlucoseLevelFloat = preferences.getFloat(desiredBloodGlucoseLevelKey, 0);
         float savedCarbohydrateFactorFloat = preferences.getFloat(carbohydrateFactorKey, 0);
         float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
+
+//       String bloodGlucoseUnitPreference = preferences.getString(getString(R.string.preference_blood_glucose_units), "");
+//       if (bloodGlucoseUnitPreference.equals("mgdl"))
+//       {
+//           savedDesiredBloodGlucoseLevelFloat = savedDesiredBloodGlucoseLevelFloat / 18;
+//           savedCarbohydrateFactorFloat = savedCarbohydrateFactorFloat / 18;
+//           savedCorrectiveFactorFloat = savedCorrectiveFactorFloat / 18;
+//       }
 
         if (savedDesiredBloodGlucoseLevelFloat != 0) {
             desiredBloodGlucoseLevelCard.setEntry(savedDesiredBloodGlucoseLevelFloat);
@@ -49,7 +69,5 @@ public class PersistentDataFragment extends Fragment {
         if (savedCorrectiveFactorFloat != 0) {
             correctiveFactorCard.setEntry(savedCorrectiveFactorFloat);
         }
-
-        return view;
     }
 }

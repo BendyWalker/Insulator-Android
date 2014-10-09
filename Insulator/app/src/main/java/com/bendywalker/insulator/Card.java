@@ -120,6 +120,7 @@ public class Card extends RelativeLayout {
         public void onFocusChange(View v, boolean hasFocus) {
             if (!hasFocus) {
                 float entryFloat = getFloatFromEntry();
+
                 if (entryFloat != 0 && prefKey != null) {
                     preferences.edit().putFloat(prefKey, getFloatFromEntry()).commit();
                 }
