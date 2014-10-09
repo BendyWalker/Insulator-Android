@@ -51,9 +51,9 @@ public class Calculator
         }
     }
 
-    public float calculateCarbohydrateDose()
+    public double getCalculatedCarbohydrateDose(boolean rounded)
     {
-        float carbohydrateDose = 0;
+        double carbohydrateDose = 0;
 
 //        if (true) { // TODO: change to correct preference, kind of insulin-to-carb ratio
 //            carbohydrateDose = (carbohydrateFactor * carbohydratesInMeal) / 10;
@@ -61,18 +61,29 @@ public class Calculator
         carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
 //        }
 
+        if (rounded)
+        {
+            carbohydrateDose = roundNumber(carbohydrateDose);
+        }
+
         return carbohydrateDose;
     }
 
 
-    public float calculateCorrectiveDose()
+    public double getCalculatedCorrectiveDose(boolean rounded)
     {
-        return (currentBloodGlucoseLevel - desiredBloodGlucoseLevel) / correctiveFactor;
+        double correctiveDose = (currentBloodGlucoseLevel - desiredBloodGlucoseLevel) / correctiveFactor;
+        if (rounded)
+        {
+            correctiveDose = roundNumber(correctiveDose);
+        }
+
+        return correctiveDose;
     }
 
-    public double getCalculatedInsulinDose()
+    public double getCalculatedInsulinDose(boolean rounded)
     {
-        double total = calculateCarbohydrateDose() + calculateCorrectiveDose();
+        double total = getCalculatedCarbohydrateDose(false) + getCalculatedCorrectiveDose(false);
 
         if (total < 0)
         {
@@ -80,16 +91,28 @@ public class Calculator
         }
         else
         {
-            if (preferences.getBoolean(context.getString(R.string.preference_half_units), false))
+            if (rounded)
             {
-                total = (Math.round(total * 2)) * 0.5;
-            }
-            else
-            {
-                total = Math.round(total);
+                total = roundNumber(total);
             }
         }
 
         return total;
+    }
+
+    private double roundNumber(Double number)
+    {
+        double output;
+
+        if (preferences.getBoolean(context.getString(R.string.preference_half_units), false))
+        {
+            output = (Math.round(number * 2)) * 0.5;
+        }
+        else
+        {
+            output = Math.round(number);
+        }
+
+        return output;
     }
 }
