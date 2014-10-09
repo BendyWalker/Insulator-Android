@@ -40,9 +40,12 @@ public class Card extends RelativeLayout
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
-        isMmolSelected = (preferences
-                .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
-                .equals("mmol");
+        if (!isInEditMode())
+        {
+            isMmolSelected = (preferences
+                    .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
+                    .equals("mmol");
+        }
 
         label = (TextView) findViewById(R.id.card_title);
         info = (TextView) findViewById(R.id.card_info);
