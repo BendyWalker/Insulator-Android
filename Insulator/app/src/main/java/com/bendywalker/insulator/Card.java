@@ -43,6 +43,12 @@ public class Card extends RelativeLayout {
 
         entry.addTextChangedListener(new MyTextWatcher());
         entry.setOnFocusChangeListener(new MyOnFocusChangeListener());
+        entry.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                entry.selectAll();
+            }
+        });
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Card, 0, 0);
 
