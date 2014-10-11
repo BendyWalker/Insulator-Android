@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -41,12 +42,22 @@ public class WelcomePage2Fragment extends Fragment
             }
         });
 
-        halfUnitsCard
-                .startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_left));
-        bloodGlucoseUnitsCard
-                .startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_right));
-        continueCard
-                .startAnimation(AnimationUtils.loadAnimation(getActivity(), R.anim.slide_up_left));
+        int slideTime = getResources().getInteger(R.integer.config_slide_time) / 3;
+
+        Animation halfUnitsAnimation = AnimationUtils
+                .loadAnimation(getActivity(), R.anim.slide_in_up);
+
+        Animation bloodGlucoseUnitsAnimation = AnimationUtils
+                .loadAnimation(getActivity(), R.anim.slide_in_up);
+        bloodGlucoseUnitsAnimation.setStartOffset(slideTime);
+
+        Animation continueAnimation = AnimationUtils
+                .loadAnimation(getActivity(), R.anim.slide_in_up);
+        continueAnimation.setStartOffset(slideTime * 2);
+
+        halfUnitsCard.startAnimation(halfUnitsAnimation);
+        bloodGlucoseUnitsCard.startAnimation(bloodGlucoseUnitsAnimation);
+        continueCard.startAnimation(continueAnimation);
 
         return view;
     }
