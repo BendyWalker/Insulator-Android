@@ -1,6 +1,7 @@
 package com.bendywalker.insulator;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.preference.PreferenceManager;
@@ -53,14 +54,7 @@ public class Card extends RelativeLayout
 
         entry.addTextChangedListener(new MyTextWatcher());
         entry.setOnFocusChangeListener(new MyOnFocusChangeListener());
-        entry.setOnClickListener(new OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                entry.selectAll();
-            }
-        });
+        this.setOnClickListener(new MyOnClickListener());
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Card, 0, 0);
 
@@ -74,6 +68,16 @@ public class Card extends RelativeLayout
         finally
         {
             typedArray.recycle();
+        }
+    }
+
+    public class MyOnClickListener implements OnClickListener {
+
+        @Override
+        public void onClick(View v)
+        {
+            entry.requestFocus();
+            entry.selectAll();
         }
     }
 
