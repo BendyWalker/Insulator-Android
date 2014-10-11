@@ -65,9 +65,9 @@
     <!-- Information Labels -->
     <string name="info_ratiox2c">Enter the amount of fast-acting insulin you need to take to cover 10 grams of carbohydrates.</string>
     <string name="info_ratiox2c_icr">The amount of fast-acting insulin (units) needed to cover 10 grams of carbohydrates.</string>
-    <string name="info_carbohydrate_factor">Enter the amount of carbohydrates 1 unit of fast-acting insulin covers</string>
+    <string name="info_carbohydrate_factor">Enter how many carbohydrates 1 unit of fast-acting insulin covers</string>
     <string name="info_ratioi2x_icr">The amount of carbohydrates (grams) 1 unit of fast-acting insulin covers.</string>
-    <string name="info_carbohydrates_in_meal">Enter the amount of carbohydrates you consumed in your last meal.</string>
+    <string name="info_carbohydrates_in_meal">Enter how many carbohydrates you consumed in your meal</string>
     <string name="info_tdd">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting).</string>
     <string name="info_tdd_tdd">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting).\n\nIf you are unsure what your total daily dose is, use the calculator below to work it out.</string>
     <string name="info_tdd_icr">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting).\n\nIf you are unsure what your total daily dose is, press the menu button to access the Total Daily Dose calculator.</string>
@@ -76,7 +76,7 @@
     <string name="info_tdd_dinner">Use the fields below to enter your dinner fast-acting insulin doses for the past 7 days.</string>
     <string name="info_tdd_supper">Use the fields below to enter your supper fast-acting insulin doses for the past 7 days.</string>
     <string name="info_tdd_long">Enter your long-acting insulin dose into the field below.</string>
-    <string name="info_current_blood_glucose_level">Enter your current blood glucose level.</string>
+    <string name="info_current_blood_glucose_level">Enter your current blood glucose level</string>
     <string name="info_desired_blood_glucose_level">Enter your desired blood glucose level</string>
     <string name="info_corrective_factor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
     <string name="info_ratiox2c_radio">How many units needed to cover 10 grams of carbohydrates. For example, 1.2 units.</string>
@@ -85,7 +85,6 @@
     <string name="info_mgdl_common">Milligrams per 100 millilitres. Commonly used in the USA and continental Europe.</string>
     <string name="info_halfunits">Choose between whole or half unit insulin calculations.</string>
     <string name="info_welcome_1">Insulator is the quickest way to easily calculate insulin doses. Over the next few screens, you\'ll input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
-    <string name="info_welcome_2">To give the most accurate dose suggestions, Insulator needs a few pieces of information from you.</string>
 
     <!-- Dose Labels -->
     <string name="label_day_1">Day 1</string>
