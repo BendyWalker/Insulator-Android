@@ -72,7 +72,13 @@ public class Calculator
 
     public double getCalculatedCorrectiveDose(boolean rounded)
     {
-        double correctiveDose = (currentBloodGlucoseLevel - desiredBloodGlucoseLevel) / correctiveFactor;
+        double correctiveDose = 0.0;
+
+        if (currentBloodGlucoseLevel != 0)
+        {
+            correctiveDose = (currentBloodGlucoseLevel - desiredBloodGlucoseLevel) / correctiveFactor;
+        }
+
         if (rounded)
         {
             correctiveDose = roundNumber(correctiveDose);
