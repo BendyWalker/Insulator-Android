@@ -44,6 +44,7 @@ public class WelcomePage1Fragment extends Fragment
             }
         });
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_up);
+        animation.setStartOffset(200);
         welcomeCard.startAnimation(animation);
 
         return view;

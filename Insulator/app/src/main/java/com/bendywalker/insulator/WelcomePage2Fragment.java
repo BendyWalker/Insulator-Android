@@ -49,18 +49,19 @@ public class WelcomePage2Fragment extends Fragment
             }
         });
 
-        int slideTime = getResources().getInteger(R.integer.config_slide_time) / 3;
+        int offset = 150;
 
         Animation halfUnitsAnimation = AnimationUtils
                 .loadAnimation(getActivity(), R.anim.slide_in_up);
+        halfUnitsAnimation.setStartOffset(offset);
 
         Animation bloodGlucoseUnitsAnimation = AnimationUtils
                 .loadAnimation(getActivity(), R.anim.slide_in_up);
-        bloodGlucoseUnitsAnimation.setStartOffset(slideTime);
+        bloodGlucoseUnitsAnimation.setStartOffset(offset * 2);
 
         Animation continueAnimation = AnimationUtils
                 .loadAnimation(getActivity(), R.anim.slide_in_up);
-        continueAnimation.setStartOffset(slideTime * 2);
+        continueAnimation.setStartOffset(offset * 3);
 
         halfUnitsCard.startAnimation(halfUnitsAnimation);
         bloodGlucoseUnitsCard.startAnimation(bloodGlucoseUnitsAnimation);
