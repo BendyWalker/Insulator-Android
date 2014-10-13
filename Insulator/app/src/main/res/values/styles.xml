@@ -35,7 +35,15 @@
     <style name="CardInfoText">
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/text_card_info</item>
+    </style>
+
+    <style name="CardInfoText.Primary" parent="CardInfoText">
         <item name="android:textColor">@color/card_text_primary</item>
+
+    </style>
+
+    <style name="CardInfoText.Secondary" parent="CardInfoText">
+        <item name="android:textColor">@color/card_text_secondary</item>
     </style>
 
     <style name="CardEntryText">
