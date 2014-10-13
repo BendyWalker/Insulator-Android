@@ -24,6 +24,7 @@
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_welcome">Welcome</string>
     <string name="title_activity_tdd">Total Daily Dose Calculator</string>
+    <string name="title_ready_to_use">Ready to use</string>
 
     <!-- Headings -->
     <string name="heading_variables">Variables</string>
@@ -83,6 +84,7 @@
     <string name="info_mgdl_common">Milligrams per 100 millilitres. Commonly used in the USA and continental Europe.</string>
     <string name="info_halfunits">Choose between whole or half unit insulin calculations.</string>
     <string name="info_welcome_1">Insulator is the quickest way to easily calculate insulin doses. Over the next few screens, you\'ll input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
+    <string name="info_welcome_4">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters you have provided. However, please remember that Insulator\'s suggestion should only be used as a guideline.</string>
 
     <!-- Dose Labels -->
     <string name="label_day_1">Day 1</string>
@@ -112,12 +114,9 @@
     <string name="button_save">Save</string>
     <string name="button_save_continue">Save &amp; Continue</string>
     <string name="button_save_return">Save &amp; Return</string>
-    <string name="button_save_lunch">Save &amp; Enter Lunch Doses</string>
-    <string name="button_save_dinner">Save &amp; Enter Dinner Doses</string>
-    <string name="button_save_supper">Save &amp; Enter Supper Doses</string>
-    <string name="button_save_long">Save &amp; Enter Long-Acting Dose</string>
     <string name="button_continue">Continue</string>
     <string name="button_calculate">Calculate</string>
     <string name="button_reset">Reset</string>
+    <string name="button_use_insulator">Use Insulator</string>
 
 </resources>

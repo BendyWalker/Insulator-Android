@@ -31,6 +31,7 @@ public class MainActivity extends FragmentActivity
         if (isFirstTimeOpened)
         {
             startActivity(new Intent(this, WelcomeActivity.class));
+            finish();
         }
         else
         {

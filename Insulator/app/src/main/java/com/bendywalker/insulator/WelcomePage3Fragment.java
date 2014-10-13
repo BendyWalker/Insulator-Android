@@ -44,7 +44,7 @@ public class WelcomePage3Fragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                ((WelcomeActivity) getActivity()).goForwardToFragment();
+                ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage4Fragment());
             }
         });
 
