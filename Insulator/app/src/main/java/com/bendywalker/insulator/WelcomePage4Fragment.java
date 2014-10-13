@@ -2,6 +2,7 @@ package com.bendywalker.insulator;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -41,13 +42,16 @@ public class WelcomePage4Fragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                PreferenceManager.getDefaultSharedPreferences(getActivity()).edit()
-                                 .putBoolean(getString(R.string.preference_first_time_open), false)
-                                 .commit();
                 getActivity().startActivity(new Intent(getActivity(), MainActivity.class));
                 getActivity().finish();
             }
         });
+
+        SharedPreferences preferences = PreferenceManager
+                .getDefaultSharedPreferences(getActivity());
+        preferences.edit()
+                   .putBoolean(getString(R.string.preference_first_time_open), false)
+                   .apply();
 
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_up);
         animation.setStartOffset(getResources().getInteger(R.integer.animation_offset));

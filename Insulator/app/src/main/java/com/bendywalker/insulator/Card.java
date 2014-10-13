@@ -1,7 +1,6 @@
 package com.bendywalker.insulator;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.preference.PreferenceManager;
@@ -68,16 +67,6 @@ public class Card extends RelativeLayout
         finally
         {
             typedArray.recycle();
-        }
-    }
-
-    public class MyOnClickListener implements OnClickListener {
-
-        @Override
-        public void onClick(View v)
-        {
-            entry.requestFocus();
-            entry.selectAll();
         }
     }
 
@@ -169,6 +158,17 @@ public class Card extends RelativeLayout
     public interface OnTextChangeListener
     {
         void onTextChange();
+    }
+
+    public class MyOnClickListener implements OnClickListener
+    {
+
+        @Override
+        public void onClick(View v)
+        {
+            entry.requestFocus();
+            entry.selectAll();
+        }
     }
 
     private class MyTextWatcher implements TextWatcher

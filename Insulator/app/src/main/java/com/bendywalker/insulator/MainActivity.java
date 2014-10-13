@@ -1,6 +1,7 @@
 package com.bendywalker.insulator;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -23,10 +24,10 @@ public class MainActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-
-        boolean isFirstTimeOpened = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext())
-                .getBoolean("preference_first_time_open", true);
+        SharedPreferences preferences = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext());
+        boolean isFirstTimeOpened = preferences
+                .getBoolean(getString(R.string.preference_first_time_open), true);
 
         if (isFirstTimeOpened)
         {

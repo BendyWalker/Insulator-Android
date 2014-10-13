@@ -86,7 +86,7 @@ public class WelcomePage2Fragment extends Fragment
         preferences.edit()
                    .putString(getString(R.string.preference_blood_glucose_units), bloodGlucoseUnit);
 
-        preferences.edit().commit();
+        preferences.edit().apply();
     }
 
     private void addAnimationsToCards()
