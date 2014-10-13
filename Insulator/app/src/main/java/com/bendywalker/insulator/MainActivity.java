@@ -2,6 +2,7 @@ package com.bendywalker.insulator;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -23,11 +24,24 @@ public class MainActivity extends FragmentActivity
     {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        boolean isFirstTimeOpened = PreferenceManager
+                .getDefaultSharedPreferences(getApplicationContext())
+                .getBoolean("preference_first_time_open", true);
 
-        pager = (ViewPager) findViewById(R.id.pager);
-        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
-        pager.setAdapter(pagerAdapter);
+        if (isFirstTimeOpened)
+        {
+            startActivity(new Intent(this, WelcomeActivity.class));
+        }
+        else
+        {
+            setContentView(R.layout.activity_main);
+
+            setTitle("");
+
+            pager = (ViewPager) findViewById(R.id.pager);
+            pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+            pager.setAdapter(pagerAdapter);
+        }
     }
 
     @Override
