@@ -38,8 +38,6 @@ public class MainActivity extends FragmentActivity
         {
             setContentView(R.layout.activity_main);
 
-            setTitle("");
-
             pager = (ViewPager) findViewById(R.id.pager);
             pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
             pager.setAdapter(pagerAdapter);
