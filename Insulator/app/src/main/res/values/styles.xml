@@ -14,7 +14,17 @@
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <item name="android:textColorHighlight">@color/default_highlight</item>
+        <item name="android:textSelectHandleLeft">@drawable/apptheme_text_select_handle_left</item>
+        <item name="android:textSelectHandleRight">@drawable/apptheme_text_select_handle_right
+        </item>
+        <item name="android:textSelectHandle">@drawable/apptheme_text_select_handle_middle</item>
+
+        <item name="android:listChoiceIndicatorMultiple">@drawable/apptheme_btn_check_holo_light
+        </item>
+
+        <item name="android:listChoiceIndicatorSingle">@drawable/apptheme_btn_radio_holo_light
+        </item>
     </style>
 
     <!-- Card Elements -->
@@ -54,7 +64,6 @@
         <item name="android:textCursorDrawable">@drawable/shape_cursor</item>
         <item name="android:background">@android:color/transparent</item>
         <item name="android:textColorHint">@drawable/selector_card_entry_hint</item>
-        <item name="android:textColorHighlight">@color/default_highlight</item>
         <item name="android:maxLength">5</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:gravity">center</item>

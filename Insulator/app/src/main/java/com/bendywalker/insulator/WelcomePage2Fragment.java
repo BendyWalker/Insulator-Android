@@ -55,8 +55,8 @@ public class WelcomePage2Fragment extends Fragment
             @Override
             public void onClick(View v)
             {
-                ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage3Fragment());
                 savePreferences();
+                ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage3Fragment());
             }
         });
 
