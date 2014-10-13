@@ -1,8 +1,5 @@
 package com.bendywalker.insulator;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +7,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -33,8 +29,9 @@ public class WelcomePage1Fragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_welcome_page_1, container, false);
 
-        continueButton = (Button) view.findViewById(R.id.button_continue);
         welcomeCard = (RelativeLayout) view.findViewById(R.id.card_welcome);
+
+        continueButton = (Button) view.findViewById(R.id.button_continue);
         continueButton.setOnClickListener(new OnClickListener()
         {
             @Override
@@ -43,8 +40,9 @@ public class WelcomePage1Fragment extends Fragment
                 ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage2Fragment());
             }
         });
+
         Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_up);
-        animation.setStartOffset(200);
+        animation.setStartOffset(getResources().getInteger(R.integer.animation_offset));
         welcomeCard.startAnimation(animation);
 
         return view;

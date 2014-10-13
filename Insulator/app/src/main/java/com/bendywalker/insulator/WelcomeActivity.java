@@ -20,8 +20,8 @@ public class WelcomeActivity extends Activity
 
     public void goForwardToFragment(Fragment fragment)
     {
-        getFragmentManager().beginTransaction().setCustomAnimations(R.animator.slide_in_left,
-                                                                    R.animator.slide_out_right)
+        getFragmentManager().beginTransaction().setCustomAnimations(R.animator.slide_in_up,
+                                                                    R.animator.slide_out_up)
                             .replace(R.id.container, fragment).commit();
     }
 }
