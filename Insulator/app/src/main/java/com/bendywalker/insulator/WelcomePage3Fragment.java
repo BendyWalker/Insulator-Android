@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class WelcomePage3Fragment extends Fragment
+public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeListener
 {
     Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
     RelativeLayout continueCard;
@@ -34,8 +34,14 @@ public class WelcomePage3Fragment extends Fragment
 
         desiredBloodGlucoseLevelCard = (Card) view
                 .findViewById(R.id.card_desired_blood_glucose_level);
+        desiredBloodGlucoseLevelCard.setOnTextChangeListener(this);
+
         carbohydrateFactorCard = (Card) view.findViewById(R.id.card_carbohydrate_factor);
+        carbohydrateFactorCard.setOnTextChangeListener(this);
+
         correctiveFactorCard = (Card) view.findViewById(R.id.card_corrective_factor);
+        correctiveFactorCard.setOnTextChangeListener(this);
+
         continueCard = (RelativeLayout) view.findViewById(R.id.card_continue);
 
         continueButton = (Button) view.findViewById(R.id.button_continue);
@@ -86,5 +92,13 @@ public class WelcomePage3Fragment extends Fragment
         correctiveFactorCard.startAnimation(correctiveFactorAnimation);
         desiredBloodGlucoseLevelCard.startAnimation(desiredBloodGlucoseLevelAnimation);
         continueCard.startAnimation(continueAnimation);
+    }
+
+    @Override
+    public void onTextChange()
+    {
+        continueButton.setEnabled(
+                desiredBloodGlucoseLevelCard.isEntryFilled() && carbohydrateFactorCard
+                        .isEntryFilled() && correctiveFactorCard.isEntryFilled());
     }
 }
