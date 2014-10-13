@@ -150,6 +150,11 @@ public class Card extends RelativeLayout
         entry.setText(String.valueOf(flot));
     }
 
+    public boolean isEntryFilled()
+    {
+        return (entry.getText().toString().length() > 0);
+    }
+
     public void setOnTextChangeListener(OnTextChangeListener listener)
     {
         this.listener = listener;
