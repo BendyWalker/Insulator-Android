@@ -55,12 +55,9 @@
     <string name="label_suggested_dose">Suggested dose</string>
 
     <!-- Labels for insulin suggestion breakdown -->
-    <string name="label_breakdown_dose_carbs">Carbohydrate Dose (units)</string>
-    <string name="label_breakdown_dose_corrective">Corrective Dose (units)</string>
-    <string name="label_breakdown_onboard_bolus">Bolus on Board (units)</string>
-    <string name="label_breakdown_onboard_carbs">Carbs on Board (grams)</string>
-    <string name="label_breakdown_time">Time of Calculation</string>
-    <string name="label_breakdown_total">Total (units)</string>
+    <string name="label_carbohydrate_dose">Carbohydrate dose</string>
+    <string name="label_corrective_dose">Corrective dose</string>
+    <string name="label_time_of_calculation">Time</string>
 
     <!-- Information Labels -->
     <string name="info_ratiox2c">Enter the amount of fast-acting insulin you need to take to cover 10 grams of carbohydrates.</string>

@@ -32,8 +32,8 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
                 .findViewById(R.id.card_current_blood_glucose_level);
         carbohydratesInMealCard = (Card) view.findViewById(R.id.card_carbohydrates_in_meal);
         suggestedInsulinDoseTextView = (TextView) view.findViewById(R.id.suggested_dose);
-        carbohydrateDoseTextView = (TextView) view.findViewById(R.id.carbohydrate_dose_display);
-        correctiveDoseTextView = (TextView) view.findViewById(R.id.corrective_dose_display);
+        carbohydrateDoseTextView = (TextView) view.findViewById(R.id.carbohydrate_dose);
+        correctiveDoseTextView = (TextView) view.findViewById(R.id.corrective_dose);
 
         currentBloodGlucoseLevelCard.setOnTextChangeListener(this);
         carbohydratesInMealCard.setOnTextChangeListener(this);

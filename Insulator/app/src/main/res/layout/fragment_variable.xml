@@ -73,18 +73,19 @@
 
                         <TextView
                             android:id="@+id/carbohydrate_dose_label"
-                            style="@style/CardInfoText"
+                            style="@style/CardInfoText.Secondary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/spacing_default_50_percent"
-                            android:text="Carbohydrate Dose"/>
+                            android:text="@string/label_carbohydrate_dose"/>
 
                         <TextView
-                            android:id="@+id/carbohydrate_dose_display"
-                            style="@style/CardInfoText"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/carbohydrate_dose"
+                            style="@style/CardInfoText.Secondary"
+                            android:layout_width="@dimen/suggested_dose_breakdown_width"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
+                            android:gravity="right"
                             android:text="0.0"/>
                     </LinearLayout>
 
@@ -95,18 +96,19 @@
 
                         <TextView
                             android:id="@+id/corrective_dose_label"
-                            style="@style/CardInfoText"
+                            style="@style/CardInfoText.Secondary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="@dimen/spacing_default_50_percent"
-                            android:text="Corrective Dose"/>
+                            android:text="@string/label_corrective_dose"/>
 
                         <TextView
-                            android:id="@+id/corrective_dose_display"
-                            style="@style/CardInfoText"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/corrective_dose"
+                            style="@style/CardInfoText.Secondary"
+                            android:layout_width="@dimen/suggested_dose_breakdown_width"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif"
+                            android:gravity="right"
                             android:text="0.0"/>
                     </LinearLayout>
                 </LinearLayout>
