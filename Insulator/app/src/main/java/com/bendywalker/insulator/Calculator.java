@@ -4,6 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 
 public class Calculator
 {
@@ -104,6 +110,13 @@ public class Calculator
         }
 
         return total;
+    }
+
+    public String getTimeOfCalculation()
+    {
+        Calendar calendar = Calendar.getInstance(Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("kk:mm");
+        return dateFormat.format(calendar.getTime());
     }
 
     private double roundNumber(Double number)
