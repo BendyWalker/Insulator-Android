@@ -44,10 +44,17 @@ public class WelcomePage3Fragment extends Fragment
             @Override
             public void onClick(View v)
             {
-
+                ((WelcomeActivity) getActivity()).goForwardToFragment();
             }
         });
 
+        addAnimationsToCards();
+
+        return view;
+    }
+
+    private void addAnimationsToCards()
+    {
         int offset = getResources().getInteger(R.integer.animation_offset);
         int offsetMultiplier = 1;
 
@@ -79,7 +86,5 @@ public class WelcomePage3Fragment extends Fragment
         correctiveFactorCard.startAnimation(correctiveFactorAnimation);
         desiredBloodGlucoseLevelCard.startAnimation(desiredBloodGlucoseLevelAnimation);
         continueCard.startAnimation(continueAnimation);
-
-        return view;
     }
 }
