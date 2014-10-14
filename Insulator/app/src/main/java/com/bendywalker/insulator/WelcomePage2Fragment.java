@@ -69,8 +69,9 @@ public class WelcomePage2Fragment extends Fragment
 
     private void savePreferences()
     {
-        preferences.edit().putBoolean(getString(R.string.preference_half_units),
-                                      halfUnitsCheckBox.isChecked());
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putBoolean(getString(R.string.preference_half_units),
+                          halfUnitsCheckBox.isChecked());
 
         String bloodGlucoseUnit = "";
         switch (bloodGlucoseUnitsRadioGroup.getCheckedRadioButtonId())
@@ -83,10 +84,9 @@ public class WelcomePage2Fragment extends Fragment
                 bloodGlucoseUnit = "mgdl";
                 break;
         }
-        preferences.edit()
-                   .putString(getString(R.string.preference_blood_glucose_units), bloodGlucoseUnit);
+        editor.putString(getString(R.string.preference_blood_glucose_units), bloodGlucoseUnit);
 
-        preferences.edit().apply();
+        editor.apply();
     }
 
     private void addAnimationsToCards()
