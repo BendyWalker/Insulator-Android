@@ -40,6 +40,8 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">@dimen/text_card_title</item>
         <item name="android:textColor">@color/card_text_primary</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_default_100_percent</item>
+
     </style>
 
     <style name="CardInfoText">
