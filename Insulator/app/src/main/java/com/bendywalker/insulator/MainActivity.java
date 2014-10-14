@@ -48,7 +48,6 @@ public class MainActivity extends FragmentActivity
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.main, menu);
-
         return true;
     }
 
@@ -57,10 +56,6 @@ public class MainActivity extends FragmentActivity
     {
         switch (item.getItemId())
         {
-            case R.id.action_reset:
-
-                break;
-
             case R.id.action_settings:
                 Intent i = new Intent(this, SettingsActivity.class);
                 startActivity(i);

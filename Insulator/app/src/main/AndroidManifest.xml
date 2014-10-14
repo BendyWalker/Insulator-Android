@@ -23,9 +23,11 @@
 
         <activity
             android:name=".WelcomeActivity"
-            android:label="@string/title_activity_welcome">
+            android:label="@string/title_activity_welcome"/>
 
-        </activity>
+        <activity
+            android:name=".FactorSuggestionActivity"
+            android:label="@string/title_factor_suggestion"/>
     </application>
 
 </manifest>

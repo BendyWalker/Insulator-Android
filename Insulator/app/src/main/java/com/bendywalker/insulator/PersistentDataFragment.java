@@ -1,10 +1,12 @@
 package com.bendywalker.insulator;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,6 +22,8 @@ public class PersistentDataFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        setHasOptionsMenu(true);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
@@ -41,6 +45,18 @@ public class PersistentDataFragment extends Fragment
 
         restoreValuesToCards();
         return view;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.action_factor_suggestion:
+                getActivity()
+                        .startActivity(new Intent(getActivity(), FactorSuggestionActivity.class));
+        }
+        return false;
     }
 
     @Override

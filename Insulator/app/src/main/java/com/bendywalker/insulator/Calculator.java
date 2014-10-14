@@ -3,11 +3,8 @@ package com.bendywalker.insulator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Locale;
 
 
@@ -22,15 +19,15 @@ public class Calculator
     private float carbohydratesInMeal;
 
     // Constructors
-    public Calculator()
+    public Calculator(Context context)
     {
         super();
+        setupCalculator(context);
     }
 
     public Calculator(float currentBloodGlucoseLevel, float carbohydratesInMeal, Context context)
     {
-        this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
-        this.context = context;
+        setupCalculator(context);
 
         this.currentBloodGlucoseLevel = convertBloodGlucoseMeasurement(currentBloodGlucoseLevel);
         this.carbohydratesInMeal = carbohydratesInMeal;
@@ -40,6 +37,12 @@ public class Calculator
                 preferences.getFloat(context.getString(R.string.preference_corrective_factor), 0));
         this.desiredBloodGlucoseLevel = convertBloodGlucoseMeasurement(preferences.getFloat(
                 context.getString(R.string.preference_desired_blood_glucose_level), 0));
+    }
+
+    private void setupCalculator(Context context)
+    {
+        this.context = context;
+        this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
     private float convertBloodGlucoseMeasurement(float bloodGlucose)
@@ -119,7 +122,7 @@ public class Calculator
         return dateFormat.format(calendar.getTime());
     }
 
-    private double roundNumber(Double number)
+    public double roundNumber(Double number)
     {
         double output;
 

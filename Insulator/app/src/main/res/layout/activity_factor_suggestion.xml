@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/default_background"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -36,6 +37,7 @@
         </RelativeLayout>
 
         <com.bendywalker.insulator.Card
+            android:id="@+id/card_total_daily_dose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hintText="@string/hint_units"
@@ -43,6 +45,7 @@
             app:labelText="@string/label_total_daily_dose"/>
 
         <RelativeLayout
+            android:id="@+id/card_carbohydrate_factor"
             style="@style/CardBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -64,16 +67,19 @@
                 android:textColor="@color/card_text_primary"
                 android:textSize="@dimen/text_card_entry_filled"/>
 
-            <Button android:id="@+id/card_carbohydrate_factor_button_save"
+            <Button
+                android:id="@+id/button_save_carbohydrate_factor"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/card_carbohydrate_factor_suggestion"
                 android:layout_alignParentRight="true"
+                android:enabled="false"
                 android:text="@string/button_save"/>
         </RelativeLayout>
 
         <RelativeLayout
+            android:id="@+id/card_corrective_factor"
             style="@style/CardBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -95,12 +101,14 @@
                 android:textColor="@color/card_text_primary"
                 android:textSize="@dimen/text_card_entry_filled"/>
 
-            <Button android:id="@+id/card_corrective_factor_button_save"
+            <Button
+                android:id="@+id/button_save_corrective_factor"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignBaseline="@+id/card_corrective_factor_suggestion"
                 android:layout_alignParentRight="true"
+                android:enabled="false"
                 android:text="@string/button_save"/>
         </RelativeLayout>
     </LinearLayout>

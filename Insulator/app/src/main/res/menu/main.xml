@@ -4,9 +4,16 @@
         android:id="@+id/action_reset"
         android:icon="@drawable/ic_action_remove"
         android:showAsAction="always"
-        android:title="@string/button_reset" />
+        android:title="@string/button_reset"/>
+
+    <item
+        android:id="@+id/action_factor_suggestion"
+        android:showAsAction="never"
+        android:title="@string/title_factor_suggestion"/>
+
     <item
         android:id="@+id/action_settings"
-        android:title="@string/title_activity_settings" />
+        android:showAsAction="never"
+        android:title="@string/title_activity_settings"/>
 
 </menu>
