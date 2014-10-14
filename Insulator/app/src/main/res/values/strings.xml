@@ -113,6 +113,7 @@
 
     <!-- Standard UI Elements -->
     <string name="button_save">Save</string>
+    <string name="button_saved">Saved</string>
     <string name="button_save_continue">Save &amp; Continue</string>
     <string name="button_save_return">Save &amp; Return</string>
     <string name="button_continue">Continue</string>

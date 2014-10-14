@@ -96,6 +96,8 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
     @Override
     public void onTextChange()
     {
+        saveCarbohydrateFactorButton.setText(getString(R.string.button_save));
+        saveCorrectiveFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
         saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
 
@@ -125,6 +127,7 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
     @Override
     public void onClick(View v)
     {
+        Button button = (Button) v;
         switch (v.getId())
         {
             case R.id.button_save_carbohydrate_factor:
@@ -145,5 +148,8 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
         }
 
         editor.apply();
+
+        button.setText(getString(R.string.button_saved));
+        button.setEnabled(false);
     }
 }
