@@ -23,7 +23,7 @@ public class Card extends RelativeLayout
 {
 
     static boolean textChangeRunning;
-    boolean isMmolSelected;
+    boolean isMmolSelected, isCarbohydrateDecimalPlaceEnabled;
     OnTextChangeListener listener;
     private TextView label, info;
     private EditText entry;
@@ -45,7 +45,12 @@ public class Card extends RelativeLayout
             isMmolSelected = (preferences
                     .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
                     .equals("mmol");
+
+            isCarbohydrateDecimalPlaceEnabled = (preferences
+                    .getBoolean(context.getString(R.string.preference_carbohydrate_decimal_place),
+                                false));
         }
+
 
         label = (TextView) findViewById(R.id.card_title);
         info = (TextView) findViewById(R.id.card_info);
@@ -188,17 +193,19 @@ public class Card extends RelativeLayout
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count)
         {
-            if (entry.length() > 0)
+            boolean isCardCarbohydratesInMeal = (getId() == R.id.card_carbohydrates_in_meal);
+
+            if (!isCardCarbohydratesInMeal)
             {
-                addDecimalPlace(s, entry);
-                entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                                  getResources().getDimension(R.dimen.text_card_entry_filled));
+                modifyText(s, true);
             }
-            else
+            else if (isCardCarbohydratesInMeal && isCarbohydrateDecimalPlaceEnabled)
             {
-                entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                                  getResources().getDimension(R.dimen.text_card_entry_empty));
-                ;
+                modifyText(s, true);
+            }
+            else if (isCardCarbohydratesInMeal && !isCarbohydrateDecimalPlaceEnabled)
+            {
+                modifyText(s, false);
             }
 
             if (listener != null)
@@ -211,6 +218,25 @@ public class Card extends RelativeLayout
         public void afterTextChanged(Editable editable)
         {
 
+        }
+
+        private void modifyText(CharSequence s, boolean addDecimal)
+        {
+            if (entry.length() > 0)
+            {
+                if (addDecimal)
+                {
+                    addDecimalPlace(s, entry);
+                }
+
+                entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                                  getResources().getDimension(R.dimen.text_card_entry_filled));
+            }
+            else
+            {
+                entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                                  getResources().getDimension(R.dimen.text_card_entry_empty));
+            }
         }
     }
 
