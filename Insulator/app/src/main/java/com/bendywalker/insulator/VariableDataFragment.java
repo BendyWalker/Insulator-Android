@@ -86,4 +86,12 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         correctiveDoseTextView
                 .setText(String.valueOf(calculator.getCalculatedCorrectiveDose(true)));
     }
+
+    @Override
+    public void onResume()
+    {
+        resetCards();
+
+        super.onResume();
+    }
 }

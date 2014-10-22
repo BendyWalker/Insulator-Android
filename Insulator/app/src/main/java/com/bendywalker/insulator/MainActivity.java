@@ -44,6 +44,17 @@ public class MainActivity extends FragmentActivity
         }
     }
 
+
+    @Override
+    protected void onResume()
+    {
+        pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        pager.setAdapter(pagerAdapter);
+
+        super.onResume();
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
