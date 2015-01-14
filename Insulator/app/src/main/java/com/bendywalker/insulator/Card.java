@@ -73,6 +73,19 @@ public class Card extends RelativeLayout
         {
             typedArray.recycle();
         }
+
+        boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
+                getId() == R.id.card_corrective_factor ||
+                getId() == R.id.card_current_blood_glucose_level);
+
+        if (isCardGlucoseLevel && isMmolSelected)
+        {
+            entry.setHint(getResources().getString(R.string.hint_mmol));
+        }
+        else if (isCardGlucoseLevel && !isMmolSelected)
+        {
+            entry.setHint(getResources().getString(R.string.hint_mgdl));
+        }
     }
 
     /**
@@ -195,7 +208,11 @@ public class Card extends RelativeLayout
         {
             boolean isCardCarbohydratesInMeal = (getId() == R.id.card_carbohydrates_in_meal);
 
-            if (!isCardCarbohydratesInMeal)
+            boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
+                    getId() == R.id.card_corrective_factor ||
+                    getId() == R.id.card_current_blood_glucose_level);
+
+            if (!isCardCarbohydratesInMeal || !isCardGlucoseLevel)
             {
                 modifyText(s, true);
             }
@@ -204,6 +221,14 @@ public class Card extends RelativeLayout
                 modifyText(s, true);
             }
             else if (isCardCarbohydratesInMeal && !isCarbohydrateDecimalPlaceEnabled)
+            {
+                modifyText(s, false);
+            }
+            else if (isCardGlucoseLevel && isMmolSelected)
+            {
+                modifyText(s, true);
+            }
+            else if (isCardGlucoseLevel && !isMmolSelected)
             {
                 modifyText(s, false);
             }
@@ -252,7 +277,19 @@ public class Card extends RelativeLayout
 
                 if (entryFloat != 0 && prefKey != null)
                 {
-                    preferences.edit().putFloat(prefKey, getFloatFromEntry()).commit();
+                    boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
+                            getId() == R.id.card_corrective_factor ||
+                            getId() == R.id.card_current_blood_glucose_level);
+
+                    if (isCardGlucoseLevel && !isMmolSelected)
+                    {
+                        Calculator calculator = new Calculator(getContext());
+                        double value = entryFloat * 18;
+                        value = calculator.roundNumber(value);
+                        entryFloat = (float) value;
+                    }
+
+                    preferences.edit().putFloat(prefKey, entryFloat).commit();
                 }
             }
         }

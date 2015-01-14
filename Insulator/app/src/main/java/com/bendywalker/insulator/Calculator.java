@@ -64,11 +64,7 @@ public class Calculator
     {
         double carbohydrateDose = 0;
 
-//        if (true) { // TODO: change to correct preference, kind of insulin-to-carb ratio
-//            carbohydrateDose = (carbohydrateFactor * carbohydratesInMeal) / 10;
-//        } else {
         carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
-//        }
 
         if (rounded)
         {
