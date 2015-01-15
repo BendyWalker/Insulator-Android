@@ -40,6 +40,7 @@ public class Card extends RelativeLayout
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
+        // This is related to displaying view correctly within layout preview
         if (!isInEditMode())
         {
             isMmolSelected = (preferences
@@ -50,7 +51,6 @@ public class Card extends RelativeLayout
                     .getBoolean(context.getString(R.string.preference_carbohydrate_decimal_place),
                                 false));
         }
-
 
         label = (TextView) findViewById(R.id.card_title);
         info = (TextView) findViewById(R.id.card_info);
@@ -74,6 +74,7 @@ public class Card extends RelativeLayout
             typedArray.recycle();
         }
 
+        // Changes the hint text of cards related to glucose level based on the preference chose
         boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
                 getId() == R.id.card_corrective_factor ||
                 getId() == R.id.card_current_blood_glucose_level);
@@ -206,6 +207,8 @@ public class Card extends RelativeLayout
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count)
         {
+            // Determines what kind of card it is, and whether a decimal point should be placed
+            // in the entry field
             boolean isCardCarbohydratesInMeal = (getId() == R.id.card_carbohydrates_in_meal);
 
             boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
