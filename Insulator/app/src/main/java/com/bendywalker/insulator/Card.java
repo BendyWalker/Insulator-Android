@@ -166,7 +166,16 @@ public class Card extends RelativeLayout
 
     public void setEntryFromFloat(Float flot)
     {
-        entry.setText(String.valueOf(flot));
+        if (shouldDecimalPlaceBeDisplayed(getId()))
+        {
+            entry.setText(String.valueOf(flot));
+        }
+        else
+        {
+            int noDecimalFlot = Math.round(flot);
+            entry.setText(String.valueOf(noDecimalFlot));
+        }
+
     }
 
     public boolean isEntryFilled()
