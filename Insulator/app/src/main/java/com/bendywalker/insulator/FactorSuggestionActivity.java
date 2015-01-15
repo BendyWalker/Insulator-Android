@@ -23,7 +23,7 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    boolean isHalfUnitsEnabled;
+    boolean isHalfUnitsEnabled, isMmolSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -37,6 +37,8 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
 
         isHalfUnitsEnabled = preferences
                 .getBoolean(getString(R.string.preference_half_units), false);
+
+        isMmolSelected = preferences.getString(getString(R.string.preference_blood_glucose_units), "mmol").equals("mmol");
 
         welcomeCard = (RelativeLayout) findViewById(R.id.card_welcome);
 
@@ -106,7 +108,15 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
         double carbohydrateFactor, correctiveFactor, totalDailyDose;
         totalDailyDose = totalDailyDoseCard.getFloatFromEntry();
         carbohydrateFactor = calculator.roundNumber(500 / totalDailyDose);
-        correctiveFactor = calculator.roundNumber(100 / totalDailyDose);
+
+        if (isMmolSelected)
+        {
+            correctiveFactor = calculator.roundNumber(100 / totalDailyDose);
+        }
+        else
+        {
+            correctiveFactor = calculator.roundNumber((100 / totalDailyDose) * 18);
+        }
 
         String carbohydrateFactorString, correctiveFactorString;
         if (totalDailyDose == 0)
