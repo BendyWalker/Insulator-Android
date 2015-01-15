@@ -215,25 +215,31 @@ public class Card extends RelativeLayout
                     getId() == R.id.card_corrective_factor ||
                     getId() == R.id.card_current_blood_glucose_level);
 
-            if (!isCardCarbohydratesInMeal || !isCardGlucoseLevel)
+            if (isCardCarbohydratesInMeal)
+            {
+                if (isCarbohydrateDecimalPlaceEnabled)
+                {
+                    modifyText(s, true);
+                }
+                else if (!isCarbohydrateDecimalPlaceEnabled)
+                {
+                    modifyText(s, false);
+                }
+            }
+            else if (isCardGlucoseLevel)
+            {
+                if (isMmolSelected)
+                {
+                    modifyText(s, true);
+                }
+                else if (!isMmolSelected)
+                {
+                    modifyText(s, false);
+                }
+            }
+            else
             {
                 modifyText(s, true);
-            }
-            else if (isCardCarbohydratesInMeal && isCarbohydrateDecimalPlaceEnabled)
-            {
-                modifyText(s, true);
-            }
-            else if (isCardCarbohydratesInMeal && !isCarbohydrateDecimalPlaceEnabled)
-            {
-                modifyText(s, false);
-            }
-            else if (isCardGlucoseLevel && isMmolSelected)
-            {
-                modifyText(s, true);
-            }
-            else if (isCardGlucoseLevel && !isMmolSelected)
-            {
-                modifyText(s, false);
             }
 
             if (listener != null)
