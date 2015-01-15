@@ -174,6 +174,41 @@ public class Card extends RelativeLayout
         return (entry.getText().toString().length() > 0);
     }
 
+    private boolean shouldDecimalPlaceBeDisplayed(int cardId)
+    {
+        boolean isCardCarbohydratesInMeal = (cardId == R.id.card_carbohydrates_in_meal);
+
+        boolean isCardGlucoseLevel = (cardId == R.id.card_desired_blood_glucose_level ||
+                getId() == R.id.card_corrective_factor ||
+                getId() == R.id.card_current_blood_glucose_level);
+
+        if (isCardCarbohydratesInMeal)
+        {
+            if (isCarbohydrateDecimalPlaceEnabled)
+            {
+                return true;
+            }
+            else if (!isCarbohydrateDecimalPlaceEnabled)
+            {
+                return false;
+            }
+        }
+        else if (isCardGlucoseLevel)
+        {
+            if (isMmolSelected)
+            {
+                return true;
+            }
+            else if (!isMmolSelected)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
     public void setOnTextChangeListener(OnTextChangeListener listener)
     {
         this.listener = listener;
@@ -207,40 +242,7 @@ public class Card extends RelativeLayout
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count)
         {
-            // Determines what kind of card it is, and whether a decimal point should be placed
-            // in the entry field
-            boolean isCardCarbohydratesInMeal = (getId() == R.id.card_carbohydrates_in_meal);
-
-            boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
-                    getId() == R.id.card_corrective_factor ||
-                    getId() == R.id.card_current_blood_glucose_level);
-
-            if (isCardCarbohydratesInMeal)
-            {
-                if (isCarbohydrateDecimalPlaceEnabled)
-                {
-                    modifyText(s, true);
-                }
-                else if (!isCarbohydrateDecimalPlaceEnabled)
-                {
-                    modifyText(s, false);
-                }
-            }
-            else if (isCardGlucoseLevel)
-            {
-                if (isMmolSelected)
-                {
-                    modifyText(s, true);
-                }
-                else if (!isMmolSelected)
-                {
-                    modifyText(s, false);
-                }
-            }
-            else
-            {
-                modifyText(s, true);
-            }
+            modifyText(s, shouldDecimalPlaceBeDisplayed(getId()));
 
             if (listener != null)
             {
