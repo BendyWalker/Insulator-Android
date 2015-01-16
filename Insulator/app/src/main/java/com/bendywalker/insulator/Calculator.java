@@ -3,9 +3,6 @@ package com.bendywalker.insulator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
 
 
 public class Calculator
@@ -45,12 +42,15 @@ public class Calculator
         this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
+
+    // Methods
     private float convertBloodGlucoseMeasurement(float bloodGlucose)
     {
-        String bloodGlucoseUnit = preferences
-                .getString(context.getString(R.string.preference_blood_glucose_units), "mmol");
+        boolean isMmolSelected = (preferences
+                .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
+                .equals("mmol");
 
-        if (bloodGlucoseUnit.equals("mgdl"))
+        if (!isMmolSelected)
         {
             return bloodGlucose / 18;
         }
@@ -62,9 +62,7 @@ public class Calculator
 
     public double getCalculatedCarbohydrateDose(boolean rounded)
     {
-        double carbohydrateDose = 0;
-
-        carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
+        double carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
 
         if (rounded)
         {
@@ -74,10 +72,9 @@ public class Calculator
         return carbohydrateDose;
     }
 
-
     public double getCalculatedCorrectiveDose(boolean rounded)
     {
-        double correctiveDose = 0.0;
+        double correctiveDose = 0;
 
         if (currentBloodGlucoseLevel != 0)
         {
@@ -109,13 +106,6 @@ public class Calculator
         }
 
         return total;
-    }
-
-    public String getTimeOfCalculation()
-    {
-        Calendar calendar = Calendar.getInstance(Locale.getDefault());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("kk:mm");
-        return dateFormat.format(calendar.getTime());
     }
 
     public double roundNumber(Double number)

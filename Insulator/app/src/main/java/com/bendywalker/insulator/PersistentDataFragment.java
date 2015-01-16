@@ -83,17 +83,6 @@ public class PersistentDataFragment extends Fragment
         float savedCarbohydrateFactorFloat = preferences.getFloat(carbohydrateFactorKey, 0);
         float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
 
-//        boolean isMmolSelected = (preferences
-//                .getString(getString(R.string.preference_blood_glucose_units), "mmol"))
-//                .equals("mmol");
-//
-//       if (isMmolSelected)
-//       {
-//           savedDesiredBloodGlucoseLevelFloat = savedDesiredBloodGlucoseLevelFloat / 18;
-//           savedCarbohydrateFactorFloat = savedCarbohydrateFactorFloat / 18;
-//           savedCorrectiveFactorFloat = savedCorrectiveFactorFloat / 18;
-//       }
-
         if (savedDesiredBloodGlucoseLevelFloat != 0)
         {
             desiredBloodGlucoseLevelCard.setEntryFromFloat(savedDesiredBloodGlucoseLevelFloat);

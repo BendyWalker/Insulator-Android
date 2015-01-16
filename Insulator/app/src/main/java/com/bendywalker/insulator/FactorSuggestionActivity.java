@@ -38,7 +38,9 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
         isHalfUnitsEnabled = preferences
                 .getBoolean(getString(R.string.preference_half_units), false);
 
-        isMmolSelected = preferences.getString(getString(R.string.preference_blood_glucose_units), "mmol").equals("mmol");
+        isMmolSelected = preferences
+                .getString(getString(R.string.preference_blood_glucose_units), "mmol")
+                .equals("mmol");
 
         welcomeCard = (RelativeLayout) findViewById(R.id.card_welcome);
 

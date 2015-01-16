@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 public class VariableDataFragment extends Fragment implements Card.OnTextChangeListener
 {
-
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView, carbohydrateDoseTextView, correctiveDoseTextView;
 
@@ -58,7 +57,16 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
             case R.id.action_reset:
                 resetCards();
         }
+
         return false;
+    }
+
+    @Override
+    public void onResume()
+    {
+        resetCards();
+
+        super.onResume();
     }
 
     private void resetCards()
@@ -81,17 +89,11 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
 
         suggestedInsulinDoseTextView
                 .setText(String.valueOf(calculator.getCalculatedInsulinDose(true)));
+
         carbohydrateDoseTextView.setText(String.valueOf(calculator.getCalculatedCarbohydrateDose(
                 true)));
+
         correctiveDoseTextView
                 .setText(String.valueOf(calculator.getCalculatedCorrectiveDose(true)));
-    }
-
-    @Override
-    public void onResume()
-    {
-        resetCards();
-
-        super.onResume();
     }
 }

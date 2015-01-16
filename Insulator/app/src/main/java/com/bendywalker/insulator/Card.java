@@ -140,6 +140,7 @@ public class Card extends RelativeLayout
         }
     }
 
+    // Methods
     public void resetEntry()
     {
         entry.setText("");
@@ -223,7 +224,6 @@ public class Card extends RelativeLayout
         return true;
     }
 
-
     public void setOnTextChangeListener(OnTextChangeListener listener)
     {
         this.listener = listener;
@@ -247,7 +247,6 @@ public class Card extends RelativeLayout
 
     private class MyTextWatcher implements TextWatcher
     {
-
         @Override
         public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3)
         {
@@ -303,22 +302,9 @@ public class Card extends RelativeLayout
 
                 if (entryFloat != 0 && prefKey != null)
                 {
-//                    boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
-//                            getId() == R.id.card_corrective_factor ||
-//                            getId() == R.id.card_current_blood_glucose_level);
-//
-//                    if (isCardGlucoseLevel && !isMmolSelected)
-//                    {
-//                        Calculator calculator = new Calculator(getContext());
-//                        double value = entryFloat * 18;
-//                        value = calculator.roundNumber(value);
-//                        entryFloat = (float) value;
-//                    }
-
                     preferences.edit().putFloat(prefKey, entryFloat).commit();
                 }
             }
         }
     }
-
 }
