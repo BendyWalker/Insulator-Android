@@ -191,6 +191,8 @@ public class Card extends RelativeLayout
                 getId() == R.id.card_corrective_factor ||
                 getId() == R.id.card_current_blood_glucose_level);
 
+        boolean isTotalDailyDoseCard = (cardId == R.id.card_total_daily_dose);
+
         if (isCardCarbohydratesInMeal)
         {
             if (isCarbohydrateDecimalPlaceEnabled)
@@ -212,6 +214,10 @@ public class Card extends RelativeLayout
             {
                 return false;
             }
+        }
+        else if (isTotalDailyDoseCard)
+        {
+            return false;
         }
 
         return true;
