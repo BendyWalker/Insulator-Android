@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -105,19 +106,20 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
         saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
         saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
 
-        Calculator calculator = new Calculator(getApplicationContext());
-
         double carbohydrateFactor, correctiveFactor, totalDailyDose;
         totalDailyDose = totalDailyDoseCard.getFloatFromEntry();
-        carbohydrateFactor = calculator.roundNumber(500 / totalDailyDose);
+
+        DecimalFormat decimalFormat = new DecimalFormat("##.0");
+
+        carbohydrateFactor = (500 / totalDailyDose);
 
         if (isMmolSelected)
         {
-            correctiveFactor = calculator.roundNumber(100 / totalDailyDose);
+            correctiveFactor = (100 / totalDailyDose);
         }
         else
         {
-            correctiveFactor = calculator.roundNumber((100 / totalDailyDose) * 18);
+            correctiveFactor = ((100 / totalDailyDose) * 18);
         }
 
         String carbohydrateFactorString, correctiveFactorString;
@@ -128,8 +130,8 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
         }
         else
         {
-            carbohydrateFactorString = String.valueOf(carbohydrateFactor);
-            correctiveFactorString = String.valueOf(correctiveFactor);
+            carbohydrateFactorString = String.valueOf(decimalFormat.format(carbohydrateFactor));
+            correctiveFactorString = String.valueOf(decimalFormat.format(correctiveFactor));
         }
 
         carbohydrateFactorSuggestion.setText(carbohydrateFactorString);
