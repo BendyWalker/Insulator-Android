@@ -64,6 +64,7 @@ public class PersistentDataFragment extends Fragment
             case R.id.action_factor_suggestion:
                 getActivity()
                         .startActivity(new Intent(getActivity(), FactorSuggestionActivity.class));
+                break;
         }
         return false;
     }

@@ -1,5 +1,6 @@
 package com.bendywalker.insulator;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -56,6 +57,12 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         {
             case R.id.action_reset:
                 resetCards();
+                break;
+
+            case R.id.action_factor_suggestion:
+                getActivity()
+                        .startActivity(new Intent(getActivity(), FactorSuggestionActivity.class));
+                break;
         }
 
         return false;
