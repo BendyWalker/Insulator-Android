@@ -15,7 +15,7 @@
             style="@style/CardTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/title_ready_to_use"/>
+            android:text="@string/label_ready_to_use"/>
 
         <TextView
             android:id="@+id/textView_message"
@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textview_title"
             android:layout_marginBottom="@dimen/spacing_default_100_percent"
-            android:text="@string/info_welcome_4"/>
+            android:text="@string/info_welcome_complete"/>
 
 
         <Button

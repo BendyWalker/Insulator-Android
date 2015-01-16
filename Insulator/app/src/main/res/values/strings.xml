@@ -19,108 +19,51 @@
     <string name="preference_blood_glucose_units_summary">Choose your preferred blood glucose measurement unit</string>
     <string name="preference_carbohydrate_decimal_place_summary">Toggles decimal place in \'carbohydrates in meal\' entry field</string>
 
-    <!-- Titles -->
+    <!-- Page Titles -->
     <string name="app_name">Insulator</string>
     <string name="beta_name">Insulator (Beta)</string>
-    <string name="title_activity_persistent">Persistent Data</string>
-    <string name="title_activity_icr">Insulin-to-Carb Ratio Calculator</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_welcome">Welcome</string>
-    <string name="title_activity_tdd">Total Daily Dose Calculator</string>
-    <string name="title_ready_to_use">Ready to use</string>
-    <string name="title_factor_suggestion">Factor suggestions</string>
+    <string name="title_factor_suggestion">Factor Suggestions</string>
 
-    <!-- Headings -->
-    <string name="heading_variables">Variables</string>
-    <string name="heading_breakdown">Breakdown of Last Calculation</string>
-    <string name="heading_preferred">Preferred Insulin-to-Carb Ratio</string>
-    <string name="heading_halfunits">Half Units</string>
-    <string name="heading_bloodmeasurement">Blood Sugar Measurement</string>
-    <string name="heading_welcome">Welcome to Insulator</string>
-    <string name="heading_breakfast">Breakfast Doses</string>
-    <string name="heading_lunch">Lunch Doses</string>
-    <string name="heading_dinner">Dinner Doses</string>
-    <string name="heading_supper">Supper Doses</string>
-    <string name="heading_longacting">Long-Acting Dose</string>
-
-    <!-- Labels for text entry fields -->
+    <!-- Card Titles -->
+    <string name="label_welcome">Welcome to Insulator</string>
+    <string name="label_ready_to_use">Ready to use</string>
     <string name="label_carbohydrates_in_meal">Carbohydrates in meal</string>
     <string name="label_carbohydrate_factor">Carbohydrate factor</string>
     <string name="label_current_blood_glucose_level">Current blood glucose</string>
     <string name="label_desired_blood_glucose_level">Desired blood glucose</string>
     <string name="label_total_daily_dose">Total daily dose</string>
     <string name="label_corrective_factor">Corrective factor</string>
+    <string name="label_suggested_dose">Suggested dose</string>
+    <string name="label_carbohydrate_dose">Carbohydrate dose</string>
+    <string name="label_corrective_dose">Corrective dose</string>
 
-    <!-- Text Entry Field Hints -->
+    <!-- Entry Hints -->
     <string name="hint_mmol">mmol/L</string>
     <string name="hint_units">units</string>
     <string name="hint_grams">grams</string>
     <string name="hint_mgdl">mg/dL</string>
 
-    <!-- Labels for insulin suggestion -->
-    <string name="label_suggested_dose">Suggested dose</string>
-
-    <!-- Labels for insulin suggestion breakdown -->
-    <string name="label_carbohydrate_dose">Carbohydrate dose</string>
-    <string name="label_corrective_dose">Corrective dose</string>
-    <string name="label_time_of_calculation">Time</string>
-
-    <!-- Information Labels -->
-    <string name="info_ratiox2c">Enter the amount of fast-acting insulin you need to take to cover 10 grams of carbohydrates.</string>
-    <string name="info_ratiox2c_icr">The amount of fast-acting insulin (units) needed to cover 10 grams of carbohydrates.</string>
+    <!-- Card Information -->
     <string name="info_carbohydrate_factor">Enter how many carbohydrates 1 unit of fast-acting insulin covers</string>
-    <string name="info_ratioi2x_icr">The amount of carbohydrates (grams) 1 unit of fast-acting insulin covers.</string>
     <string name="info_carbohydrates_in_meal">Enter how many carbohydrates you consumed in your meal</string>
-    <string name="info_tdd">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting).</string>
-    <string name="info_tdd_tdd">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting).\n\nIf you are unsure what your total daily dose is, use the calculator below to work it out.</string>
-    <string name="info_tdd_icr">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting).\n\nIf you are unsure what your total daily dose is, press the menu button to access the Total Daily Dose calculator.</string>
-    <string name="info_tdd_breakfast">Use the fields below to enter your breakfast fast-acting insulin doses for the past 7 days.</string>
-    <string name="info_tdd_lunch">Use the fields below to enter your lunch fast-acting insulin doses for the past 7 days.</string>
-    <string name="info_tdd_dinner">Use the fields below to enter your dinner fast-acting insulin doses for the past 7 days.</string>
-    <string name="info_tdd_supper">Use the fields below to enter your supper fast-acting insulin doses for the past 7 days.</string>
-    <string name="info_tdd_long">Enter your long-acting insulin dose into the field below.</string>
+    <string name="info_total_daily_dose">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting)</string>
     <string name="info_current_blood_glucose_level">Enter your current blood glucose level</string>
     <string name="info_desired_blood_glucose_level">Enter your desired blood glucose level</string>
     <string name="info_corrective_factor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
-    <string name="info_ratiox2c_radio">How many units needed to cover 10 grams of carbohydrates. For example, 1.2 units.</string>
-    <string name="info_ratioi2x_radio">How many grams of carbohydrates covered by 1 unit of insulin. For example, 5 grams.</string>
-    <string name="info_mmol_common">Millimoles per litre. Commonly used in the UK.</string>
-    <string name="info_mgdl_common">Milligrams per 100 millilitres. Commonly used in the USA and continental Europe.</string>
-    <string name="info_halfunits">Choose between whole or half unit insulin calculations.</string>
-    <string name="info_welcome_1">Insulator is the quickest way to easily calculate insulin doses. Over the next few screens, you\'ll input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
-    <string name="info_welcome_4">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters provided.\n\nPlease remember: Insulator\'s suggestion should only be used as a guideline.</string>
+    <string name="info_half_units">Choose between whole or half unit insulin calculations.</string>
+    <string name="info_welcome_intro">Insulator is the quickest way to easily calculate insulin doses. Over the next few screens, you\'ll input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
+    <string name="info_welcome_complete">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters provided.\n\nPlease remember: Insulator\'s suggestion should only be used as a guideline.</string>
     <string name="info_factor_suggestion">If you\'re unsure of either your carbohydrate or corrective factor, Insulator can give you suggestions for them.\n\nEnter your total daily dose below, and tap Save on the suggestions you\'re happy with.</string>
-    <!-- Dose Labels -->
-    <string name="label_day_1">Day 1</string>
-    <string name="label_day_2">Day 2</string>
-    <string name="label_day_3">Day 3</string>
-    <string name="label_day_4">Day 4</string>
-    <string name="label_day_5">Day 5</string>
-    <string name="label_day_6">Day 6</string>
-    <string name="label_day_7">Day 7</string>
-    <string name="label_long">Long-Acting Dose</string>
-
-    <!-- ICR Calculator Strings -->
-    <string name="label_importTDD">Import TDD</string>
-    <string name="label_yourICRis">Insulin-to-Carb Ratio</string>
 
     <!-- Settings Strings -->
-    <string name="label_insulin2X">1 unit to X grams of carbs</string>
-    <string name="label_carbs2X">X units to 10 grams of carbs</string>
-    <string name="label_halfunits_switch">Half Unit Calculations</string>
-
-    <!-- Defaults -->
-    <string name="default_insulin">0</string>
-    <string name="default_desired">6.0</string>
-    <string name="default_time">N/A</string>
+    <string name="label_half_units_switch">Half Unit Calculations</string>
 
     <!-- Standard UI Elements -->
     <string name="button_save">Save</string>
     <string name="button_saved">Saved</string>
-    <string name="button_save_continue">Save &amp; Continue</string>
-    <string name="button_save_return">Save &amp; Return</string>
     <string name="button_continue">Continue</string>
-    <string name="button_calculate">Calculate</string>
     <string name="button_reset">Reset</string>
     <string name="button_use_insulator">Use Insulator</string>
 

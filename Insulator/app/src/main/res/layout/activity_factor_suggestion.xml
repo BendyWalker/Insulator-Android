@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hintText="@string/hint_units"
-            app:infoText="@string/info_tdd"
+            app:infoText="@string/info_total_daily_dose"
             app:labelText="@string/label_total_daily_dose"/>
 
         <RelativeLayout
