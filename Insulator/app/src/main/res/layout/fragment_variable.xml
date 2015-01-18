@@ -46,17 +46,20 @@
 
                 <TextView
                     android:id="@+id/suggested_dose"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginRight="@dimen/spacing_default_25_percent"
+                    android:layout_marginRight="@dimen/spacing_default_100_percent"
+                    android:layout_toLeftOf="@+id/suggested_dose_breakdown"
                     android:fontFamily="sans-serif"
+                    android:gravity="center"
                     android:text="0.0"
                     android:textColor="@color/card_text_primary"
-                    android:textSize="54sp"/>
+                    android:textSize="52sp"/>
 
                 <LinearLayout
+                    android:id="@+id/suggested_dose_breakdown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -74,7 +77,7 @@
                             style="@style/CardInfoText.Secondary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/spacing_default_50_percent"
+                            android:layout_marginRight="@dimen/spacing_default_25_percent"
                             android:text="@string/label_carbohydrate_dose"/>
 
                         <TextView
@@ -97,7 +100,7 @@
                             style="@style/CardInfoText.Secondary"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="@dimen/spacing_default_50_percent"
+                            android:layout_marginRight="@dimen/spacing_default_25_percent"
                             android:text="@string/label_corrective_dose"/>
 
                         <TextView
