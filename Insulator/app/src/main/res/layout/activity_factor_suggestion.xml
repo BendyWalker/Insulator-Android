@@ -24,7 +24,7 @@
                 style="@style/CardTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/title_factor_suggestion"/>
+                android:text="@string/label_factor_suggestions"/>
 
             <TextView
                 android:id="@+id/textView_message"

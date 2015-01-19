@@ -33,7 +33,7 @@
         <activity
             android:name=".FactorSuggestionActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:label="@string/title_factor_suggestion"
+            android:label="@string/title_factor_suggestions"
             android:screenOrientation="portrait"/>
     </application>
 
