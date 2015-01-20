@@ -16,12 +16,8 @@ _(Insulator should only be used as a guideline. Seek guidance from a doctor if y
 The best way for Type 1 Diabetics to quickly calculate insulin doses.
 
 ## Change Log
-### Version 3.0.1 - in progress
-Fixed the 'Next' button so it progresses through the text entry fields correctly.
-
-Fixed the rounding of values in the breakdown of the suggested dose so they display correctly.
-
-Made a small number of aesthetic improvements.
+### Version 3.0.1
+Fixed some small bugs and made a number of aesthetic improvements.
 
 ### Version 3.0
 Version 3.0 brings a great new designed inspired by Google Now. The main screen is now divided into two halves; one for variable data and your calculations, and one for persistent data. Calculations are now done on the fly as you enter your values.
