@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ import java.util.List;
 
 public class WelcomePage2Fragment extends Fragment
 {
-    RelativeLayout halfUnitsCard, bloodGlucoseUnitsCard, continueCard;
+    CardView halfUnitsCard, bloodGlucoseUnitsCard, continueCard;
     CheckBox halfUnitsCheckBox;
     RadioGroup bloodGlucoseUnitsRadioGroup;
     Button continueButton;
@@ -39,16 +40,16 @@ public class WelcomePage2Fragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_welcome_page_2, container, false);
 
-        halfUnitsCard = (RelativeLayout) view.findViewById(R.id.card_half_units);
+        halfUnitsCard = (CardView) view.findViewById(R.id.card_half_units);
         halfUnitsCheckBox = (CheckBox) view.findViewById(R.id.card_half_units_checkbox);
 
-        bloodGlucoseUnitsCard = (RelativeLayout) view
+        bloodGlucoseUnitsCard = (CardView) view
                 .findViewById(R.id.card_blood_glucose_measurement);
         bloodGlucoseUnitsRadioGroup = (RadioGroup) view
                 .findViewById(R.id.card_blood_glucose_measurement_radio_group);
         bloodGlucoseUnitsRadioGroup.check(R.id.card_blood_glucose_measurement_radio_button_mmol);
 
-        continueCard = (RelativeLayout) view.findViewById(R.id.card_continue);
+        continueCard = (CardView) view.findViewById(R.id.card_continue);
         continueButton = (Button) view.findViewById(R.id.button_continue);
         continueButton.setOnClickListener(new View.OnClickListener()
         {

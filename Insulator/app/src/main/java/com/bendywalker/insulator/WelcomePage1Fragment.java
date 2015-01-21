@@ -2,6 +2,7 @@ package com.bendywalker.insulator;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,7 +15,7 @@ import android.widget.RelativeLayout;
 
 public class WelcomePage1Fragment extends Fragment
 {
-    RelativeLayout welcomeCard;
+    CardView welcomeCard;
     Button continueButton;
 
     @Override
@@ -29,7 +30,7 @@ public class WelcomePage1Fragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_welcome_page_1, container, false);
 
-        welcomeCard = (RelativeLayout) view.findViewById(R.id.card_welcome);
+        welcomeCard = (CardView) view.findViewById(R.id.card_welcome);
 
         continueButton = (Button) view.findViewById(R.id.button_continue);
         continueButton.setOnClickListener(new OnClickListener()

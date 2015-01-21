@@ -1,12 +1,15 @@
 package com.bendywalker.insulator;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -17,7 +20,7 @@ import java.util.List;
 public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeListener
 {
     Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
-    RelativeLayout continueCard;
+    CardView continueCard;
     Button continueButton;
 
     @Override
@@ -42,7 +45,7 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
         correctiveFactorCard = (Card) view.findViewById(R.id.card_corrective_factor);
         correctiveFactorCard.setOnTextChangeListener(this);
 
-        continueCard = (RelativeLayout) view.findViewById(R.id.card_continue);
+        continueCard = (CardView) view.findViewById(R.id.card_continue);
 
         continueButton = (Button) view.findViewById(R.id.button_continue);
         continueButton.setOnClickListener(new View.OnClickListener()
@@ -50,6 +53,10 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
             @Override
             public void onClick(View v)
             {
+               InputMethodManager inputMethodManager =  (InputMethodManager) getActivity().getSystemService(
+                        Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
                 ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage4Fragment());
             }
         });

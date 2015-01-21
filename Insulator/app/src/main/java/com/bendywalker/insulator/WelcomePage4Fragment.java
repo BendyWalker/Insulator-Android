@@ -5,21 +5,18 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 
-/**
- * Created by Ben on 13/10/2014.
- */
 public class WelcomePage4Fragment extends Fragment
 {
-    RelativeLayout welcomeCard;
+    CardView welcomeCard;
     Button useInsulatorButton;
 
     @Override
@@ -34,7 +31,7 @@ public class WelcomePage4Fragment extends Fragment
     {
         View view = inflater.inflate(R.layout.fragment_welcome_page_4, container, false);
 
-        welcomeCard = (RelativeLayout) view.findViewById(R.id.card_welcome);
+        welcomeCard = (CardView) view.findViewById(R.id.card_ready_to_use);
 
         useInsulatorButton = (Button) view.findViewById(R.id.button_use_insulator);
         useInsulatorButton.setOnClickListener(new View.OnClickListener()
