@@ -55,7 +55,7 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
             {
                InputMethodManager inputMethodManager =  (InputMethodManager) getActivity().getSystemService(
                         Context.INPUT_METHOD_SERVICE);
-                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+                inputMethodManager.hideSoftInputFromWindow(continueButton.getWindowToken(), 0);
 
                 ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage4Fragment());
             }
