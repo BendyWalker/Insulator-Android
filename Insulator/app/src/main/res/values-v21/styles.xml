@@ -1,10 +1,13 @@
 <resources>
     <!-- Application theme -->
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <style name="AppTheme" parent="android:Theme.Material.Light.DarkActionBar">
         <!-- Main theme colors -->
         <item name="android:colorPrimary">@color/primary</item>
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorAccent">@color/accent</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorHighlight">@color/default_highlight</item>
     </style>
+    
+    <!-- Card elements -->
+
 </resources>

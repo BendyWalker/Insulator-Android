@@ -4,94 +4,113 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:background="@color/default_background"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:padding="@dimen/spacing_default_50_percent">
 
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/card_half_units"
         style="@style/CardBase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/card_half_units_title"
-            style="@style/CardTitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/preference_half_units_title"/>
+        <RelativeLayout
+            style="@style/CardBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <CheckBox
-            android:id="@+id/card_half_units_checkbox"
-            style="@style/CardInfoText.Primary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/card_half_units_title"
-            android:layout_centerVertical="true"
-            android:text="@string/preference_half_units_summary"/>
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/card_half_units_title"
+                style="@style/CardTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preference_half_units_title"/>
 
-    <RelativeLayout
+            <CheckBox
+                android:id="@+id/card_half_units_checkbox"
+                style="@style/CardInfoText.Primary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/card_half_units_title"
+                android:layout_centerVertical="true"
+                android:text="@string/preference_half_units_summary"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
         android:id="@+id/card_blood_glucose_measurement"
         style="@style/CardBase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/card_blood_glucose_measurement_title"
-            style="@style/CardTitleText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/preference_blood_glucose_units_title"/>
-
         <RelativeLayout
+            style="@style/CardBase"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/card_blood_glucose_measurement_title">
-
-            <RadioGroup
-                android:id="@+id/card_blood_glucose_measurement_radio_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="@dimen/spacing_default_200_percent">
-
-                <RadioButton
-                    android:id="@+id/card_blood_glucose_measurement_radio_button_mmol"
-                    style="@style/CardInfoText.Primary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hint_mmol"/>
-
-                <RadioButton
-                    android:id="@+id/card_blood_glucose_measurement_radio_button_mgdl"
-                    style="@style/CardInfoText.Primary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/hint_mgdl"/>
-            </RadioGroup>
+            android:layout_height="wrap_content">
 
             <TextView
-                style="@style/CardInfoText.Secondary"
+                android:id="@+id/card_blood_glucose_measurement_title"
+                style="@style/CardTitleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/preference_blood_glucose_units_title"/>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/card_blood_glucose_measurement_radio_group"
-                android:text="@string/preference_blood_glucose_units_summary"/>
+                android:layout_below="@id/card_blood_glucose_measurement_title">
+
+                <RadioGroup
+                    android:id="@+id/card_blood_glucose_measurement_radio_group"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/spacing_default_200_percent">
+
+                    <RadioButton
+                        android:id="@+id/card_blood_glucose_measurement_radio_button_mmol"
+                        style="@style/CardInfoText.Primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_mmol"/>
+
+                    <RadioButton
+                        android:id="@+id/card_blood_glucose_measurement_radio_button_mgdl"
+                        style="@style/CardInfoText.Primary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/hint_mgdl"/>
+                </RadioGroup>
+
+                <TextView
+                    style="@style/CardInfoText.Secondary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/card_blood_glucose_measurement_radio_group"
+                    android:text="@string/preference_blood_glucose_units_summary"/>
+            </RelativeLayout>
+
         </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
-    </RelativeLayout>
-
-    <RelativeLayout
+    <android.support.v7.widget.CardView
         android:id="@+id/card_continue"
         style="@style/CardBase"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/button_continue"
-            style="@style/CardButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/button_continue"/>
-    </RelativeLayout>
+        <RelativeLayout
+            style="@style/CardBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_continue"
+                style="@style/CardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/button_continue"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

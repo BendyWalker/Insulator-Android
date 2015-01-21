@@ -16,11 +16,9 @@
 
     <!-- Card elements -->
     <style name="CardBase">
-        <item name="android:background">@drawable/layerlist_card</item>
-        <item name="android:paddingTop">@dimen/spacing_default_150_percent</item>
-        <item name="android:paddingBottom">@dimen/spacing_default_150_percent</item>
-        <item name="android:paddingLeft">@dimen/spacing_default_200_percent</item>
-        <item name="android:paddingRight">@dimen/spacing_default_200_percent</item>
+        <item name="cardBackgroundColor">@android:color/white</item>
+        <item name="contentPadding">@dimen/spacing_default_100_percent</item>
+        <item name="cardUseCompatPadding">true</item>
     </style>
 
     <style name="CardTitleText">
