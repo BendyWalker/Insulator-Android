@@ -19,7 +19,6 @@ import java.util.List;
 public class FactorSuggestionActivity extends Activity implements Card.OnTextChangeListener, View.OnClickListener
 {
     Card totalDailyDoseCard;
-    RelativeLayout welcomeCard, carbohydrateFactorCard, correctiveFactorCard;
     TextView carbohydrateFactorSuggestion, correctiveFactorSuggestion;
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;
     SharedPreferences preferences;
@@ -43,59 +42,18 @@ public class FactorSuggestionActivity extends Activity implements Card.OnTextCha
                 .getString(getString(R.string.preference_blood_glucose_units), "mmol")
                 .equals("mmol");
 
-        welcomeCard = (RelativeLayout) findViewById(R.id.card_welcome);
-
         totalDailyDoseCard = (Card) findViewById(R.id.card_total_daily_dose);
         totalDailyDoseCard.setOnTextChangeListener(this);
 
-        carbohydrateFactorCard = (RelativeLayout) findViewById(R.id.card_carbohydrate_factor);
         carbohydrateFactorSuggestion = (TextView) findViewById(
                 R.id.card_carbohydrate_factor_suggestion);
         saveCarbohydrateFactorButton = (Button) findViewById(R.id.button_save_carbohydrate_factor);
         saveCarbohydrateFactorButton.setOnClickListener(this);
 
-        correctiveFactorCard = (RelativeLayout) findViewById(R.id.card_corrective_factor);
         correctiveFactorSuggestion = (TextView) findViewById(
                 R.id.card_corrective_factor_suggestion);
         saveCorrectiveFactorButton = (Button) findViewById(R.id.button_save_corrective_factor);
         saveCorrectiveFactorButton.setOnClickListener(this);
-
-        addAnimationsToCards();
-    }
-
-    private void addAnimationsToCards()
-    {
-        int offset = getResources().getInteger(R.integer.animation_offset);
-        int offsetMultiplier = 1;
-
-        List<Animation> animations = new ArrayList<Animation>();
-
-        Animation welcomeCardAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(welcomeCardAnimation);
-
-        Animation totalDailyDoseCardAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(totalDailyDoseCardAnimation);
-
-        Animation carbohydrateFactorAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(carbohydrateFactorAnimation);
-
-        Animation correctiveFactorAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(correctiveFactorAnimation);
-
-        for (Animation animation : animations)
-        {
-            animation.setStartOffset(offset * offsetMultiplier);
-            offsetMultiplier++;
-        }
-
-        welcomeCard.startAnimation(welcomeCardAnimation);
-        totalDailyDoseCard.startAnimation(totalDailyDoseCardAnimation);
-        carbohydrateFactorCard.startAnimation(carbohydrateFactorAnimation);
-        correctiveFactorCard.startAnimation(correctiveFactorAnimation);
     }
 
     @Override
