@@ -58,24 +58,23 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:gravity="center"
                         android:layout_marginRight="@dimen/spacing_default_100_percent"
                         android:fontFamily="sans-serif"
+                        android:gravity="center"
                         android:text="00.0"
                         android:textColor="@color/card_text_primary"
                         android:textSize="50sp"/>
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:id="@+id/suggested_dose_breakdown"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_toRightOf="@id/suggested_dose"
-                        android:gravity="right"
-                        android:orientation="vertical">
+                        android:layout_toRightOf="@id/suggested_dose">
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
+                        <RelativeLayout
+                            android:id="@+id/carbohydrate_dose_breakdown"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
@@ -84,42 +83,41 @@
                                 style="@style/CardInfoText.Secondary"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/spacing_default_25_percent"
+                                android:layout_alignParentLeft="true"
                                 android:text="@string/label_carbohydrate_dose"/>
 
                             <TextView
                                 android:id="@+id/carbohydrate_dose"
                                 style="@style/CardInfoText.Secondary"
-                                android:layout_width="@dimen/suggested_dose_breakdown_width"
+                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
                                 android:fontFamily="sans-serif"
-                                android:gravity="right"
                                 android:text="0.0"/>
-                        </LinearLayout>
+                        </RelativeLayout>
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_below="@+id/carbohydrate_dose_breakdown"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:id="@+id/corrective_dose_label"
                                 style="@style/CardInfoText.Secondary"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="@dimen/spacing_default_25_percent"
+                                android:layout_height="wrap_content" android:layout_alignParentLeft="true"
                                 android:text="@string/label_corrective_dose"/>
 
                             <TextView
                                 android:id="@+id/corrective_dose"
                                 style="@style/CardInfoText.Secondary"
-                                android:layout_width="@dimen/suggested_dose_breakdown_width"
-                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:layout_alignParentRight="true"
                                 android:fontFamily="sans-serif"
-                                android:gravity="right"
                                 android:text="0.0"/>
-                        </LinearLayout>
-                    </LinearLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
                 </RelativeLayout>
             </RelativeLayout>
         </android.support.v7.widget.CardView>

@@ -19,6 +19,8 @@
         <item name="cardBackgroundColor">@android:color/white</item>
         <item name="contentPadding">@dimen/spacing_default_100_percent</item>
         <item name="cardUseCompatPadding">true</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_default_25_percent</item>
+        <item name="android:layout_marginTop">@dimen/spacing_default_25_percent</item>
     </style>
 
     <style name="CardTitleText">
