@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.preference.PreferenceManager;
-import android.support.v7.widget.CardView;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
@@ -13,13 +12,14 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Card extends CardView
+public class Card extends RelativeLayout
 {
 
     static boolean textChangeRunning;
@@ -37,12 +37,6 @@ public class Card extends CardView
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.card, this);
-
-        int padding = (int) getResources().getDimension(R.dimen.spacing_default_100_percent);
-
-        setCardBackgroundColor(getResources().getColor(R.color.card_background));
-        setUseCompatPadding(true);
-        setContentPadding(padding, padding, padding, padding);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -242,6 +236,7 @@ public class Card extends CardView
 
     public class MyOnClickListener implements OnClickListener
     {
+
         @Override
         public void onClick(View v)
         {
