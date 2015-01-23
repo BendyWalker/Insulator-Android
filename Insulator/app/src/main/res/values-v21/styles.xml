@@ -6,6 +6,7 @@
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:textColorHighlight">@color/default_highlight</item>
+        <item name="android:navigationBarColor">@color/primary_dark</item>
     </style>
     
     <!-- Card elements -->
