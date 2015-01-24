@@ -4,7 +4,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/default_background"
     android:orientation="vertical"
     android:padding="@dimen/spacing_default_50_percent">
 
@@ -29,7 +28,7 @@
 
             <CheckBox
                 android:id="@+id/card_half_units_checkbox"
-                style="@style/CardInfoText.Primary"
+                style="@style/CardInfoText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
@@ -72,21 +71,21 @@
 
                     <RadioButton
                         android:id="@+id/card_blood_glucose_measurement_radio_button_mmol"
-                        style="@style/CardInfoText.Primary"
+                        style="@style/CardInfoText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hint_mmol"/>
 
                     <RadioButton
                         android:id="@+id/card_blood_glucose_measurement_radio_button_mgdl"
-                        style="@style/CardInfoText.Primary"
+                        style="@style/CardInfoText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/hint_mgdl"/>
                 </RadioGroup>
 
                 <TextView
-                    style="@style/CardInfoText.Secondary"
+                    style="@style/CardInfoText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

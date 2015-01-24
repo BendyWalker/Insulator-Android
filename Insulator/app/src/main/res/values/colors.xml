@@ -5,16 +5,11 @@
     <color name="accent">#ff8a80</color>
     <color name="primary_light">#ffcdd2</color>
 
-    <color name="default_background">#e5e5e5</color>
     <color name="default_tint">#ff4815</color>
     <color name="default_tint_pressed">#b22700</color>
     <color name="default_highlight">#ffe1d9</color>
 
     <!-- Card Colors -->
-    <color name="card_background">#ffffff</color>
-    <color name="card_shadow_1">#d4d4d4</color>
-    <color name="card_shadow_2">#dddddd</color>
-    <color name="card_detailing">#eeeeee</color>
-    <color name="card_text_primary">#838383</color>
-    <color name="card_text_secondary">#c9c9c9</color>
+    <color name="card_text_dark">#5c5c5c</color>
+    <color name="card_text_light">#838383</color>
 </resources>

@@ -1,21 +1,10 @@
 <resources>
     <!-- Application theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:textColorHighlight">@color/default_highlight</item>
-        <item name="android:textSelectHandleLeft">@drawable/apptheme_text_select_handle_left</item>
-        <item name="android:textSelectHandleRight">@drawable/apptheme_text_select_handle_right
-        </item>
-        <item name="android:textSelectHandle">@drawable/apptheme_text_select_handle_middle</item>
-
-        <item name="android:listChoiceIndicatorMultiple">@drawable/apptheme_btn_check_holo_light
-        </item>
-
-        <item name="android:listChoiceIndicatorSingle">@drawable/apptheme_btn_radio_holo_light
-        </item>
-
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/accent</item>
+        <item name="android:textColorHighlight">@color/default_highlight</item>
     </style>
 
     <!-- Card elements -->
@@ -27,50 +16,37 @@
         <item name="android:layout_marginTop">@dimen/spacing_default_25_percent</item>
     </style>
 
-    <style name="CardTitleText">
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:textSize">@dimen/text_card_title</item>
-        <item name="android:textColor">@color/card_text_primary</item>
+    <style name="CardTitleText" parent="Base.TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">@color/primary</item>
         <item name="android:layout_marginBottom">@dimen/spacing_default_50_percent</item>
-
     </style>
 
-    <style name="CardInfoText">
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:textSize">@dimen/text_card_info</item>
-    </style>
 
-    <style name="CardInfoText.Primary" parent="CardInfoText">
-        <item name="android:textColor">@color/card_text_primary</item>
+    <style name="CardInfoText" parent="Base.TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/card_text_light</item>
 
-    </style>
-
-    <style name="CardInfoText.Secondary" parent="CardInfoText">
-        <item name="android:textColor">@color/card_text_secondary</item>
     </style>
 
     <style name="CardEntryText">
-        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/text_card_entry_empty</item>
         <item name="android:textColor">@drawable/selector_card_entry</item>
         <item name="android:inputType">number</item>
         <item name="android:imeOptions">actionDone</item>
-        <item name="android:textCursorDrawable">@android:color/transparent</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:textColorHint">@drawable/selector_card_entry_hint</item>
+        <item name="android:textColorHint">@color/card_text_light</item>
         <item name="android:maxLength">5</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginRight">@dimen/spacing_default_100_percent</item>
-
     </style>
 
-    <style name="CardButton">
+    <style name="CardButton" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:textColor">@drawable/selector_button</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:textSize">@dimen/text_card_button</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textAllCaps">true</item>
     </style>
 
+
+    <style name="TextAppearance.Widget.AppCompat.Toolbar.Title.DarkActionBar" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>
