@@ -61,7 +61,7 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
             }
         });
 
-        addAnimationsToCards();
+        // addAnimationsToCards();
 
         return view;
     }

@@ -21,8 +21,7 @@ public class WelcomeActivity extends ActionBarActivity
 
     public void goForwardToFragment(Fragment fragment)
     {
-        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.animator.slide_in_up,
-                                                                           R.animator.slide_out_up)
-                                   .replace(R.id.container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().
+                replace(R.id.container, fragment).commit();
     }
 }

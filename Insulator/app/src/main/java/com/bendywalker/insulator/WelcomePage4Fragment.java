@@ -50,9 +50,9 @@ public class WelcomePage4Fragment extends Fragment
                    .putBoolean(getString(R.string.preference_first_time_open), false)
                    .apply();
 
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_up);
-        animation.setStartOffset(getResources().getInteger(R.integer.animation_offset));
-        welcomeCard.startAnimation(animation);
+//        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_up);
+//        animation.setStartOffset(getResources().getInteger(R.integer.animation_offset));
+//        welcomeCard.startAnimation(animation);
 
         return view;
     }

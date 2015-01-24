@@ -63,7 +63,7 @@ public class WelcomePage2Fragment extends Fragment
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-        addAnimationsToCards();
+        // addAnimationsToCards();
 
         return view;
     }
