@@ -7,24 +7,17 @@ import android.preference.PreferenceManager;
 
 public class Calculator
 {
-    SharedPreferences preferences;
-    Context context;
     private float carbohydrateFactor;
     private float correctiveFactor;
     private float desiredBloodGlucoseLevel;
     private float currentBloodGlucoseLevel;
     private float carbohydratesInMeal;
-
-    // Constructors
-    public Calculator(Context context)
-    {
-        super();
-        setupCalculator(context);
-    }
+    private boolean isMmolSelected;
+    private boolean isHalfUnitsEnabled;
 
     public Calculator(float currentBloodGlucoseLevel, float carbohydratesInMeal, Context context)
     {
-        setupCalculator(context);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         this.currentBloodGlucoseLevel = convertBloodGlucoseMeasurement(currentBloodGlucoseLevel);
         this.carbohydratesInMeal = carbohydratesInMeal;
@@ -34,22 +27,15 @@ public class Calculator
                 preferences.getFloat(context.getString(R.string.preference_corrective_factor), 0));
         this.desiredBloodGlucoseLevel = convertBloodGlucoseMeasurement(preferences.getFloat(
                 context.getString(R.string.preference_desired_blood_glucose_level), 0));
-    }
-
-    private void setupCalculator(Context context)
-    {
-        this.context = context;
-        this.preferences = PreferenceManager.getDefaultSharedPreferences(context);
-    }
-
-
-    // Methods
-    private float convertBloodGlucoseMeasurement(float bloodGlucose)
-    {
-        boolean isMmolSelected = (preferences
+        this.isMmolSelected = (preferences
                 .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
                 .equals("mmol");
+        this.isHalfUnitsEnabled = preferences
+                .getBoolean(context.getString(R.string.preference_half_units), false);
+    }
 
+    private float convertBloodGlucoseMeasurement(float bloodGlucose)
+    {
         if (!isMmolSelected)
         {
             return bloodGlucose / 18;
@@ -60,7 +46,7 @@ public class Calculator
         }
     }
 
-    public double getCalculatedCarbohydrateDose(boolean rounded)
+    public double getCarbohydrateDose(boolean rounded)
     {
         double carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
 
@@ -72,7 +58,7 @@ public class Calculator
         return carbohydrateDose;
     }
 
-    public double getCalculatedCorrectiveDose(boolean rounded)
+    public double getCorrectiveDose(boolean rounded)
     {
         double correctiveDose = 0;
 
@@ -89,9 +75,9 @@ public class Calculator
         return correctiveDose;
     }
 
-    public double getCalculatedInsulinDose(boolean rounded)
+    public double getSuggestedDose(boolean rounded)
     {
-        double total = getCalculatedCarbohydrateDose(false) + getCalculatedCorrectiveDose(false);
+        double total = getCarbohydrateDose(false) + getCorrectiveDose(false);
 
         if (total < 0)
         {
@@ -112,7 +98,7 @@ public class Calculator
     {
         double output;
 
-        if (preferences.getBoolean(context.getString(R.string.preference_half_units), false))
+        if (isHalfUnitsEnabled)
         {
             output = (Math.round(number * 2)) * 0.5;
         }
