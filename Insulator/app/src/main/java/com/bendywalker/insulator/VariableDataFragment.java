@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -16,6 +17,7 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
 {
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView, carbohydrateDoseTextView, correctiveDoseTextView;
+    LinearLayout root;
 
     @Override
     public void onCreate(Bundle savedInstanceState)
@@ -36,6 +38,7 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         suggestedInsulinDoseTextView = (TextView) view.findViewById(R.id.suggested_dose);
         carbohydrateDoseTextView = (TextView) view.findViewById(R.id.carbohydrate_dose);
         correctiveDoseTextView = (TextView) view.findViewById(R.id.corrective_dose);
+        root = (LinearLayout) view.findViewById(R.id.root);
 
         currentBloodGlucoseLevelCard.setOnTextChangeListener(this);
         carbohydratesInMealCard.setOnTextChangeListener(this);
@@ -83,6 +86,7 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         suggestedInsulinDoseTextView.setText("0.0");
         carbohydrateDoseTextView.setText("0.0");
         correctiveDoseTextView.setText("0.0");
+        root.requestFocus();
     }
 
     @Override
@@ -95,12 +99,12 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
                                                getActivity());
 
         suggestedInsulinDoseTextView
-                .setText(String.valueOf(calculator.getCalculatedInsulinDose(true)));
+                .setText(String.valueOf(calculator.getSuggestedDose(true)));
 
-        carbohydrateDoseTextView.setText(String.valueOf(calculator.getCalculatedCarbohydrateDose(
+        carbohydrateDoseTextView.setText(String.valueOf(calculator.getCarbohydrateDose(
                 true)));
 
         correctiveDoseTextView
-                .setText(String.valueOf(calculator.getCalculatedCorrectiveDose(true)));
+                .setText(String.valueOf(calculator.getCorrectiveDose(true)));
     }
 }
