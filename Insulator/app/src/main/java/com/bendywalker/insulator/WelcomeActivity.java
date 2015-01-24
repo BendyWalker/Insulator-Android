@@ -3,9 +3,10 @@ package com.bendywalker.insulator;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 
 
-public class WelcomeActivity extends Activity
+public class WelcomeActivity extends ActionBarActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
