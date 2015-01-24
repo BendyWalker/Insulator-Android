@@ -1,9 +1,9 @@
 package com.bendywalker.insulator;
 
-import android.support.v4.app.Fragment;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +13,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;

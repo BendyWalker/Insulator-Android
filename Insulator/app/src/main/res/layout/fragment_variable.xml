@@ -52,8 +52,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/title_suggested_dose">
 
-                    <TextView style="@style/Base.TextAppearance.AppCompat.Display2"
+                    <TextView
                         android:id="@+id/suggested_dose"
+                        style="@style/Base.TextAppearance.AppCompat.Display2"
                         android:layout_width="@dimen/card_entry_width"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"

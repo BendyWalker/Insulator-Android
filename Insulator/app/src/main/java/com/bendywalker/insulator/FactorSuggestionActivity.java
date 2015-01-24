@@ -1,20 +1,14 @@
 package com.bendywalker.insulator;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class FactorSuggestionActivity extends ActionBarActivity implements Card.OnTextChangeListener, View.OnClickListener
