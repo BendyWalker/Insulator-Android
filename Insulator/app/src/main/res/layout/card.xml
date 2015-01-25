@@ -28,7 +28,7 @@
                 android:id="@+id/card_entry"
                 style="@style/CardEntryText"
                 android:layout_width="@dimen/card_entry_width"
-                android:layout_height="45dp"
+                android:layout_height="60dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:hint="@string/hint_mmol"/>
