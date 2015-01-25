@@ -24,7 +24,7 @@ public class Card extends RelativeLayout
 
     static boolean textChangeRunning;
     boolean isMmolSelected, isCarbohydrateDecimalPlaceEnabled;
-    OnTextChangeListener listener;
+    OnTextChangeListener textChangeListener;
     private TextView label, info;
     private EditText entry;
     private String prefKey;
@@ -224,11 +224,10 @@ public class Card extends RelativeLayout
         return true;
     }
 
-    public void setOnTextChangeListener(OnTextChangeListener listener)
+    public void setOnTextChangeListener(OnTextChangeListener textChangeListener)
     {
-        this.listener = listener;
+        this.textChangeListener = textChangeListener;
     }
-
     public interface OnTextChangeListener
     {
         void onTextChange();
@@ -258,9 +257,9 @@ public class Card extends RelativeLayout
         {
             modifyText(s, shouldDecimalPlaceBeDisplayed(getId()));
 
-            if (listener != null)
+            if (textChangeListener != null)
             {
-                listener.onTextChange();
+                textChangeListener.onTextChange();
             }
         }
 
