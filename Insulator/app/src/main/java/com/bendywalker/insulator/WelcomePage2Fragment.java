@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RadioGroup;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import java.util.List;
 public class WelcomePage2Fragment extends Fragment
 {
     CardView halfUnitsCard, bloodGlucoseUnitsCard, continueCard;
-    CheckBox halfUnitsCheckBox;
+    SwitchCompat halfUnitsSwitch;
     RadioGroup bloodGlucoseUnitsRadioGroup;
     Button continueButton;
 
@@ -40,7 +40,7 @@ public class WelcomePage2Fragment extends Fragment
         View view = inflater.inflate(R.layout.fragment_welcome_page_2, container, false);
 
         halfUnitsCard = (CardView) view.findViewById(R.id.card_half_units);
-        halfUnitsCheckBox = (CheckBox) view.findViewById(R.id.card_half_units_checkbox);
+        halfUnitsSwitch = (SwitchCompat) view.findViewById(R.id.card_half_units_switch);
 
         bloodGlucoseUnitsCard = (CardView) view
                 .findViewById(R.id.card_blood_glucose_measurement);
@@ -71,7 +71,7 @@ public class WelcomePage2Fragment extends Fragment
     {
         SharedPreferences.Editor editor = preferences.edit();
         editor.putBoolean(getString(R.string.preference_half_units),
-                          halfUnitsCheckBox.isChecked());
+                          halfUnitsSwitch.isChecked());
 
         String bloodGlucoseUnit = "";
         switch (bloodGlucoseUnitsRadioGroup.getCheckedRadioButtonId())

@@ -3,7 +3,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:key="@string/preference_half_units"
         android:summary="@string/preference_half_units_summary"
         android:title="@string/preference_half_units_title"/>
@@ -17,7 +17,7 @@
         android:summary="%s"
         android:title="@string/preference_blood_glucose_units_title"/>
 
-    <CheckBoxPreference
+    <SwitchPreference
         android:defaultValue="false"
         android:key="@string/preference_carbohydrate_decimal_place"
         android:summary="@string/preference_carbohydrate_decimal_place_summary"
