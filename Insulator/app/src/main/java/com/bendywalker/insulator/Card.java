@@ -9,8 +9,11 @@ import android.text.Selection;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,11 +33,11 @@ public class Card extends RelativeLayout
     private String prefKey;
     private SharedPreferences preferences;
 
-    public Card(Context context, AttributeSet attrs)
+    public Card(final Context context, AttributeSet attrs)
     {
         super(context, attrs);
 
-        LayoutInflater inflater = (LayoutInflater) context
+        final LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.card, this);
 
@@ -58,6 +61,24 @@ public class Card extends RelativeLayout
 
         entry.addTextChangedListener(new MyTextWatcher());
         entry.setOnFocusChangeListener(new MyOnFocusChangeListener());
+        entry.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
+            {
+                if (actionId == EditorInfo.IME_ACTION_DONE)
+                {
+                    entry.clearFocus();
+
+                    InputMethodManager inputMethodManager = (InputMethodManager) context
+                            .getSystemService(
+                                    Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(entry.getWindowToken(), 0);
+                }
+                return false;
+            }
+        });
+
         this.setOnClickListener(new MyOnClickListener());
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Card, 0, 0);
@@ -228,6 +249,7 @@ public class Card extends RelativeLayout
     {
         this.textChangeListener = textChangeListener;
     }
+
     public interface OnTextChangeListener
     {
         void onTextChange();
