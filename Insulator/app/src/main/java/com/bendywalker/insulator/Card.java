@@ -217,25 +217,11 @@ public class Card extends RelativeLayout
 
         if (isCardCarbohydratesInMeal)
         {
-            if (isCarbohydrateDecimalPlaceEnabled)
-            {
-                return true;
-            }
-            else if (!isCarbohydrateDecimalPlaceEnabled)
-            {
-                return false;
-            }
+            return isCarbohydrateDecimalPlaceEnabled;
         }
         else if (isCardGlucoseLevel)
         {
-            if (isMmolSelected)
-            {
-                return true;
-            }
-            else if (!isMmolSelected)
-            {
-                return false;
-            }
+            return isMmolSelected;
         }
         else if (isTotalDailyDoseCard)
         {
