@@ -1,6 +1,5 @@
 #Insulator for Android
 
-
 ## Description
 Insulator is a fast, efficient way for Type 1 Diabetics to calculate the amount of insulin needed to bring their blood sugar to a healthy level. It's the best insulin calculator for Android.
 
@@ -21,26 +20,26 @@ The best way for Type 1 Diabetics to quickly calculate insulin doses.
 ### 3.0.1
 Fixed some small bugs and made a number of aesthetic improvements.
 
-### 3.0
+### 3.0.0
 Version 3.0 brings a great new designed inspired by Google Now. The main screen is now divided into two halves; one for variable data and your calculations, and one for persistent data. Calculations are now done on the fly as you enter your values.
 
 Features that saw little use or added unneeded complication such as the Total Daily Dose calculator have been removed to streamline the user experience.
 
 If you enjoy Insulator, please leave a review on Google Play.
 
-### 2.3
+### 2.3.0
 Total Daily Dose Calculator: If you're unsure of what you're total daily dose is, Insulator can now help you calculate it
 
 Minor UI tweaks
 
-### 2.2
+### 2.2.0
 First time user experience has been greatly improved
 
 Tidied up interface on smaller screen sizes
 
 Fixed a bug with half insulin units
 
-### 2.1
+### 2.1.0
 Settings Page: Change all your insulin calculator preferences in one location
 
 Support for mg/dl (USA and continental Europe blood sugar measurement)
@@ -49,7 +48,7 @@ Support for half insulin units
 
 Dropped support for Android 3.2 and below
 
-### 2.0
+### 2.0.0
 Improved user interface: Insulator has been redesigned to be cleaner, more attractive, and easier to use
 
 Improved Bolus On Board 'decay' factor
@@ -71,7 +70,7 @@ Prevented the keyboard from automatically be opened when the app is opened
 Text fields highlight all contents when they are tapped, making it easier to make changes
 
 
-### 1.2
+### 1.2.0
 Bolus on Board: Insulator now factors in any remaining insulin in your system since the last time you calculated. It also factors in carbohydrate intake that hasn't been digested, and prevents multiple corrective doses from being administered. This all adds up to a more accurate insulin dose suggestion, and minimises insulin stacking!
 
 Minor changes to the UI
@@ -83,7 +82,7 @@ Enabled support for all screen sizes (I'm not happy with how the app looks or fu
 
 Tweaked the icon
 
-### 1.1
+### 1.1.0
 Insulin-to-Carb Ratio (ICR) calculator (can be accessed by long-pressing on the insulin-to-carb 'Info' button). If you're unsure of your ICR, use the calculator to quickly find out!
 
 Choose your preferred ratio, whether its '1 unit to X carbs' or 'X units to 10 carbs'.
