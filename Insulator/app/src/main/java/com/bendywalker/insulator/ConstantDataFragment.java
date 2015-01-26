@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class PersistentDataFragment extends Fragment
+public class ConstantDataFragment extends Fragment
 {
     Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
     SharedPreferences preferences;
@@ -38,7 +38,7 @@ public class PersistentDataFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_persistent, container, false);
+        View view = inflater.inflate(R.layout.fragment_constant, container, false);
 
         desiredBloodGlucoseLevelCard = (Card) view
                 .findViewById(R.id.card_desired_blood_glucose_level);
@@ -53,7 +53,7 @@ public class PersistentDataFragment extends Fragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.persistent, menu);
+        inflater.inflate(R.menu.constant, menu);
     }
 
     @Override

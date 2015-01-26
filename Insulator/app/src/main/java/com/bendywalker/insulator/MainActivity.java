@@ -95,7 +95,7 @@ public class MainActivity extends ActionBarActivity
                     return new VariableDataFragment();
 
                 case 1:
-                    return new PersistentDataFragment();
+                    return new ConstantDataFragment();
 
                 default:
                     return null;
