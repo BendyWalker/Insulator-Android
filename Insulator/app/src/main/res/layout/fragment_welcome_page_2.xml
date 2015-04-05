@@ -8,35 +8,6 @@
     android:padding="@dimen/spacing_default_50_percent">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/card_half_units"
-        style="@style/CardBase"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/card_half_units_title"
-                style="@style/CardTitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="@string/preference_half_units_title"/>
-
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/card_half_units_switch"
-                style="@style/CardInfoText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/card_half_units_title"
-                android:text="@string/preference_half_units_summary"/>
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
         android:id="@+id/card_blood_glucose_measurement"
         style="@style/CardBase"
         android:layout_width="match_parent"

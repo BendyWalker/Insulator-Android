@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import java.text.DecimalFormat;
+
 
 public class Calculator
 {
@@ -13,7 +15,6 @@ public class Calculator
     private float currentBloodGlucoseLevel;
     private float carbohydratesInMeal;
     private boolean isMmolSelected;
-    private boolean isHalfUnitsEnabled;
 
     public Calculator(float currentBloodGlucoseLevel, float carbohydratesInMeal, Context context)
     {
@@ -30,8 +31,15 @@ public class Calculator
         this.isMmolSelected = (preferences
                 .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
                 .equals("mmol");
-        this.isHalfUnitsEnabled = preferences
-                .getBoolean(context.getString(R.string.preference_half_units), false);
+    }
+
+    /**
+     * Calculator should only be initialised without any arguments if it's only purpose is to
+     * access the getString() method
+     */
+    public Calculator()
+    {
+
     }
 
     private float convertBloodGlucoseMeasurement(float bloodGlucose)
@@ -46,67 +54,45 @@ public class Calculator
         }
     }
 
-    public double getCarbohydrateDose(boolean rounded)
+    public double getCarbohydrateDose()
     {
-        double carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
+        double carbohydrateDose = 0.0;
 
-        if (rounded)
+        if (carbohydrateFactor != 0)
         {
-            carbohydrateDose = roundNumber(carbohydrateDose);
+            carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
         }
 
         return carbohydrateDose;
     }
 
-    public double getCorrectiveDose(boolean rounded)
+    public double getCorrectiveDose()
     {
-        double correctiveDose = 0;
+        double correctiveDose = 0.0;
 
         if (currentBloodGlucoseLevel != 0)
         {
             correctiveDose = (currentBloodGlucoseLevel - desiredBloodGlucoseLevel) / correctiveFactor;
         }
 
-        if (rounded)
-        {
-            correctiveDose = roundNumber(correctiveDose);
-        }
-
         return correctiveDose;
     }
 
-    public double getSuggestedDose(boolean rounded)
+    public double getSuggestedDose()
     {
-        double total = getCarbohydrateDose(false) + getCorrectiveDose(false);
+        double suggestedDose = getCarbohydrateDose() + getCorrectiveDose();
 
-        if (total < 0)
+        if (suggestedDose < 0)
         {
-            total = 0;
-        }
-        else
-        {
-            if (rounded)
-            {
-                total = roundNumber(total);
-            }
+            suggestedDose = 0.0;
         }
 
-        return total;
+        return suggestedDose;
     }
 
-    public double roundNumber(Double number)
+    public String getString(Double dose)
     {
-        double output;
-
-        if (isHalfUnitsEnabled)
-        {
-            output = (Math.round(number * 2)) * 0.5;
-        }
-        else
-        {
-            output = Math.round(number);
-        }
-
-        return output;
+        DecimalFormat decimalFormat = new DecimalFormat("#0.0");
+        return decimalFormat.format(dose);
     }
 }

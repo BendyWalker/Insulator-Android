@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-
 
 public class FactorSuggestionActivity extends ActionBarActivity implements Card.OnTextChangeListener, View.OnClickListener
 {
@@ -18,7 +16,7 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
-    boolean isHalfUnitsEnabled, isMmolSelected;
+    boolean isMmolSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -29,9 +27,6 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         editor = preferences.edit();
-
-        isHalfUnitsEnabled = preferences
-                .getBoolean(getString(R.string.preference_half_units), false);
 
         isMmolSelected = preferences
                 .getString(getString(R.string.preference_blood_glucose_units), "mmol")
@@ -54,6 +49,8 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
     @Override
     public void onTextChange()
     {
+        Calculator calculator = new Calculator();
+
         saveCarbohydrateFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
@@ -61,8 +58,6 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
 
         double carbohydrateFactor, correctiveFactor, totalDailyDose;
         totalDailyDose = totalDailyDoseCard.getFloatFromEntry();
-
-        DecimalFormat decimalFormat = new DecimalFormat("##.0");
 
         carbohydrateFactor = (500 / totalDailyDose);
 
@@ -83,8 +78,8 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
         }
         else
         {
-            carbohydrateFactorString = String.valueOf(decimalFormat.format(carbohydrateFactor));
-            correctiveFactorString = String.valueOf(decimalFormat.format(correctiveFactor));
+            carbohydrateFactorString = String.valueOf(calculator.getString(carbohydrateFactor));
+            correctiveFactorString = String.valueOf(calculator.getString(correctiveFactor));
         }
 
         carbohydrateFactorSuggestion.setText(carbohydrateFactorString);

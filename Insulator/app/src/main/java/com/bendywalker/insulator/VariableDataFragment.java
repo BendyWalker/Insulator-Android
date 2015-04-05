@@ -99,12 +99,11 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
                                                getActivity());
 
         suggestedInsulinDoseTextView
-                .setText(String.valueOf(calculator.getSuggestedDose(true)));
+                .setText(String.valueOf(calculator.getString(calculator.getSuggestedDose())));
 
-        carbohydrateDoseTextView.setText(String.valueOf(calculator.getCarbohydrateDose(
-                true)));
+        carbohydrateDoseTextView.setText(String.valueOf(calculator.getString(calculator.getCarbohydrateDose())));
 
         correctiveDoseTextView
-                .setText(String.valueOf(calculator.getCorrectiveDose(true)));
+                .setText(String.valueOf(calculator.getString(calculator.getCorrectiveDose())));
     }
 }

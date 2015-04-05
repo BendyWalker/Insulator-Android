@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +19,7 @@ import java.util.List;
 
 public class WelcomePage2Fragment extends Fragment
 {
-    CardView halfUnitsCard, bloodGlucoseUnitsCard, continueCard;
-    SwitchCompat halfUnitsSwitch;
+    CardView bloodGlucoseUnitsCard, continueCard;
     RadioGroup bloodGlucoseUnitsRadioGroup;
     Button continueButton;
 
@@ -38,9 +36,6 @@ public class WelcomePage2Fragment extends Fragment
                              Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_welcome_page_2, container, false);
-
-        halfUnitsCard = (CardView) view.findViewById(R.id.card_half_units);
-        halfUnitsSwitch = (SwitchCompat) view.findViewById(R.id.card_half_units_switch);
 
         bloodGlucoseUnitsCard = (CardView) view
                 .findViewById(R.id.card_blood_glucose_measurement);
@@ -70,8 +65,6 @@ public class WelcomePage2Fragment extends Fragment
     private void savePreferences()
     {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(getString(R.string.preference_half_units),
-                          halfUnitsSwitch.isChecked());
 
         String bloodGlucoseUnit = "";
         switch (bloodGlucoseUnitsRadioGroup.getCheckedRadioButtonId())
@@ -96,11 +89,6 @@ public class WelcomePage2Fragment extends Fragment
 
         List<Animation> animations = new ArrayList<Animation>();
 
-        Animation halfUnitsAnimation = AnimationUtils
-                .loadAnimation(getActivity(), R.anim.slide_in_up);
-
-        animations.add(halfUnitsAnimation);
-
         Animation bloodGlucoseUnitsAnimation = AnimationUtils
                 .loadAnimation(getActivity(), R.anim.slide_in_up);
         animations.add(bloodGlucoseUnitsAnimation);
@@ -115,7 +103,6 @@ public class WelcomePage2Fragment extends Fragment
             offsetMultiplier++;
         }
 
-        halfUnitsCard.startAnimation(halfUnitsAnimation);
         bloodGlucoseUnitsCard.startAnimation(bloodGlucoseUnitsAnimation);
         continueCard.startAnimation(continueAnimation);
     }
