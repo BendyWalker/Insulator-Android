@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_is_first_time_open">KEY_IS_FIRST_TIME_OPEN</string>
+    <string name="key_allow_floating_point_carbohydrates">KEY_ALLOW_FLOATING_POINT_CARBOHYDRATES</string>
+    <string name="key_carbohydrate_factor">KEY_CARBOHYDRATE_FACTOR</string>
+    <string name="key_corrective_factor">KEY_CORRECTIVE_FACTOR</string>
+    <string name="key_desired_blood_glucose">KEY_DESIRED_BLOOD_GLUCOSE</string>
+    <string name="key_blood_glucose_unit">KEY_BLOOD_GLUCOSE_UNIT</string>
+</resources>

@@ -1,9 +1,7 @@
 package com.bendywalker.insulator;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,17 +13,13 @@ import android.view.ViewGroup;
 
 public class ConstantDataFragment extends Fragment {
     Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
-    String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
-    SharedPreferences preferences;
+    MyPreferenceManager preferenceManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        desiredBloodGlucoseLevelKey = getString(R.string.preference_desired_blood_glucose_level);
-        carbohydrateFactorKey = getString(R.string.preference_carbohydrate_factor);
-        correctiveFactorKey = getString(R.string.preference_corrective_factor);
+        preferenceManager = new MyPreferenceManager(getActivity());
     }
 
     @Override
@@ -67,21 +61,20 @@ public class ConstantDataFragment extends Fragment {
     }
 
     private void restoreValuesToCards() {
-        float savedDesiredBloodGlucoseLevelFloat = preferences
-                .getFloat(desiredBloodGlucoseLevelKey, 0);
-        float savedCarbohydrateFactorFloat = preferences.getFloat(carbohydrateFactorKey, 0);
-        float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
+        double savedDesiredBloodGlucose = preferenceManager.getDesiredBloodGlucose();
+        double savedCarbohydrateFactor = preferenceManager.getCarbohydrateFactor();
+        double savedCorrectiveFactor = preferenceManager.getCorrectiveFactor();
 
-        if (savedDesiredBloodGlucoseLevelFloat != 0) {
-            desiredBloodGlucoseLevelCard.setEntryFromFloat(savedDesiredBloodGlucoseLevelFloat);
+        if (savedDesiredBloodGlucose != 0) {
+            desiredBloodGlucoseLevelCard.setEntryFieldFromValue(savedDesiredBloodGlucose);
         }
 
-        if (savedCarbohydrateFactorFloat != 0) {
-            carbohydrateFactorCard.setEntryFromFloat(savedCarbohydrateFactorFloat);
+        if (savedCarbohydrateFactor != 0) {
+            carbohydrateFactorCard.setEntryFieldFromValue(savedCarbohydrateFactor);
         }
 
-        if (savedCorrectiveFactorFloat != 0) {
-            correctiveFactorCard.setEntryFromFloat(savedCorrectiveFactorFloat);
+        if (savedCorrectiveFactor != 0) {
+            correctiveFactorCard.setEntryFieldFromValue(savedCorrectiveFactor);
         }
     }
 }

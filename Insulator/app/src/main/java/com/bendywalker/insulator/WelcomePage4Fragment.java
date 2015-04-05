@@ -1,9 +1,7 @@
 package com.bendywalker.insulator;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -37,11 +35,8 @@ public class WelcomePage4Fragment extends Fragment {
             }
         });
 
-        SharedPreferences preferences = PreferenceManager
-                .getDefaultSharedPreferences(getActivity());
-        preferences.edit()
-                .putBoolean(getString(R.string.preference_first_time_open), false)
-                .apply();
+        MyPreferenceManager preferenceManager = new MyPreferenceManager(getActivity());
+        preferenceManager.setIsFirstTimeOpen(false);
 
 //        Animation animation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in_up);
 //        animation.setStartOffset(getResources().getInteger(R.integer.animation_offset));

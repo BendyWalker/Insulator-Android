@@ -1,11 +1,9 @@
 package com.bendywalker.insulator;
 
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceManager;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -14,9 +12,9 @@ import android.widget.ListView;
 
 
 public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
-    Preference bloodGlucoseMeasurementPreference;
+    Preference bloodGlucoseUnitPreference;
     String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
-    SharedPreferences preferences;
+    MyPreferenceManager preferenceManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,39 +53,32 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
             root.addView(content);
         }
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        preferenceManager = new MyPreferenceManager(getApplicationContext());
 
-        desiredBloodGlucoseLevelKey = getString(R.string.preference_desired_blood_glucose_level);
-        carbohydrateFactorKey = getString(R.string.preference_carbohydrate_factor);
-        correctiveFactorKey = getString(R.string.preference_corrective_factor);
-
-        bloodGlucoseMeasurementPreference = findPreference(
-                getString(R.string.preference_blood_glucose_units));
-        bloodGlucoseMeasurementPreference.setOnPreferenceChangeListener(this);
+        bloodGlucoseUnitPreference = findPreference(
+                getString(R.string.key_blood_glucose_unit));
+        bloodGlucoseUnitPreference.setOnPreferenceChangeListener(this);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         String value = (String) newValue;
-        boolean isValueMmol = value.equals("mmol");
-        SharedPreferences.Editor editor = preferences.edit();
+        BloodGlucoseUnit bloodGlucoseUnit = BloodGlucoseUnit.valueOf(value);
+        double savedDesiredBloodGlucose = preferenceManager.getDesiredBloodGlucose();
+        double savedCorrectiveFactor = preferenceManager.getCorrectiveFactor();
 
-        float savedDesiredBloodGlucoseLevelFloat = preferences
-                .getFloat(desiredBloodGlucoseLevelKey, 0);
-        float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
-
-        if (isValueMmol) {
-            savedDesiredBloodGlucoseLevelFloat = savedDesiredBloodGlucoseLevelFloat / 18;
-            savedCorrectiveFactorFloat = savedCorrectiveFactorFloat / 18;
-        } else if (!isValueMmol) {
-            savedDesiredBloodGlucoseLevelFloat = savedDesiredBloodGlucoseLevelFloat * 18;
-            savedCorrectiveFactorFloat = savedCorrectiveFactorFloat * 18;
+        switch (bloodGlucoseUnit) {
+            case mmol:
+                savedDesiredBloodGlucose = savedDesiredBloodGlucose / 18;
+                savedCorrectiveFactor = savedCorrectiveFactor / 18;
+                break;
+            case mgdl:
+                savedDesiredBloodGlucose = savedDesiredBloodGlucose * 18;
+                savedCorrectiveFactor = savedCorrectiveFactor * 18;
         }
 
-        editor.putFloat(desiredBloodGlucoseLevelKey,
-                savedDesiredBloodGlucoseLevelFloat);
-        editor.putFloat(correctiveFactorKey, savedCorrectiveFactorFloat);
-        editor.apply();
+        preferenceManager.setDesiredBloodGlucose(savedDesiredBloodGlucose);
+        preferenceManager.setCorrectiveFactor(savedCorrectiveFactor);
 
         return true;
     }

@@ -1,9 +1,7 @@
 package com.bendywalker.insulator;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.TypedArray;
-import android.preference.PreferenceManager;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
@@ -25,12 +23,11 @@ import java.util.List;
 public class Card extends RelativeLayout {
 
     static boolean textChangeRunning;
-    boolean isMmolSelected, isCarbohydrateDecimalPlaceEnabled;
     OnTextChangeListener textChangeListener;
     private TextView label, info;
     private EditText entry;
     private String prefKey;
-    private SharedPreferences preferences;
+    private MyPreferenceManager preferenceManager;
 
     public Card(final Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -39,18 +36,7 @@ public class Card extends RelativeLayout {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.card, this);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(context);
-
-        // This is related to displaying view correctly within layout preview
-        if (!isInEditMode()) {
-            isMmolSelected = (preferences
-                    .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
-                    .equals("mmol");
-
-            isCarbohydrateDecimalPlaceEnabled = (preferences
-                    .getBoolean(context.getString(R.string.preference_carbohydrate_decimal_place),
-                            false));
-        }
+        preferenceManager = new MyPreferenceManager(context);
 
         label = (TextView) findViewById(R.id.card_title);
         info = (TextView) findViewById(R.id.card_info);
@@ -91,21 +77,23 @@ public class Card extends RelativeLayout {
                 getId() == R.id.card_corrective_factor ||
                 getId() == R.id.card_current_blood_glucose_level);
 
-        if (isCardGlucoseLevel && isMmolSelected) {
-            entry.setHint(getResources().getString(R.string.hint_mmol));
-        } else if (isCardGlucoseLevel && !isMmolSelected) {
-            entry.setHint(getResources().getString(R.string.hint_mgdl));
+        if (isCardGlucoseLevel) {
+            switch (preferenceManager.getBloodGlucoseUnit()) {
+                case mmol:
+                    entry.setHint(getResources().getString(R.string.hint_mmol));
+                    break;
+                case mgdl:
+                    entry.setHint(getResources().getString(R.string.hint_mgdl));
+            }
         }
     }
 
     /**
      * Adds a point to one decimal place of a string of characters.
      *
-     * @param s
-     * @param et
      */
     public static void addDecimalPlace(CharSequence s, EditText et) {
-        List<Integer> storedPoints = new ArrayList<Integer>();
+        List<Integer> storedPoints = new ArrayList<>();
 
         if (!textChangeRunning) {
             textChangeRunning = true;
@@ -143,30 +131,26 @@ public class Card extends RelativeLayout {
     }
 
     // Methods
-    public void resetEntry() {
+    public void resetEntryField() {
         entry.setText("");
     }
 
-    public String getStringFromEntry() {
-        return entry.getText().toString();
-    }
-
-    public float getFloatFromEntry() {
+    public double getValueFromEntryField() {
         String string = entry.getText().toString();
 
         if (string.isEmpty()) {
             return 0;
         } else {
-            return Float.valueOf(string);
+            return Double.valueOf(string);
         }
     }
 
-    public void setEntryFromFloat(Float flot) {
+    public void setEntryFieldFromValue(Double value) {
         if (shouldDecimalPlaceBeDisplayed(getId())) {
-            entry.setText(String.valueOf(flot));
+            entry.setText(String.valueOf(value));
         } else {
-            int noDecimalFlot = Math.round(flot);
-            entry.setText(String.valueOf(noDecimalFlot));
+            long integer = Math.round(value);
+            entry.setText(String.valueOf(integer));
         }
 
     }
@@ -185,9 +169,14 @@ public class Card extends RelativeLayout {
         boolean isTotalDailyDoseCard = (cardId == R.id.card_total_daily_dose);
 
         if (isCardCarbohydratesInMeal) {
-            return isCarbohydrateDecimalPlaceEnabled;
+            return preferenceManager.allowFloatingPointCarbohydrates();
         } else if (isCardGlucoseLevel) {
-            return isMmolSelected;
+            switch (preferenceManager.getBloodGlucoseUnit()) {
+                case mmol:
+                    return true;
+                case mgdl:
+                    return false;
+            }
         } else if (isTotalDailyDoseCard) {
             return false;
         }
@@ -252,10 +241,10 @@ public class Card extends RelativeLayout {
         @Override
         public void onFocusChange(View v, boolean hasFocus) {
             if (!hasFocus) {
-                float entryFloat = getFloatFromEntry();
+                double value = getValueFromEntryField();
 
-                if (entryFloat != 0 && prefKey != null) {
-                    preferences.edit().putFloat(prefKey, entryFloat).commit();
+                if (value != 0 && prefKey != null) {
+                    preferenceManager.editor.putFloat(prefKey, (float) value).commit();
                 }
             }
         }

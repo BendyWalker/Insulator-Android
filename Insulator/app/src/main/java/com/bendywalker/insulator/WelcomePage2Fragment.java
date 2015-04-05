@@ -1,8 +1,6 @@
 package com.bendywalker.insulator;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -22,7 +20,7 @@ public class WelcomePage2Fragment extends Fragment {
     RadioGroup bloodGlucoseUnitsRadioGroup;
     Button continueButton;
 
-    SharedPreferences preferences;
+    MyPreferenceManager preferenceManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +48,7 @@ public class WelcomePage2Fragment extends Fragment {
             }
         });
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        preferenceManager = new MyPreferenceManager(getActivity());
 
         // addAnimationsToCards();
 
@@ -58,21 +56,19 @@ public class WelcomePage2Fragment extends Fragment {
     }
 
     private void savePreferences() {
-        SharedPreferences.Editor editor = preferences.edit();
+        BloodGlucoseUnit bloodGlucoseUnit = BloodGlucoseUnit.mmol;
 
-        String bloodGlucoseUnit = "";
         switch (bloodGlucoseUnitsRadioGroup.getCheckedRadioButtonId()) {
             case R.id.card_blood_glucose_measurement_radio_button_mmol:
-                bloodGlucoseUnit = "mmol";
+                bloodGlucoseUnit = BloodGlucoseUnit.mmol;
                 break;
 
             case R.id.card_blood_glucose_measurement_radio_button_mgdl:
-                bloodGlucoseUnit = "mgdl";
+                bloodGlucoseUnit = BloodGlucoseUnit.mgdl;
                 break;
         }
-        editor.putString(getString(R.string.preference_blood_glucose_units), bloodGlucoseUnit);
 
-        editor.apply();
+        preferenceManager.setBloodGlucoseUnit(bloodGlucoseUnit);
     }
 
     private void addAnimationsToCards() {

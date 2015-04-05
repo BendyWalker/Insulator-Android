@@ -1,9 +1,7 @@
 package com.bendywalker.insulator;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -23,12 +21,9 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        SharedPreferences preferences = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext());
-        boolean isFirstTimeOpened = preferences
-                .getBoolean(getString(R.string.preference_first_time_open), true);
+        MyPreferenceManager preferenceManager = new MyPreferenceManager(getApplicationContext());
 
-        if (isFirstTimeOpened) {
+        if (preferenceManager.isFirstTimeOpen()) {
             startActivity(new Intent(this, WelcomeActivity.class));
             finish();
         } else {

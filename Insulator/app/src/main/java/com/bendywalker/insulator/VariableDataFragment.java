@@ -14,9 +14,11 @@ import android.widget.TextView;
 
 
 public class VariableDataFragment extends Fragment implements Card.OnTextChangeListener {
+    LinearLayout root;
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView, carbohydrateDoseTextView, correctiveDoseTextView;
-    LinearLayout root;
+
+    MyPreferenceManager preferenceManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,8 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
 
         currentBloodGlucoseLevelCard.setOnTextChangeListener(this);
         carbohydratesInMealCard.setOnTextChangeListener(this);
+
+        preferenceManager = new MyPreferenceManager(getActivity());
 
         return view;
     }
@@ -73,8 +77,8 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
     }
 
     private void resetCards() {
-        currentBloodGlucoseLevelCard.resetEntry();
-        carbohydratesInMealCard.resetEntry();
+        currentBloodGlucoseLevelCard.resetEntryField();
+        carbohydratesInMealCard.resetEntryField();
         suggestedInsulinDoseTextView.setText("0.0");
         carbohydrateDoseTextView.setText("0.0");
         correctiveDoseTextView.setText("0.0");
@@ -83,18 +87,17 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
 
     @Override
     public void onTextChange() {
-        float currentBloodGlucoseLevel = currentBloodGlucoseLevelCard.getFloatFromEntry();
-        float carbohydratesInMeal = carbohydratesInMealCard.getFloatFromEntry();
+        double currentBloodGlucose = currentBloodGlucoseLevelCard.getValueFromEntryField();
+        double carbohydratesInMeal = carbohydratesInMealCard.getValueFromEntryField();
 
-        Calculator calculator = new Calculator(currentBloodGlucoseLevel, carbohydratesInMeal,
-                getActivity());
+        Calculator calculator = new Calculator(preferenceManager.getCarbohydrateFactor(), preferenceManager.getCorrectiveFactor(), preferenceManager.getDesiredBloodGlucose(), currentBloodGlucose, carbohydratesInMeal, preferenceManager.getBloodGlucoseUnit());
 
         suggestedInsulinDoseTextView
-                .setText(String.valueOf(calculator.getString(calculator.getSuggestedDose())));
+                .setText(String.valueOf(Calculator.getString(calculator.getSuggestedDose())));
 
-        carbohydrateDoseTextView.setText(String.valueOf(calculator.getString(calculator.getCarbohydrateDose())));
+        carbohydrateDoseTextView.setText(String.valueOf(Calculator.getString(calculator.getCarbohydrateDose())));
 
         correctiveDoseTextView
-                .setText(String.valueOf(calculator.getString(calculator.getCorrectiveDose())));
+                .setText(String.valueOf(Calculator.getString(calculator.getCorrectiveDose())));
     }
 }

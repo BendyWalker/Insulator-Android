@@ -1,8 +1,6 @@
 package com.bendywalker.insulator;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.Button;
@@ -13,22 +11,14 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
     Card totalDailyDoseCard;
     TextView carbohydrateFactorSuggestion, correctiveFactorSuggestion;
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
-    boolean isMmolSelected;
-    Calculator calculator;
+    MyPreferenceManager preferenceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_factor_suggestion);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        editor = preferences.edit();
-
-        isMmolSelected = preferences
-                .getString(getString(R.string.preference_blood_glucose_units), "mmol")
-                .equals("mmol");
+        preferenceManager = new MyPreferenceManager(getApplicationContext());
 
         totalDailyDoseCard = (Card) findViewById(R.id.card_total_daily_dose);
         totalDailyDoseCard.setOnTextChangeListener(this);
@@ -42,8 +32,6 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
                 R.id.card_corrective_factor_suggestion);
         saveCorrectiveFactorButton = (Button) findViewById(R.id.button_save_corrective_factor);
         saveCorrectiveFactorButton.setOnClickListener(this);
-
-        calculator = new Calculator();
     }
 
     @Override
@@ -56,21 +44,25 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
         saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
         saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
 
-        totalDailyDose = totalDailyDoseCard.getFloatFromEntry();
+        totalDailyDose = totalDailyDoseCard.getValueFromEntryField();
         carbohydrateFactor = (500 / totalDailyDose);
 
-        if (isMmolSelected) {
+        correctiveFactor = 0;
+        switch (preferenceManager.getBloodGlucoseUnit()) {
+            case mmol:
             correctiveFactor = (100 / totalDailyDose);
-        } else {
+                break;
+            case mgdl:
             correctiveFactor = ((100 / totalDailyDose) * 18);
+                break;
         }
 
         if (totalDailyDose == 0) {
             carbohydrateFactorString = "0.0";
             correctiveFactorString = "0.0";
         } else {
-            carbohydrateFactorString = String.valueOf(calculator.getString(carbohydrateFactor));
-            correctiveFactorString = String.valueOf(calculator.getString(correctiveFactor));
+            carbohydrateFactorString = String.valueOf(Calculator.getString(carbohydrateFactor));
+            correctiveFactorString = String.valueOf(Calculator.getString(correctiveFactor));
         }
 
         carbohydrateFactorSuggestion.setText(carbohydrateFactorString);
@@ -82,23 +74,20 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
         Button button = (Button) v;
         switch (v.getId()) {
             case R.id.button_save_carbohydrate_factor:
-                float carbohydrateFactor = Float.valueOf(
+                double carbohydrateFactor = Float.valueOf(
                         carbohydrateFactorSuggestion.getText().toString());
-                editor.putFloat(getString(R.string.preference_carbohydrate_factor),
-                        carbohydrateFactor);
+                preferenceManager.setCarbohydrateFactor(carbohydrateFactor);
                 break;
 
             case R.id.button_save_corrective_factor:
-                float correctiveFactor = Float
+                double correctiveFactor = Float
                         .valueOf(correctiveFactorSuggestion.getText().toString());
-                editor.putFloat(getString(R.string.preference_corrective_factor), correctiveFactor);
+                preferenceManager.setCorrectiveFactor(correctiveFactor);
                 break;
 
             default:
                 break;
         }
-
-        editor.apply();
 
         button.setText(getString(R.string.button_saved));
         button.setEnabled(false);

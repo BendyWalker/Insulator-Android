@@ -1,13 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Preference Keys -->
-    <string name="preference_blood_glucose_units">PREF_BLOOD_GLUCOSE_UNITS</string>
-    <string name="preference_carbohydrate_factor">PREF_CARBOHYDRATE_FACTOR</string>
-    <string name="preference_corrective_factor">PREF_CORRECTIVE_FACTOR</string>
-    <string name="preference_desired_blood_glucose_level">PREF_DESIRED_BLOOD_GLUCOSE_LEVEL</string>
-    <string name="preference_first_time_open">PREF_FIRST_TIME_OPEN</string>
-    <string name="preference_carbohydrate_decimal_place">PREF_CARBOHYDRATE_DECIMAL_PLACE</string>
-
     <!-- Preference Titles -->
     <string name="preference_blood_glucose_units_title">Blood glucose units</string>
     <string name="preference_carbohydrate_decimal_place_title">Carbohydrate decimal place</string>
