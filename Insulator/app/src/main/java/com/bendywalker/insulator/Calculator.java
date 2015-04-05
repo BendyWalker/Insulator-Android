@@ -7,8 +7,7 @@ import android.preference.PreferenceManager;
 import java.text.DecimalFormat;
 
 
-public class Calculator
-{
+public class Calculator {
     private float carbohydrateFactor;
     private float correctiveFactor;
     private float desiredBloodGlucoseLevel;
@@ -16,8 +15,7 @@ public class Calculator
     private float carbohydratesInMeal;
     private boolean isMmolSelected;
 
-    public Calculator(float currentBloodGlucoseLevel, float carbohydratesInMeal, Context context)
-    {
+    public Calculator(float currentBloodGlucoseLevel, float carbohydratesInMeal, Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         this.currentBloodGlucoseLevel = convertBloodGlucoseMeasurement(currentBloodGlucoseLevel);
@@ -37,61 +35,49 @@ public class Calculator
      * Calculator should only be initialised without any arguments if it's only purpose is to
      * access the getString() method
      */
-    public Calculator()
-    {
+    public Calculator() {
 
     }
 
-    private float convertBloodGlucoseMeasurement(float bloodGlucose)
-    {
-        if (!isMmolSelected)
-        {
+    private float convertBloodGlucoseMeasurement(float bloodGlucose) {
+        if (!isMmolSelected) {
             return bloodGlucose / 18;
-        }
-        else
-        {
+        } else {
             return bloodGlucose;
         }
     }
 
-    public double getCarbohydrateDose()
-    {
+    public double getCarbohydrateDose() {
         double carbohydrateDose = 0.0;
 
-        if (carbohydrateFactor != 0)
-        {
+        if (carbohydrateFactor != 0) {
             carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
         }
 
         return carbohydrateDose;
     }
 
-    public double getCorrectiveDose()
-    {
+    public double getCorrectiveDose() {
         double correctiveDose = 0.0;
 
-        if (currentBloodGlucoseLevel != 0)
-        {
+        if (currentBloodGlucoseLevel != 0) {
             correctiveDose = (currentBloodGlucoseLevel - desiredBloodGlucoseLevel) / correctiveFactor;
         }
 
         return correctiveDose;
     }
 
-    public double getSuggestedDose()
-    {
+    public double getSuggestedDose() {
         double suggestedDose = getCarbohydrateDose() + getCorrectiveDose();
 
-        if (suggestedDose < 0)
-        {
+        if (suggestedDose < 0) {
             suggestedDose = 0.0;
         }
 
         return suggestedDose;
     }
 
-    public String getString(Double dose)
-    {
+    public String getString(Double dose) {
         DecimalFormat decimalFormat = new DecimalFormat("#0.0");
         return decimalFormat.format(dose);
     }

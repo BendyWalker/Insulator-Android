@@ -14,59 +14,48 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends ActionBarActivity
-{
+public class MainActivity extends ActionBarActivity {
     private static final int NUM_PAGES = 2;
     ViewPager pager;
     PagerAdapter pagerAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         SharedPreferences preferences = PreferenceManager
                 .getDefaultSharedPreferences(getApplicationContext());
         boolean isFirstTimeOpened = preferences
                 .getBoolean(getString(R.string.preference_first_time_open), true);
 
-        if (isFirstTimeOpened)
-        {
+        if (isFirstTimeOpened) {
             startActivity(new Intent(this, WelcomeActivity.class));
             finish();
-        }
-        else
-        {
+        } else {
             setContentView(R.layout.activity_main);
-
             pager = (ViewPager) findViewById(R.id.pager);
             pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
             pager.setAdapter(pagerAdapter);
         }
     }
 
-
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
 
         super.onResume();
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent i = new Intent(this, SettingsActivity.class);
                 startActivity(i);
@@ -79,18 +68,14 @@ public class MainActivity extends ActionBarActivity
         return false;
     }
 
-    private class ScreenSlidePagerAdapter extends FragmentPagerAdapter
-    {
-        public ScreenSlidePagerAdapter(FragmentManager fragmentManager)
-        {
+    private class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
 
         @Override
-        public Fragment getItem(int position)
-        {
-            switch (position)
-            {
+        public Fragment getItem(int position) {
+            switch (position) {
                 case 0:
                     return new VariableDataFragment();
 
@@ -103,8 +88,7 @@ public class MainActivity extends ActionBarActivity
         }
 
         @Override
-        public int getCount()
-        {
+        public int getCount() {
             return NUM_PAGES;
         }
     }

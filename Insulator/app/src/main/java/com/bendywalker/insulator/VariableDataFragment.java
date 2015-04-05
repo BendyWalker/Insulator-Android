@@ -13,23 +13,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class VariableDataFragment extends Fragment implements Card.OnTextChangeListener
-{
+public class VariableDataFragment extends Fragment implements Card.OnTextChangeListener {
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView, carbohydrateDoseTextView, correctiveDoseTextView;
     LinearLayout root;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_variable, container, false);
 
         currentBloodGlucoseLevelCard = (Card) view
@@ -47,17 +44,14 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.variable, menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_reset:
                 resetCards();
                 break;
@@ -72,15 +66,13 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         resetCards();
 
         super.onResume();
     }
 
-    private void resetCards()
-    {
+    private void resetCards() {
         currentBloodGlucoseLevelCard.resetEntry();
         carbohydratesInMealCard.resetEntry();
         suggestedInsulinDoseTextView.setText("0.0");
@@ -90,13 +82,12 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
     }
 
     @Override
-    public void onTextChange()
-    {
+    public void onTextChange() {
         float currentBloodGlucoseLevel = currentBloodGlucoseLevelCard.getFloatFromEntry();
         float carbohydratesInMeal = carbohydratesInMealCard.getFloatFromEntry();
 
         Calculator calculator = new Calculator(currentBloodGlucoseLevel, carbohydratesInMeal,
-                                               getActivity());
+                getActivity());
 
         suggestedInsulinDoseTextView
                 .setText(String.valueOf(calculator.getString(calculator.getSuggestedDose())));

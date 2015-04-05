@@ -17,8 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class WelcomePage2Fragment extends Fragment
-{
+public class WelcomePage2Fragment extends Fragment {
     CardView bloodGlucoseUnitsCard, continueCard;
     RadioGroup bloodGlucoseUnitsRadioGroup;
     Button continueButton;
@@ -26,15 +25,13 @@ public class WelcomePage2Fragment extends Fragment
     SharedPreferences preferences;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_welcome_page_2, container, false);
 
         bloodGlucoseUnitsCard = (CardView) view
@@ -45,11 +42,9 @@ public class WelcomePage2Fragment extends Fragment
 
         continueCard = (CardView) view.findViewById(R.id.card_continue);
         continueButton = (Button) view.findViewById(R.id.button_continue);
-        continueButton.setOnClickListener(new View.OnClickListener()
-        {
+        continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 savePreferences();
                 ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage3Fragment());
             }
@@ -62,13 +57,11 @@ public class WelcomePage2Fragment extends Fragment
         return view;
     }
 
-    private void savePreferences()
-    {
+    private void savePreferences() {
         SharedPreferences.Editor editor = preferences.edit();
 
         String bloodGlucoseUnit = "";
-        switch (bloodGlucoseUnitsRadioGroup.getCheckedRadioButtonId())
-        {
+        switch (bloodGlucoseUnitsRadioGroup.getCheckedRadioButtonId()) {
             case R.id.card_blood_glucose_measurement_radio_button_mmol:
                 bloodGlucoseUnit = "mmol";
                 break;
@@ -82,8 +75,7 @@ public class WelcomePage2Fragment extends Fragment
         editor.apply();
     }
 
-    private void addAnimationsToCards()
-    {
+    private void addAnimationsToCards() {
         int offset = getResources().getInteger(R.integer.animation_offset);
         int offsetMultiplier = 1;
 
@@ -97,8 +89,7 @@ public class WelcomePage2Fragment extends Fragment
                 .loadAnimation(getActivity(), R.anim.slide_in_up);
         animations.add(continueAnimation);
 
-        for (Animation animation : animations)
-        {
+        for (Animation animation : animations) {
             animation.setStartOffset(offset * offsetMultiplier);
             offsetMultiplier++;
         }

@@ -9,20 +9,18 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class FactorSuggestionActivity extends ActionBarActivity implements Card.OnTextChangeListener, View.OnClickListener
-{
+public class FactorSuggestionActivity extends ActionBarActivity implements Card.OnTextChangeListener, View.OnClickListener {
     Card totalDailyDoseCard;
     TextView carbohydrateFactorSuggestion, correctiveFactorSuggestion;
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     boolean isMmolSelected;
+    Calculator calculator;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_factor_suggestion);
 
         preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
@@ -44,40 +42,33 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
                 R.id.card_corrective_factor_suggestion);
         saveCorrectiveFactorButton = (Button) findViewById(R.id.button_save_corrective_factor);
         saveCorrectiveFactorButton.setOnClickListener(this);
+
+        calculator = new Calculator();
     }
 
     @Override
-    public void onTextChange()
-    {
-        Calculator calculator = new Calculator();
+    public void onTextChange() {
+        double carbohydrateFactor, correctiveFactor, totalDailyDose;
+        String carbohydrateFactorString, correctiveFactorString;
 
         saveCarbohydrateFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
         saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
 
-        double carbohydrateFactor, correctiveFactor, totalDailyDose;
         totalDailyDose = totalDailyDoseCard.getFloatFromEntry();
-
         carbohydrateFactor = (500 / totalDailyDose);
 
-        if (isMmolSelected)
-        {
+        if (isMmolSelected) {
             correctiveFactor = (100 / totalDailyDose);
-        }
-        else
-        {
+        } else {
             correctiveFactor = ((100 / totalDailyDose) * 18);
         }
 
-        String carbohydrateFactorString, correctiveFactorString;
-        if (totalDailyDose == 0)
-        {
+        if (totalDailyDose == 0) {
             carbohydrateFactorString = "0.0";
             correctiveFactorString = "0.0";
-        }
-        else
-        {
+        } else {
             carbohydrateFactorString = String.valueOf(calculator.getString(carbohydrateFactor));
             correctiveFactorString = String.valueOf(calculator.getString(correctiveFactor));
         }
@@ -87,16 +78,14 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
     }
 
     @Override
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
         Button button = (Button) v;
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.button_save_carbohydrate_factor:
                 float carbohydrateFactor = Float.valueOf(
                         carbohydrateFactorSuggestion.getText().toString());
                 editor.putFloat(getString(R.string.preference_carbohydrate_factor),
-                                carbohydrateFactor);
+                        carbohydrateFactor);
                 break;
 
             case R.id.button_save_corrective_factor:

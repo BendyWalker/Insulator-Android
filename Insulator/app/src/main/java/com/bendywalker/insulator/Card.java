@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class Card extends RelativeLayout
-{
+public class Card extends RelativeLayout {
 
     static boolean textChangeRunning;
     boolean isMmolSelected, isCarbohydrateDecimalPlaceEnabled;
@@ -33,8 +32,7 @@ public class Card extends RelativeLayout
     private String prefKey;
     private SharedPreferences preferences;
 
-    public Card(final Context context, AttributeSet attrs)
-    {
+    public Card(final Context context, AttributeSet attrs) {
         super(context, attrs);
 
         final LayoutInflater inflater = (LayoutInflater) context
@@ -44,15 +42,14 @@ public class Card extends RelativeLayout
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
 
         // This is related to displaying view correctly within layout preview
-        if (!isInEditMode())
-        {
+        if (!isInEditMode()) {
             isMmolSelected = (preferences
                     .getString(context.getString(R.string.preference_blood_glucose_units), "mmol"))
                     .equals("mmol");
 
             isCarbohydrateDecimalPlaceEnabled = (preferences
                     .getBoolean(context.getString(R.string.preference_carbohydrate_decimal_place),
-                                false));
+                            false));
         }
 
         label = (TextView) findViewById(R.id.card_title);
@@ -61,13 +58,10 @@ public class Card extends RelativeLayout
 
         entry.addTextChangedListener(new MyTextWatcher());
         entry.setOnFocusChangeListener(new MyOnFocusChangeListener());
-        entry.setOnEditorActionListener(new TextView.OnEditorActionListener()
-        {
+        entry.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event)
-            {
-                if (actionId == EditorInfo.IME_ACTION_DONE)
-                {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
                     entry.clearFocus();
 
                     InputMethodManager inputMethodManager = (InputMethodManager) context
@@ -83,15 +77,12 @@ public class Card extends RelativeLayout
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.Card, 0, 0);
 
-        try
-        {
+        try {
             prefKey = typedArray.getString(R.styleable.Card_prefKey);
             label.setText(typedArray.getString(R.styleable.Card_labelText));
             info.setText(typedArray.getString(R.styleable.Card_infoText));
             entry.setHint(typedArray.getString(R.styleable.Card_hintText));
-        }
-        finally
-        {
+        } finally {
             typedArray.recycle();
         }
 
@@ -100,12 +91,9 @@ public class Card extends RelativeLayout
                 getId() == R.id.card_corrective_factor ||
                 getId() == R.id.card_current_blood_glucose_level);
 
-        if (isCardGlucoseLevel && isMmolSelected)
-        {
+        if (isCardGlucoseLevel && isMmolSelected) {
             entry.setHint(getResources().getString(R.string.hint_mmol));
-        }
-        else if (isCardGlucoseLevel && !isMmolSelected)
-        {
+        } else if (isCardGlucoseLevel && !isMmolSelected) {
             entry.setHint(getResources().getString(R.string.hint_mgdl));
         }
     }
@@ -116,37 +104,30 @@ public class Card extends RelativeLayout
      * @param s
      * @param et
      */
-    public static void addDecimalPlace(CharSequence s, EditText et)
-    {
+    public static void addDecimalPlace(CharSequence s, EditText et) {
         List<Integer> storedPoints = new ArrayList<Integer>();
 
-        if (!textChangeRunning)
-        {
+        if (!textChangeRunning) {
             textChangeRunning = true;
 
             StringBuilder decimalPlaceAuto = new StringBuilder(s.toString());
 
             while (decimalPlaceAuto.length() > 2 && decimalPlaceAuto
-                    .charAt(0) == '0' || decimalPlaceAuto.charAt(0) == '.')
-            {
+                    .charAt(0) == '0' || decimalPlaceAuto.charAt(0) == '.') {
                 decimalPlaceAuto.deleteCharAt(0);
             }
 
-            for (int i = 0; i < decimalPlaceAuto.length(); i++)
-            {
-                if (decimalPlaceAuto.charAt(i) == '.')
-                {
+            for (int i = 0; i < decimalPlaceAuto.length(); i++) {
+                if (decimalPlaceAuto.charAt(i) == '.') {
                     storedPoints.add(i);
                 }
             }
 
-            for (int i = 0; i < storedPoints.size(); i++)
-            {
+            for (int i = 0; i < storedPoints.size(); i++) {
                 decimalPlaceAuto.deleteCharAt(storedPoints.get(i));
             }
 
-            while (decimalPlaceAuto.length() < 2)
-            {
+            while (decimalPlaceAuto.length() < 2) {
                 decimalPlaceAuto.insert(0, '0');
             }
 
@@ -162,51 +143,39 @@ public class Card extends RelativeLayout
     }
 
     // Methods
-    public void resetEntry()
-    {
+    public void resetEntry() {
         entry.setText("");
     }
 
-    public String getStringFromEntry()
-    {
+    public String getStringFromEntry() {
         return entry.getText().toString();
     }
 
-    public float getFloatFromEntry()
-    {
+    public float getFloatFromEntry() {
         String string = entry.getText().toString();
 
-        if (string.isEmpty())
-        {
+        if (string.isEmpty()) {
             return 0;
-        }
-        else
-        {
+        } else {
             return Float.valueOf(string);
         }
     }
 
-    public void setEntryFromFloat(Float flot)
-    {
-        if (shouldDecimalPlaceBeDisplayed(getId()))
-        {
+    public void setEntryFromFloat(Float flot) {
+        if (shouldDecimalPlaceBeDisplayed(getId())) {
             entry.setText(String.valueOf(flot));
-        }
-        else
-        {
+        } else {
             int noDecimalFlot = Math.round(flot);
             entry.setText(String.valueOf(noDecimalFlot));
         }
 
     }
 
-    public boolean isEntryFilled()
-    {
+    public boolean isEntryFilled() {
         return (entry.getText().toString().length() > 0);
     }
 
-    private boolean shouldDecimalPlaceBeDisplayed(int cardId)
-    {
+    private boolean shouldDecimalPlaceBeDisplayed(int cardId) {
         boolean isCardCarbohydratesInMeal = (cardId == R.id.card_carbohydrates_in_meal);
 
         boolean isCardGlucoseLevel = (cardId == R.id.card_desired_blood_glucose_level ||
@@ -215,100 +184,77 @@ public class Card extends RelativeLayout
 
         boolean isTotalDailyDoseCard = (cardId == R.id.card_total_daily_dose);
 
-        if (isCardCarbohydratesInMeal)
-        {
+        if (isCardCarbohydratesInMeal) {
             return isCarbohydrateDecimalPlaceEnabled;
-        }
-        else if (isCardGlucoseLevel)
-        {
+        } else if (isCardGlucoseLevel) {
             return isMmolSelected;
-        }
-        else if (isTotalDailyDoseCard)
-        {
+        } else if (isTotalDailyDoseCard) {
             return false;
         }
 
         return true;
     }
 
-    public void setOnTextChangeListener(OnTextChangeListener textChangeListener)
-    {
+    public void setOnTextChangeListener(OnTextChangeListener textChangeListener) {
         this.textChangeListener = textChangeListener;
     }
 
-    public interface OnTextChangeListener
-    {
+    public interface OnTextChangeListener {
         void onTextChange();
     }
 
-    public class MyOnClickListener implements OnClickListener
-    {
+    public class MyOnClickListener implements OnClickListener {
 
         @Override
-        public void onClick(View v)
-        {
+        public void onClick(View v) {
             entry.requestFocus();
             entry.selectAll();
         }
     }
 
-    private class MyTextWatcher implements TextWatcher
-    {
+    private class MyTextWatcher implements TextWatcher {
         @Override
-        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3)
-        {
+        public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
 
         }
 
         @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count)
-        {
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
             modifyText(s, shouldDecimalPlaceBeDisplayed(getId()));
 
-            if (textChangeListener != null)
-            {
+            if (textChangeListener != null) {
                 textChangeListener.onTextChange();
             }
         }
 
         @Override
-        public void afterTextChanged(Editable editable)
-        {
+        public void afterTextChanged(Editable editable) {
 
         }
 
-        private void modifyText(CharSequence s, boolean addDecimal)
-        {
-            if (entry.length() > 0)
-            {
-                if (addDecimal)
-                {
+        private void modifyText(CharSequence s, boolean addDecimal) {
+            if (entry.length() > 0) {
+                if (addDecimal) {
                     addDecimalPlace(s, entry);
                 }
 
                 entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                                  getResources().getDimension(R.dimen.text_card_entry_filled));
-            }
-            else
-            {
+                        getResources().getDimension(R.dimen.text_card_entry_filled));
+            } else {
                 entry.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                                  getResources().getDimension(R.dimen.text_card_entry_empty));
+                        getResources().getDimension(R.dimen.text_card_entry_empty));
             }
         }
     }
 
-    private class MyOnFocusChangeListener implements OnFocusChangeListener
-    {
+    private class MyOnFocusChangeListener implements OnFocusChangeListener {
 
         @Override
-        public void onFocusChange(View v, boolean hasFocus)
-        {
-            if (!hasFocus)
-            {
+        public void onFocusChange(View v, boolean hasFocus) {
+            if (!hasFocus) {
                 float entryFloat = getFloatFromEntry();
 
-                if (entryFloat != 0 && prefKey != null)
-                {
+                if (entryFloat != 0 && prefKey != null) {
                     preferences.edit().putFloat(prefKey, entryFloat).commit();
                 }
             }

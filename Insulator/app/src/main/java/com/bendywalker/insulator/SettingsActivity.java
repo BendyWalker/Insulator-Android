@@ -13,49 +13,40 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 
-public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener
-{
+public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
     Preference bloodGlucoseMeasurementPreference;
+    String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
     SharedPreferences preferences;
 
-    String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
-
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.preferences);
 
         LinearLayout bar;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-        {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             LinearLayout root = (LinearLayout) findViewById(android.R.id.list).getParent()
-                                                                              .getParent()
-                                                                              .getParent();
+                    .getParent()
+                    .getParent();
             bar = (LinearLayout) LayoutInflater.from(this)
-                                               .inflate(R.layout.preferences_toolbar, root, false);
+                    .inflate(R.layout.preferences_toolbar, root, false);
             root.addView(bar, 0);
-        }
-        else
-        {
+        } else {
             ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
             ListView content = (ListView) root.getChildAt(0);
 
             root.removeAllViews();
 
             bar = (LinearLayout) LayoutInflater.from(this)
-                                               .inflate(R.layout.preferences_toolbar, root, false);
+                    .inflate(R.layout.preferences_toolbar, root, false);
             root.addView(bar);
 
             int height;
             TypedValue tv = new TypedValue();
-            if (getTheme().resolveAttribute(R.attr.actionBarSize, tv, true))
-            {
+            if (getTheme().resolveAttribute(R.attr.actionBarSize, tv, true)) {
                 height = TypedValue
                         .complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
-            }
-            else
-            {
+            } else {
                 height = bar.getHeight();
             }
 
@@ -76,8 +67,7 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
     }
 
     @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue)
-    {
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
         String value = (String) newValue;
         boolean isValueMmol = value.equals("mmol");
         SharedPreferences.Editor editor = preferences.edit();
@@ -86,21 +76,17 @@ public class SettingsActivity extends PreferenceActivity implements Preference.O
                 .getFloat(desiredBloodGlucoseLevelKey, 0);
         float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
 
-        if (isValueMmol)
-        {
+        if (isValueMmol) {
             savedDesiredBloodGlucoseLevelFloat = savedDesiredBloodGlucoseLevelFloat / 18;
             savedCorrectiveFactorFloat = savedCorrectiveFactorFloat / 18;
-        }
-        else if (!isValueMmol)
-        {
+        } else if (!isValueMmol) {
             savedDesiredBloodGlucoseLevelFloat = savedDesiredBloodGlucoseLevelFloat * 18;
             savedCorrectiveFactorFloat = savedCorrectiveFactorFloat * 18;
         }
 
         editor.putFloat(desiredBloodGlucoseLevelKey,
-                        savedDesiredBloodGlucoseLevelFloat);
+                savedDesiredBloodGlucoseLevelFloat);
         editor.putFloat(correctiveFactorKey, savedCorrectiveFactorFloat);
-
         editor.apply();
 
         return true;

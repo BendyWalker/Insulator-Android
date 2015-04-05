@@ -16,22 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeListener
-{
+public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeListener {
     Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
     CardView continueCard;
     Button continueButton;
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_welcome_page_3, container, false);
 
         desiredBloodGlucoseLevelCard = (Card) view
@@ -47,11 +44,9 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
         continueCard = (CardView) view.findViewById(R.id.card_continue);
 
         continueButton = (Button) view.findViewById(R.id.button_continue);
-        continueButton.setOnClickListener(new View.OnClickListener()
-        {
+        continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
+            public void onClick(View v) {
                 InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
                         .getSystemService(
                                 Context.INPUT_METHOD_SERVICE);
@@ -66,8 +61,7 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
         return view;
     }
 
-    private void addAnimationsToCards()
-    {
+    private void addAnimationsToCards() {
         int offset = getResources().getInteger(R.integer.animation_offset);
         int offsetMultiplier = 1;
 
@@ -89,8 +83,7 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
                 .loadAnimation(getActivity(), R.anim.slide_in_up);
         animations.add(continueAnimation);
 
-        for (Animation animation : animations)
-        {
+        for (Animation animation : animations) {
             animation.setStartOffset(offset * offsetMultiplier);
             offsetMultiplier++;
         }
@@ -102,8 +95,7 @@ public class WelcomePage3Fragment extends Fragment implements Card.OnTextChangeL
     }
 
     @Override
-    public void onTextChange()
-    {
+    public void onTextChange() {
         continueButton.setEnabled(
                 desiredBloodGlucoseLevelCard.isEntryFilled() && carbohydrateFactorCard
                         .isEntryFilled() && correctiveFactorCard.isEntryFilled());

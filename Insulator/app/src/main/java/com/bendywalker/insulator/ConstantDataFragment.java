@@ -13,22 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-public class ConstantDataFragment extends Fragment
-{
+public class ConstantDataFragment extends Fragment {
     Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
+    String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
     SharedPreferences preferences;
 
-    String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
-
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
-
         preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
         desiredBloodGlucoseLevelKey = getString(R.string.preference_desired_blood_glucose_level);
         carbohydrateFactorKey = getString(R.string.preference_carbohydrate_factor);
         correctiveFactorKey = getString(R.string.preference_corrective_factor);
@@ -36,8 +30,7 @@ public class ConstantDataFragment extends Fragment
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_constant, container, false);
 
         desiredBloodGlucoseLevelCard = (Card) view
@@ -50,17 +43,14 @@ public class ConstantDataFragment extends Fragment
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.constant, menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_factor_suggestion:
                 getActivity()
                         .startActivity(new Intent(getActivity(), FactorSuggestionActivity.class));
@@ -70,32 +60,27 @@ public class ConstantDataFragment extends Fragment
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         restoreValuesToCards();
 
         super.onResume();
     }
 
-    private void restoreValuesToCards()
-    {
+    private void restoreValuesToCards() {
         float savedDesiredBloodGlucoseLevelFloat = preferences
                 .getFloat(desiredBloodGlucoseLevelKey, 0);
         float savedCarbohydrateFactorFloat = preferences.getFloat(carbohydrateFactorKey, 0);
         float savedCorrectiveFactorFloat = preferences.getFloat(correctiveFactorKey, 0);
 
-        if (savedDesiredBloodGlucoseLevelFloat != 0)
-        {
+        if (savedDesiredBloodGlucoseLevelFloat != 0) {
             desiredBloodGlucoseLevelCard.setEntryFromFloat(savedDesiredBloodGlucoseLevelFloat);
         }
 
-        if (savedCarbohydrateFactorFloat != 0)
-        {
+        if (savedCarbohydrateFactorFloat != 0) {
             carbohydrateFactorCard.setEntryFromFloat(savedCarbohydrateFactorFloat);
         }
 
-        if (savedCorrectiveFactorFloat != 0)
-        {
+        if (savedCorrectiveFactorFloat != 0) {
             correctiveFactorCard.setEntryFromFloat(savedCorrectiveFactorFloat);
         }
     }
