@@ -20,8 +20,9 @@ public class WelcomeActivity extends ActionBarActivity {
     }
 
     public void goForwardToFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction().
-                replace(R.id.container, fragment).commit();
+        getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left).replace(R.id.container, fragment).commit();
+    }
+
     public MyPreferenceManager getPreferenceManager() {
         return preferenceManager;
     }
