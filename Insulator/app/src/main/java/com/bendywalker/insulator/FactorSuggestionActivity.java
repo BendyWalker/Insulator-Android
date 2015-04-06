@@ -41,8 +41,8 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
 
         saveCarbohydrateFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setText(getString(R.string.button_save));
-        saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
-        saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
+        saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFieldFilled());
+        saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFieldFilled());
 
         totalDailyDose = totalDailyDoseCard.getValueFromEntryField();
         carbohydrateFactor = (500 / totalDailyDose);

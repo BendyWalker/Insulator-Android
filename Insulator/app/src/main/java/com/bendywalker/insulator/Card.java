@@ -36,7 +36,9 @@ public class Card extends RelativeLayout {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.card, this);
 
-        preferenceManager = new MyPreferenceManager(context);
+        if (!isInEditMode()) {
+            preferenceManager = new MyPreferenceManager(context);
+        }
 
         label = (TextView) findViewById(R.id.card_title);
         info = (TextView) findViewById(R.id.card_info);
@@ -78,19 +80,22 @@ public class Card extends RelativeLayout {
                 getId() == R.id.card_current_blood_glucose_level);
 
         if (isCardGlucoseLevel) {
-            switch (preferenceManager.getBloodGlucoseUnit()) {
-                case mmol:
-                    entry.setHint(getResources().getString(R.string.hint_mmol));
-                    break;
-                case mgdl:
-                    entry.setHint(getResources().getString(R.string.hint_mgdl));
+            if (!isInEditMode()) {
+                switch (preferenceManager.getBloodGlucoseUnit()) {
+                    case mmol:
+                        entry.setHint(getResources().getString(R.string.hint_mmol));
+                        break;
+                    case mgdl:
+                        entry.setHint(getResources().getString(R.string.hint_mgdl));
+                }
+            } else {
+                entry.setHint(getResources().getString(R.string.hint_mmol));
             }
         }
     }
 
     /**
      * Adds a point to one decimal place of a string of characters.
-     *
      */
     public static void addDecimalPlace(CharSequence s, EditText et) {
         List<Integer> storedPoints = new ArrayList<>();
@@ -155,7 +160,7 @@ public class Card extends RelativeLayout {
 
     }
 
-    public boolean isEntryFilled() {
+    public boolean isEntryFieldFilled() {
         return (entry.getText().toString().length() > 0);
     }
 
@@ -169,13 +174,21 @@ public class Card extends RelativeLayout {
         boolean isTotalDailyDoseCard = (cardId == R.id.card_total_daily_dose);
 
         if (isCardCarbohydratesInMeal) {
-            return preferenceManager.allowFloatingPointCarbohydrates();
+            if (!isInEditMode()) {
+                return preferenceManager.allowFloatingPointCarbohydrates();
+            } else {
+                return false;
+            }
         } else if (isCardGlucoseLevel) {
-            switch (preferenceManager.getBloodGlucoseUnit()) {
-                case mmol:
-                    return true;
-                case mgdl:
-                    return false;
+            if (!isInEditMode()) {
+                switch (preferenceManager.getBloodGlucoseUnit()) {
+                    case mmol:
+                        return true;
+                    case mgdl:
+                        return false;
+                }
+            } else {
+                return true;
             }
         } else if (isTotalDailyDoseCard) {
             return false;

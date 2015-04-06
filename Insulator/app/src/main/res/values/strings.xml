@@ -42,7 +42,7 @@
     <string name="info_current_blood_glucose_level">Enter your current blood glucose level</string>
     <string name="info_desired_blood_glucose_level">Enter your desired blood glucose level</string>
     <string name="info_corrective_factor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
-    <string name="info_welcome_intro">Insulator is the quickest way to easily calculate insulin doses. Over the next few screens, you\'ll input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
+    <string name="info_welcome_intro">Insulator is the quickest way to easily calculate insulin doses. Scroll down to input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
     <string name="info_welcome_complete">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters provided.\n\nPlease remember: Insulator\'s suggestion should only be used as a guideline.</string>
     <string name="info_factor_suggestion">If you\'re unsure of either your carbohydrate or corrective factor, Insulator can give you suggestions.\n\nEnter your total daily dose below, and tap Save on the suggestions you\'re happy with.</string>
 
