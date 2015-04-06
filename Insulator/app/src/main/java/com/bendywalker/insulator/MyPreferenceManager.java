@@ -49,7 +49,7 @@ public class MyPreferenceManager {
     }
 
     public void setBloodGlucoseUnit(BloodGlucoseUnit bloodGlucoseUnit) {
-        editor.putString(KEY_BLOOD_GLUCOSE_UNIT, bloodGlucoseUnit.toString());
+        editor.putString(KEY_BLOOD_GLUCOSE_UNIT, bloodGlucoseUnit.toString()).apply();
     }
 
     public double getCarbohydrateFactor() {
@@ -57,7 +57,7 @@ public class MyPreferenceManager {
     }
 
     public void setCarbohydrateFactor(double carbohydrateFactor) {
-        editor.putFloat(KEY_CARBOHYDRATE_FACTOR, (float) carbohydrateFactor);
+        editor.putFloat(KEY_CARBOHYDRATE_FACTOR, (float) carbohydrateFactor).apply();
     }
 
     public double getCorrectiveFactor() {
@@ -65,7 +65,7 @@ public class MyPreferenceManager {
     }
 
     public void setCorrectiveFactor(double correctiveFactor) {
-        editor.putFloat(KEY_CORRECTIVE_FACTOR, (float) correctiveFactor);
+        editor.putFloat(KEY_CORRECTIVE_FACTOR, (float) correctiveFactor).apply();
     }
 
     public double getDesiredBloodGlucose() {
@@ -73,7 +73,7 @@ public class MyPreferenceManager {
     }
 
     public void setDesiredBloodGlucose(double desiredBloodGlucose) {
-        editor.putFloat(KEY_DESIRED_BLOOD_GLUCOSE, (float) desiredBloodGlucose);
+        editor.putFloat(KEY_DESIRED_BLOOD_GLUCOSE, (float) desiredBloodGlucose).apply();
     }
 
     public void setValueFromKey(double value, String key) {
