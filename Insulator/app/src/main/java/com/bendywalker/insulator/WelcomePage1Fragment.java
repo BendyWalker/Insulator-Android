@@ -14,9 +14,10 @@ import android.widget.RadioGroup;
 
 public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeListener {
     CardView bloodGlucoseUnitsCard;
-    Card desiredBloodGlucoseLevelCard, carbohydrateFactorCard, correctiveFactorCard;
+    Card desiredBloodGlucoseCard, carbohydrateFactorCard, correctiveFactorCard;
     RadioGroup bloodGlucoseUnitsRadioGroup;
     MenuItem continueButton;
+    MyPreferenceManager preferenceManager;
 
     boolean areEntryFieldsFilled, isBloodGlucoseUnitSelected;
 
@@ -31,6 +32,8 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_welcome_page_1, container, false);
 
+        preferenceManager = ((WelcomeActivity) getActivity()).getPreferenceManager();
+
         bloodGlucoseUnitsCard = (CardView) view
                 .findViewById(R.id.card_blood_glucose_measurement);
         bloodGlucoseUnitsRadioGroup = (RadioGroup) view
@@ -44,9 +47,9 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
             }
         });
 
-                desiredBloodGlucoseLevelCard = (Card) view
+                desiredBloodGlucoseCard = (Card) view
                         .findViewById(R.id.card_desired_blood_glucose_level);
-        desiredBloodGlucoseLevelCard.setOnTextChangeListener(this);
+        desiredBloodGlucoseCard.setOnTextChangeListener(this);
 
         carbohydrateFactorCard = (Card) view.findViewById(R.id.card_carbohydrate_factor);
         carbohydrateFactorCard.setOnTextChangeListener(this);
@@ -68,6 +71,20 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_continue:
+                switch (bloodGlucoseUnitsRadioGroup.getCheckedRadioButtonId()) {
+                    case R.id.card_blood_glucose_measurement_radio_button_mmol:
+                        preferenceManager.setBloodGlucoseUnit(BloodGlucoseUnit.mmol);
+                        break;
+                    case R.id.card_blood_glucose_measurement_radio_button_mgdl:
+                        preferenceManager.setBloodGlucoseUnit(BloodGlucoseUnit.mgdl);
+                }
+
+                preferenceManager.setCarbohydrateFactor(carbohydrateFactorCard.getValueFromEntryField());
+                preferenceManager.setCorrectiveFactor(correctiveFactorCard.getValueFromEntryField());
+                preferenceManager.setDesiredBloodGlucose(desiredBloodGlucoseCard.getValueFromEntryField());
+
+                preferenceManager.setIsFirstTimeOpen(false);
+
                 ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage2Fragment());
                 break;
         }
@@ -77,7 +94,7 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
 
     @Override
     public void onTextChange() {
-        areEntryFieldsFilled = desiredBloodGlucoseLevelCard.isEntryFieldFilled() && carbohydrateFactorCard
+        areEntryFieldsFilled = desiredBloodGlucoseCard.isEntryFieldFilled() && carbohydrateFactorCard
                 .isEntryFieldFilled() && correctiveFactorCard.isEntryFieldFilled();
         toggleButtonEnabledState();
     }

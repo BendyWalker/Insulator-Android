@@ -29,9 +29,6 @@ public class WelcomePage2Fragment extends Fragment {
 
         readyToUseCard = (CardView) view.findViewById(R.id.card_ready_to_use);
 
-        MyPreferenceManager preferenceManager = new MyPreferenceManager(getActivity());
-        preferenceManager.setIsFirstTimeOpen(false);
-
         return view;
     }
 
