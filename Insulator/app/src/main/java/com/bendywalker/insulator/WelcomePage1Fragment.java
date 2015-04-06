@@ -79,10 +79,6 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
                         preferenceManager.setBloodGlucoseUnit(BloodGlucoseUnit.mgdl);
                 }
 
-                preferenceManager.setCarbohydrateFactor(carbohydrateFactorCard.getValueFromEntryField());
-                preferenceManager.setCorrectiveFactor(correctiveFactorCard.getValueFromEntryField());
-                preferenceManager.setDesiredBloodGlucose(desiredBloodGlucoseCard.getValueFromEntryField());
-
                 preferenceManager.setIsFirstTimeOpen(false);
 
                 ((WelcomeActivity) getActivity()).goForwardToFragment(new WelcomePage2Fragment());
