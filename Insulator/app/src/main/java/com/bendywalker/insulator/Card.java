@@ -157,7 +157,6 @@ public class Card extends RelativeLayout {
             long integer = Math.round(value);
             entry.setText(String.valueOf(integer));
         }
-
     }
 
     public boolean isEntryFieldFilled() {

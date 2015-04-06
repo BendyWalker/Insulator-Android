@@ -13,7 +13,6 @@ import android.widget.ListView;
 
 public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
     Preference bloodGlucoseUnitPreference;
-    String desiredBloodGlucoseLevelKey, carbohydrateFactorKey, correctiveFactorKey;
     MyPreferenceManager preferenceManager;
 
     @Override

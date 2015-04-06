@@ -3,6 +3,7 @@
 
     <item
         android:id="@+id/action_continue"
-        app:showAsAction="always"
-        android:title="@string/button_continue" />
+        android:enabled="false"
+        android:title="@string/button_continue"
+        app:showAsAction="always" />
 </menu>
