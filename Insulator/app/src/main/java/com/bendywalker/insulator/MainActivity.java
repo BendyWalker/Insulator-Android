@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
             pager = (ViewPager) findViewById(R.id.pager);
             pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
             pager.setAdapter(pagerAdapter);
-        }
+       }
     }
 
     @Override

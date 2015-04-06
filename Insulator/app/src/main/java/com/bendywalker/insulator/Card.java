@@ -75,6 +75,10 @@ public class Card extends RelativeLayout {
         }
 
         // Changes the hint text of cards related to glucose level based on the preference chose
+        updateHint();
+    }
+
+    public void updateHint() {
         boolean isCardGlucoseLevel = (getId() == R.id.card_desired_blood_glucose_level ||
                 getId() == R.id.card_corrective_factor ||
                 getId() == R.id.card_current_blood_glucose_level);
@@ -256,7 +260,7 @@ public class Card extends RelativeLayout {
                 double value = getValueFromEntryField();
 
                 if (value != 0 && prefKey != null) {
-                    preferenceManager.editor.putFloat(prefKey, (float) value).commit();
+                    preferenceManager.setValueFromKey(value, prefKey);
                 }
             }
         }

@@ -89,6 +89,10 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
                 break;
             case R.id.card_blood_glucose_measurement_radio_button_mgdl:
                 preferenceManager.setBloodGlucoseUnit(BloodGlucoseUnit.mgdl);
+                break;
         }
+
+        correctiveFactorCard.updateHint();
+        desiredBloodGlucoseCard.updateHint();
     }
 }
