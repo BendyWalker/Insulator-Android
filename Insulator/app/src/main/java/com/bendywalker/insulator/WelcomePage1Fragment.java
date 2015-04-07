@@ -3,7 +3,7 @@ package com.bendywalker.insulator;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.SwitchCompat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,10 +14,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.RadioGroup;
 
 
-public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeListener, RadioGroup.OnCheckedChangeListener {
-    CardView bloodGlucoseUnitsCard;
+public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeListener, RadioGroup.OnCheckedChangeListener, View.OnClickListener {
     Card desiredBloodGlucoseCard, carbohydrateFactorCard, correctiveFactorCard;
     RadioGroup bloodGlucoseUnitsRadioGroup;
+    SwitchCompat floatingPointCarbohydrateSwitch;
     MenuItem continueButton;
     MyPreferenceManager preferenceManager;
 
@@ -34,12 +34,13 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
 
         preferenceManager = ((WelcomeActivity) getActivity()).getPreferenceManager();
 
-        bloodGlucoseUnitsCard = (CardView) view
-                .findViewById(R.id.card_blood_glucose_measurement);
         bloodGlucoseUnitsRadioGroup = (RadioGroup) view
                 .findViewById(R.id.card_blood_glucose_measurement_radio_group);
         bloodGlucoseUnitsRadioGroup.check(R.id.card_blood_glucose_measurement_radio_button_mmol);
         bloodGlucoseUnitsRadioGroup.setOnCheckedChangeListener(this);
+
+        floatingPointCarbohydrateSwitch = (SwitchCompat) view.findViewById(R.id.card_floating_point_carbohydrates_switch);
+        floatingPointCarbohydrateSwitch.setOnClickListener(this);
 
         desiredBloodGlucoseCard = (Card) view
                 .findViewById(R.id.card_desired_blood_glucose_level);
@@ -94,5 +95,12 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
 
         correctiveFactorCard.updateHint();
         desiredBloodGlucoseCard.updateHint();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.card_floating_point_carbohydrates_switch) {
+            preferenceManager.setAllowFloatingPointCarbohydrates(floatingPointCarbohydrateSwitch.isChecked());
+        }
     }
 }
