@@ -1,9 +1,9 @@
-#Insulator for Android
+# Insulator for Android
 
 ## Description
 Insulator is a fast, efficient way for Type 1 Diabetics to calculate the amount of insulin needed to bring their blood sugar to a healthy level. It's the best insulin calculator for Android.
 
-Insulator uses standard formulas sanctioned by the [NHS](www.nhs.uk) and [DAFNE](http://www.dafne.uk.com), including the insulin-to-carb ratio, the 500 rule and the 100 rule. It supports half units and both mmol/L & mg/dL, so diabetics all over the world can enjoy simplified insulin calculations.
+Insulator uses standard formulas sanctioned by the [NHS](www.nhs.uk) and [DAFNE](http://www.dafne.uk.com), including the insulin-to-carb ratio, the 500 rule and the 100 rule. It supports both mmol/L & mg/dL so diabetics all over the world can enjoy simplified insulin calculations.
 
 The interface is designed to be clean, focused, simple-to-understand and easy-to-use, whilst adhering to the Android Design Guidelines.
 
@@ -17,6 +17,13 @@ The best way for Type 1 Diabetics to quickly calculate insulin doses.
 
 
 ## Change Log
+### 3.1
+3.1 introduces Google's new design language, Material Design, bringing further refinement to the user interface.
+
+People complained that the old icon looked too much like the Tinder icon, so I went back to the drawing board and came up with something entirely new!
+
+Half-units have been removed. All dose suggestions are now rounded to one decimal place. Accuracy prevails!
+
 ### 3.0.1
 Fixed some small bugs and made a number of aesthetic improvements.
 
@@ -24,8 +31,6 @@ Fixed some small bugs and made a number of aesthetic improvements.
 Version 3.0 brings a great new designed inspired by Google Now. The main screen is now divided into two halves; one for variable data and your calculations, and one for persistent data. Calculations are now done on the fly as you enter your values.
 
 Features that saw little use or added unneeded complication such as the Total Daily Dose calculator have been removed to streamline the user experience.
-
-If you enjoy Insulator, please leave a review on Google Play.
 
 ### 2.3.0
 Total Daily Dose Calculator: If you're unsure of what you're total daily dose is, Insulator can now help you calculate it
