@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class FactorSuggestionActivity extends ActionBarActivity implements Card.OnTextChangeListener, View.OnClickListener {
     Card totalDailyDoseCard;
-    TextView carbohydrateFactorSuggestion, correctiveFactorSuggestion;
+    TextView carbohydrateFactorSuggestionTextView, correctiveFactorSuggestionTextView;
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;
     MyPreferenceManager preferenceManager;
 
@@ -23,12 +23,12 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
         totalDailyDoseCard = (Card) findViewById(R.id.card_total_daily_dose);
         totalDailyDoseCard.setOnTextChangeListener(this);
 
-        carbohydrateFactorSuggestion = (TextView) findViewById(
+        carbohydrateFactorSuggestionTextView = (TextView) findViewById(
                 R.id.card_carbohydrate_factor_suggestion);
         saveCarbohydrateFactorButton = (Button) findViewById(R.id.button_save_carbohydrate_factor);
         saveCarbohydrateFactorButton.setOnClickListener(this);
 
-        correctiveFactorSuggestion = (TextView) findViewById(
+        correctiveFactorSuggestionTextView = (TextView) findViewById(
                 R.id.card_corrective_factor_suggestion);
         saveCorrectiveFactorButton = (Button) findViewById(R.id.button_save_corrective_factor);
         saveCorrectiveFactorButton.setOnClickListener(this);
@@ -65,8 +65,8 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
             correctiveFactorString = String.valueOf(Calculator.getString(correctiveFactor));
         }
 
-        carbohydrateFactorSuggestion.setText(carbohydrateFactorString);
-        correctiveFactorSuggestion.setText(correctiveFactorString);
+        carbohydrateFactorSuggestionTextView.setText(carbohydrateFactorString);
+        correctiveFactorSuggestionTextView.setText(correctiveFactorString);
     }
 
     @Override
@@ -74,14 +74,14 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
         Button button = (Button) v;
         switch (v.getId()) {
             case R.id.button_save_carbohydrate_factor:
-                double carbohydrateFactor = Float.valueOf(
-                        carbohydrateFactorSuggestion.getText().toString());
+                double carbohydrateFactor = Double.valueOf(
+                        carbohydrateFactorSuggestionTextView.getText().toString());
                 preferenceManager.setCarbohydrateFactor(carbohydrateFactor);
                 break;
 
             case R.id.button_save_corrective_factor:
-                double correctiveFactor = Float
-                        .valueOf(correctiveFactorSuggestion.getText().toString());
+                double correctiveFactor = Double
+                        .valueOf(correctiveFactorSuggestionTextView.getText().toString());
                 preferenceManager.setCorrectiveFactor(correctiveFactor);
                 break;
 

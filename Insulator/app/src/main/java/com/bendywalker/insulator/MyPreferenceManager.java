@@ -20,6 +20,7 @@ public class MyPreferenceManager {
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = preferences.edit();
         Resources resources = context.getResources();
+
         KEY_IS_FIRST_TIME_OPEN = resources.getString(R.string.key_is_first_time_open);
         KEY_ALLOW_FLOATING_POINT_CARBOHYDRATES = resources.getString(R.string.key_allow_floating_point_carbohydrates);
         KEY_BLOOD_GLUCOSE_UNIT = resources.getString(R.string.key_blood_glucose_unit);
@@ -53,27 +54,27 @@ public class MyPreferenceManager {
     }
 
     public double getCarbohydrateFactor() {
-        return preferences.getFloat(KEY_CARBOHYDRATE_FACTOR, 0);
+        return Double.valueOf(preferences.getString(KEY_CARBOHYDRATE_FACTOR, "0.0"));
     }
 
     public void setCarbohydrateFactor(double carbohydrateFactor) {
-        editor.putFloat(KEY_CARBOHYDRATE_FACTOR, (float) carbohydrateFactor).apply();
+        editor.putString(KEY_CARBOHYDRATE_FACTOR,  String.valueOf(carbohydrateFactor)).apply();
     }
 
     public double getCorrectiveFactor() {
-        return preferences.getFloat(KEY_CORRECTIVE_FACTOR, 0);
+        return Double.valueOf(preferences.getString(KEY_CORRECTIVE_FACTOR, "0.0"));
     }
 
     public void setCorrectiveFactor(double correctiveFactor) {
-        editor.putFloat(KEY_CORRECTIVE_FACTOR, (float) correctiveFactor).apply();
+        editor.putString(KEY_CORRECTIVE_FACTOR, String.valueOf(correctiveFactor)).apply();
     }
 
     public double getDesiredBloodGlucose() {
-        return preferences.getFloat(KEY_DESIRED_BLOOD_GLUCOSE, 0);
+        return Double.valueOf(preferences.getString(KEY_DESIRED_BLOOD_GLUCOSE, "0.0"));
     }
 
     public void setDesiredBloodGlucose(double desiredBloodGlucose) {
-        editor.putFloat(KEY_DESIRED_BLOOD_GLUCOSE, (float) desiredBloodGlucose).apply();
+        editor.putString(KEY_DESIRED_BLOOD_GLUCOSE, String.valueOf(desiredBloodGlucose)).apply();
     }
 
     public void setValueFromKey(double value, String key) {

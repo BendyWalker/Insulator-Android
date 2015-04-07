@@ -32,7 +32,6 @@ public class ConstantDataFragment extends Fragment {
         carbohydrateFactorCard = (Card) view.findViewById(R.id.card_carbohydrate_factor);
         correctiveFactorCard = (Card) view.findViewById(R.id.card_corrective_factor);
 
-        restoreValuesToCards();
         return view;
     }
 
@@ -56,7 +55,6 @@ public class ConstantDataFragment extends Fragment {
     @Override
     public void onResume() {
         restoreValuesToCards();
-
         super.onResume();
     }
 
