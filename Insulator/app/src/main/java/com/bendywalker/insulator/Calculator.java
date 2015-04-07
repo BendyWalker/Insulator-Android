@@ -3,11 +3,14 @@ package com.bendywalker.insulator;
 import java.text.DecimalFormat;
 
 public class Calculator {
+    private static final int MGDL_CONVERSION_VALUE = 18;
+
     private double carbohydrateFactor;
     private double correctiveFactor;
     private double desiredBloodGlucose;
     private double currentBloodGlucose;
     private double carbohydratesInMeal;
+    private double totalDailyDose;
     private BloodGlucoseUnit bloodGlucoseUnit;
 
     public Calculator(double carbohydrateFactor, double correctiveFactor, double desiredBloodGlucose, double currentBloodGlucose, double carbohydratesInMeal, BloodGlucoseUnit bloodGlucoseUnit) {
@@ -19,12 +22,17 @@ public class Calculator {
         this.bloodGlucoseUnit = bloodGlucoseUnit;
     }
 
+    public Calculator(double totalDailyDose, BloodGlucoseUnit bloodGlucoseUnit) {
+        this.totalDailyDose = totalDailyDose;
+        this.bloodGlucoseUnit = bloodGlucoseUnit;
+    }
+
     private double convertBloodGlucose(double bloodGlucose) {
         switch (bloodGlucoseUnit) {
             case mmol:
                 return bloodGlucose;
             case mgdl:
-                return bloodGlucose / 18;
+                return bloodGlucose / MGDL_CONVERSION_VALUE;
             default:
                 return bloodGlucose;
         }
@@ -50,14 +58,31 @@ public class Calculator {
         return correctiveDose;
     }
 
-    public double getSuggestedDose() {
-        double suggestedDose = getCarbohydrateDose() + getCorrectiveDose();
+    public double getTotalDose() {
+        double totalDose = getCarbohydrateDose() + getCorrectiveDose();
 
-        if (suggestedDose < 0) {
-            suggestedDose = 0.0;
+        if (totalDose < 0) {
+            totalDose = 0.0;
         }
 
-        return suggestedDose;
+        return totalDose;
+    }
+
+    public double getCarbohydrateFactor() {
+        return 500 / totalDailyDose;
+    }
+
+    public double getCorrectiveFactor() {
+        double correctiveFactor = 0.0;
+        switch (bloodGlucoseUnit) {
+            case mmol:
+                correctiveFactor = 100 / totalDailyDose;
+                break;
+            case mgdl:
+                correctiveFactor = (100 / totalDailyDose) * MGDL_CONVERSION_VALUE;
+        }
+
+        return correctiveFactor;
     }
 
     public static String getString(Double value) {

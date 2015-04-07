@@ -36,8 +36,9 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
 
     @Override
     public void onTextChange() {
-        double carbohydrateFactor, correctiveFactor, totalDailyDose;
+        double totalDailyDose;
         String carbohydrateFactorString, correctiveFactorString;
+        BloodGlucoseUnit bloodGlucoseUnit;
 
         saveCarbohydrateFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setText(getString(R.string.button_save));
@@ -45,24 +46,15 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
         saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFieldFilled());
 
         totalDailyDose = totalDailyDoseCard.getValueFromEntryField();
-        carbohydrateFactor = (500 / totalDailyDose);
-
-        correctiveFactor = 0;
-        switch (preferenceManager.getBloodGlucoseUnit()) {
-            case mmol:
-            correctiveFactor = (100 / totalDailyDose);
-                break;
-            case mgdl:
-            correctiveFactor = ((100 / totalDailyDose) * 18);
-                break;
-        }
+        bloodGlucoseUnit = preferenceManager.getBloodGlucoseUnit();
+        Calculator calculator = new Calculator(totalDailyDose, bloodGlucoseUnit);
 
         if (totalDailyDose == 0) {
             carbohydrateFactorString = "0.0";
             correctiveFactorString = "0.0";
         } else {
-            carbohydrateFactorString = String.valueOf(Calculator.getString(carbohydrateFactor));
-            correctiveFactorString = String.valueOf(Calculator.getString(correctiveFactor));
+            carbohydrateFactorString = String.valueOf(Calculator.getString(calculator.getCarbohydrateFactor()));
+            correctiveFactorString = String.valueOf(Calculator.getString(calculator.getCorrectiveFactor()));
         }
 
         carbohydrateFactorSuggestionTextView.setText(carbohydrateFactorString);
