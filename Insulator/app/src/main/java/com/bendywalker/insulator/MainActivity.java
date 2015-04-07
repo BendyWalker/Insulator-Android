@@ -1,6 +1,8 @@
 package com.bendywalker.insulator;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,7 +25,17 @@ public class MainActivity extends ActionBarActivity {
 
         MyPreferenceManager preferenceManager = new MyPreferenceManager(getApplicationContext());
 
-        if (preferenceManager.isFirstTimeOpen()) {
+        PackageInfo pInfo;
+        try {
+            pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
+            if (preferenceManager.getVersionCode() < pInfo.versionCode) {
+                preferenceManager.setVersionCode(pInfo.versionCode);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (preferenceManager.isFirstRun()) {
             startActivity(new Intent(this, WelcomeActivity.class));
             finish();
         } else {
@@ -31,7 +43,7 @@ public class MainActivity extends ActionBarActivity {
             pager = (ViewPager) findViewById(R.id.pager);
             pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
             pager.setAdapter(pagerAdapter);
-       }
+        }
     }
 
     @Override

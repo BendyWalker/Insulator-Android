@@ -9,7 +9,8 @@ public class MyPreferenceManager {
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
-    private static String KEY_IS_FIRST_TIME_OPEN;
+    private static String KEY_VERSION_CODE;
+    private static String KEY_IS_FIRST_RUN;
     private static String KEY_ALLOW_FLOATING_POINT_CARBOHYDRATES;
     private static String KEY_BLOOD_GLUCOSE_UNIT;
     private static String KEY_CARBOHYDRATE_FACTOR;
@@ -21,7 +22,8 @@ public class MyPreferenceManager {
         editor = preferences.edit();
         Resources resources = context.getResources();
 
-        KEY_IS_FIRST_TIME_OPEN = resources.getString(R.string.key_is_first_time_open);
+        KEY_VERSION_CODE = resources.getString(R.string.key_version_code);
+        KEY_IS_FIRST_RUN = resources.getString(R.string.key_is_first_run);
         KEY_ALLOW_FLOATING_POINT_CARBOHYDRATES = resources.getString(R.string.key_allow_floating_point_carbohydrates);
         KEY_BLOOD_GLUCOSE_UNIT = resources.getString(R.string.key_blood_glucose_unit);
         KEY_CARBOHYDRATE_FACTOR = resources.getString(R.string.key_carbohydrate_factor);
@@ -29,12 +31,20 @@ public class MyPreferenceManager {
         KEY_DESIRED_BLOOD_GLUCOSE = resources.getString(R.string.key_desired_blood_glucose);
     }
 
-    public boolean isFirstTimeOpen() {
-        return preferences.getBoolean(KEY_IS_FIRST_TIME_OPEN, true);
+    public long getVersionCode() {
+        return preferences.getLong(KEY_VERSION_CODE, 0);
     }
 
-    public void setIsFirstTimeOpen(boolean isFirstTimeOpen) {
-        editor.putBoolean(KEY_IS_FIRST_TIME_OPEN, isFirstTimeOpen).apply();
+    public void setVersionCode(long versionCode) {
+        editor.putLong(KEY_VERSION_CODE, versionCode).apply();
+    }
+
+    public boolean isFirstRun() {
+        return preferences.getBoolean(KEY_IS_FIRST_RUN, true);
+    }
+
+    public void setIsFirstRun(boolean isFirstRun) {
+        editor.putBoolean(KEY_IS_FIRST_RUN, isFirstRun).apply();
     }
 
     public boolean allowFloatingPointCarbohydrates() {

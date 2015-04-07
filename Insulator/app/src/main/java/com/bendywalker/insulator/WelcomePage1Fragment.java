@@ -65,7 +65,7 @@ public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeL
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_continue:
-                preferenceManager.setIsFirstTimeOpen(false);
+                preferenceManager.setIsFirstRun(false);
                 InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
                         Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(carbohydrateFactorCard.getWindowToken(), 0);
