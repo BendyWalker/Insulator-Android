@@ -1,82 +1,50 @@
 <resources>
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
-        -->
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <!-- Application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
         <item name="android:textColorHighlight">@color/default_highlight</item>
-        <item name="android:textSelectHandleLeft">@drawable/apptheme_text_select_handle_left</item>
-        <item name="android:textSelectHandleRight">@drawable/apptheme_text_select_handle_right
-        </item>
-        <item name="android:textSelectHandle">@drawable/apptheme_text_select_handle_middle</item>
-
-        <item name="android:listChoiceIndicatorMultiple">@drawable/apptheme_btn_check_holo_light
-        </item>
-
-        <item name="android:listChoiceIndicatorSingle">@drawable/apptheme_btn_radio_holo_light
-        </item>
     </style>
 
-    <!-- Card Elements -->
+    <!-- Card elements -->
     <style name="CardBase">
-        <item name="android:background">@drawable/layerlist_card</item>
-        <item name="android:paddingTop">@dimen/spacing_default_150_percent</item>
-        <item name="android:paddingBottom">@dimen/spacing_default_150_percent</item>
-        <item name="android:paddingLeft">@dimen/spacing_default_200_percent</item>
-        <item name="android:paddingRight">@dimen/spacing_default_200_percent</item>
+        <item name="cardBackgroundColor">@android:color/white</item>
+        <item name="contentPadding">@dimen/spacing_default_100_percent</item>
+        <item name="cardUseCompatPadding">true</item>
     </style>
 
-    <style name="CardTitleText">
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:textSize">@dimen/text_card_title</item>
-        <item name="android:textColor">@color/card_text_primary</item>
-        <item name="android:layout_marginBottom">@dimen/spacing_default_100_percent</item>
-
+    <style name="CardTitleText" parent="Base.TextAppearance.AppCompat.Headline">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_default_50_percent</item>
     </style>
 
-    <style name="CardInfoText">
-        <item name="android:fontFamily">sans-serif-light</item>
-        <item name="android:textSize">@dimen/text_card_info</item>
-    </style>
 
-    <style name="CardInfoText.Primary" parent="CardInfoText">
-        <item name="android:textColor">@color/card_text_primary</item>
+    <style name="CardInfoText" parent="Base.TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/card_text_light</item>
 
-    </style>
-
-    <style name="CardInfoText.Secondary" parent="CardInfoText">
-        <item name="android:textColor">@color/card_text_secondary</item>
     </style>
 
     <style name="CardEntryText">
-        <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">@dimen/text_card_entry_empty</item>
         <item name="android:textColor">@drawable/selector_card_entry</item>
         <item name="android:inputType">number</item>
         <item name="android:imeOptions">actionDone</item>
-        <item name="android:textCursorDrawable">@android:color/transparent</item>
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:textColorHint">@drawable/selector_card_entry_hint</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColorHint">@color/card_text_light</item>
         <item name="android:maxLength">5</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:gravity">center</item>
+        <item name="android:layout_marginRight">@dimen/spacing_default_100_percent</item>
     </style>
 
-    <style name="CardButton">
+    <style name="CardButton" parent="Base.TextAppearance.AppCompat.Button">
         <item name="android:textColor">@drawable/selector_button</item>
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:textSize">@dimen/text_card_button</item>
-        <item name="android:fontFamily">sans-serif</item>
     </style>
 
+
+    <style name="TextAppearance.Widget.AppCompat.Toolbar.Title.DarkActionBar" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
 </resources>

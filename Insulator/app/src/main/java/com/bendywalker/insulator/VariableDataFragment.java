@@ -9,25 +9,26 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class VariableDataFragment extends Fragment implements Card.OnTextChangeListener
-{
+public class VariableDataFragment extends Fragment implements Card.OnTextChangeListener {
+    LinearLayout root;
     Card currentBloodGlucoseLevelCard, carbohydratesInMealCard;
     TextView suggestedInsulinDoseTextView, carbohydrateDoseTextView, correctiveDoseTextView;
 
+    MyPreferenceManager preferenceManager;
+
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState)
-    {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_variable, container, false);
 
         currentBloodGlucoseLevelCard = (Card) view
@@ -36,25 +37,25 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
         suggestedInsulinDoseTextView = (TextView) view.findViewById(R.id.suggested_dose);
         carbohydrateDoseTextView = (TextView) view.findViewById(R.id.carbohydrate_dose);
         correctiveDoseTextView = (TextView) view.findViewById(R.id.corrective_dose);
+        root = (LinearLayout) view.findViewById(R.id.root);
 
         currentBloodGlucoseLevelCard.setOnTextChangeListener(this);
         carbohydratesInMealCard.setOnTextChangeListener(this);
+
+        preferenceManager = new MyPreferenceManager(getActivity());
 
         return view;
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.variable, menu);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_reset:
                 resetCards();
                 break;
@@ -69,38 +70,34 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
     }
 
     @Override
-    public void onResume()
-    {
+    public void onResume() {
         resetCards();
 
         super.onResume();
     }
 
-    private void resetCards()
-    {
-        currentBloodGlucoseLevelCard.resetEntry();
-        carbohydratesInMealCard.resetEntry();
+    private void resetCards() {
+        currentBloodGlucoseLevelCard.resetEntryField();
+        carbohydratesInMealCard.resetEntryField();
         suggestedInsulinDoseTextView.setText("0.0");
         carbohydrateDoseTextView.setText("0.0");
         correctiveDoseTextView.setText("0.0");
+        root.requestFocus();
     }
 
     @Override
-    public void onTextChange()
-    {
-        float currentBloodGlucoseLevel = currentBloodGlucoseLevelCard.getFloatFromEntry();
-        float carbohydratesInMeal = carbohydratesInMealCard.getFloatFromEntry();
+    public void onTextChange() {
+        double currentBloodGlucose = currentBloodGlucoseLevelCard.getValueFromEntryField();
+        double carbohydratesInMeal = carbohydratesInMealCard.getValueFromEntryField();
 
-        Calculator calculator = new Calculator(currentBloodGlucoseLevel, carbohydratesInMeal,
-                                               getActivity());
+        Calculator calculator = new Calculator(preferenceManager.getCarbohydrateFactor(), preferenceManager.getCorrectiveFactor(), preferenceManager.getDesiredBloodGlucose(), currentBloodGlucose, carbohydratesInMeal, preferenceManager.getBloodGlucoseUnit());
 
         suggestedInsulinDoseTextView
-                .setText(String.valueOf(calculator.getCalculatedInsulinDose(true)));
+                .setText(String.valueOf(Calculator.getString(calculator.getTotalDose())));
 
-        carbohydrateDoseTextView.setText(String.valueOf(calculator.getCalculatedCarbohydrateDose(
-                true)));
+        carbohydrateDoseTextView.setText(String.valueOf(Calculator.getString(calculator.getCarbohydrateDose())));
 
         correctiveDoseTextView
-                .setText(String.valueOf(calculator.getCalculatedCorrectiveDose(true)));
+                .setText(String.valueOf(Calculator.getString(calculator.getCorrectiveDose())));
     }
 }

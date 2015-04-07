@@ -1,167 +1,85 @@
 package com.bendywalker.insulator;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 
-
-public class FactorSuggestionActivity extends Activity implements Card.OnTextChangeListener, View.OnClickListener
-{
+public class FactorSuggestionActivity extends ActionBarActivity implements Card.OnTextChangeListener, View.OnClickListener {
     Card totalDailyDoseCard;
-    RelativeLayout welcomeCard, carbohydrateFactorCard, correctiveFactorCard;
-    TextView carbohydrateFactorSuggestion, correctiveFactorSuggestion;
+    TextView carbohydrateFactorSuggestionTextView, correctiveFactorSuggestionTextView;
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
-    boolean isHalfUnitsEnabled, isMmolSelected;
+    MyPreferenceManager preferenceManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_factor_suggestion);
 
-        preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        editor = preferences.edit();
-
-        isHalfUnitsEnabled = preferences
-                .getBoolean(getString(R.string.preference_half_units), false);
-
-        isMmolSelected = preferences
-                .getString(getString(R.string.preference_blood_glucose_units), "mmol")
-                .equals("mmol");
-
-        welcomeCard = (RelativeLayout) findViewById(R.id.card_welcome);
+        preferenceManager = new MyPreferenceManager(getApplicationContext());
 
         totalDailyDoseCard = (Card) findViewById(R.id.card_total_daily_dose);
         totalDailyDoseCard.setOnTextChangeListener(this);
 
-        carbohydrateFactorCard = (RelativeLayout) findViewById(R.id.card_carbohydrate_factor);
-        carbohydrateFactorSuggestion = (TextView) findViewById(
+        carbohydrateFactorSuggestionTextView = (TextView) findViewById(
                 R.id.card_carbohydrate_factor_suggestion);
         saveCarbohydrateFactorButton = (Button) findViewById(R.id.button_save_carbohydrate_factor);
         saveCarbohydrateFactorButton.setOnClickListener(this);
 
-        correctiveFactorCard = (RelativeLayout) findViewById(R.id.card_corrective_factor);
-        correctiveFactorSuggestion = (TextView) findViewById(
+        correctiveFactorSuggestionTextView = (TextView) findViewById(
                 R.id.card_corrective_factor_suggestion);
         saveCorrectiveFactorButton = (Button) findViewById(R.id.button_save_corrective_factor);
         saveCorrectiveFactorButton.setOnClickListener(this);
-
-        addAnimationsToCards();
-    }
-
-    private void addAnimationsToCards()
-    {
-        int offset = getResources().getInteger(R.integer.animation_offset);
-        int offsetMultiplier = 1;
-
-        List<Animation> animations = new ArrayList<Animation>();
-
-        Animation welcomeCardAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(welcomeCardAnimation);
-
-        Animation totalDailyDoseCardAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(totalDailyDoseCardAnimation);
-
-        Animation carbohydrateFactorAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(carbohydrateFactorAnimation);
-
-        Animation correctiveFactorAnimation = AnimationUtils
-                .loadAnimation(this, R.anim.slide_in_up);
-        animations.add(correctiveFactorAnimation);
-
-        for (Animation animation : animations)
-        {
-            animation.setStartOffset(offset * offsetMultiplier);
-            offsetMultiplier++;
-        }
-
-        welcomeCard.startAnimation(welcomeCardAnimation);
-        totalDailyDoseCard.startAnimation(totalDailyDoseCardAnimation);
-        carbohydrateFactorCard.startAnimation(carbohydrateFactorAnimation);
-        correctiveFactorCard.startAnimation(correctiveFactorAnimation);
     }
 
     @Override
-    public void onTextChange()
-    {
+    public void onTextChange() {
+        double totalDailyDose;
+        String carbohydrateFactorString, correctiveFactorString;
+        BloodGlucoseUnit bloodGlucoseUnit;
+
         saveCarbohydrateFactorButton.setText(getString(R.string.button_save));
         saveCorrectiveFactorButton.setText(getString(R.string.button_save));
-        saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
-        saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFilled());
+        saveCorrectiveFactorButton.setEnabled(totalDailyDoseCard.isEntryFieldFilled());
+        saveCarbohydrateFactorButton.setEnabled(totalDailyDoseCard.isEntryFieldFilled());
 
-        double carbohydrateFactor, correctiveFactor, totalDailyDose;
-        totalDailyDose = totalDailyDoseCard.getFloatFromEntry();
+        totalDailyDose = totalDailyDoseCard.getValueFromEntryField();
+        bloodGlucoseUnit = preferenceManager.getBloodGlucoseUnit();
+        Calculator calculator = new Calculator(totalDailyDose, bloodGlucoseUnit);
 
-        DecimalFormat decimalFormat = new DecimalFormat("##.0");
-
-        carbohydrateFactor = (500 / totalDailyDose);
-
-        if (isMmolSelected)
-        {
-            correctiveFactor = (100 / totalDailyDose);
-        }
-        else
-        {
-            correctiveFactor = ((100 / totalDailyDose) * 18);
-        }
-
-        String carbohydrateFactorString, correctiveFactorString;
-        if (totalDailyDose == 0)
-        {
+        if (totalDailyDose == 0) {
             carbohydrateFactorString = "0.0";
             correctiveFactorString = "0.0";
-        }
-        else
-        {
-            carbohydrateFactorString = String.valueOf(decimalFormat.format(carbohydrateFactor));
-            correctiveFactorString = String.valueOf(decimalFormat.format(correctiveFactor));
+        } else {
+            carbohydrateFactorString = String.valueOf(Calculator.getString(calculator.getCarbohydrateFactor()));
+            correctiveFactorString = String.valueOf(Calculator.getString(calculator.getCorrectiveFactor()));
         }
 
-        carbohydrateFactorSuggestion.setText(carbohydrateFactorString);
-        correctiveFactorSuggestion.setText(correctiveFactorString);
+        carbohydrateFactorSuggestionTextView.setText(carbohydrateFactorString);
+        correctiveFactorSuggestionTextView.setText(correctiveFactorString);
     }
 
     @Override
-    public void onClick(View v)
-    {
+    public void onClick(View v) {
         Button button = (Button) v;
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.button_save_carbohydrate_factor:
-                float carbohydrateFactor = Float.valueOf(
-                        carbohydrateFactorSuggestion.getText().toString());
-                editor.putFloat(getString(R.string.preference_carbohydrate_factor),
-                                carbohydrateFactor);
+                double carbohydrateFactor = Double.valueOf(
+                        carbohydrateFactorSuggestionTextView.getText().toString());
+                preferenceManager.setCarbohydrateFactor(carbohydrateFactor);
                 break;
 
             case R.id.button_save_corrective_factor:
-                float correctiveFactor = Float
-                        .valueOf(correctiveFactorSuggestion.getText().toString());
-                editor.putFloat(getString(R.string.preference_corrective_factor), correctiveFactor);
+                double correctiveFactor = Double
+                        .valueOf(correctiveFactorSuggestionTextView.getText().toString());
+                preferenceManager.setCorrectiveFactor(correctiveFactor);
                 break;
 
             default:
                 break;
         }
-
-        editor.apply();
 
         button.setText(getString(R.string.button_saved));
         button.setEnabled(false);

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:custom="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_default_50_percent"
+        android:orientation="vertical">
+
+        <com.bendywalker.insulator.Card
+            android:id="@+id/card_carbohydrate_factor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            custom:hintText="@string/hint_grams"
+            custom:infoText="@string/info_carbohydrate_factor"
+            custom:labelText="@string/label_carbohydrate_factor"
+            custom:prefKey="@string/key_carbohydrate_factor"/>
+
+        <com.bendywalker.insulator.Card
+            android:id="@+id/card_corrective_factor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            custom:hintText="@string/hint_mmol"
+            custom:infoText="@string/info_corrective_factor"
+            custom:labelText="@string/label_corrective_factor"
+            custom:prefKey="@string/key_corrective_factor"/>
+
+        <com.bendywalker.insulator.Card
+            android:id="@+id/card_desired_blood_glucose_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            custom:hintText="@string/hint_mmol"
+            custom:infoText="@string/info_desired_blood_glucose_level"
+            custom:labelText="@string/label_desired_blood_glucose_level"
+            custom:prefKey="@string/key_desired_blood_glucose"/>
+
+    </LinearLayout>
+</ScrollView>

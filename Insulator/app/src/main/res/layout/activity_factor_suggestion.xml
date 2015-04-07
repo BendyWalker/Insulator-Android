@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
@@ -9,32 +8,38 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/default_background"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_default_50_percent">
 
-        <RelativeLayout
-            android:id="@+id/card_welcome"
+        <android.support.v7.widget.CardView
             style="@style/CardBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textview_title"
-                style="@style/CardTitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_factor_suggestions"/>
-
-            <TextView
-                android:id="@+id/textView_message"
-                style="@style/CardInfoText.Primary"
+            <RelativeLayout
+                android:id="@+id/card_welcome"
+                style="@style/CardBase"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textview_title"
-                android:layout_marginBottom="@dimen/spacing_default_100_percent"
-                android:text="@string/info_factor_suggestion"/>
-        </RelativeLayout>
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textview_title"
+                    style="@style/CardTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_factor_suggestions" />
+
+                <TextView
+                    android:id="@+id/textView_message"
+                    style="@style/CardInfoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textview_title"
+                    android:layout_marginBottom="@dimen/spacing_default_100_percent"
+                    android:text="@string/info_factor_suggestion" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
 
         <com.bendywalker.insulator.Card
             android:id="@+id/card_total_daily_dose"
@@ -42,75 +47,87 @@
             android:layout_height="wrap_content"
             app:hintText="@string/hint_units"
             app:infoText="@string/info_total_daily_dose"
-            app:labelText="@string/label_total_daily_dose"/>
+            app:labelText="@string/label_total_daily_dose" />
 
-        <RelativeLayout
-            android:id="@+id/card_carbohydrate_factor"
+        <android.support.v7.widget.CardView
             style="@style/CardBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/card_carbohydrate_factor_title"
-                style="@style/CardTitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_carbohydrate_factor"/>
+            <RelativeLayout
+                android:id="@+id/card_carbohydrate_factor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/card_carbohydrate_factor_suggestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/card_carbohydrate_factor_title"
-                android:fontFamily="sans-serif"
-                android:text="0.0"
-                android:textColor="@color/card_text_primary"
-                android:textSize="@dimen/text_card_entry_filled"/>
+                <TextView
+                    android:id="@+id/card_carbohydrate_factor_title"
+                    style="@style/CardTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_carbohydrate_factor" />
 
-            <Button
-                android:id="@+id/button_save_carbohydrate_factor"
-                style="@style/CardButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/card_carbohydrate_factor_suggestion"
-                android:layout_alignParentRight="true"
-                android:enabled="false"
-                android:text="@string/button_save"/>
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/card_carbohydrate_factor_suggestion"
+                    android:layout_width="@dimen/card_entry_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_carbohydrate_factor_title"
+                    android:gravity="center"
+                    android:text="0.0"
+                    android:textColor="@color/card_text_dark"
+                    android:textSize="@dimen/text_card_entry_filled" />
 
-        <RelativeLayout
-            android:id="@+id/card_corrective_factor"
+                <Button
+                    android:id="@+id/button_save_carbohydrate_factor"
+                    style="@style/CardButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/card_carbohydrate_factor_suggestion"
+                    android:layout_alignParentRight="true"
+                    android:enabled="false"
+                    android:text="@string/button_save" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
             style="@style/CardBase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/card_corrective_factor_title"
-                style="@style/CardTitleText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/label_corrective_factor"/>
+            <RelativeLayout
+                android:id="@+id/card_corrective_factor"
+                style="@style/CardBase"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/card_corrective_factor_suggestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/card_corrective_factor_title"
-                android:fontFamily="sans-serif"
-                android:text="0.0"
-                android:textColor="@color/card_text_primary"
-                android:textSize="@dimen/text_card_entry_filled"/>
+                <TextView
+                    android:id="@+id/card_corrective_factor_title"
+                    style="@style/CardTitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_corrective_factor" />
 
-            <Button
-                android:id="@+id/button_save_corrective_factor"
-                style="@style/CardButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/card_corrective_factor_suggestion"
-                android:layout_alignParentRight="true"
-                android:enabled="false"
-                android:text="@string/button_save"/>
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/card_corrective_factor_suggestion"
+                    android:layout_width="@dimen/card_entry_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_corrective_factor_title"
+                    android:gravity="center"
+                    android:text="0.0"
+                    android:textColor="@color/card_text_dark"
+                    android:textSize="@dimen/text_card_entry_filled" />
+
+                <Button
+                    android:id="@+id/button_save_corrective_factor"
+                    style="@style/CardButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/card_corrective_factor_suggestion"
+                    android:layout_alignParentRight="true"
+                    android:enabled="false"
+                    android:text="@string/button_save" />
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </ScrollView>

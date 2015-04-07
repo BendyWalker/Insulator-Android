@@ -1,72 +1,68 @@
 package com.bendywalker.insulator;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends FragmentActivity
-{
+public class MainActivity extends ActionBarActivity {
     private static final int NUM_PAGES = 2;
     ViewPager pager;
     PagerAdapter pagerAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SharedPreferences preferences = PreferenceManager
-                .getDefaultSharedPreferences(getApplicationContext());
-        boolean isFirstTimeOpened = preferences
-                .getBoolean(getString(R.string.preference_first_time_open), true);
 
-        if (isFirstTimeOpened)
-        {
+        MyPreferenceManager preferenceManager = new MyPreferenceManager(getApplicationContext());
+
+        PackageInfo pInfo;
+        try {
+            pInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
+            if (preferenceManager.getVersionCode() < pInfo.versionCode) {
+                preferenceManager.setVersionCode(pInfo.versionCode);
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        if (preferenceManager.isFirstRun()) {
             startActivity(new Intent(this, WelcomeActivity.class));
             finish();
-        }
-        else
-        {
+        } else {
             setContentView(R.layout.activity_main);
-
             pager = (ViewPager) findViewById(R.id.pager);
             pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
             pager.setAdapter(pagerAdapter);
         }
     }
 
-
     @Override
-    protected void onResume()
-    {
+    protected void onResume() {
         pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         pager.setAdapter(pagerAdapter);
 
         super.onResume();
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
+    public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_settings:
                 Intent i = new Intent(this, SettingsActivity.class);
                 startActivity(i);
@@ -79,23 +75,19 @@ public class MainActivity extends FragmentActivity
         return false;
     }
 
-    private class ScreenSlidePagerAdapter extends FragmentPagerAdapter
-    {
-        public ScreenSlidePagerAdapter(FragmentManager fragmentManager)
-        {
+    private class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
+        public ScreenSlidePagerAdapter(FragmentManager fragmentManager) {
             super(fragmentManager);
         }
 
         @Override
-        public Fragment getItem(int position)
-        {
-            switch (position)
-            {
+        public Fragment getItem(int position) {
+            switch (position) {
                 case 0:
                     return new VariableDataFragment();
 
                 case 1:
-                    return new PersistentDataFragment();
+                    return new ConstantDataFragment();
 
                 default:
                     return null;
@@ -103,8 +95,7 @@ public class MainActivity extends FragmentActivity
         }
 
         @Override
-        public int getCount()
-        {
+        public int getCount() {
             return NUM_PAGES;
         }
     }

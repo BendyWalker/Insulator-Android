@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Preference Keys -->
-    <string name="preference_half_units">PREF_HALF_UNITS</string>
-    <string name="preference_blood_glucose_units">PREF_BLOOD_GLUCOSE_UNITS</string>
-    <string name="preference_carbohydrate_factor">PREF_CARBOHYDRATE_FACTOR</string>
-    <string name="preference_corrective_factor">PREF_CORRECTIVE_FACTOR</string>
-    <string name="preference_desired_blood_glucose_level">PREF_DESIRED_BLOOD_GLUCOSE_LEVEL</string>
-    <string name="preference_first_time_open">PREF_FIRST_TIME_OPEN</string>
-    <string name="preference_carbohydrate_decimal_place">PREF_CARBOHYDRATE_DECIMAL_PLACE</string>
-
     <!-- Preference Titles -->
-    <string name="preference_half_units_title">Half-unit calculations</string>
     <string name="preference_blood_glucose_units_title">Blood glucose units</string>
     <string name="preference_carbohydrate_decimal_place_title">Carbohydrate decimal place</string>
 
     <!-- Preference Summaries -->
-    <string name="preference_half_units_summary">Choose between whole-unit or half-unit calculations</string>
     <string name="preference_blood_glucose_units_summary">Choose your preferred blood glucose measurement unit</string>
     <string name="preference_carbohydrate_decimal_place_summary">Toggles decimal place in \'carbohydrates in meal\' entry field</string>
 
     <!-- Page Titles -->
-    <string name="app_name" translatable="false">Insulator</string>
-    <string name="beta_name" translatable="false">Insulator (Beta)</string>
+    <string name="app_name">Insulator</string>
+    <string name="beta_name">Insulator (Beta)</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_welcome">Welcome</string>
     <string name="title_factor_suggestions">Factor Suggestions</string>
@@ -49,17 +38,13 @@
     <!-- Card Information -->
     <string name="info_carbohydrate_factor">Enter how many carbohydrates 1 unit of fast-acting insulin covers</string>
     <string name="info_carbohydrates_in_meal">Enter how many carbohydrates you consumed in your meal</string>
-    <string name="info_total_daily_dose">Enter the total amount of insulin you intake in a day (both fast-acting and long-acting)</string>
+    <string name="info_total_daily_dose">Enter the total amount of insulin (both fast-acting and long-acting) you take in a day</string>
     <string name="info_current_blood_glucose_level">Enter your current blood glucose level</string>
     <string name="info_desired_blood_glucose_level">Enter your desired blood glucose level</string>
     <string name="info_corrective_factor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
-    <string name="info_half_units">Choose between whole or half unit insulin calculations.</string>
-    <string name="info_welcome_intro">Insulator is the quickest way to easily calculate insulin doses. Over the next few screens, you\'ll input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
+    <string name="info_welcome_intro">Insulator is the quickest way to easily calculate insulin doses. Scroll down to input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
     <string name="info_welcome_complete">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters provided.\n\nPlease remember: Insulator\'s suggestion should only be used as a guideline.</string>
     <string name="info_factor_suggestion">If you\'re unsure of either your carbohydrate or corrective factor, Insulator can give you suggestions.\n\nEnter your total daily dose below, and tap Save on the suggestions you\'re happy with.</string>
-
-    <!-- Settings Strings -->
-    <string name="label_half_units_switch">Half Unit Calculations</string>
 
     <!-- Standard UI Elements -->
     <string name="button_save">Save</string>
