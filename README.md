@@ -17,6 +17,9 @@ The best way for Type 1 Diabetics to quickly calculate insulin doses.
 
 
 ## Change Log
+### 3.1.1
+Fixed bug where dose suggestions would sometimes be displayed 0.1 off from the calculated value.
+
 ### 3.1.0
 3.1 introduces Google's new design language, Material Design, bringing further refinement to the user interface.
 
