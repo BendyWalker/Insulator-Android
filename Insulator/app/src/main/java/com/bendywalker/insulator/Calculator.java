@@ -1,5 +1,6 @@
 package com.bendywalker.insulator;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class Calculator {
@@ -44,7 +45,7 @@ public class Calculator {
         if (carbohydrateFactor != 0) {
             carbohydrateDose = carbohydratesInMeal / carbohydrateFactor;
         }
-
+        carbohydrateDose = round(carbohydrateDose);
         return carbohydrateDose;
     }
 
@@ -54,7 +55,7 @@ public class Calculator {
         if (currentBloodGlucose != 0) {
             correctiveDose = (convertBloodGlucose(currentBloodGlucose) - convertBloodGlucose(desiredBloodGlucose)) / correctiveFactor;
         }
-
+        correctiveDose = round(correctiveDose);
         return correctiveDose;
     }
 
@@ -69,11 +70,14 @@ public class Calculator {
     }
 
     public double getCarbohydrateFactor() {
-        return 500 / totalDailyDose;
+        carbohydrateFactor = 500 / totalDailyDose;
+        carbohydrateFactor = round(carbohydrateFactor);
+        return carbohydrateFactor;
     }
 
     public double getCorrectiveFactor() {
         double correctiveFactor = 0.0;
+
         switch (bloodGlucoseUnit) {
             case mmol:
                 correctiveFactor = 100 / totalDailyDose;
@@ -82,11 +86,13 @@ public class Calculator {
                 correctiveFactor = (100 / totalDailyDose) * MGDL_CONVERSION_VALUE;
         }
 
+        correctiveFactor = round(correctiveFactor);
         return correctiveFactor;
     }
 
-    public static String getString(Double value) {
+    public static double round(Double value) {
         DecimalFormat decimalFormat = new DecimalFormat("#0.0");
-        return decimalFormat.format(value);
+        decimalFormat.setRoundingMode(RoundingMode.HALF_UP);
+        return Double.valueOf(decimalFormat.format(value));
     }
 }

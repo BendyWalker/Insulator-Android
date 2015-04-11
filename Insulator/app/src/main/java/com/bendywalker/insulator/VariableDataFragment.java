@@ -92,12 +92,10 @@ public class VariableDataFragment extends Fragment implements Card.OnTextChangeL
 
         Calculator calculator = new Calculator(preferenceManager.getCarbohydrateFactor(), preferenceManager.getCorrectiveFactor(), preferenceManager.getDesiredBloodGlucose(), currentBloodGlucose, carbohydratesInMeal, preferenceManager.getBloodGlucoseUnit());
 
-        suggestedInsulinDoseTextView
-                .setText(String.valueOf(Calculator.getString(calculator.getTotalDose())));
+        suggestedInsulinDoseTextView.setText(String.valueOf(calculator.getTotalDose()));
 
-        carbohydrateDoseTextView.setText(String.valueOf(Calculator.getString(calculator.getCarbohydrateDose())));
+        carbohydrateDoseTextView.setText(String.valueOf(calculator.getCarbohydrateDose()));
 
-        correctiveDoseTextView
-                .setText(String.valueOf(Calculator.getString(calculator.getCorrectiveDose())));
+        correctiveDoseTextView.setText(String.valueOf(calculator.getCorrectiveDose()));
     }
 }

@@ -53,8 +53,8 @@ public class FactorSuggestionActivity extends ActionBarActivity implements Card.
             carbohydrateFactorString = "0.0";
             correctiveFactorString = "0.0";
         } else {
-            carbohydrateFactorString = String.valueOf(Calculator.getString(calculator.getCarbohydrateFactor()));
-            correctiveFactorString = String.valueOf(Calculator.getString(calculator.getCorrectiveFactor()));
+            carbohydrateFactorString = String.valueOf(calculator.getCarbohydrateFactor());
+            correctiveFactorString = String.valueOf(calculator.getCorrectiveFactor());
         }
 
         carbohydrateFactorSuggestionTextView.setText(carbohydrateFactorString);
