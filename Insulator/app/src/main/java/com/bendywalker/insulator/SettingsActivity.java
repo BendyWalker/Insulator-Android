@@ -3,6 +3,7 @@ package com.bendywalker.insulator;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.bendywalker.insulator.billing.IabHelper;
 import com.bendywalker.insulator.billing.IabResult;
@@ -17,10 +18,19 @@ public class SettingsActivity extends ActionBarActivity {
     private static final String LARGE_TIP = "large_tip";
 
     IabHelper iabHelper;
+    TextView smallTipTitleTextView, smallTipPriceTextView, smallTipDescriptionTextView;
+    TextView largeTipTitleTextView, largeTipPriceTextView, largeTipDescriptionTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        smallTipTitleTextView = (TextView) findViewById(R.id.small_tip_title);
+        smallTipPriceTextView = (TextView) findViewById(R.id.small_tip_price);
+        smallTipDescriptionTextView = (TextView) findViewById(R.id.small_tip_description);
+        largeTipTitleTextView = (TextView) findViewById(R.id.large_tip_title);
+        largeTipPriceTextView = (TextView) findViewById(R.id.large_tip_price);
+        largeTipDescriptionTextView = (TextView) findViewById(R.id.large_tip_description);
 
         String[] licenseKeyArray = getResources().getStringArray(R.array.license_key);
         StringBuilder licenseKey = new StringBuilder();
@@ -54,6 +64,13 @@ public class SettingsActivity extends ActionBarActivity {
                 String largeTipTitle = inventory.getSkuDetails(LARGE_TIP).getTitle();
                 String largeTipDescription = inventory.getSkuDetails(LARGE_TIP).getDescription();
                 String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
+
+                smallTipTitleTextView.setText(smallTipTitle);
+                smallTipPriceTextView.setText(smallTipPrice);
+                smallTipDescriptionTextView.setText(smallTipDescription);
+                largeTipTitleTextView.setText(largeTipTitle);
+                largeTipPriceTextView.setText(largeTipPrice);
+                largeTipDescriptionTextView.setText(largeTipDescription);
             }
         });
     }
