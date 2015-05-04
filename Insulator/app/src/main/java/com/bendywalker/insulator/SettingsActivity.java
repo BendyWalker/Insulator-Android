@@ -25,6 +25,8 @@ public class SettingsActivity extends ActionBarActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setContentView(R.layout.activity_settings);
+
         smallTipTitleTextView = (TextView) findViewById(R.id.small_tip_title);
         smallTipPriceTextView = (TextView) findViewById(R.id.small_tip_price);
         smallTipDescriptionTextView = (TextView) findViewById(R.id.small_tip_description);
@@ -45,32 +47,32 @@ public class SettingsActivity extends ActionBarActivity {
                 if (result.isFailure()) {
                     Log.e(TAG, "Problem setting up In-app Billing: " + result);
                 }
-            }
-        });
 
-        List<String> skuList = new ArrayList<>();
-        skuList.add(SMALL_TIP);
-        skuList.add(LARGE_TIP);
-        iabHelper.queryInventoryAsync(true, skuList, new IabHelper.QueryInventoryFinishedListener() {
-            @Override
-            public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
-                if (result.isFailure()) {
-                    return;
-                }
+                List<String> skuList = new ArrayList<>();
+                skuList.add(SMALL_TIP);
+                skuList.add(LARGE_TIP);
+                iabHelper.queryInventoryAsync(true, skuList, new IabHelper.QueryInventoryFinishedListener() {
+                    @Override
+                    public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
+                        if (result.isFailure()) {
+                            return;
+                        }
 
-                String smallTipTitle = inventory.getSkuDetails(SMALL_TIP).getTitle();
-                String smallTipDescription = inventory.getSkuDetails(SMALL_TIP).getDescription();
-                String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
-                String largeTipTitle = inventory.getSkuDetails(LARGE_TIP).getTitle();
-                String largeTipDescription = inventory.getSkuDetails(LARGE_TIP).getDescription();
-                String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
+                        String smallTipTitle = inventory.getSkuDetails(SMALL_TIP).getTitle();
+                        String smallTipDescription = inventory.getSkuDetails(SMALL_TIP).getDescription();
+                        String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
+                        String largeTipTitle = inventory.getSkuDetails(LARGE_TIP).getTitle();
+                        String largeTipDescription = inventory.getSkuDetails(LARGE_TIP).getDescription();
+                        String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
 
-                smallTipTitleTextView.setText(smallTipTitle);
-                smallTipPriceTextView.setText(smallTipPrice);
-                smallTipDescriptionTextView.setText(smallTipDescription);
-                largeTipTitleTextView.setText(largeTipTitle);
-                largeTipPriceTextView.setText(largeTipPrice);
-                largeTipDescriptionTextView.setText(largeTipDescription);
+                        smallTipTitleTextView.setText(smallTipTitle);
+                        smallTipPriceTextView.setText(smallTipPrice);
+                        smallTipDescriptionTextView.setText(smallTipDescription);
+                        largeTipTitleTextView.setText(largeTipTitle);
+                        largeTipPriceTextView.setText(largeTipPrice);
+                        largeTipDescriptionTextView.setText(largeTipDescription);
+                    }
+                });
             }
         });
     }
