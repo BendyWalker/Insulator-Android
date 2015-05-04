@@ -6,9 +6,15 @@ import android.util.Log;
 
 import com.bendywalker.insulator.billing.IabHelper;
 import com.bendywalker.insulator.billing.IabResult;
+import com.bendywalker.insulator.billing.Inventory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SettingsActivity extends ActionBarActivity {
     private static final String TAG = "SettingsActivity";
+    private static final String SMALL_TIP = "small_tip";
+    private static final String LARGE_TIP = "large_tip";
 
     IabHelper iabHelper;
 
@@ -26,9 +32,28 @@ public class SettingsActivity extends ActionBarActivity {
         iabHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             @Override
             public void onIabSetupFinished(IabResult result) {
-                if (!result.isSuccess()) {
+                if (result.isFailure()) {
                     Log.e(TAG, "Problem setting up In-app Billing: " + result);
                 }
+            }
+        });
+
+        List<String> skuList = new ArrayList<>();
+        skuList.add(SMALL_TIP);
+        skuList.add(LARGE_TIP);
+        iabHelper.queryInventoryAsync(true, skuList, new IabHelper.QueryInventoryFinishedListener() {
+            @Override
+            public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
+                if (result.isFailure()) {
+                    return;
+                }
+
+                String smallTipTitle = inventory.getSkuDetails(SMALL_TIP).getTitle();
+                String smallTipDescription = inventory.getSkuDetails(SMALL_TIP).getDescription();
+                String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
+                String largeTipTitle = inventory.getSkuDetails(LARGE_TIP).getTitle();
+                String largeTipDescription = inventory.getSkuDetails(LARGE_TIP).getDescription();
+                String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
             }
         });
     }
