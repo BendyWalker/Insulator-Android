@@ -1,7 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout
-    android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_default_100_percent">
+
+    <RelativeLayout
+        android:id="@+id/small_tip_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:padding="@dimen/spacing_default_50_percent">
+
+        <TextView
+            android:id="@+id/small_tip_title"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Small Tip" />
+
+        <TextView
+            android:id="@+id/small_tip_price"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="£0.79"
+            android:textColor="@color/primary" />
+
+        <TextView
+            android:id="@+id/small_tip_description"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/small_tip_title"
+            android:layout_marginTop="@dimen/spacing_default_50_percent"
+            android:text="This is filler text." />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/large_tip_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_default_50_percent"
+        android:background="@android:color/white"
+        android:padding="@dimen/spacing_default_50_percent">
+
+        <TextView
+            android:id="@+id/large_tip_title"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="Small Tip" />
+
+        <TextView
+            android:id="@+id/large_tip_price"
+            style="@style/Base.TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="£0.79"
+            android:textColor="@color/primary" />
+
+        <TextView
+            android:id="@+id/large_tip_description"
+            style="@style/Base.TextAppearance.AppCompat.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/large_tip_title"
+            android:layout_marginTop="@dimen/spacing_default_50_percent"
+            android:text="This is filler text." />
+    </RelativeLayout>
+</LinearLayout>
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+
+<!--<FrameLayout-->
+    <!--android:id="@+id/container"-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
