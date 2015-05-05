@@ -1,9 +1,15 @@
 package com.bendywalker.insulator;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bendywalker.insulator.billing.IabHelper;
@@ -19,10 +25,15 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
     private static final String SMALL_TIP = "small_tip";
     private static final String LARGE_TIP = "large_tip";
 
+    String[] units;
+
+    RelativeLayout bloodGlucoseUnitContainer, floatingPointCarbohydratesContainer, smallTipContainer, largeTipContainer;
+    TextView bloodGlucoseUnitTextView, smallTipPriceTextView, largeTipPriceTextView;
+    ProgressBar smallTipProgressBar, largeTipProgressBar;
+    SwitchCompat floatingPointCarbohydratesSwitch;
 
     IabHelper iabHelper;
-    TextView smallTipTitleTextView, smallTipPriceTextView, smallTipDescriptionTextView;
-    TextView largeTipTitleTextView, largeTipPriceTextView, largeTipDescriptionTextView;
+    MyPreferenceManager preferenceManager;
 
 
     @Override
@@ -31,15 +42,46 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
 
         setContentView(R.layout.activity_settings);
 
-        smallTipTitleTextView = (TextView) findViewById(R.id.small_tip_title);
-        smallTipPriceTextView = (TextView) findViewById(R.id.small_tip_price);
-        smallTipDescriptionTextView = (TextView) findViewById(R.id.small_tip_description);
-        largeTipTitleTextView = (TextView) findViewById(R.id.large_tip_title);
-        largeTipPriceTextView = (TextView) findViewById(R.id.large_tip_price);
-        largeTipDescriptionTextView = (TextView) findViewById(R.id.large_tip_description);
+        units = getResources().getStringArray(R.array.preference_blood_glucose_units_entries);
+        preferenceManager = new MyPreferenceManager(this);
 
-        smallTipPriceTextView.setOnClickListener(this);
-        largeTipPriceTextView.setOnClickListener(this);
+        bloodGlucoseUnitContainer = (RelativeLayout) findViewById(R.id.settings_preferences_blood_glucose_unit_container);
+        floatingPointCarbohydratesContainer = (RelativeLayout) findViewById(R.id.settings_preferences_floating_point_carbohydrates_container);
+        smallTipContainer = (RelativeLayout) findViewById(R.id.settings_leave_a_tip_small_container);
+        largeTipContainer = (RelativeLayout) findViewById(R.id.settings_leave_a_tip_large_container);
+
+        bloodGlucoseUnitTextView = (TextView) findViewById(R.id.settings_preferences_blood_glucose_unit_selected);
+        smallTipPriceTextView = (TextView) findViewById(R.id.settings_leave_a_tip_small_price);
+        largeTipPriceTextView = (TextView) findViewById(R.id.settings_leave_a_tip_large_price);
+
+        smallTipProgressBar = (ProgressBar) findViewById(R.id.settings_leave_a_tip_small_progress);
+        largeTipProgressBar = (ProgressBar) findViewById(R.id.settings_leave_a_tip_large_progress);
+
+        floatingPointCarbohydratesSwitch = (SwitchCompat) findViewById(R.id.settings_preferences_floating_point_carbohydrates_switch);
+
+        String bloodGlucoseUnitString;
+        switch (preferenceManager.getBloodGlucoseUnit()) {
+            case mmol:
+                bloodGlucoseUnitString = units[0];
+                break;
+            case mgdl:
+                bloodGlucoseUnitString = units[1];
+                break;
+            default:
+                bloodGlucoseUnitString = units[0];
+        }
+        bloodGlucoseUnitTextView.setText(bloodGlucoseUnitString);
+
+        bloodGlucoseUnitContainer.setOnClickListener(this);
+        floatingPointCarbohydratesContainer.setOnClickListener(this);
+        smallTipContainer.setOnClickListener(this);
+        largeTipContainer.setOnClickListener(this);
+        floatingPointCarbohydratesSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                preferenceManager.setAllowFloatingPointCarbohydrates(isChecked);
+            }
+        });
 
         String[] licenseKeyArray = getResources().getStringArray(R.array.license_key);
         StringBuilder licenseKey = new StringBuilder();
@@ -64,19 +106,14 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                         if (result.isFailure()) {
                             Log.e(TAG, "Failed to query inventory: " + result);
                         } else {
-                            String smallTipTitle = inventory.getSkuDetails(SMALL_TIP).getTitle();
-                            String smallTipDescription = inventory.getSkuDetails(SMALL_TIP).getDescription();
                             String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
-                            String largeTipTitle = inventory.getSkuDetails(LARGE_TIP).getTitle();
-                            String largeTipDescription = inventory.getSkuDetails(LARGE_TIP).getDescription();
                             String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
-
-                            smallTipTitleTextView.setText(smallTipTitle);
                             smallTipPriceTextView.setText(smallTipPrice);
-                            smallTipDescriptionTextView.setText(smallTipDescription);
-                            largeTipTitleTextView.setText(largeTipTitle);
                             largeTipPriceTextView.setText(largeTipPrice);
-                            largeTipDescriptionTextView.setText(largeTipDescription);
+                            smallTipProgressBar.setVisibility(View.GONE);
+                            largeTipProgressBar.setVisibility(View.GONE);
+                            smallTipPriceTextView.setVisibility(View.VISIBLE);
+                            largeTipPriceTextView.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -95,7 +132,53 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.small_tip_price:
+            case R.id.settings_preferences_blood_glucose_unit_container:
+                AlertDialog.Builder bloodGlucoseUnitDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog);
+                bloodGlucoseUnitDialog.setItems(units, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        BloodGlucoseUnit bloodGlucoseUnit;
+                        String bloodGlucoseUnitString = units[which];
+
+                        switch (which) {
+                            case 0:
+                                bloodGlucoseUnit = BloodGlucoseUnit.mmol;
+                                break;
+                            case 1:
+                                bloodGlucoseUnit = BloodGlucoseUnit.mgdl;
+                                break;
+                            default:
+                                bloodGlucoseUnit = BloodGlucoseUnit.mmol;
+                                break;
+                        }
+
+                        double desiredBloodGlucose = preferenceManager.getDesiredBloodGlucose();
+                        double correctiveFactor = preferenceManager.getCorrectiveFactor();
+
+                        switch (bloodGlucoseUnit) {
+                            case mmol:
+                                desiredBloodGlucose = desiredBloodGlucose / 18;
+                                correctiveFactor = correctiveFactor / 18;
+                                break;
+                            case mgdl:
+                                desiredBloodGlucose = desiredBloodGlucose * 18;
+                                correctiveFactor = correctiveFactor * 18;
+                        }
+
+                        preferenceManager.setDesiredBloodGlucose(desiredBloodGlucose);
+                        preferenceManager.setCorrectiveFactor(correctiveFactor);
+                        preferenceManager.setBloodGlucoseUnit(bloodGlucoseUnit);
+                        bloodGlucoseUnitTextView.setText(bloodGlucoseUnitString);
+                        
+                        dialog.dismiss();
+                    }
+                });
+                bloodGlucoseUnitDialog.create().show();
+                break;
+            case R.id.settings_preferences_floating_point_carbohydrates_container:
+                floatingPointCarbohydratesSwitch.setChecked(!floatingPointCarbohydratesSwitch.isChecked());
+                preferenceManager.setAllowFloatingPointCarbohydrates(floatingPointCarbohydratesSwitch.isChecked());
+                break;
+            case R.id.settings_leave_a_tip_small_container:
                 iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
                     @Override
                     public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
@@ -114,7 +197,7 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                     }
                 });
                 break;
-            case R.id.large_tip_price:
+            case R.id.settings_leave_a_tip_large_container:
                 iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
                     @Override
                     public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
