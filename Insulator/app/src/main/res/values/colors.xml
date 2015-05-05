@@ -9,7 +9,11 @@
     <color name="default_tint_pressed">#b22700</color>
     <color name="default_highlight">#ffe1d9</color>
 
-    <!-- Card Colors -->
+    <!-- Card -->
     <color name="card_text_dark">#5c5c5c</color>
     <color name="card_text_light">#838383</color>
+
+    <!-- Settings -->
+    <color name="settings_text">#757575</color>
+    <color name="settings_line">#e0e0e0</color>
 </resources>

@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Preference Titles -->
-    <string name="preference_blood_glucose_units_title">Blood glucose units</string>
-    <string name="preference_carbohydrate_decimal_place_title">Carbohydrate decimal place</string>
-
-    <!-- Preference Summaries -->
-    <string name="preference_blood_glucose_units_summary">Choose your preferred blood glucose measurement unit</string>
-    <string name="preference_carbohydrate_decimal_place_summary">Toggles decimal place in \'carbohydrates in meal\' entry field</string>
+    <!-- Settings -->
+    <string name="settings_preferences_heading">Preferences</string>
+    <string name="settings_leave_a_tip_heading">Leave a tip</string>
+    <string name="settings_preferences_blood_glucose_unit_title">Blood glucose unit</string>
+    <string name="settings_preferences_floating_point_carbohydrates_title">Carbohydrate decimal place</string>
+    <string name="settings_preferences_blood_glucose_unit_summary">Choose your preferred blood glucose measurement unit</string>
+    <string name="settings_preferences_floating_point_carbohydrates_summary">Toggles decimal place in \'carbohydrates in meal\' entry field</string>
+    <string name="settings_leave_a_tip_small_title">Small tip</string>
+    <string name="settings_leave_a_tip_large_title">Large tip</string>
+    <string name="settings_leave_a_tip_summary">If you find Insulator useful, please consider leaving a tip to support further development of the application.</string>
+    <string name="settings_leave_a_tip_thanks">Thanks for the tip! Your support is greatly appreciated.</string>
+    <string name="settings_support_heading">Support</string>
+    <string name="settings_support_email">Email</string>
+    <string name="settings_support_email_contact">mail\@insulatorapp.com</string>
+    <string name="settings_support_twitter">Twitter</string>
+    <string name="settings_support_twitter_contact">\@insulatorapp</string>
 
     <!-- Page Titles -->
     <string name="app_name">Insulator</string>

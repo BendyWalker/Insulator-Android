@@ -2,10 +2,10 @@ package com.bendywalker.insulator;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 
 
-public class WelcomeActivity extends ActionBarActivity {
+public class WelcomeActivity extends AppCompatActivity {
     public MyPreferenceManager preferenceManager;
 
     @Override

@@ -39,4 +39,5 @@
             android:windowSoftInputMode="stateHidden|adjustResize"/>
     </application>
 
+    <uses-permission android:name="com.android.vending.BILLING"/>
 </manifest>

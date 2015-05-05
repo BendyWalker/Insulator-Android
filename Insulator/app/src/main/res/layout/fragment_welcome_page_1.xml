@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:text="@string/preference_blood_glucose_units_title" />
+                    android:text="@string/settings_preferences_blood_glucose_unit_title" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/card_blood_glucose_measurement_radio_group_container"
-                        android:text="@string/preference_blood_glucose_units_summary" />
+                        android:text="@string/settings_preferences_blood_glucose_unit_summary" />
 
                     <LinearLayout
                         android:id="@+id/card_blood_glucose_measurement_radio_group_container"
@@ -125,7 +125,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:text="@string/preference_carbohydrate_decimal_place_title" />
+                    android:text="@string/settings_preferences_floating_point_carbohydrates_title" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -157,7 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@+id/card_floating_point_carbohydrates_switch_container"
-                        android:text="@string/preference_carbohydrate_decimal_place_summary" />
+                        android:text="@string/settings_preferences_floating_point_carbohydrates_summary" />
                 </RelativeLayout>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
