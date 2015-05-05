@@ -2,6 +2,7 @@ package com.bendywalker.insulator;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.SwitchCompat;
@@ -115,6 +116,11 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                             largeTipProgressBar.setVisibility(View.GONE);
                             smallTipPriceTextView.setVisibility(View.VISIBLE);
                             largeTipPriceTextView.setVisibility(View.VISIBLE);
+
+                            if (inventory.getPurchase(SMALL_TIP) != null)
+                                iabHelper.consumeAsync(inventory.getPurchase(SMALL_TIP), onConsumeFinishedListener);
+                            if (inventory.getPurchase(LARGE_TIP) != null)
+                                iabHelper.consumeAsync(inventory.getPurchase(LARGE_TIP), onConsumeFinishedListener);
                         }
                     }
                 });
@@ -132,8 +138,6 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        final Toast toast = Toast.makeText(this, R.string.settings_leave_a_tip_thanks, Toast.LENGTH_LONG);
-
         switch (v.getId()) {
             case R.id.settings_preferences_blood_glucose_unit_container:
                 AlertDialog.Builder bloodGlucoseUnitDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog);
@@ -182,121 +186,76 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                 preferenceManager.setAllowFloatingPointCarbohydrates(floatingPointCarbohydratesSwitch.isChecked());
                 break;
             case R.id.settings_leave_a_tip_small_container:
+                smallTipPriceTextView.setVisibility(View.GONE);
+                smallTipProgressBar.setVisibility(View.VISIBLE);
+                smallTipContainer.setClickable(false);
                 if (iabHelper != null) iabHelper.flagEndAsync();
-                iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
-                    @Override
-                    public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
-                        if (result.isFailure()) {
-                            Log.e(TAG, "Failed to complete purchase: " + result);
-                        } else {
-                            iabHelper.consumeAsync(purchase, new IabHelper.OnConsumeFinishedListener() {
-                                @Override
-                                public void onConsumeFinished(Purchase purchase, IabResult result) {
-                                    if (result.isSuccess()) {
-                                        Log.d(TAG, "Successfully consumed purchase!");
-                                    }
-                                }
-                            });
-                        }
-                    }
-                });
+                iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, onIabPurchaseFinishedListener);
                 break;
             case R.id.settings_leave_a_tip_large_container:
+                largeTipPriceTextView.setVisibility(View.GONE);
+                largeTipProgressBar.setVisibility(View.VISIBLE);
+                largeTipContainer.setClickable(false);
                 if (iabHelper != null) iabHelper.flagEndAsync();
-                iabHelper.launchPurchaseFlow(this, LARGE_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
-                    @Override
-                    public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
-                        if (result.isFailure()) {
-                            Log.e(TAG, "Failed to complete purchase: " + result);
-                        } else {
-                            iabHelper.consumeAsync(purchase, new IabHelper.OnConsumeFinishedListener() {
-                                @Override
-                                public void onConsumeFinished(Purchase purchase, IabResult result) {
-                                    if (result.isSuccess()) {
-                                        Log.d(TAG, "Successfully consumed purchase!");
-                                    }
-                                }
-                            });
-                        }
-                    }
-                });
-                break;
-            default:
-                Log.d(TAG, "Default case called in onClick");
+                iabHelper.launchPurchaseFlow(this, LARGE_TIP, 2, onIabPurchaseFinishedListener);
                 break;
         }
     }
+
+    IabHelper.OnIabPurchaseFinishedListener onIabPurchaseFinishedListener = new IabHelper.OnIabPurchaseFinishedListener() {
+        @Override
+        public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
+            Log.e(TAG, "Purchase finished. Purchase: " + purchase + ", result: " + result);
+
+            if (result.isFailure()) {
+                Log.e(TAG, "Failed to complete purchase: " + purchase.toString() + " because " + result);
+                return;
+            }
+
+            iabHelper.consumeAsync(purchase, onConsumeFinishedListener);
+        }
+    };
+
+    IabHelper.OnConsumeFinishedListener onConsumeFinishedListener = new IabHelper.OnConsumeFinishedListener() {
+        @Override
+        public void onConsumeFinished(Purchase purchase, IabResult result) {
+            Log.d(TAG, "Consumption finished. Purchase: " + purchase + ", result: " + result);
+
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.settings_leave_a_tip_thanks, Toast.LENGTH_LONG);
+
+            Log.e(TAG, result.getMessage());
+            if (result.isFailure()) {
+                Log.e(TAG, "Failed to consume purchase: " + purchase.toString() + " because " + result);
+            }
+
+            if (result.isSuccess()) {
+                if (purchase.getSku().equals(SMALL_TIP)) {
+                    smallTipPriceTextView.setVisibility(View.VISIBLE);
+                    smallTipProgressBar.setVisibility(View.GONE);
+                    smallTipContainer.setClickable(true);
+                } else if (purchase.getSku().equals(LARGE_TIP)) {
+                    largeTipPriceTextView.setVisibility(View.VISIBLE);
+                    largeTipProgressBar.setVisibility(View.GONE);
+                    largeTipContainer.setClickable(true);
+                }
+            }
+
+            toast.show();
+        }
+    };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Log.d(TAG, "onActivityResult(" + requestCode + "," + resultCode + ","
+                + data);
+
+        // Pass on the activity result to the helper for handling
+        if (!iabHelper.handleActivityResult(requestCode, resultCode, data)) {
+            super.onActivityResult(requestCode, resultCode, data);
+        } else {
+            Log.d(TAG, "onActivityResult handled by IABUtil.");
+        }
+    }
 }
-
-
-//public class SettingsActivity extends PreferenceActivity implements Preference.OnPreferenceChangeListener {
-//    Preference bloodGlucoseUnitPreference;
-//    MyPreferenceManager preferenceManager;
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        addPreferencesFromResource(R.xml.preferences);
-//
-//        LinearLayout bar;
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-//            LinearLayout root = (LinearLayout) findViewById(android.R.id.list).getParent()
-//                    .getParent()
-//                    .getParent();
-//            bar = (LinearLayout) LayoutInflater.from(this)
-//                    .inflate(R.layout.preferences_toolbar, root, false);
-//            root.addView(bar, 0);
-//        } else {
-//            ViewGroup root = (ViewGroup) findViewById(android.R.id.content);
-//            ListView content = (ListView) root.getChildAt(0);
-//
-//            root.removeAllViews();
-//
-//            bar = (LinearLayout) LayoutInflater.from(this)
-//                    .inflate(R.layout.preferences_toolbar, root, false);
-//            root.addView(bar);
-//
-//            int height;
-//            TypedValue tv = new TypedValue();
-//            if (getTheme().resolveAttribute(R.attr.actionBarSize, tv, true)) {
-//                height = TypedValue
-//                        .complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
-//            } else {
-//                height = bar.getHeight();
-//            }
-//
-//            content.setPadding(0, height, 0, 0);
-//
-//            root.addView(content);
-//        }
-//
-//        preferenceManager = new MyPreferenceManager(getApplicationContext());
-//
-//        bloodGlucoseUnitPreference = findPreference(
-//                getString(R.string.key_blood_glucose_unit));
-//        bloodGlucoseUnitPreference.setOnPreferenceChangeListener(this);
-//    }
-//
-//    @Override
-//    public boolean onPreferenceChange(Preference preference, Object newValue) {
-//        String value = (String) newValue;
-//        BloodGlucoseUnit bloodGlucoseUnit = BloodGlucoseUnit.valueOf(value);
-//        double savedDesiredBloodGlucose = preferenceManager.getDesiredBloodGlucose();
-//        double savedCorrectiveFactor = preferenceManager.getCorrectiveFactor();
-//
-//        switch (bloodGlucoseUnit) {
-//            case mmol:
-//                savedDesiredBloodGlucose = savedDesiredBloodGlucose / 18;
-//                savedCorrectiveFactor = savedCorrectiveFactor / 18;
-//                break;
-//            case mgdl:
-//                savedDesiredBloodGlucose = savedDesiredBloodGlucose * 18;
-//                savedCorrectiveFactor = savedCorrectiveFactor * 18;
-//        }
-//
-//        preferenceManager.setDesiredBloodGlucose(savedDesiredBloodGlucose);
-//        preferenceManager.setCorrectiveFactor(savedCorrectiveFactor);
-//
-//        return true;
-//    }
-//}
