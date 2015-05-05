@@ -18,7 +18,7 @@ The best way for Type 1 Diabetics to quickly calculate insulin doses.
 
 ## Change Log
 ### 3.2.0
-The settings screen has been redesigned. It now feels at home with the rest of the application. In addition, you can now leave a tip to support further development of Insulator.
+The settings screen has been redesigned. In addition to receiving a facelift that makes it look as good as the rest of the app, two new sections have been added: Support provides easy access to email and Twitter; Leave a Tip allows you to directly support further development of Insulator.
 
 ### 3.1.1
 Fixed bug where dose suggestions would sometimes be displayed 0.1 off from the calculated value.
