@@ -1,13 +1,13 @@
 package com.bendywalker.insulator;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 
-public class FactorSuggestionActivity extends ActionBarActivity implements Card.OnTextChangeListener, View.OnClickListener {
+public class FactorSuggestionActivity extends AppCompatActivity implements Card.OnTextChangeListener, View.OnClickListener {
     Card totalDailyDoseCard;
     TextView carbohydrateFactorSuggestionTextView, correctiveFactorSuggestionTextView;
     Button saveCarbohydrateFactorButton, saveCorrectiveFactorButton;

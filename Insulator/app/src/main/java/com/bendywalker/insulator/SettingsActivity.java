@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +22,7 @@ import com.bendywalker.insulator.billing.Purchase;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SettingsActivity extends ActionBarActivity implements View.OnClickListener {
+public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "SettingsActivity";
     private static final String SMALL_TIP = "small_tip";
     private static final String LARGE_TIP = "large_tip";
