@@ -4,7 +4,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 public class Calculator {
-    private static final int MGDL_CONVERSION_VALUE = 18;
+    public static final int MGDL_CONVERSION_VALUE = 18;
 
     private double carbohydrateFactor;
     private double correctiveFactor;
@@ -33,7 +33,7 @@ public class Calculator {
             case mmol:
                 return bloodGlucose;
             case mgdl:
-                return bloodGlucose / MGDL_CONVERSION_VALUE;
+                return round(bloodGlucose / MGDL_CONVERSION_VALUE);
             default:
                 return bloodGlucose;
         }
@@ -53,7 +53,7 @@ public class Calculator {
         double correctiveDose = 0.0;
 
         if (currentBloodGlucose != 0) {
-            correctiveDose = (convertBloodGlucose(currentBloodGlucose) - convertBloodGlucose(desiredBloodGlucose)) / correctiveFactor;
+            correctiveDose = (convertBloodGlucose(currentBloodGlucose) - convertBloodGlucose(desiredBloodGlucose)) / convertBloodGlucose(correctiveFactor);
         }
         correctiveDose = round(correctiveDose);
         return correctiveDose;
