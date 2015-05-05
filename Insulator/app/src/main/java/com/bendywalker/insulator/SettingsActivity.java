@@ -73,6 +73,7 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                 bloodGlucoseUnitString = units[0];
         }
         bloodGlucoseUnitTextView.setText(bloodGlucoseUnitString);
+        floatingPointCarbohydratesSwitch.setChecked(preferenceManager.allowFloatingPointCarbohydrates());
 
         bloodGlucoseUnitContainer.setOnClickListener(this);
         floatingPointCarbohydratesContainer.setOnClickListener(this);
@@ -97,6 +98,7 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
             public void onIabSetupFinished(IabResult result) {
                 if (result.isFailure()) {
                     Log.e(TAG, "Failed to set up in-app billing: " + result);
+                    return;
                 }
 
                 List<String> skuList = new ArrayList<>();
