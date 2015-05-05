@@ -3,6 +3,7 @@ package com.bendywalker.insulator;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
@@ -29,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     String[] units;
 
-    RelativeLayout bloodGlucoseUnitContainer, floatingPointCarbohydratesContainer, smallTipContainer, largeTipContainer;
+    RelativeLayout bloodGlucoseUnitContainer, floatingPointCarbohydratesContainer, emailContainer, twitterContainer, smallTipContainer, largeTipContainer;
     TextView bloodGlucoseUnitTextView, smallTipPriceTextView, largeTipPriceTextView;
     ProgressBar smallTipProgressBar, largeTipProgressBar;
     SwitchCompat floatingPointCarbohydratesSwitch;
@@ -49,6 +50,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         bloodGlucoseUnitContainer = (RelativeLayout) findViewById(R.id.settings_preferences_blood_glucose_unit_container);
         floatingPointCarbohydratesContainer = (RelativeLayout) findViewById(R.id.settings_preferences_floating_point_carbohydrates_container);
+        emailContainer = (RelativeLayout) findViewById(R.id.settings_support_email_container);
+        twitterContainer = (RelativeLayout) findViewById(R.id.settings_support_twitter_container);
         smallTipContainer = (RelativeLayout) findViewById(R.id.settings_leave_a_tip_small_container);
         largeTipContainer = (RelativeLayout) findViewById(R.id.settings_leave_a_tip_large_container);
 
@@ -77,6 +80,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         bloodGlucoseUnitContainer.setOnClickListener(this);
         floatingPointCarbohydratesContainer.setOnClickListener(this);
+        emailContainer.setOnClickListener(this);
+        twitterContainer.setOnClickListener(this);
         smallTipContainer.setOnClickListener(this);
         largeTipContainer.setOnClickListener(this);
         floatingPointCarbohydratesSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -101,31 +106,33 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
 
-                List<String> skuList = new ArrayList<>();
-                skuList.add(SMALL_TIP);
-                skuList.add(LARGE_TIP);
-                iabHelper.queryInventoryAsync(true, skuList, new IabHelper.QueryInventoryFinishedListener() {
-                    @Override
-                    public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
-                        if (result.isFailure()) {
-                            Log.e(TAG, "Failed to query inventory: " + result);
-                        } else {
-                            String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
-                            String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
-                            smallTipPriceTextView.setText(smallTipPrice);
-                            largeTipPriceTextView.setText(largeTipPrice);
-                            smallTipProgressBar.setVisibility(View.GONE);
-                            largeTipProgressBar.setVisibility(View.GONE);
-                            smallTipPriceTextView.setVisibility(View.VISIBLE);
-                            largeTipPriceTextView.setVisibility(View.VISIBLE);
+                if (result.isSuccess()) {
+                    List<String> skuList = new ArrayList<>();
+                    skuList.add(SMALL_TIP);
+                    skuList.add(LARGE_TIP);
+                    iabHelper.queryInventoryAsync(true, skuList, new IabHelper.QueryInventoryFinishedListener() {
+                        @Override
+                        public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
+                            if (result.isFailure()) {
+                                Log.e(TAG, "Failed to query inventory: " + result);
+                            } else {
+                                String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
+                                String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
+                                smallTipPriceTextView.setText(smallTipPrice);
+                                largeTipPriceTextView.setText(largeTipPrice);
+                                smallTipProgressBar.setVisibility(View.GONE);
+                                largeTipProgressBar.setVisibility(View.GONE);
+                                smallTipPriceTextView.setVisibility(View.VISIBLE);
+                                largeTipPriceTextView.setVisibility(View.VISIBLE);
 
-                            if (inventory.getPurchase(SMALL_TIP) != null)
-                                iabHelper.consumeAsync(inventory.getPurchase(SMALL_TIP), onConsumeFinishedListener);
-                            if (inventory.getPurchase(LARGE_TIP) != null)
-                                iabHelper.consumeAsync(inventory.getPurchase(LARGE_TIP), onConsumeFinishedListener);
+                                if (inventory.getPurchase(SMALL_TIP) != null)
+                                    iabHelper.consumeAsync(inventory.getPurchase(SMALL_TIP), onConsumeFinishedListener);
+                                if (inventory.getPurchase(LARGE_TIP) != null)
+                                    iabHelper.consumeAsync(inventory.getPurchase(LARGE_TIP), onConsumeFinishedListener);
+                            }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
     }
@@ -187,6 +194,16 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 floatingPointCarbohydratesSwitch.setChecked(!floatingPointCarbohydratesSwitch.isChecked());
                 preferenceManager.setAllowFloatingPointCarbohydrates(floatingPointCarbohydratesSwitch.isChecked());
                 break;
+            case R.id.settings_support_email_container:
+                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                emailIntent.setType("plain/text");
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, getResources().getString(R.string.settings_support_email_contact));
+                startActivity(emailIntent);
+                break;
+            case R.id.settings_support_twitter_container:
+                Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.twitter.com/insulatorapp"));
+                startActivity(twitterIntent);
+                break;
             case R.id.settings_leave_a_tip_small_container:
                 smallTipPriceTextView.setVisibility(View.GONE);
                 smallTipProgressBar.setVisibility(View.VISIBLE);
@@ -210,11 +227,19 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             Log.e(TAG, "Purchase finished. Purchase: " + purchase + ", result: " + result);
 
             if (result.isFailure()) {
-                Log.e(TAG, "Failed to complete purchase: " + purchase.toString() + " because " + result);
+                Log.e(TAG, "Failed to complete purchase: " + result);
+                smallTipPriceTextView.setVisibility(View.VISIBLE);
+                smallTipProgressBar.setVisibility(View.GONE);
+                smallTipContainer.setClickable(true);
+                largeTipPriceTextView.setVisibility(View.VISIBLE);
+                largeTipProgressBar.setVisibility(View.GONE);
+                largeTipContainer.setClickable(true);
                 return;
             }
 
-            iabHelper.consumeAsync(purchase, onConsumeFinishedListener);
+            if (result.isSuccess()) {
+                iabHelper.consumeAsync(purchase, onConsumeFinishedListener);
+            }
         }
     };
 
@@ -231,6 +256,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             }
 
             if (result.isSuccess()) {
+                toast.show();
+
                 if (purchase.getSku().equals(SMALL_TIP)) {
                     smallTipPriceTextView.setVisibility(View.VISIBLE);
                     smallTipProgressBar.setVisibility(View.GONE);
@@ -241,8 +268,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                     largeTipContainer.setClickable(true);
                 }
             }
-
-            toast.show();
         }
     };
 

@@ -11,6 +11,11 @@
     <string name="settings_leave_a_tip_large_title">Large tip</string>
     <string name="settings_leave_a_tip_summary">If you find Insulator useful, please consider leaving a tip to support further development of the application.</string>
     <string name="settings_leave_a_tip_thanks">Thanks for the tip! Your support is greatly appreciated.</string>
+    <string name="settings_support_heading">Support</string>
+    <string name="settings_support_email">Email</string>
+    <string name="settings_support_email_contact">mail\@insulatorapp.com</string>
+    <string name="settings_support_twitter">Twitter</string>
+    <string name="settings_support_twitter_contact">\@insulatorapp</string>
 
     <!-- Page Titles -->
     <string name="app_name">Insulator</string>
