@@ -3,23 +3,27 @@ package com.bendywalker.insulator;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import com.bendywalker.insulator.billing.IabHelper;
 import com.bendywalker.insulator.billing.IabResult;
 import com.bendywalker.insulator.billing.Inventory;
+import com.bendywalker.insulator.billing.Purchase;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SettingsActivity extends ActionBarActivity {
+public class SettingsActivity extends ActionBarActivity implements View.OnClickListener {
     private static final String TAG = "SettingsActivity";
     private static final String SMALL_TIP = "small_tip";
     private static final String LARGE_TIP = "large_tip";
 
+
     IabHelper iabHelper;
     TextView smallTipTitleTextView, smallTipPriceTextView, smallTipDescriptionTextView;
     TextView largeTipTitleTextView, largeTipPriceTextView, largeTipDescriptionTextView;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,9 @@ public class SettingsActivity extends ActionBarActivity {
         largeTipPriceTextView = (TextView) findViewById(R.id.large_tip_price);
         largeTipDescriptionTextView = (TextView) findViewById(R.id.large_tip_description);
 
+        smallTipPriceTextView.setOnClickListener(this);
+        largeTipPriceTextView.setOnClickListener(this);
+
         String[] licenseKeyArray = getResources().getStringArray(R.array.license_key);
         StringBuilder licenseKey = new StringBuilder();
         for (String substring : licenseKeyArray) {
@@ -45,7 +52,7 @@ public class SettingsActivity extends ActionBarActivity {
             @Override
             public void onIabSetupFinished(IabResult result) {
                 if (result.isFailure()) {
-                    Log.e(TAG, "Problem setting up In-app Billing: " + result);
+                    Log.e(TAG, "Failed to set up in-app billing: " + result);
                 }
 
                 List<String> skuList = new ArrayList<>();
@@ -55,22 +62,22 @@ public class SettingsActivity extends ActionBarActivity {
                     @Override
                     public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
                         if (result.isFailure()) {
-                            return;
+                            Log.e(TAG, "Failed to query inventory: " + result);
+                        } else {
+                            String smallTipTitle = inventory.getSkuDetails(SMALL_TIP).getTitle();
+                            String smallTipDescription = inventory.getSkuDetails(SMALL_TIP).getDescription();
+                            String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
+                            String largeTipTitle = inventory.getSkuDetails(LARGE_TIP).getTitle();
+                            String largeTipDescription = inventory.getSkuDetails(LARGE_TIP).getDescription();
+                            String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
+
+                            smallTipTitleTextView.setText(smallTipTitle);
+                            smallTipPriceTextView.setText(smallTipPrice);
+                            smallTipDescriptionTextView.setText(smallTipDescription);
+                            largeTipTitleTextView.setText(largeTipTitle);
+                            largeTipPriceTextView.setText(largeTipPrice);
+                            largeTipDescriptionTextView.setText(largeTipDescription);
                         }
-
-                        String smallTipTitle = inventory.getSkuDetails(SMALL_TIP).getTitle();
-                        String smallTipDescription = inventory.getSkuDetails(SMALL_TIP).getDescription();
-                        String smallTipPrice = inventory.getSkuDetails(SMALL_TIP).getPrice();
-                        String largeTipTitle = inventory.getSkuDetails(LARGE_TIP).getTitle();
-                        String largeTipDescription = inventory.getSkuDetails(LARGE_TIP).getDescription();
-                        String largeTipPrice = inventory.getSkuDetails(LARGE_TIP).getPrice();
-
-                        smallTipTitleTextView.setText(smallTipTitle);
-                        smallTipPriceTextView.setText(smallTipPrice);
-                        smallTipDescriptionTextView.setText(smallTipDescription);
-                        largeTipTitleTextView.setText(largeTipTitle);
-                        largeTipPriceTextView.setText(largeTipPrice);
-                        largeTipDescriptionTextView.setText(largeTipDescription);
                     }
                 });
             }
@@ -82,6 +89,54 @@ public class SettingsActivity extends ActionBarActivity {
         super.onDestroy();
         if (iabHelper != null) iabHelper.dispose();
         iabHelper = null;
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.small_tip_price:
+                iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
+                    @Override
+                    public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
+                        if (result.isFailure()) {
+                            Log.e(TAG, "Failed to complete purchase: " + result);
+                        } else {
+                            iabHelper.consumeAsync(purchase, new IabHelper.OnConsumeFinishedListener() {
+                                @Override
+                                public void onConsumeFinished(Purchase purchase, IabResult result) {
+                                    if (result.isSuccess()) {
+                                        Log.d(TAG, "Successfully consumed purchase!");
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+                break;
+            case R.id.large_tip_price:
+                iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
+                    @Override
+                    public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
+                        if (result.isFailure()) {
+                            Log.e(TAG, "Failed to complete purchase: " + result);
+                        } else {
+                            iabHelper.consumeAsync(purchase, new IabHelper.OnConsumeFinishedListener() {
+                                @Override
+                                public void onConsumeFinished(Purchase purchase, IabResult result) {
+                                    if (result.isSuccess()) {
+                                        Log.d(TAG, "Successfully consumed purchase!");
+                                    }
+                                }
+                            });
+                        }
+                    }
+                });
+                break;
+            default:
+                Log.d(TAG, "Default case called in onClick");
+                break;
+        }
     }
 }
 
