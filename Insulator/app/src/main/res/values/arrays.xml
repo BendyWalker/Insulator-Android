@@ -9,4 +9,15 @@
         <item>mmol</item>
         <item>mgdl</item>
     </string-array>
+
+    <string-array name="license_key">
+        <item>MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi9KtIf/</item>
+        <item>USLRRG0ABuXYYutzgu22PU9HJNsdYFvYqxlZX+3o/</item>
+        <item>RDvrjlTm+gy5tnA2/AvkBmRTmls+EnAJM6v7EbMKet7J2gomAtb4w+YJ/</item>
+        <item>qvbrd6f9600W/</item>
+        <item>l+ugJIgcqhEta3GQMg7xza0QhUQBN0duwF5xaByUZu5f6Dp3wnj49EtR6Sz/</item>
+        <item>zk8DL8quximBvkVMwd01XVnEa4tpFxPAHkOo2TvkNhIsQ+KxMF/</item>
+        <item>zBXST4JpUpT3dlFCg0b6Jnf+Da8TQWu2p+7TgtBVyH9u7rZ2FFs+Esjd+J2wIeif1Zw/</item>
+        <item>0GPEf02IL18xotUS0Mzp2WP4ZuL+enyqoLB44ri9OUQRwIDAQAB</item>
+    </string-array>
 </resources>

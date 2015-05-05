@@ -1,7 +1,252 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout
-    android:id="@+id/container"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/settings_preferences_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_default_50_percent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/settings_preferences_heading"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_default_100_percent"
+                    android:text="@string/settings_preferences_heading"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/settings_preferences_blood_glucose_unit_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/spacing_default_100_percent">
+
+                    <LinearLayout
+                        android:id="@+id/settings_preferences_blood_glucose_unit_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/settings_preferences_blood_glucose_unit_selected"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/settings_preferences_blood_glucose_unit_title"
+                            style="@style/Base.TextAppearance.AppCompat.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/settings_preferences_blood_glucose_unit_title"
+                            android:textColor="@color/settings_text" />
+
+                        <TextView
+                            android:id="@+id/settings_blood_glucose_unit_summary"
+                            style="@style/Base.TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_preferences_blood_glucose_unit_summary"
+                            android:textColor="@color/settings_text" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/settings_preferences_blood_glucose_unit_selected"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/spacing_default_100_percent"
+                        android:text="mmol/L"
+                        android:textColor="@color/primary" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/spacing_default_100_percent"
+                    android:background="@color/settings_line" />
+
+                <RelativeLayout
+                    android:id="@+id/settings_preferences_floating_point_carbohydrates_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/spacing_default_100_percent">
+
+
+                    <LinearLayout
+                        android:id="@+id/settings_preferences_floating_point_carbohydrates_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/settings_preferences_floating_point_carbohydrates_switch"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/settings_preferences_floating_point_carbohydrates_title"
+                            style="@style/Base.TextAppearance.AppCompat.Title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentTop="true"
+                            android:text="@string/settings_preferences_floating_point_carbohydrates_title"
+                            android:textColor="@color/settings_text" />
+
+                        <TextView
+                            android:id="@+id/settings_preferences_floating_point_carbohydrates_summary"
+                            style="@style/Base.TextAppearance.AppCompat.Body1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_preferences_floating_point_carbohydrates_summary"
+                            android:textColor="@color/settings_text" />
+                    </LinearLayout>
+
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/settings_preferences_floating_point_carbohydrates_switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/spacing_default_100_percent" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/settings_leave_a_tip_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_default_50_percent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/settings_leave_a_tip_heading"
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_default_100_percent"
+                    android:text="@string/settings_leave_a_tip_heading"
+                    android:textColor="@color/primary"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:id="@+id/settings_leave_a_tip_small_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/spacing_default_100_percent">
+
+                    <TextView
+                        android:id="@+id/settings_leave_a_tip_small_title"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/settings_leave_a_tip_small_title"
+                        android:textColor="@color/settings_text" />
+
+                    <ProgressBar
+                        android:id="@+id/settings_leave_a_tip_small_progress"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:indeterminate="true" />
+
+                    <TextView
+                        android:id="@+id/settings_leave_a_tip_small_price"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="£0.00"
+                        android:textColor="@color/primary"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/spacing_default_100_percent"
+                    android:background="@color/settings_line" />
+
+                <RelativeLayout
+                    android:id="@+id/settings_leave_a_tip_large_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/spacing_default_100_percent">
+
+                    <TextView
+                        android:id="@+id/settings_leave_a_tip_large_title"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/settings_leave_a_tip_large_title"
+                        android:textColor="@color/settings_text" />
+
+                    <ProgressBar
+                        android:id="@+id/settings_leave_a_tip_large_progress"
+                        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:indeterminate="true" />
+
+                    <TextView
+                        android:id="@+id/settings_leave_a_tip_large_price"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="£0.00"
+                        android:textColor="@color/primary"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/spacing_default_100_percent"
+                    android:background="@color/settings_line" />
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_default_100_percent"
+                    android:text="@string/settings_leave_a_tip_summary"
+                    android:textColor="@color/settings_text" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>
