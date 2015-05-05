@@ -152,37 +152,33 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 AlertDialog.Builder bloodGlucoseUnitDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog);
                 bloodGlucoseUnitDialog.setItems(units, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        BloodGlucoseUnit bloodGlucoseUnit;
+                        BloodGlucoseUnit bloodGlucoseUnit = preferenceManager.getBloodGlucoseUnit();
+                        double desiredBloodGlucose = preferenceManager.getDesiredBloodGlucose();
+                        double correctiveFactor = preferenceManager.getCorrectiveFactor();
                         String bloodGlucoseUnitString = units[which];
 
                         switch (which) {
                             case 0:
-                                bloodGlucoseUnit = BloodGlucoseUnit.mmol;
+                                if (bloodGlucoseUnit != BloodGlucoseUnit.mmol) {
+                                    bloodGlucoseUnit = BloodGlucoseUnit.mmol;
+                                    desiredBloodGlucose = Calculator.round(desiredBloodGlucose / Calculator.MGDL_CONVERSION_VALUE);
+                                    correctiveFactor = Calculator.round(correctiveFactor / Calculator.MGDL_CONVERSION_VALUE);
+                                    Log.e(TAG, String.valueOf(correctiveFactor) + " " + String.valueOf(desiredBloodGlucose));
+                                }
                                 break;
                             case 1:
-                                bloodGlucoseUnit = BloodGlucoseUnit.mgdl;
-                                break;
-                            default:
-                                bloodGlucoseUnit = BloodGlucoseUnit.mmol;
+                                if (bloodGlucoseUnit != BloodGlucoseUnit.mgdl) {
+                                    bloodGlucoseUnit = BloodGlucoseUnit.mgdl;
+                                    desiredBloodGlucose = Calculator.round(desiredBloodGlucose * Calculator.MGDL_CONVERSION_VALUE);
+                                    correctiveFactor = Calculator.round(correctiveFactor * Calculator.MGDL_CONVERSION_VALUE);
+                                    Log.e(TAG, String.valueOf(correctiveFactor) + " " + String.valueOf(desiredBloodGlucose));
+                                }
                                 break;
                         }
 
-                        double desiredBloodGlucose = preferenceManager.getDesiredBloodGlucose();
-                        double correctiveFactor = preferenceManager.getCorrectiveFactor();
-
-                        switch (bloodGlucoseUnit) {
-                            case mmol:
-                                desiredBloodGlucose = desiredBloodGlucose / 18;
-                                correctiveFactor = correctiveFactor / 18;
-                                break;
-                            case mgdl:
-                                desiredBloodGlucose = desiredBloodGlucose * 18;
-                                correctiveFactor = correctiveFactor * 18;
-                        }
-
+                        preferenceManager.setBloodGlucoseUnit(bloodGlucoseUnit);
                         preferenceManager.setDesiredBloodGlucose(desiredBloodGlucose);
                         preferenceManager.setCorrectiveFactor(correctiveFactor);
-                        preferenceManager.setBloodGlucoseUnit(bloodGlucoseUnit);
                         bloodGlucoseUnitTextView.setText(bloodGlucoseUnitString);
 
                         dialog.dismiss();
