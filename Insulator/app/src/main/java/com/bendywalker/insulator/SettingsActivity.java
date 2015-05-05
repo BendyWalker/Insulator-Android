@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bendywalker.insulator.billing.IabHelper;
 import com.bendywalker.insulator.billing.IabResult;
@@ -131,6 +132,8 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        final Toast toast = Toast.makeText(this, R.string.settings_leave_a_tip_thanks, Toast.LENGTH_LONG);
+
         switch (v.getId()) {
             case R.id.settings_preferences_blood_glucose_unit_container:
                 AlertDialog.Builder bloodGlucoseUnitDialog = new AlertDialog.Builder(this, android.R.style.Theme_DeviceDefault_Light_Dialog);
@@ -168,7 +171,7 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                         preferenceManager.setCorrectiveFactor(correctiveFactor);
                         preferenceManager.setBloodGlucoseUnit(bloodGlucoseUnit);
                         bloodGlucoseUnitTextView.setText(bloodGlucoseUnitString);
-                        
+
                         dialog.dismiss();
                     }
                 });
@@ -179,6 +182,7 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                 preferenceManager.setAllowFloatingPointCarbohydrates(floatingPointCarbohydratesSwitch.isChecked());
                 break;
             case R.id.settings_leave_a_tip_small_container:
+                if (iabHelper != null) iabHelper.flagEndAsync();
                 iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
                     @Override
                     public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
@@ -198,7 +202,8 @@ public class SettingsActivity extends ActionBarActivity implements View.OnClickL
                 });
                 break;
             case R.id.settings_leave_a_tip_large_container:
-                iabHelper.launchPurchaseFlow(this, SMALL_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
+                if (iabHelper != null) iabHelper.flagEndAsync();
+                iabHelper.launchPurchaseFlow(this, LARGE_TIP, 1, new IabHelper.OnIabPurchaseFinishedListener() {
                     @Override
                     public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
                         if (result.isFailure()) {

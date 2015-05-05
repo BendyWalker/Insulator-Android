@@ -10,6 +10,7 @@
     <string name="settings_leave_a_tip_small_title">Small tip</string>
     <string name="settings_leave_a_tip_large_title">Large tip</string>
     <string name="settings_leave_a_tip_summary">If you find Insulator useful, please consider leaving a tip to support further developer of the application.</string>
+    <string name="settings_leave_a_tip_thanks">Thanks for the tip! Your support is greatly appreciated.</string>
 
     <!-- Page Titles -->
     <string name="app_name">Insulator</string>
