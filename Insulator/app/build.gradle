@@ -8,7 +8,7 @@ android {
         applicationId "com.bendywalker.insulator"
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 30
+        versionCode 31
         versionName "3.2"
     }
     buildTypes {
