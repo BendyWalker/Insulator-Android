@@ -30,7 +30,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
     String[] units;
 
-    RelativeLayout bloodGlucoseUnitContainer, floatingPointCarbohydratesContainer, emailContainer, twitterContainer, smallTipContainer, largeTipContainer;
+    RelativeLayout bloodGlucoseUnitContainer, floatingPointCarbohydratesContainer, emailContainer, twitterContainer, googlePlayContainer, smallTipContainer, largeTipContainer;
     TextView bloodGlucoseUnitTextView, smallTipPriceTextView, largeTipPriceTextView;
     ProgressBar smallTipProgressBar, largeTipProgressBar;
     SwitchCompat floatingPointCarbohydratesSwitch;
@@ -50,8 +50,9 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
         bloodGlucoseUnitContainer = (RelativeLayout) findViewById(R.id.settings_preferences_blood_glucose_unit_container);
         floatingPointCarbohydratesContainer = (RelativeLayout) findViewById(R.id.settings_preferences_floating_point_carbohydrates_container);
-        emailContainer = (RelativeLayout) findViewById(R.id.settings_support_email_container);
-        twitterContainer = (RelativeLayout) findViewById(R.id.settings_support_twitter_container);
+        emailContainer = (RelativeLayout) findViewById(R.id.settings_feedback_email_container);
+        twitterContainer = (RelativeLayout) findViewById(R.id.settings_feedback_twitter_container);
+        googlePlayContainer = (RelativeLayout) findViewById(R.id.settings_feedback_play_container);
         smallTipContainer = (RelativeLayout) findViewById(R.id.settings_leave_a_tip_small_container);
         largeTipContainer = (RelativeLayout) findViewById(R.id.settings_leave_a_tip_large_container);
 
@@ -82,6 +83,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         floatingPointCarbohydratesContainer.setOnClickListener(this);
         emailContainer.setOnClickListener(this);
         twitterContainer.setOnClickListener(this);
+        googlePlayContainer.setOnClickListener(this);
         smallTipContainer.setOnClickListener(this);
         largeTipContainer.setOnClickListener(this);
         floatingPointCarbohydratesSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -190,15 +192,22 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 floatingPointCarbohydratesSwitch.setChecked(!floatingPointCarbohydratesSwitch.isChecked());
                 preferenceManager.setAllowFloatingPointCarbohydrates(floatingPointCarbohydratesSwitch.isChecked());
                 break;
-            case R.id.settings_support_email_container:
+            case R.id.settings_feedback_email_container:
                 Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
                 emailIntent.setType("plain/text");
-                emailIntent.putExtra(Intent.EXTRA_EMAIL, getResources().getString(R.string.settings_support_email_contact));
+                emailIntent.putExtra(Intent.EXTRA_EMAIL, getResources().getString(R.string.settings_feedback_email_contact));
                 startActivity(emailIntent);
                 break;
-            case R.id.settings_support_twitter_container:
+            case R.id.settings_feedback_twitter_container:
                 Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.twitter.com/insulatorapp"));
                 startActivity(twitterIntent);
+                break;
+            case R.id.settings_feedback_play_container:
+                final Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+                final Intent rateAppIntent = new Intent(Intent.ACTION_VIEW, uri);
+                if (getPackageManager().queryIntentActivities(rateAppIntent, 0).size() > 0) {
+                    startActivity(rateAppIntent);
+                }
                 break;
             case R.id.settings_leave_a_tip_small_container:
                 smallTipPriceTextView.setVisibility(View.GONE);
@@ -244,7 +253,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         public void onConsumeFinished(Purchase purchase, IabResult result) {
             Log.d(TAG, "Consumption finished. Purchase: " + purchase + ", result: " + result);
 
-            Toast toast = Toast.makeText(getApplicationContext(), R.string.settings_leave_a_tip_thanks, Toast.LENGTH_LONG);
+            Toast toast = Toast.makeText(getApplicationContext(), R.string.settings_tip_jar_thanks, Toast.LENGTH_LONG);
 
             Log.e(TAG, result.getMessage());
             if (result.isFailure()) {
