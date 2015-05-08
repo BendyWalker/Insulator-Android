@@ -129,7 +129,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:id="@+id/settings_support_container"
+            android:id="@+id/settings_feedback_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_default_50_percent">
@@ -141,40 +141,40 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/settings_support_heading"
+                    android:id="@+id/settings_feedback_heading"
                     style="@style/Base.TextAppearance.AppCompat.Body1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_default_100_percent"
-                    android:text="@string/settings_support_heading"
+                    android:text="@string/settings_feedback_heading"
                     android:textColor="@color/primary"
                     android:textStyle="bold" />
 
                 <RelativeLayout
-                    android:id="@+id/settings_support_email_container"
+                    android:id="@+id/settings_feedback_email_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:padding="@dimen/spacing_default_100_percent">
 
                     <TextView
-                        android:id="@+id/settings_support_email_title"
+                        android:id="@+id/settings_feedback_email_title"
                         style="@style/Base.TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/settings_support_email"
+                        android:text="@string/settings_feedback_email"
                         android:textColor="@color/settings_text" />
 
                     <TextView
-                        android:id="@+id/settings_support_email_contact"
+                        android:id="@+id/settings_feedback_email_contact"
                         style="@style/Base.TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/settings_support_email_contact"
+                        android:text="@string/settings_feedback_email_contact"
                         android:textColor="@color/primary" />
                 </RelativeLayout>
 
@@ -185,32 +185,80 @@
                     android:background="@color/settings_line" />
 
                 <RelativeLayout
-                    android:id="@+id/settings_support_twitter_container"
+                    android:id="@+id/settings_feedback_twitter_container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/selectableItemBackground"
                     android:padding="@dimen/spacing_default_100_percent">
 
                     <TextView
-                        android:id="@+id/settings_support_twitter_title"
+                        android:id="@+id/settings_feedback_twitter_title"
                         style="@style/Base.TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/settings_support_twitter"
+                        android:text="@string/settings_feedback_twitter"
                         android:textColor="@color/settings_text" />
 
                     <TextView
-                        android:id="@+id/settings_support_twitter_contact"
+                        android:id="@+id/settings_feedback_twitter_contact"
                         style="@style/Base.TextAppearance.AppCompat.Title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/settings_support_twitter_contact"
+                        android:text="@string/settings_feedback_twitter_contact"
                         android:textColor="@color/primary" />
                 </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/spacing_default_100_percent"
+                    android:background="@color/settings_line" />
+
+                <RelativeLayout
+                    android:id="@+id/settings_feedback_play_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="@dimen/spacing_default_100_percent">
+
+                    <TextView
+                        android:id="@+id/settings_feedback_play_title"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/settings_feedback_play"
+                        android:textColor="@color/settings_text" />
+
+                    <TextView
+                        android:id="@+id/settings_feedback_play_contact"
+                        style="@style/Base.TextAppearance.AppCompat.Title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/settings_feedback_play_contact"
+                        android:textColor="@color/primary" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/spacing_default_100_percent"
+                    android:background="@color/settings_line" />
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Body1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_default_100_percent"
+                    android:text="@string/settings_feedback_summary"
+                    android:textColor="@color/settings_text" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -233,7 +281,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_default_100_percent"
-                    android:text="@string/settings_leave_a_tip_heading"
+                    android:text="@string/settings_tip_jar_heading"
                     android:textColor="@color/primary"
                     android:textStyle="bold" />
 
@@ -251,7 +299,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/settings_leave_a_tip_small_title"
+                        android:text="@string/settings_tip_jar_small_title"
                         android:textColor="@color/settings_text" />
 
                     <ProgressBar
@@ -295,7 +343,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:text="@string/settings_leave_a_tip_large_title"
+                        android:text="@string/settings_tip_jar_large_title"
                         android:textColor="@color/settings_text" />
 
                     <ProgressBar
@@ -330,7 +378,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/spacing_default_100_percent"
-                    android:text="@string/settings_leave_a_tip_summary"
+                    android:text="@string/settings_tip_jar_summary"
                     android:textColor="@color/settings_text" />
             </LinearLayout>
         </android.support.v7.widget.CardView>

@@ -2,20 +2,23 @@
 <resources>
     <!-- Settings -->
     <string name="settings_preferences_heading">Preferences</string>
-    <string name="settings_leave_a_tip_heading">Leave a tip</string>
     <string name="settings_preferences_blood_glucose_unit_title">Blood glucose unit</string>
     <string name="settings_preferences_floating_point_carbohydrates_title">Carbohydrate decimal place</string>
     <string name="settings_preferences_blood_glucose_unit_summary">Choose your preferred blood glucose measurement unit</string>
-    <string name="settings_preferences_floating_point_carbohydrates_summary">Toggles decimal place in \'carbohydrates in meal\' entry field</string>
-    <string name="settings_leave_a_tip_small_title">Small tip</string>
-    <string name="settings_leave_a_tip_large_title">Large tip</string>
-    <string name="settings_leave_a_tip_summary">If you find Insulator useful, please consider leaving a tip to support further development of the application.</string>
-    <string name="settings_leave_a_tip_thanks">Thanks for the tip! Your support is greatly appreciated.</string>
-    <string name="settings_support_heading">Support</string>
-    <string name="settings_support_email">Email</string>
-    <string name="settings_support_email_contact">mail\@insulatorapp.com</string>
-    <string name="settings_support_twitter">Twitter</string>
-    <string name="settings_support_twitter_contact">\@insulatorapp</string>
+    <string name="settings_preferences_floating_point_carbohydrates_summary">Toggles decimal place in \'carbohydrates in meal\' field</string>
+    <string name="settings_tip_jar_heading">Tip jar</string>
+    <string name="settings_tip_jar_small_title">Small tip</string>
+    <string name="settings_tip_jar_large_title">Large tip</string>
+    <string name="settings_tip_jar_summary">If you find Insulator useful, please consider leaving a tip to support further development of the application.</string>
+    <string name="settings_tip_jar_thanks">Thanks for the tip! Your support is greatly appreciated.</string>
+    <string name="settings_feedback_heading">Feedback</string>
+    <string name="settings_feedback_email">Email</string>
+    <string name="settings_feedback_email_contact">mail\@insulatorapp.com</string>
+    <string name="settings_feedback_twitter">Twitter</string>
+    <string name="settings_feedback_twitter_contact">\@insulatorapp</string>
+    <string name="settings_feedback_play">Google Play</string>
+    <string name="settings_feedback_play_contact">Rate Insulator</string>
+    <string name="settings_feedback_summary">All feedback is welcome, so feel free to get in touch. In addition, please consider leaving a rating or review on Google Play.</string>
 
     <!-- Page Titles -->
     <string name="app_name">Insulator</string>

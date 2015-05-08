@@ -13,10 +13,13 @@ _(Insulator should only be used as a guideline. Seek guidance from a doctor if y
 
 
 ## Promo Text
-The best way for Type 1 Diabetics to quickly calculate insulin doses.
+The best way for Type 1 Diabetics to quickly calculate insulin doses
 
 
 ## Change Log
+### 3.2.1
+Made some small tweaks to the settings screen to bring it inline with the iOS version.
+
 ### 3.2.0
 The settings screen has been redesigned. In addition to receiving a facelift that makes it look as good as the rest of the app, two new sections have been added: Support provides easy access to email and Twitter; Leave a Tip allows you to directly support further development of Insulator.
 
