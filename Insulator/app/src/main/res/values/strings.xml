@@ -3,9 +3,9 @@
     <!-- Settings -->
     <string name="settings_preferences_heading">Preferences</string>
     <string name="settings_preferences_blood_glucose_unit_title">Blood glucose unit</string>
-    <string name="settings_preferences_floating_point_carbohydrates_title">Carbohydrate decimal place</string>
+    <string name="settings_preferences_floating_point_carbohydrates_title">Carbohydrate accuracy</string>
     <string name="settings_preferences_blood_glucose_unit_summary">Choose your preferred blood glucose measurement unit</string>
-    <string name="settings_preferences_floating_point_carbohydrates_summary">Toggles decimal place in \'carbohydrates in meal\' field</string>
+    <string name="settings_preferences_floating_point_carbohydrates_summary">Use decimals when entering carbohydrates</string>
     <string name="settings_tip_jar_heading">Tip jar</string>
     <string name="settings_tip_jar_small_title">Small tip</string>
     <string name="settings_tip_jar_large_title">Large tip</string>
