@@ -8,8 +8,8 @@ android {
         applicationId "com.bendywalker.insulator"
         minSdkVersion 14
         targetSdkVersion 22
-        versionCode 34
-        versionName "3.2.1"
+        versionCode 35
+        versionName "3.2.5"
     }
     buildTypes {
         release {
