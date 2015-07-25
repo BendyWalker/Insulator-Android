@@ -1,10 +1,16 @@
-package com.bendywalker.insulator;
+package com.bendywalker.insulator.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.bendywalker.insulator.BloodGlucoseUnit;
+import com.bendywalker.insulator.Calculator;
+import com.bendywalker.insulator.Card;
+import com.bendywalker.insulator.MyPreferenceManager;
+import com.bendywalker.insulator.R;
 
 
 public class FactorSuggestionActivity extends AppCompatActivity implements Card.OnTextChangeListener, View.OnClickListener {

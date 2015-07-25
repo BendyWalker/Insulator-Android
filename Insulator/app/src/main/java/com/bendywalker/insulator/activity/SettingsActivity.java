@@ -1,4 +1,4 @@
-package com.bendywalker.insulator;
+package com.bendywalker.insulator.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,6 +15,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bendywalker.insulator.BloodGlucoseUnit;
+import com.bendywalker.insulator.Calculator;
+import com.bendywalker.insulator.MyPreferenceManager;
+import com.bendywalker.insulator.R;
 import com.bendywalker.insulator.billing.IabHelper;
 import com.bendywalker.insulator.billing.IabResult;
 import com.bendywalker.insulator.billing.Inventory;

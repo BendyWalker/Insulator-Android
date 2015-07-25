@@ -1,8 +1,12 @@
-package com.bendywalker.insulator;
+package com.bendywalker.insulator.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+
+import com.bendywalker.insulator.MyPreferenceManager;
+import com.bendywalker.insulator.R;
+import com.bendywalker.insulator.fragment.WelcomePage1Fragment;
 
 
 public class WelcomeActivity extends AppCompatActivity {
