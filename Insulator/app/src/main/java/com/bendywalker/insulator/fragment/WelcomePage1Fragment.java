@@ -1,4 +1,4 @@
-package com.bendywalker.insulator;
+package com.bendywalker.insulator.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.RadioGroup;
+
+import com.bendywalker.insulator.BloodGlucoseUnit;
+import com.bendywalker.insulator.Card;
+import com.bendywalker.insulator.MyPreferenceManager;
+import com.bendywalker.insulator.R;
+import com.bendywalker.insulator.activity.WelcomeActivity;
 
 
 public class WelcomePage1Fragment extends Fragment implements Card.OnTextChangeListener, RadioGroup.OnCheckedChangeListener, View.OnClickListener {

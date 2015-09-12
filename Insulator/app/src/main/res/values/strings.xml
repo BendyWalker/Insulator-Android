@@ -3,9 +3,9 @@
     <!-- Settings -->
     <string name="settings_preferences_heading">Preferences</string>
     <string name="settings_preferences_blood_glucose_unit_title">Blood glucose unit</string>
-    <string name="settings_preferences_floating_point_carbohydrates_title">Carbohydrate decimal place</string>
+    <string name="settings_preferences_floating_point_carbohydrates_title">Carbohydrate accuracy</string>
     <string name="settings_preferences_blood_glucose_unit_summary">Choose your preferred blood glucose measurement unit</string>
-    <string name="settings_preferences_floating_point_carbohydrates_summary">Toggles decimal place in \'carbohydrates in meal\' field</string>
+    <string name="settings_preferences_floating_point_carbohydrates_summary">Use decimals when entering carbohydrates</string>
     <string name="settings_tip_jar_heading">Tip jar</string>
     <string name="settings_tip_jar_small_title">Small tip</string>
     <string name="settings_tip_jar_large_title">Large tip</string>
@@ -18,7 +18,7 @@
     <string name="settings_feedback_twitter_contact">\@insulatorapp</string>
     <string name="settings_feedback_play">Google Play</string>
     <string name="settings_feedback_play_contact">Rate Insulator</string>
-    <string name="settings_feedback_summary">All feedback is welcome, so feel free to get in touch. In addition, please consider leaving a rating or review on Google Play.</string>
+    <string name="settings_feedback_summary">All feedback is welcome so feel free to get in touch. In addition, please consider leaving a rating or review on Google Play.</string>
 
     <!-- Page Titles -->
     <string name="app_name">Insulator</string>
@@ -50,7 +50,7 @@
     <!-- Card Information -->
     <string name="info_carbohydrate_factor">Enter how many carbohydrates 1 unit of fast-acting insulin covers</string>
     <string name="info_carbohydrates_in_meal">Enter how many carbohydrates you consumed in your meal</string>
-    <string name="info_total_daily_dose">Enter the total amount of insulin (both fast-acting and long-acting) you take in a day</string>
+    <string name="info_total_daily_dose">Enter the total amount of insulin (basal and bolus) you take in a day</string>
     <string name="info_current_blood_glucose_level">Enter your current blood glucose level</string>
     <string name="info_desired_blood_glucose_level">Enter your desired blood glucose level</string>
     <string name="info_corrective_factor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>

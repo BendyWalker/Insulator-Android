@@ -1,4 +1,4 @@
-package com.bendywalker.insulator;
+package com.bendywalker.insulator.activity;
 
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -12,6 +12,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.bendywalker.insulator.fragment.ConstantDataFragment;
+import com.bendywalker.insulator.MyPreferenceManager;
+import com.bendywalker.insulator.R;
+import com.bendywalker.insulator.fragment.VariableDataFragment;
 
 
 public class MainActivity extends AppCompatActivity {
