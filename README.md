@@ -17,6 +17,9 @@ The best way for Type 1 Diabetics to quickly calculate insulin doses
 
 
 ## Change Log
+### 3.2.2
+Tweaks to some strings in the app.
+
 ### 3.2.1
 Made some small tweaks to the settings screen to bring it inline with the iOS version.
 
