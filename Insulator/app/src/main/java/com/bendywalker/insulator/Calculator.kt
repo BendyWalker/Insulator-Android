@@ -10,16 +10,17 @@ import com.bendywalker.insulator.BloodGlucoseUnit
 
 class Calculator(private val carbohydrateFactor: Double = 0.0,
                  private val correctiveFactor: Double = 0.0,
-                 private var desiredBloodGlucose: Double = 0.0,
-                 private var currentBloodGlucose: Double = 0.0,
+                 desiredBloodGlucose: Double = 0.0,
+                 currentBloodGlucose: Double = 0.0,
                  private val carbohydratesInMeal: Double = 0.0,
                  private val totalDailyDose: Double = 0.0,
                  private val bloodGlucoseUnit: BloodGlucoseUnit = BloodGlucoseUnit.MMOL) {
 
-    init {
-        currentBloodGlucose = convertBloodGlucose(currentBloodGlucose)
-        desiredBloodGlucose = convertBloodGlucose(desiredBloodGlucose)
-    }
+    private val desiredBloodGlucose = convertBloodGlucose(desiredBloodGlucose)
+    private var currentBloodGlucose = convertBloodGlucose(currentBloodGlucose)
+        set(value) {
+            convertBloodGlucose(value)
+        }
 
     private fun convertBloodGlucose(bloodGlucose: Double): Double {
         when (bloodGlucoseUnit) {
