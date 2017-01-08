@@ -13,7 +13,6 @@ class Calculator(private val carbohydrateFactor: Double = 0.0,
                  desiredBloodGlucose: Double = 0.0,
                  currentBloodGlucose: Double = 0.0,
                  private val carbohydratesInMeal: Double = 0.0,
-                 private val totalDailyDose: Double = 0.0,
                  private val bloodGlucoseUnit: BloodGlucoseUnit = BloodGlucoseUnit.MMOL) {
 
     private val desiredBloodGlucose = convertBloodGlucose(desiredBloodGlucose)
@@ -63,24 +62,6 @@ class Calculator(private val carbohydrateFactor: Double = 0.0,
             return totalDose
         }
 
-    fun getCarbohydrateFactor(): Double {
-        var carbohydrateFactor = 500 / totalDailyDose
-        carbohydrateFactor = round(carbohydrateFactor)
-        return carbohydrateFactor
-    }
-
-    fun getCorrectiveFactor(): Double {
-        var correctiveFactor = 0.0
-
-        when (bloodGlucoseUnit) {
-            BloodGlucoseUnit.MMOL -> correctiveFactor = 100 / totalDailyDose
-            BloodGlucoseUnit.MGDL -> correctiveFactor = 100 / totalDailyDose * MGDL_CONVERSION_VALUE
-        }
-
-        correctiveFactor = round(correctiveFactor)
-        return correctiveFactor
-    }
-
     companion object {
         val MGDL_CONVERSION_VALUE = 18
 
@@ -88,6 +69,22 @@ class Calculator(private val carbohydrateFactor: Double = 0.0,
             val decimalFormat = DecimalFormat("#0.0")
             decimalFormat.roundingMode = RoundingMode.HALF_UP
             return java.lang.Double.valueOf(decimalFormat.format(value))!!
+        }
+
+        fun getCarbohydrateFactor(totalDailyDose: Double): Double {
+            val carbohydrateFactor = 500 / totalDailyDose
+            return round(carbohydrateFactor)
+        }
+
+        fun getCorrectiveFactor(totalDailyDose: Double, bloodGlucoseUnit: BloodGlucoseUnit): Double {
+            val correctiveFactor: Double
+
+            when (bloodGlucoseUnit) {
+                BloodGlucoseUnit.MMOL -> correctiveFactor = 100 / totalDailyDose
+                BloodGlucoseUnit.MGDL -> correctiveFactor = 100 / totalDailyDose * MGDL_CONVERSION_VALUE
+            }
+
+            return round(correctiveFactor)
         }
     }
 }
