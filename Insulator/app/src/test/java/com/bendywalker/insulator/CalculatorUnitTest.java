@@ -52,4 +52,21 @@ public class CalculatorUnitTest {
     public void mgdl_totalDose_isCorrect() throws Exception {
         assertEquals(EXPECTED_TOTAL_DOSE, mgdlCalculator.getTotalDose(), 0);
     }
+
+    private static double TOTAL_DAILY_DOSE = 50.0;
+
+    @Test
+    public void carbohydrateFactor_isCorrect() throws Exception {
+        assertEquals(10, Calculator.Companion.getCarbohydrateFactor(TOTAL_DAILY_DOSE), 0);
+    }
+
+    @Test
+    public void mmol_correctiveFactor_isCorrect() throws Exception {
+        assertEquals(2, Calculator.Companion.getCorrectiveFactor(TOTAL_DAILY_DOSE, BloodGlucoseUnit.MMOL), 0);
+    }
+
+    @Test
+    public void mgdl_correctiveFactor_isCorrect() throws Exception {
+        assertEquals(36, Calculator.Companion.getCorrectiveFactor(TOTAL_DAILY_DOSE, BloodGlucoseUnit.MGDL), 0);
+    }
 }
