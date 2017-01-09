@@ -17,8 +17,8 @@ public class CalculatorUnitTest {
 
     @BeforeClass
     public static void setup() {
-        mmolCalculator = new Calculator(9.3, 2.3, 6.5, 12.4, 50.0, BloodGlucoseUnit.MMOL);
-        mgdlCalculator = new Calculator(9.3, 41.4, 117.0, 223.2, 50.0, BloodGlucoseUnit.MGDL);
+        mmolCalculator = new Calculator(12.4, 50.0, 9.3, 2.3, 6.5, BloodGlucoseUnit.MMOL);
+        mgdlCalculator = new Calculator(223.2, 50.0, 9.3, 41.4, 117.0, BloodGlucoseUnit.MGDL);
     }
 
     private static double EXPECTED_CARBOHYDRATE_DOSE = 5.4;
