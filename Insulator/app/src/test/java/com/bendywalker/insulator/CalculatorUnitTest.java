@@ -6,6 +6,10 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
+/**
+ * Created by Ben David Walker (bendywalker) on 08/01/2017.
+ */
+
 public class CalculatorUnitTest {
 
     private static Calculator mmolCalculator;
