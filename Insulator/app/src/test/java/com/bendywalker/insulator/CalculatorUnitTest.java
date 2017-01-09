@@ -62,18 +62,18 @@ public class CalculatorUnitTest {
     @Test
     public void carbohydrateFactor_isCorrect() throws Exception {
          double expectedCarbohydrateFactor = 10;
-        assertEquals(expectedCarbohydrateFactor, Calculator.Companion.getCarbohydrateFactor(TOTAL_DAILY_DOSE), 0);
+        assertEquals(expectedCarbohydrateFactor, Calculator.Companion.carbohydrateFactor(TOTAL_DAILY_DOSE), 0);
     }
 
     @Test
     public void mmol_correctiveFactor_isCorrect() throws Exception {
         double expectedMmolCorrectiveFactor = 2;
-        assertEquals(expectedMmolCorrectiveFactor, Calculator.Companion.getCorrectiveFactor(TOTAL_DAILY_DOSE, BloodGlucoseUnit.MMOL), 0);
+        assertEquals(expectedMmolCorrectiveFactor, Calculator.Companion.correctiveFactor(TOTAL_DAILY_DOSE, BloodGlucoseUnit.MMOL), 0);
     }
 
     @Test
     public void mgdl_correctiveFactor_isCorrect() throws Exception {
         double expectedMgdlCorrectiveFactor = 36;
-        assertEquals(expectedMgdlCorrectiveFactor, Calculator.Companion.getCorrectiveFactor(TOTAL_DAILY_DOSE, BloodGlucoseUnit.MGDL), 0);
+        assertEquals(expectedMgdlCorrectiveFactor, Calculator.Companion.correctiveFactor(TOTAL_DAILY_DOSE, BloodGlucoseUnit.MGDL), 0);
     }
 }

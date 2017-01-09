@@ -80,12 +80,12 @@ class Calculator(currentBloodGlucose: Double = 0.0,
             return java.lang.Double.valueOf(decimalFormat.format(value))!!
         }
 
-        fun getCarbohydrateFactor(totalDailyDose: Double): Double {
+        fun carbohydrateFactor(totalDailyDose: Double): Double {
             val carbohydrateFactor = 500 / totalDailyDose
             return round(carbohydrateFactor)
         }
 
-        fun getCorrectiveFactor(totalDailyDose: Double, bloodGlucoseUnit: BloodGlucoseUnit): Double {
+        fun correctiveFactor(totalDailyDose: Double, bloodGlucoseUnit: BloodGlucoseUnit): Double {
             val correctiveFactor: Double
 
             when (bloodGlucoseUnit) {
