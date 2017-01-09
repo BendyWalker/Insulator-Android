@@ -8,7 +8,7 @@ enum class BloodGlucoseUnit(val string: String) {
     MMOL("mmol/L"),
     MGDL("mg/dL");
 
-    override fun toString(): String {
+    fun toDisplayString(): String {
         return string
     }
 }
