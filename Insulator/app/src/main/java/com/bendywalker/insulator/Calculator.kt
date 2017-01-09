@@ -14,12 +14,14 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
     constructor(currentBloodGlucose: Double = 0.0, carbohydratesInMeal: Double = 0.0, preferenceManager: PreferenceManager) :
             this(currentBloodGlucose, carbohydratesInMeal, preferenceManager.carbohydrateFactor, preferenceManager.correctiveFactor, preferenceManager.desiredBloodGlucose, preferenceManager.bloodGlucoseUnit)
 
-    private val correctiveFactor = convertBloodGlucose(correctiveFactor)
-    private val desiredBloodGlucose = convertBloodGlucose(desiredBloodGlucose)
-    var currentBloodGlucose = convertBloodGlucose(currentBloodGlucose)
-        set(value) {
-            convertBloodGlucose(value)
-        }
+    private val correctiveFactor = correctiveFactor
+        get() = convertBloodGlucose(field)
+
+    private val desiredBloodGlucose = desiredBloodGlucose
+        get() = convertBloodGlucose(field)
+
+    var currentBloodGlucose: Double = currentBloodGlucose
+        get() = convertBloodGlucose(field)
 
     private fun convertBloodGlucose(bloodGlucose: Double): Double {
         when (bloodGlucoseUnit) {
