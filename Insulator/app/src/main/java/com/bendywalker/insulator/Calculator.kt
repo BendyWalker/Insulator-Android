@@ -1,8 +1,5 @@
 package com.bendywalker.insulator
 
-import java.math.RoundingMode
-import java.text.DecimalFormat
-
 /**
  * Created by Ben David Walker (bendywalker) on 06/01/2017.
  */
@@ -26,7 +23,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
     private fun convertBloodGlucose(bloodGlucose: Double): Double {
         when (bloodGlucoseUnit) {
             BloodGlucoseUnit.MMOL -> return bloodGlucose
-            BloodGlucoseUnit.MGDL -> return round(bloodGlucose / MGDL_CONVERSION_VALUE)
+            BloodGlucoseUnit.MGDL -> return (bloodGlucose / MGDL_CONVERSION_VALUE).round(roundingPrecision)
             else -> return bloodGlucose
         }
     }
@@ -35,7 +32,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
         get() {
             if (carbohydrateFactor != 0.0) {
                 val carbohydrateDose = carbohydratesInMeal / carbohydrateFactor
-                return round(carbohydrateDose)
+                return carbohydrateDose.round(roundingPrecision)
             } else return 0.0
         }
 
@@ -43,7 +40,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
         get() {
             if (correctiveFactor != 0.0) {
                 val correctiveDose = (currentBloodGlucose - desiredBloodGlucose) / correctiveFactor
-                return round(correctiveDose)
+                return correctiveDose.round(roundingPrecision)
             } else return 0.0
         }
 
@@ -56,15 +53,11 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
     companion object {
         val MGDL_CONVERSION_VALUE = 18
 
-        fun round(value: Double?): Double {
-            val decimalFormat = DecimalFormat("#0.0")
-            decimalFormat.roundingMode = RoundingMode.HALF_UP
-            return java.lang.Double.valueOf(decimalFormat.format(value))!!
-        }
+        private val roundingPrecision = 1
 
         fun carbohydrateFactor(totalDailyDose: Double): Double {
             val carbohydrateFactor = 500 / totalDailyDose
-            return round(carbohydrateFactor)
+            return carbohydrateFactor.round(roundingPrecision)
         }
 
         fun correctiveFactor(totalDailyDose: Double, bloodGlucoseUnit: BloodGlucoseUnit): Double {
@@ -75,7 +68,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
                 BloodGlucoseUnit.MGDL -> correctiveFactor = 100 / totalDailyDose * MGDL_CONVERSION_VALUE
             }
 
-            return round(correctiveFactor)
+            return correctiveFactor.round(roundingPrecision)
         }
     }
 }
