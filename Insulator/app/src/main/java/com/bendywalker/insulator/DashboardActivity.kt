@@ -2,6 +2,9 @@ package com.bendywalker.insulator
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+/**
+ * Created by Ben David Walker (bendywalker) on 09/01/2017.
+ */
 
 class DashboardActivity : BaseActivity() {
     val preferenceManager = PreferenceManager(this)
