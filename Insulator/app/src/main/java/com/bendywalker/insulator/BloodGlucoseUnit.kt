@@ -6,5 +6,9 @@ package com.bendywalker.insulator
 
 enum class BloodGlucoseUnit(val string: String) {
     MMOL("mmol/L"),
-    MGDL("mg/dL")
+    MGDL("mg/dL");
+
+    override fun toString(): String {
+        return string
+    }
 }

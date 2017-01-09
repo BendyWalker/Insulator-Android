@@ -2,7 +2,6 @@ package com.bendywalker.insulator
 
 import java.math.RoundingMode
 import java.text.DecimalFormat
-import com.bendywalker.insulator.BloodGlucoseUnit
 
 /**
  * Created by Ben David Walker (bendywalker) on 06/01/2017.
