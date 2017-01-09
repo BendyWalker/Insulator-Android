@@ -19,10 +19,10 @@ class PreferenceManager(context: Context) {
 
     private val preferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
-    var versionCode: Long
-        get() = preferences.getLong(versionCodeKey, 0)
+    var versionCode: Int
+        get() = preferences.getInt(versionCodeKey, 0)
         set(value) {
-            preferences.edit().putLong(versionCodeKey, value).apply()
+            preferences.edit().putInt(versionCodeKey, value).apply()
         }
 
     var firstRun: Boolean
