@@ -60,4 +60,13 @@ class PreferenceManager(context: Context) {
         set(value) {
             preferences.edit().putString(desiredBloodGlucoseKey, value.toString()).apply()
         }
+
+    fun setValueForKey(value: Double, key: String) {
+        when(key) {
+            carbohydrateFactorKey -> carbohydrateFactor = value
+            correctiveFactorKey -> correctiveFactor = value
+            desiredBloodGlucoseKey -> desiredBloodGlucose = value
+            else -> throw Throwable("Key '$key' is invalid.")
+        }
+    }
 }
