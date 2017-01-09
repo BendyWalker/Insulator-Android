@@ -9,12 +9,13 @@ import com.bendywalker.insulator.BloodGlucoseUnit
  */
 
 class Calculator(private val carbohydrateFactor: Double = 0.0,
-                 private val correctiveFactor: Double = 0.0,
+                 correctiveFactor: Double = 0.0,
                  desiredBloodGlucose: Double = 0.0,
                  currentBloodGlucose: Double = 0.0,
                  private val carbohydratesInMeal: Double = 0.0,
                  private val bloodGlucoseUnit: BloodGlucoseUnit = BloodGlucoseUnit.MMOL) {
 
+    private val correctiveFactor = convertBloodGlucose(correctiveFactor)
     private val desiredBloodGlucose = convertBloodGlucose(desiredBloodGlucose)
     private var currentBloodGlucose = convertBloodGlucose(currentBloodGlucose)
         set(value) {
@@ -45,7 +46,7 @@ class Calculator(private val carbohydrateFactor: Double = 0.0,
             var correctiveDose = 0.0
 
             if (currentBloodGlucose != 0.0) {
-                correctiveDose = (convertBloodGlucose(currentBloodGlucose) - convertBloodGlucose(desiredBloodGlucose)) / convertBloodGlucose(correctiveFactor)
+                correctiveDose = (currentBloodGlucose - desiredBloodGlucose) / correctiveFactor
             }
             correctiveDose = round(correctiveDose)
             return correctiveDose
