@@ -7,21 +7,13 @@ import java.text.DecimalFormat
  * Created by Ben David Walker (bendywalker) on 06/01/2017.
  */
 
-class Calculator(currentBloodGlucose: Double = 0.0,
-                 private var carbohydratesInMeal: Double = 0.0,
-                 private val carbohydrateFactor: Double = 0.0,
-                 correctiveFactor: Double = 0.0,
-                 desiredBloodGlucose: Double = 0.0,
-                 private val bloodGlucoseUnit: BloodGlucoseUnit = BloodGlucoseUnit.MMOL) {
+class Calculator(currentBloodGlucose: Double = 0.0, private var carbohydratesInMeal: Double = 0.0,
+                 private val carbohydrateFactor: Double = 0.0, correctiveFactor: Double = 0.0,
+                 desiredBloodGlucose: Double = 0.0, private val bloodGlucoseUnit: BloodGlucoseUnit = BloodGlucoseUnit.MMOL) {
 
-    constructor(currentBloodGlucose: Double,
-                carbohydratesInMeal: Double,
-                preferenceManager: PreferenceManager) :
-            this(preferenceManager.carbohydrateFactor,
-                    preferenceManager.correctiveFactor,
-                    preferenceManager.desiredBloodGlucose,
-                    currentBloodGlucose, carbohydratesInMeal,
-                    preferenceManager.bloodGlucoseUnit)
+    constructor(currentBloodGlucose: Double, carbohydratesInMeal: Double, preferenceManager: PreferenceManager) :
+            this(preferenceManager.carbohydrateFactor, preferenceManager.correctiveFactor, preferenceManager.desiredBloodGlucose,
+                    currentBloodGlucose, carbohydratesInMeal, preferenceManager.bloodGlucoseUnit)
 
     private val correctiveFactor = convertBloodGlucose(correctiveFactor)
     private val desiredBloodGlucose = convertBloodGlucose(desiredBloodGlucose)
@@ -40,35 +32,24 @@ class Calculator(currentBloodGlucose: Double = 0.0,
 
     val carbohydrateDose: Double
         get() {
-            var carbohydrateDose = 0.0
-
             if (carbohydrateFactor != 0.0) {
-                carbohydrateDose = carbohydratesInMeal / carbohydrateFactor
-            }
-            carbohydrateDose = round(carbohydrateDose)
-            return carbohydrateDose
+                val carbohydrateDose = carbohydratesInMeal / carbohydrateFactor
+                return round(carbohydrateDose)
+            } else return 0.0
         }
 
     val correctiveDose: Double
         get() {
-            var correctiveDose = 0.0
-
-            if (currentBloodGlucose != 0.0) {
-                correctiveDose = (currentBloodGlucose - desiredBloodGlucose) / correctiveFactor
-            }
-            correctiveDose = round(correctiveDose)
-            return correctiveDose
+            if (correctiveFactor != 0.0) {
+                val correctiveDose = (currentBloodGlucose - desiredBloodGlucose) / correctiveFactor
+                return round(correctiveDose)
+            } else return 0.0
         }
 
     val totalDose: Double
         get() {
-            var totalDose = carbohydrateDose + correctiveDose
-
-            if (totalDose < 0) {
-                totalDose = 0.0
-            }
-
-            return totalDose
+            val totalDose = carbohydrateDose + correctiveDose
+            return if (totalDose > 0) totalDose else 0.0
         }
 
     companion object {
