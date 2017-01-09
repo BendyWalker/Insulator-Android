@@ -7,17 +7,17 @@ import java.text.DecimalFormat
  * Created by Ben David Walker (bendywalker) on 06/01/2017.
  */
 
-class Calculator(currentBloodGlucose: Double = 0.0, private var carbohydratesInMeal: Double = 0.0,
+class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Double = 0.0,
                  private val carbohydrateFactor: Double = 0.0, correctiveFactor: Double = 0.0,
                  desiredBloodGlucose: Double = 0.0, private val bloodGlucoseUnit: BloodGlucoseUnit = BloodGlucoseUnit.MMOL) {
 
-    constructor(currentBloodGlucose: Double, carbohydratesInMeal: Double, preferenceManager: PreferenceManager) :
+    constructor(currentBloodGlucose: Double = 0.0, carbohydratesInMeal: Double = 0.0, preferenceManager: PreferenceManager) :
             this(preferenceManager.carbohydrateFactor, preferenceManager.correctiveFactor, preferenceManager.desiredBloodGlucose,
                     currentBloodGlucose, carbohydratesInMeal, preferenceManager.bloodGlucoseUnit)
 
     private val correctiveFactor = convertBloodGlucose(correctiveFactor)
     private val desiredBloodGlucose = convertBloodGlucose(desiredBloodGlucose)
-    private var currentBloodGlucose = convertBloodGlucose(currentBloodGlucose)
+    var currentBloodGlucose = convertBloodGlucose(currentBloodGlucose)
         set(value) {
             convertBloodGlucose(value)
         }
