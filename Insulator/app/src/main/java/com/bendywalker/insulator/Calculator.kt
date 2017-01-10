@@ -4,10 +4,28 @@ package com.bendywalker.insulator
  * Created by Ben David Walker (bendywalker) on 06/01/2017.
  */
 
+/**
+ * Calculates different dosage values given a set of parameters.
+ *
+ * @param currentBloodGlucose The user's current blood glucose level
+ * @param carbohydratesInMeal Grams of carbohydrates in the user's meal
+ * @param carbohydrateFactor The user's carbohydrate factor
+ * @param correctiveFactor The user's corrective factor
+ * @param desiredBloodGlucose The blood glucose level the user wishes to attain
+ * @param bloodGlucoseUnit The user's preferred blood glucose unit (mmol/L or mg/dL)
+ */
 class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Double = 0.0,
-                 private val carbohydrateFactor: Double = 0.0, correctiveFactor: Double = 0.0,
-                 desiredBloodGlucose: Double = 0.0, private val bloodGlucoseUnit: BloodGlucoseUnit = BloodGlucoseUnit.MMOL) {
+                 private val carbohydrateFactor: Double, correctiveFactor: Double,
+                 desiredBloodGlucose: Double, private val bloodGlucoseUnit: BloodGlucoseUnit) {
 
+    /**
+     * Constructs a [Calculator] used to calculate different dosage values. The majority of parameters required for
+     * calculations are retrieved from [SharedPreferences] via [PreferenceManager].
+     *
+     * @param currentBloodGlucose The user's current blood glucose level
+     * @param carbohydratesInMeal Grams of carbohydrates in the user's meal
+     * @param preferenceManager An instance of [PreferenceManager] used to read calculation parameters from [SharedPreferences]
+     */
     constructor(currentBloodGlucose: Double = 0.0, carbohydratesInMeal: Double = 0.0, preferenceManager: PreferenceManager) :
             this(currentBloodGlucose, carbohydratesInMeal, preferenceManager.carbohydrateFactor, preferenceManager.correctiveFactor, preferenceManager.desiredBloodGlucose, preferenceManager.bloodGlucoseUnit)
 
@@ -52,14 +70,26 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
 
     companion object {
         val MGDL_CONVERSION_VALUE = 18
-
         private val roundingPrecision = 1
 
+        /**
+         * Given a *total daily dose*, calculates a user's carbohydrate factor.
+         *
+         * @param totalDailyDose The sum of all insulin taken daily by a user
+         * @return Calculated carbohydrate factor
+         */
         fun carbohydrateFactor(totalDailyDose: Double): Double {
             val carbohydrateFactor = 500 / totalDailyDose
             return carbohydrateFactor.round(roundingPrecision)
         }
 
+        /**
+         * Given a *total daily dose*, calculates a user's corrective factor.
+         *
+         * @param totalDailyDose The sum of all insulin taken daily by a user
+         * @param bloodGlucoseUnit A user's preferred blood glucose unit
+         * @return Calculated corrective factor
+         */
         fun correctiveFactor(totalDailyDose: Double, bloodGlucoseUnit: BloodGlucoseUnit): Double {
             val correctiveFactor: Double
 
