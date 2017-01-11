@@ -20,14 +20,14 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
 
     /**
      * Constructs a [Calculator] used to calculate different dosage values. The majority of parameters required for
-     * calculations are retrieved from [SharedPreferences] via [PreferenceManager].
+     * calculations are retrieved from [SharedPreferences] via [PersistedValues].
      *
      * @param currentBloodGlucose The user's current blood glucose level
      * @param carbohydratesInMeal Grams of carbohydrates in the user's meal
-     * @param preferenceManager An instance of [PreferenceManager] used to read calculation parameters from [SharedPreferences]
+     * @param persistedValues An instance of [PersistedValues] used to read calculation parameters from [SharedPreferences]
      */
-    constructor(currentBloodGlucose: Double = 0.0, carbohydratesInMeal: Double = 0.0, preferenceManager: PreferenceManager) :
-            this(currentBloodGlucose, carbohydratesInMeal, preferenceManager.carbohydrateFactor, preferenceManager.correctiveFactor, preferenceManager.desiredBloodGlucose, preferenceManager.bloodGlucoseUnit)
+    constructor(currentBloodGlucose: Double = 0.0, carbohydratesInMeal: Double = 0.0, persistedValues: PersistedValues) :
+            this(currentBloodGlucose, carbohydratesInMeal, persistedValues.carbohydrateFactor, persistedValues.correctiveFactor, persistedValues.desiredBloodGlucose, persistedValues.bloodGlucoseUnit)
 
     private val correctiveFactor = correctiveFactor
         get() = convertBloodGlucose(field)

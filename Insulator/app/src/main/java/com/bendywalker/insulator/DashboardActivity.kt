@@ -11,7 +11,7 @@ import android.widget.TextView
  */
 
 class DashboardActivity : BaseActivity() {
-    val preferenceManager: PreferenceManager by lazy { PreferenceManager(this) }
+    val persistedValues: PersistedValues by lazy { PersistedValues(this) }
     val currentBloodGlucoseEditText: EditText by lazy { findViewById(R.id.editText_dashboard_currentBloodGlucose) as EditText }
     val carbohydratesInMealEditText: EditText by lazy { findViewById(R.id.editText_dashboard_carbohydratesInMeal) as EditText }
     val totalDoseTextView: TextView by lazy { findViewById(R.id.textView_dashboard_totalDose) as TextView }
@@ -23,28 +23,28 @@ class DashboardActivity : BaseActivity() {
         try {
             val packageInfo = packageManager.getPackageInfo(packageName, PackageManager.GET_META_DATA)
 
-            if (preferenceManager.versionCode < packageInfo.versionCode) {
-                preferenceManager.versionCode = packageInfo.versionCode
+            if (persistedValues.versionCode < packageInfo.versionCode) {
+                persistedValues.versionCode = packageInfo.versionCode
             }
         } catch (exception: PackageManager.NameNotFoundException) {
             exception.printStackTrace()
         }
 
-        preferenceManager.carbohydrateFactor = 10.0
-        preferenceManager.correctiveFactor = 2.0
-        preferenceManager.allowFloatingPointCarbohydrates = false
-        preferenceManager.desiredBloodGlucose = 6.5
-        preferenceManager.firstRun = false
-        preferenceManager.bloodGlucoseUnit = BloodGlucoseUnit.MMOL
+        persistedValues.carbohydrateFactor = 10.0
+        persistedValues.correctiveFactor = 2.0
+        persistedValues.allowFloatingPointCarbohydrates = false
+        persistedValues.desiredBloodGlucose = 6.5
+        persistedValues.firstRun = false
+        persistedValues.bloodGlucoseUnit = BloodGlucoseUnit.MMOL
 
-        if (preferenceManager.firstRun) {
+        if (persistedValues.firstRun) {
             // TODO: Start welcome activity
             finish()
         } else {
             // TODO: Setup activity layout
             setContentView(R.layout.activity_dashboard)
 
-            val calculator = Calculator(preferenceManager = preferenceManager)
+            val calculator = Calculator(persistedValues = persistedValues)
 
             calculateButton.setOnClickListener {
                 calculator.currentBloodGlucose = currentBloodGlucoseEditText.text.toString().toDouble()
