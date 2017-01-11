@@ -8,6 +8,11 @@ import android.preference.PreferenceManager
  * Created by Ben David Walker (bendywalker) on 09/01/2017.
  */
 
+/**
+ * Wrapper around [PreferenceManager] that simplifies interfacing with [SharedPreferences].
+ *
+ * @param context The context of the preferences whose values are wanted.
+ */
 class PersistedValues(context: Context) {
     private val versionCodeKey = context.getString(R.string.key_version_code)
     private val firstRunKey = context.getString(R.string.key_is_first_run)
