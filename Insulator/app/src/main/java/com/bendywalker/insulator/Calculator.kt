@@ -7,12 +7,12 @@ package com.bendywalker.insulator
 /**
  * Calculates different dosage values given a set of parameters.
  *
- * @param currentBloodGlucose The user's current blood glucose level
- * @param carbohydratesInMeal Grams of carbohydrates in the user's meal
- * @param carbohydrateFactor The user's carbohydrate factor
- * @param correctiveFactor The user's corrective factor
- * @param desiredBloodGlucose The blood glucose level the user wishes to attain
- * @param bloodGlucoseUnit The user's preferred blood glucose unit (mmol/L or mg/dL)
+ * @param currentBloodGlucose The user's current blood glucose level.
+ * @param carbohydratesInMeal Grams of carbohydrates in the user's meal.
+ * @param carbohydrateFactor The user's carbohydrate factor.
+ * @param correctiveFactor The user's corrective factor.
+ * @param desiredBloodGlucose The blood glucose level the user wishes to attain.
+ * @param bloodGlucoseUnit The user's preferred blood glucose unit (mmol/L or mg/dL).
  */
 class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Double = 0.0,
                  private val carbohydrateFactor: Double, correctiveFactor: Double,
@@ -75,8 +75,8 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
         /**
          * Given a *total daily dose*, calculates a user's carbohydrate factor.
          *
-         * @param totalDailyDose The sum of all insulin taken daily by a user
-         * @return Calculated carbohydrate factor
+         * @param totalDailyDose The sum of all insulin taken daily by a user.
+         * @return Calculated carbohydrate factor.
          */
         fun carbohydrateFactor(totalDailyDose: Double): Double {
             val carbohydrateFactor = 500 / totalDailyDose
@@ -86,9 +86,9 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
         /**
          * Given a *total daily dose*, calculates a user's corrective factor.
          *
-         * @param totalDailyDose The sum of all insulin taken daily by a user
-         * @param bloodGlucoseUnit A user's preferred blood glucose unit
-         * @return Calculated corrective factor
+         * @param totalDailyDose The sum of all insulin taken daily by a user.
+         * @param bloodGlucoseUnit A user's preferred blood glucose unit.
+         * @return Calculated corrective factor.
          */
         fun correctiveFactor(totalDailyDose: Double, bloodGlucoseUnit: BloodGlucoseUnit): Double {
             val correctiveFactor: Double
