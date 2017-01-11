@@ -64,4 +64,8 @@
     <string name="button_continue">Continue</string>
     <string name="button_reset">Reset</string>
     <string name="button_use_insulator">Use Insulator</string>
+
+    <!-- Placeholders -->
+    <string name="placeholder_label">Placeholder label</string>
+    <string name="placeholder_description">This is placeholder description text. It can span multiple lines depending on how long it is.</string>
 </resources>
