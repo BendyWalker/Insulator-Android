@@ -41,7 +41,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
     private fun convertBloodGlucose(bloodGlucose: Double): Double {
         when (bloodGlucoseUnit) {
             BloodGlucoseUnit.MMOL -> return bloodGlucose
-            BloodGlucoseUnit.MGDL -> return (bloodGlucose / MGDL_CONVERSION_VALUE).round(roundingPrecision)
+            BloodGlucoseUnit.MGDL -> return (bloodGlucose / mgdlConversionValue).round(roundingPrecision)
             else -> return bloodGlucose
         }
     }
@@ -69,7 +69,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
         }
 
     companion object {
-        val MGDL_CONVERSION_VALUE = 18
+        private val mgdlConversionValue = 18
         private val roundingPrecision = 1
 
         /**
@@ -95,7 +95,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
 
             when (bloodGlucoseUnit) {
                 BloodGlucoseUnit.MMOL -> correctiveFactor = 100 / totalDailyDose
-                BloodGlucoseUnit.MGDL -> correctiveFactor = 100 / totalDailyDose * MGDL_CONVERSION_VALUE
+                BloodGlucoseUnit.MGDL -> correctiveFactor = 100 / totalDailyDose * mgdlConversionValue
             }
 
             return correctiveFactor.round(roundingPrecision)
