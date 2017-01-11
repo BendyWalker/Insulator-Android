@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Card">
+        <attr name="labelText" format="string|reference" />
+        <attr name="infoText" format="string|reference" />
+        <attr name="hintText" format="string|reference" />
+        <attr name="prefKey" format="string|reference" />
+    </declare-styleable>
+</resources>

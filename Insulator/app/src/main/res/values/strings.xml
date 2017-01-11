@@ -1,3 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Settings -->
+    <string name="settings_preferences_heading">Preferences</string>
+    <string name="settings_preferences_blood_glucose_unit_title">Blood glucose unit</string>
+    <string name="settings_preferences_floating_point_carbohydrates_title">Carbohydrate accuracy</string>
+    <string name="settings_preferences_blood_glucose_unit_summary">Choose your preferred blood glucose measurement unit</string>
+    <string name="settings_preferences_floating_point_carbohydrates_summary">Use decimals when entering carbohydrates</string>
+    <string name="settings_tip_jar_heading">Tip jar</string>
+    <string name="settings_tip_jar_small_title">Small tip</string>
+    <string name="settings_tip_jar_large_title">Large tip</string>
+    <string name="settings_tip_jar_summary">If you find Insulator useful, please consider leaving a tip to support further development of the application.</string>
+    <string name="settings_tip_jar_thanks">Thanks for the tip! Your support is greatly appreciated.</string>
+    <string name="settings_feedback_heading">Feedback</string>
+    <string name="settings_feedback_email">Email</string>
+    <string name="settings_feedback_email_contact">mail\@insulatorapp.com</string>
+    <string name="settings_feedback_twitter">Twitter</string>
+    <string name="settings_feedback_twitter_contact">\@insulatorapp</string>
+    <string name="settings_feedback_play">Google Play</string>
+    <string name="settings_feedback_play_contact">Rate Insulator</string>
+    <string name="settings_feedback_summary">All feedback is welcome so feel free to get in touch. In addition, please consider leaving a rating or review on Google Play.</string>
+
+    <!-- Page Titles -->
     <string name="app_name">Insulator</string>
+    <string name="beta_name">Insulator (Beta)</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="title_factor_suggestions">Factor Suggestions</string>
+
+    <!-- Card Titles -->
+    <string name="label_welcome">Welcome to Insulator</string>
+    <string name="label_ready_to_use">Ready to use</string>
+    <string name="label_carbohydrates_in_meal">Carbohydrates in meal</string>
+    <string name="label_carbohydrate_factor">Carbohydrate factor</string>
+    <string name="label_current_blood_glucose_level">Current blood glucose</string>
+    <string name="label_desired_blood_glucose_level">Desired blood glucose</string>
+    <string name="label_total_daily_dose">Total daily dose</string>
+    <string name="label_corrective_factor">Corrective factor</string>
+    <string name="label_suggested_dose">Suggested dose</string>
+    <string name="label_carbohydrate_dose">Carbohydrate dose</string>
+    <string name="label_corrective_dose">Corrective dose</string>
+    <string name="label_factor_suggestions">Factor suggestions</string>
+
+    <!-- Entry Hints -->
+    <string name="hint_mmol">mmol/L</string>
+    <string name="hint_units">units</string>
+    <string name="hint_grams">grams</string>
+    <string name="hint_mgdl">mg/dL</string>
+
+    <!-- Card Information -->
+    <string name="info_carbohydrate_factor">Enter how many carbohydrates 1 unit of fast-acting insulin covers</string>
+    <string name="info_carbohydrates_in_meal">Enter how many carbohydrates you consumed in your meal</string>
+    <string name="info_total_daily_dose">Enter the total amount of insulin (basal and bolus) you take in a day</string>
+    <string name="info_current_blood_glucose_level">Enter your current blood glucose level</string>
+    <string name="info_desired_blood_glucose_level">Enter your desired blood glucose level</string>
+    <string name="info_corrective_factor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
+    <string name="info_welcome_intro">Insulator is the quickest way to easily calculate insulin doses. Scroll down to input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
+    <string name="info_welcome_complete">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters provided.\n\nPlease remember: Insulator\'s suggestion should only be used as a guideline.</string>
+    <string name="info_factor_suggestion">If you\'re unsure of either your carbohydrate or corrective factor, Insulator can give you suggestions.\n\nEnter your total daily dose below, and tap Save on the suggestions you\'re happy with.</string>
+
+    <!-- Standard UI Elements -->
+    <string name="button_save">Save</string>
+    <string name="button_saved">Saved</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_reset">Reset</string>
+    <string name="button_use_insulator">Use Insulator</string>
 </resources>
