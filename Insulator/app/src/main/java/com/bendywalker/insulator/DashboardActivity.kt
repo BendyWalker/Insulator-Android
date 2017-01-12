@@ -2,16 +2,18 @@ package com.bendywalker.insulator
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.view.MenuItem
+import android.widget.Toolbar
 
 /**
  * Created by Ben David Walker (bendywalker) on 09/01/2017.
  */
 
 class DashboardActivity : BaseActivity() {
-    val persistedValues: PersistedValues by lazy { PersistedValues(this) }
+    val toolbar by lazy { findViewById(R.id.dashboard_toolbar) as Toolbar }
+
+    val persistedValues by lazy { PersistedValues(this) }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +34,8 @@ class DashboardActivity : BaseActivity() {
         } else {
             // TODO: Setup activity layout
             setContentView(R.layout.activity_dashboard)
+            toolbar.inflateMenu(R.menu.dashboard)
+            toolbar.setOnMenuItemClickListener { menuItem -> true } //TODO: Open Settings activity here
         }
     }
 }
