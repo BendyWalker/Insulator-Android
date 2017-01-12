@@ -13,11 +13,11 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/card_title"
+            android:id="@+id/textView_card_title"
             style="@style/CardTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/placeholder_label"/>
+            android:text="@string/placeholder_title"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/card_entry"
+                android:id="@+id/editText_card_entry"
                 style="@style/CardEntryText"
                 android:layout_width="@dimen/card_entry_width"
                 android:layout_height="60dp"
@@ -33,7 +33,7 @@
                 android:hint="@string/hint_mmol"/>
 
             <TextView
-                android:id="@+id/card_info"
+                android:id="@+id/textView_card_description"
                 style="@style/CardInfoText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
