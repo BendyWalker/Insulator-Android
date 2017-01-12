@@ -43,6 +43,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
     private val shouldDisplayFloatingPoint: Boolean
         get() {
+            // TODO: Write logic for booleans once other layouts have been implemented
             val carbohydratesInMeal = true
             val glucoseLevel = true
             val totalDailyDose = true
@@ -124,14 +125,14 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     }
 
     companion object {
-        fun addFloatingPoint(string: String): String {
+        fun addFloatingPoint(string: String, precision: Int = 1): String {
             val stringBuilder = StringBuilder(string)
             val storedPoints = (0 until stringBuilder.length).filter { stringBuilder[it] == '.' }
 
             while (stringBuilder.length > 2 && stringBuilder.first() == '0' || stringBuilder.first() == '.') stringBuilder.deleteCharAt(0)
             for (i in storedPoints) stringBuilder.deleteCharAt(i)
             while (stringBuilder.length <  2) stringBuilder.insert(0, '0')
-            stringBuilder.insert(stringBuilder.lastIndex, '.')
+            stringBuilder.insert(stringBuilder.length - precision, '.')
 
             return stringBuilder.toString()
         }
