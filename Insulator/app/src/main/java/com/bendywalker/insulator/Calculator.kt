@@ -1,5 +1,7 @@
 package com.bendywalker.insulator
 
+import com.bendywalker.insulator.extension.round
+
 /**
  * Created by Ben David Walker (bendywalker) on 06/01/2017.
  */

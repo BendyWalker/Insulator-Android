@@ -1,4 +1,4 @@
-package com.bendywalker.insulator
+package com.bendywalker.insulator.extension
 
 import java.math.RoundingMode
 import java.text.DecimalFormat
