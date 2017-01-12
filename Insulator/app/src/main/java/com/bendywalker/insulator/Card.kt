@@ -25,7 +25,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private val descriptionTextView by lazy { findViewById(R.id.textView_card_description) as TextView }
     private val entryEditText by lazy { findViewById(R.id.editText_card_entry) as EditText }
     private val persistedValues by lazy { PersistedValues(context) }
-    private val prefKey: String
+    private val persistedValueKey: String?
 
     var value: Double
         get() {
@@ -68,39 +68,42 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.Card, 0, 0)
         try {
-            prefKey = typedArray.getString(R.styleable.Card_persistedValueKey)
-            titleTextView.text = (typedArray.getString(R.styleable.Card_titleText))
-            descriptionTextView.text = (typedArray.getString(R.styleable.Card_descriptionText))
-            entryEditText.hint = (typedArray.getString(R.styleable.Card_hintText))
+            persistedValueKey = typedArray.getString(R.styleable.Card_persistedValueKey)
+            titleTextView.text = typedArray.getString(R.styleable.Card_titleText)
+            descriptionTextView.text = typedArray.getString(R.styleable.Card_descriptionText)
+            entryEditText.hint = typedArray.getString(R.styleable.Card_hintText)
         } finally {
             typedArray.recycle()
         }
 
-        setOnClickListener {
-            entryEditText.requestFocus()
-            entryEditText.selectAll()
-        }
+        if (!isInEditMode) {
 
-        entryEditText.setOnTextChangedListener { s ->
-            if (entryEditText.length() > 0) {
-                if (shouldDisplayFloatingPoint) entryEditText.addFloatingPoint()
-                entryEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
-            } else {
-                entryEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
+            setOnClickListener {
+                entryEditText.requestFocus()
+                entryEditText.selectAll()
             }
 
-        }
+            entryEditText.setOnTextChangedListener { s ->
+                if (entryEditText.length() > 0) {
+                    if (shouldDisplayFloatingPoint) entryEditText.addFloatingPoint()
+                    entryEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
+                } else {
+                    entryEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
+                }
 
-        entryEditText.setOnFocusChangeListener { view, hasFocus -> if (!hasFocus) persistedValues.setValueForKey(value, prefKey) }
-
-        entryEditText.setOnEditorActionListener { textView, actionId, keyEvent ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                entryEditText.clearFocus()
-                val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                inputMethodManager.hideSoftInputFromWindow(entryEditText.windowToken, 0)
             }
 
-            false
+            entryEditText.setOnFocusChangeListener { view, hasFocus -> if (!hasFocus) persistedValues.setValueForKey(value, persistedValueKey) }
+
+            entryEditText.setOnEditorActionListener { textView, actionId, keyEvent ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    entryEditText.clearFocus()
+                    val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    inputMethodManager.hideSoftInputFromWindow(entryEditText.windowToken, 0)
+                }
+
+                false
+            }
         }
     }
 
@@ -131,7 +134,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
             while (stringBuilder.length > 2 && stringBuilder.first() == '0' || stringBuilder.first() == '.') stringBuilder.deleteCharAt(0)
             for (i in storedPoints) stringBuilder.deleteCharAt(i)
-            while (stringBuilder.length <  2) stringBuilder.insert(0, '0')
+            while (stringBuilder.length < 2) stringBuilder.insert(0, '0')
             stringBuilder.insert(stringBuilder.length - precision, '.')
 
             return stringBuilder.toString()

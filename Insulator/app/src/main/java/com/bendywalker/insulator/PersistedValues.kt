@@ -3,6 +3,7 @@ package com.bendywalker.insulator
 import android.content.Context
 import android.content.SharedPreferences
 import android.preference.PreferenceManager
+import android.util.Log
 
 /**
  * Created by Ben David Walker (bendywalker) on 09/01/2017.
@@ -66,12 +67,12 @@ class PersistedValues(context: Context) {
             preferences.edit().putString(desiredBloodGlucoseKey, value.toString()).apply()
         }
 
-    fun setValueForKey(value: Double, key: String) {
+    fun setValueForKey(value: Double, key: String?) {
         when(key) {
             carbohydrateFactorKey -> carbohydrateFactor = value
             correctiveFactorKey -> correctiveFactor = value
             desiredBloodGlucoseKey -> desiredBloodGlucose = value
-            else -> throw Throwable("Key '$key' is invalid.")
+            else -> if (key != null) Log.w(javaClass.simpleName, "Key $key passed to setValueForKey() function is invalid")
         }
     }
 }
