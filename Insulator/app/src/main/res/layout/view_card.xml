@@ -27,7 +27,7 @@
             <EditText
                 android:id="@+id/editText_card_entry"
                 style="@style/CardEntryText"
-                android:layout_width="@dimen/card_entry_width"
+                android:layout_width="@dimen/width_card_entry"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:hint="@string/hint_mmol"/>

@@ -1,10 +1,10 @@
 <resources>
     <!-- UI elements width -->
-    <dimen name="card_entry_width">100dp</dimen>
+    <dimen name="width_card_entry">100dp</dimen>
 
     <!-- Text -->
     <dimen name="text_card_title">24sp</dimen>
-    <dimen name="text_card_info">14sp</dimen>
+    <dimen name="text_card_description">14sp</dimen>
     <dimen name="text_card_entry_empty">20sp</dimen>
     <dimen name="text_card_entry_filled">34sp</dimen>
     <dimen name="text_card_button">14sp</dimen>
@@ -18,4 +18,8 @@
     <dimen name="spacing_75">12dp</dimen>
     <dimen name="spacing_50">8dp</dimen>
     <dimen name="spacing_25">4dp</dimen>
+
+    <!-- Toolbar -->
+    <dimen name="elevation_toolbar">4dp</dimen>
+
 </resources>
