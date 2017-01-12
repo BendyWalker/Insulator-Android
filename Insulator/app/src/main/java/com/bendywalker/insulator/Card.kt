@@ -117,18 +117,23 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
         })
     }
 
-    fun EditText.addFloatingPoint(precision: Int = 1) {
-        val string = this.text.toString()
-        val stringBuilder = StringBuilder(string)
-        val storedPoints = (0 until stringBuilder.length).filter { stringBuilder[it] == '.' }
-
-        while (stringBuilder.length > 2 && stringBuilder.first() == '0' || stringBuilder.first() == '.') stringBuilder.deleteCharAt(0)
-        for (i in storedPoints) stringBuilder.deleteCharAt(i)
-        while (stringBuilder.length < 2) stringBuilder.insert(0, '0')
-        stringBuilder.insert(stringBuilder.lastIndex, '.')
-
-        this.setText(stringBuilder.toString())
-        Selection.setSelection(this.text, stringBuilder.toString().length)
+    fun EditText.addFloatingPoint() {
+        val string = Companion.addFloatingPoint(this.text.toString())
+        this.setText(string)
+        Selection.setSelection(this.text, string.length)
     }
+
+    companion object {
+        fun addFloatingPoint(string: String): String {
+            val stringBuilder = StringBuilder(string)
+            val storedPoints = (0 until stringBuilder.length).filter { stringBuilder[it] == '.' }
+
+            while (stringBuilder.length > 2 && stringBuilder.first() == '0' || stringBuilder.first() == '.') stringBuilder.deleteCharAt(0)
+            for (i in storedPoints) stringBuilder.deleteCharAt(i)
+            while (stringBuilder.length <  2) stringBuilder.insert(0, '0')
+            stringBuilder.insert(stringBuilder.lastIndex, '.')
+
+            return stringBuilder.toString()
+        }
     }
 }
