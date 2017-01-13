@@ -76,6 +76,10 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             typedArray.recycle()
         }
 
+        // Do this to have standardised values in the layout preview
+        entryEditText.setText(R.string.dose_placeholder)
+        entryEditText.adjustTextSize()
+
         if (!isInEditMode) {
 
             setOnClickListener {
@@ -86,11 +90,8 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             entryEditText.setOnTextChangedListener { s ->
                 if (entryEditText.length() > 0) {
                     if (shouldDisplayFloatingPoint) entryEditText.addFloatingPoint()
-                    entryEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
-                } else {
-                    entryEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
                 }
-
+                entryEditText.adjustTextSize()
             }
 
             entryEditText.setOnFocusChangeListener { view, hasFocus -> if (!hasFocus) persistedValues.setValueForKey(value, persistedValueKey) }
@@ -125,6 +126,12 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
         val string = Companion.addFloatingPoint(this.text.toString())
         this.setText(string)
         Selection.setSelection(this.text, string.length)
+    }
+
+    fun EditText.adjustTextSize() {
+        if (this.length() > 0)
+            this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
+        else this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
     }
 
     companion object {
