@@ -63,4 +63,6 @@
     <!-- Placeholders -->
     <string name="title_placeholder">Placeholder title</string>
     <string name="description_placeholder">This is placeholder description text. It can span multiple lines depending on how long it is.</string>
+    <string name="dose_placeholder">00.0</string>
+
 </resources>
