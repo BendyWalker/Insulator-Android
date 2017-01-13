@@ -61,13 +61,15 @@
                     android:showDividers="middle">
 
                     <TextView
+                        android:id="@+id/textView_variableData_suggestedDose"
                         style="@style/Base.TextAppearance.AppCompat.Display2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:width="@dimen/width_card_entry"
                         android:gravity="center"
                         android:maxLength="4"
-                        android:text="@string/dose_placeholder"/>
+                        android:text="@string/dose_placeholder"
+                        android:textColor="@color/card_text_dark"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -92,6 +94,7 @@
                                 android:text="@string/card_title_carbohydrateDose"/>
 
                             <TextView
+                                android:id="@+id/textView_variableData_carbohydrateDose"
                                 style="@style/CardInfoText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -114,6 +117,7 @@
                                 android:text="@string/card_title_correctiveDose"/>
 
                             <TextView
+                                android:id="@+id/textView_variableData_correctiveDose"
                                 style="@style/CardInfoText"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

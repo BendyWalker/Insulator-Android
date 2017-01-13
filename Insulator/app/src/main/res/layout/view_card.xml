@@ -28,9 +28,12 @@
                 android:id="@+id/editText_card_entry"
                 style="@style/CardEntryText"
                 android:layout_width="@dimen/width_card_entry"
-                android:layout_height="60dp"
+                android:layout_height="75dp"
                 android:layout_gravity="center"
-                android:hint="@string/card_hint_mmol"/>
+                android:layout_marginBottom="-8dp"
+                android:layout_marginTop="-8dp"
+                android:hint="@string/card_hint_mmol"
+                android:maxLength="4"/>
 
             <TextView
                 android:id="@+id/textView_card_description"
