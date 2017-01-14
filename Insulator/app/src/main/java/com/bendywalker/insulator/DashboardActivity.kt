@@ -35,7 +35,12 @@ class DashboardActivity : BaseActivity() {
             // TODO: Setup activity layout
             setContentView(R.layout.activity_dashboard)
             toolbar.inflateMenu(R.menu.dashboard)
-            toolbar.setOnMenuItemClickListener { menuItem -> true } //TODO: Open Settings activity here
+            toolbar.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.action_settings -> true //TODO: Open Settings activity here
+                    else -> false
+                }
+            }
         }
     }
 }

@@ -27,6 +27,8 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private val persistedValues by lazy { PersistedValues(context) }
     private val persistedValueKey: String?
 
+    var onTextChangeListener: OnTextChangeListener? = null
+
     var value: Double
         get() {
             val string = entryEditText.text.toString()
@@ -146,5 +148,9 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
             return stringBuilder.toString()
         }
+    }
+
+    interface OnTextChangeListener {
+        fun onTextChange()
     }
 }
