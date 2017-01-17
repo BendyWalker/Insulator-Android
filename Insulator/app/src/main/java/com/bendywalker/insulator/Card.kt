@@ -46,8 +46,8 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private val shouldDisplayFloatingPoint: Boolean
         get() {
             // TODO: Write logic for booleans once other layouts have been implemented
-            val carbohydratesInMeal = true
-            val glucoseLevel = true
+            val carbohydratesInMeal = id == R.id.card_variableData_carbohydratesInMeal
+            val glucoseLevel = id == R.id.card_variableData_currentBloodGlucoseLevel
             val totalDailyDose = true
 
             if (carbohydratesInMeal) {
@@ -91,7 +91,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
             entryEditText.setOnTextChangedListener { s ->
                 if (entryEditText.length() > 0) {
-                    if (shouldDisplayFloatingPoint) entryEditText.addFloatingPoint()
+                    if (shouldDisplayFloatingPoint && !addingFloatingPoint) entryEditText.addFloatingPoint()
                 }
                 entryEditText.adjustTextSize()
                 onTextChangeListener?.onTextChange()
@@ -124,11 +124,13 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             }
         })
     }
-
+    var addingFloatingPoint = false
     fun EditText.addFloatingPoint() {
+        addingFloatingPoint = true
         val string = Companion.addFloatingPoint(this.text.toString())
         this.setText(string)
         Selection.setSelection(this.text, string.length)
+        addingFloatingPoint = false
     }
 
     fun EditText.adjustTextSize() {
