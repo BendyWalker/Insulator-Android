@@ -78,12 +78,11 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             typedArray.recycle()
         }
 
-        // Do this to have standardised values in the layout preview
-        entryEditText.setText(R.string.dose_placeholder)
-        entryEditText.adjustTextSize()
-
-        if (!isInEditMode) {
-
+        if (isInEditMode) {
+            // Do this to have standardised values in the layout preview
+            entryEditText.setText(R.string.dose_placeholder)
+            entryEditText.adjustTextSize()
+        } else {
             setOnClickListener {
                 entryEditText.requestFocus()
                 entryEditText.selectAll()
@@ -124,6 +123,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             }
         })
     }
+
     var addingFloatingPoint = false
     fun EditText.addFloatingPoint() {
         addingFloatingPoint = true
