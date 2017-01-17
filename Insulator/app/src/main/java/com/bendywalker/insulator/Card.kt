@@ -25,7 +25,9 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private val descriptionTextView by lazy { findViewById(R.id.textView_card_description) as TextView }
     private val entryEditText by lazy { findViewById(R.id.editText_card_entry) as EditText }
     private val persistedValues by lazy { PersistedValues(context) }
+
     private val persistedValueKey: String?
+    private var addingFloatingPoint = false
 
     var onTextChangeListener: OnTextChangeListener? = null
 
@@ -124,7 +126,6 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
         })
     }
 
-    var addingFloatingPoint = false
     fun EditText.addFloatingPoint() {
         addingFloatingPoint = true
         val string = Companion.addFloatingPoint(this.text.toString())
