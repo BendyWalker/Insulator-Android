@@ -1,7 +1,7 @@
 package com.bendywalker.insulator
 
-import android.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,24 +13,26 @@ import android.widget.TextView
  */
 
 class VariableDataFragment : Fragment(), Card.OnTextChangeListener {
-    private val rootView by lazy { view.findViewById(R.id.root) as LinearLayout }
-    private val currentBloodGlucoseLevelCard by lazy { view.findViewById(R.id.card_variableData_currentBloodGlucoseLevel) as Card }
-    private val carbohydratesInMealCard by lazy { view.findViewById(R.id.card_variableData_carbohydratesInMeal) as Card }
-    private val totalDoseTextView by lazy { view.findViewById(R.id.textView_variableData_suggestedDose) as TextView }
-    private val carbohydrateDoseTextView by lazy { view.findViewById(R.id.textView_variableData_carbohydrateDose) as TextView }
-    private val correctiveDoseTextView by lazy { view.findViewById(R.id.textView_variableData_correctiveDose) as TextView }
+    private val rootView by lazy { view?.findViewById(R.id.root) as LinearLayout }
+    private val currentBloodGlucoseLevelCard by lazy { view?.findViewById(R.id.card_variableData_currentBloodGlucoseLevel) as Card }
+    private val carbohydratesInMealCard by lazy { view?.findViewById(R.id.card_variableData_carbohydratesInMeal) as Card }
+    private val totalDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_suggestedDose) as TextView }
+    private val carbohydrateDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_carbohydrateDose) as TextView }
+    private val correctiveDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_correctiveDose) as TextView }
 
-    private val persistedValues by lazy { PersistedValues(activity) }
-    private val calculator = Calculator(persistedValues = persistedValues)
-    private val parentActivity = (activity as DashboardActivity)
+    private val persistedValues by lazy { PersistedValues(context) }
+    private val calculator by lazy { Calculator(persistedValues = persistedValues) }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle): View {
-        return inflater.inflate(R.layout.fragment_variabledata, container)
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater?.inflate(R.layout.fragment_variabledata, container, false)
+        return view
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         currentBloodGlucoseLevelCard.onTextChangeListener = this
         carbohydratesInMealCard.onTextChangeListener = this
+
+        val parentActivity = activity as DashboardActivity
         parentActivity.toolbar.inflateMenu(R.menu.variabledata)
         parentActivity.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -58,5 +60,11 @@ class VariableDataFragment : Fragment(), Card.OnTextChangeListener {
         totalDoseTextView.text = calculator.totalDose.toString()
         carbohydrateDoseTextView.text = calculator.carbohydrateDose.toString()
         correctiveDoseTextView.text = calculator.correctiveDose.toString()
+    }
+
+    companion object {
+        fun newInstance(): VariableDataFragment {
+            return VariableDataFragment()
+        }
     }
 }

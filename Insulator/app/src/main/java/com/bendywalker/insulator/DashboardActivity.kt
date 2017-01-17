@@ -1,9 +1,14 @@
 package com.bendywalker.insulator
 
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.MenuItem
-import android.widget.Toolbar
+import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.ViewPager
+import android.support.v7.widget.Toolbar
 
 /**
  * Created by Ben David Walker (bendywalker) on 09/01/2017.
@@ -11,6 +16,8 @@ import android.widget.Toolbar
 
 class DashboardActivity : BaseActivity() {
     val toolbar by lazy { findViewById(R.id.dashboard_toolbar) as Toolbar }
+    val viewPager by lazy { findViewById(R.id.dashboard_viewPager) as ViewPager }
+    val tabLayout by lazy { findViewById(R.id.dashboard_tabLayout) as TabLayout }
 
     val persistedValues by lazy { PersistedValues(this) }
 
@@ -39,6 +46,51 @@ class DashboardActivity : BaseActivity() {
                 when (menuItem.itemId) {
                     R.id.action_settings -> true //TODO: Open Settings activity here
                     else -> false
+                }
+            }
+
+            val pagerAdapter = PagerAdapter(supportFragmentManager, this)
+            viewPager.adapter = pagerAdapter
+            viewPager.offscreenPageLimit = 1
+            tabLayout.setupWithViewPager(viewPager)
+        }
+    }
+
+    class PagerAdapter(fragmentManager: FragmentManager, val context: Context) : FragmentPagerAdapter(fragmentManager) {
+        override fun getItem(position: Int): Fragment {
+            return Page.tabForPosition(position)!!.fragment
+        }
+
+        override fun getCount(): Int {
+            return Page.values().size
+        }
+
+        override fun getPageTitle(position: Int): CharSequence {
+            val string = context.resources.getString(Page.tabForPosition(position)!!.titleStringRes)
+            return string
+        }
+
+        enum class Page(val titleStringRes: Int) {
+
+            VARIABLES(R.string.title_variables),
+            CONSTANTS(R.string.title_constants);
+
+            val fragment: Fragment
+                get() {
+                    when (this) {
+                        VARIABLES -> return VariableDataFragment.newInstance()
+                        CONSTANTS -> return VariableDataFragment.newInstance()
+                    }
+                }
+
+            companion object {
+                fun tabForPosition(position: Int): Page? {
+                    when (position) {
+                        0 -> return VARIABLES
+                        1 -> return CONSTANTS
+                    }
+
+                    return null
                 }
             }
         }
