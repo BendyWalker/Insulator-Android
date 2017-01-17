@@ -3,6 +3,7 @@ package com.bendywalker.insulator
 import android.content.Context
 import android.text.Editable
 import android.text.Selection
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.TypedValue
@@ -91,7 +92,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             }
 
             entryEditText.setOnTextChangedListener { s ->
-                if (entryEditText.length() > 0) {
+                if (!TextUtils.isEmpty(entryEditText.text)) {
                     if (shouldDisplayFloatingPoint && !addingFloatingPoint) entryEditText.addFloatingPoint()
                 }
                 entryEditText.adjustTextSize()
@@ -135,9 +136,9 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     }
 
     fun EditText.adjustTextSize() {
-        if (this.length() > 0)
-            this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
-        else this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
+        if (TextUtils.isEmpty(this.text))
+            this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
+        else this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
     }
 
     companion object {
