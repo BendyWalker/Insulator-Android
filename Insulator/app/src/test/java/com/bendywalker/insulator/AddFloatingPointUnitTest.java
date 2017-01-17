@@ -18,6 +18,12 @@ public class AddFloatingPointUnitTest
     }
 
     @Test
+    public void lengthOfOne_isCorrect() {
+        String number = "1";
+        assertEquals("0.1", Card.Companion.addFloatingPoint(number, 1));
+    }
+
+    @Test
     public void lengthOfTwo_precisionOfOne_isCorrect() {
         String number = "12";
         assertEquals("1.2", Card.Companion.addFloatingPoint(number, 1));
