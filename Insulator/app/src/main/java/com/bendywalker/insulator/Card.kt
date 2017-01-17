@@ -111,7 +111,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     }
 
     fun reset() {
-        entryEditText.text = null
+        entryEditText.setText("")
     }
 
     fun EditText.setOnTextChangedListener(closure: (s: CharSequence) -> Unit) {
