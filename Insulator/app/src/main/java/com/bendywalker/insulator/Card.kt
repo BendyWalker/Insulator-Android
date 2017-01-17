@@ -130,8 +130,8 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
         addingFloatingPoint = true
         val string = Companion.addFloatingPoint(this.text.toString())
         this.setText(string)
-        Selection.setSelection(this.text, string.length)
         addingFloatingPoint = false
+        Selection.setSelection(this.text, string.length)
     }
 
     fun EditText.adjustTextSize() {
