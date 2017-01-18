@@ -12,13 +12,13 @@ import static org.junit.Assert.assertEquals;
 public class AddFloatingPointUnitTest
 {
     @Test
-    public void zeroes_isCorrect() {
+    public void zeroes_precisionOfOne_isCorrect() {
         String number = "0000000000";
         assertEquals("0.0", Card.Companion.addFloatingPoint(number, 1));
     }
 
     @Test
-    public void lengthOfOne_isCorrect() {
+    public void lengthOfOne_precisionOfOne_isCorrect() {
         String number = "1";
         assertEquals("0.1", Card.Companion.addFloatingPoint(number, 1));
     }
@@ -43,8 +43,8 @@ public class AddFloatingPointUnitTest
 
     @Test
     public void lengthOfThree_floatingPoint_precisionOfOne_isCorrect() {
-        String number = "12.34";
-        assertEquals("123.4", Card.Companion.addFloatingPoint(number, 1));
+        String number = "1.23";
+        assertEquals("12.3", Card.Companion.addFloatingPoint(number, 1));
     }
 
     @Test

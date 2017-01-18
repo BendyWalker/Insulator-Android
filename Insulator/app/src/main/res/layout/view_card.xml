@@ -32,8 +32,7 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="-8dp"
                 android:layout_marginTop="-8dp"
-                android:hint="@string/card_hint_mmol"
-                android:maxLength="4"/>
+                android:hint="@string/card_hint_mmol"/>
 
             <TextView
                 android:id="@+id/textView_card_description"

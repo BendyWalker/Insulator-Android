@@ -1,9 +1,7 @@
 package com.bendywalker.insulator
 
 import android.content.Context
-import android.text.Editable
-import android.text.Selection
-import android.text.TextWatcher
+import android.text.*
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -25,7 +23,9 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private val descriptionTextView by lazy { findViewById(R.id.textView_card_description) as TextView }
     private val entryEditText by lazy { findViewById(R.id.editText_card_entry) as EditText }
     private val persistedValues by lazy { PersistedValues(context) }
+
     private val persistedValueKey: String?
+    private var addingFloatingPoint = false
 
     var onTextChangeListener: OnTextChangeListener? = null
 
@@ -46,8 +46,8 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private val shouldDisplayFloatingPoint: Boolean
         get() {
             // TODO: Write logic for booleans once other layouts have been implemented
-            val carbohydratesInMeal = true
-            val glucoseLevel = true
+            val carbohydratesInMeal = id == R.id.card_variableData_carbohydratesInMeal
+            val glucoseLevel = id == R.id.card_variableData_currentBloodGlucoseLevel
             val totalDailyDose = true
 
             if (carbohydratesInMeal) {
@@ -78,20 +78,20 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             typedArray.recycle()
         }
 
-        // Do this to have standardised values in the layout preview
-        entryEditText.setText(R.string.dose_placeholder)
-        entryEditText.adjustTextSize()
-
-        if (!isInEditMode) {
-
+        if (isInEditMode) {
+            // Do this to have standardised values in the layout preview
+            entryEditText.setText(R.string.dose_placeholder)
+            entryEditText.adjustTextSize()
+            entryEditText.setMaxLength(4)
+        } else {
             setOnClickListener {
                 entryEditText.requestFocus()
                 entryEditText.selectAll()
             }
 
             entryEditText.setOnTextChangedListener { s ->
-                if (entryEditText.length() > 0) {
-                    if (shouldDisplayFloatingPoint) entryEditText.addFloatingPoint()
+                if (!TextUtils.isEmpty(entryEditText.text)) {
+                    if (shouldDisplayFloatingPoint && !addingFloatingPoint) entryEditText.addFloatingPoint()
                 }
                 entryEditText.adjustTextSize()
                 onTextChangeListener?.onTextChange()
@@ -108,6 +108,8 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
                 false
             }
+
+            entryEditText.setMaxLength(if (shouldDisplayFloatingPoint) 4 else 3)
         }
     }
 
@@ -126,27 +128,31 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     }
 
     fun EditText.addFloatingPoint() {
-        val string = Companion.addFloatingPoint(this.text.toString())
+        addingFloatingPoint = true
+        val string = addFloatingPoint(this.text.toString())
         this.setText(string)
+        addingFloatingPoint = false
         Selection.setSelection(this.text, string.length)
     }
 
     fun EditText.adjustTextSize() {
-        if (this.length() > 0)
-            this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
-        else this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
+        if (TextUtils.isEmpty(this.text))
+            this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_empty))
+        else this.setTextSize(TypedValue.COMPLEX_UNIT_PX, resources.getDimension(R.dimen.text_card_entry_filled))
+    }
+
+    fun EditText.setMaxLength(length: Int) {
+        this.filters = listOf<InputFilter>(InputFilter.LengthFilter(length)).toTypedArray()
     }
 
     companion object {
         fun addFloatingPoint(string: String, precision: Int = 1): String {
             val stringBuilder = StringBuilder(string)
-            val storedPoints = (0 until stringBuilder.length).filter { stringBuilder[it] == '.' }
-
             while (stringBuilder.length > 2 && stringBuilder.first() == '0' || stringBuilder.first() == '.') stringBuilder.deleteCharAt(0)
+            val storedPoints = (0 until stringBuilder.length).filter { stringBuilder[it] == '.' }
             for (i in storedPoints) stringBuilder.deleteCharAt(i)
             while (stringBuilder.length < 2) stringBuilder.insert(0, '0')
             stringBuilder.insert(stringBuilder.length - precision, '.')
-
             return stringBuilder.toString()
         }
     }
