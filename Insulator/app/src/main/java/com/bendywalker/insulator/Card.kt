@@ -129,7 +129,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
     fun EditText.addFloatingPoint() {
         addingFloatingPoint = true
-        val string = Companion.addFloatingPoint(this.text.toString())
+        val string = addFloatingPoint(this.text.toString())
         this.setText(string)
         addingFloatingPoint = false
         Selection.setSelection(this.text, string.length)
@@ -144,13 +144,11 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     companion object {
         fun addFloatingPoint(string: String, precision: Int = 1): String {
             val stringBuilder = StringBuilder(string)
-            val storedPoints = (0 until stringBuilder.length).filter { stringBuilder[it] == '.' }
-
             while (stringBuilder.length > 2 && stringBuilder.first() == '0' || stringBuilder.first() == '.') stringBuilder.deleteCharAt(0)
+            val storedPoints = (0 until stringBuilder.length).filter { stringBuilder[it] == '.' }
             for (i in storedPoints) stringBuilder.deleteCharAt(i)
             while (stringBuilder.length < 2) stringBuilder.insert(0, '0')
             stringBuilder.insert(stringBuilder.length - precision, '.')
-
             return stringBuilder.toString()
         }
     }
