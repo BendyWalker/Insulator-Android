@@ -83,7 +83,7 @@ class DashboardActivity : BaseActivity() {
                 get() {
                     when (this) {
                         VARIABLES -> return VariableDataFragment.newInstance()
-                        CONSTANTS -> return VariableDataFragment.newInstance()
+                        CONSTANTS -> return ConstantDataFragment.newInstance()
                     }
                 }
 
