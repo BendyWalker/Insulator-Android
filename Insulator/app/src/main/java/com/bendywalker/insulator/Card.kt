@@ -10,6 +10,8 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.text.InputFilter
+
 
 /**
  * Created by Ben David Walker (bendywalker) on 11/01/2017.
@@ -137,7 +139,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     }
 
     fun EditText.setMaxLength(length: Int) {
-        this.filters = listOf<InputFilter>(InputFilter.LengthFilter(length)).toTypedArray()
+        this.filters = arrayOf<InputFilter>(InputFilter.LengthFilter(length))
     }
 
     companion object {
