@@ -86,7 +86,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
                 entryEditText.selectAll()
             }
 
-            entryEditText.setOnTextChangedListener { s ->
+            entryEditText.onTextChanged { s ->
                 if (!TextUtils.isEmpty(entryEditText.text)) {
                     if (displayFloatingPoint && !addingFloatingPoint) entryEditText.addFloatingPoint()
                 }
@@ -114,7 +114,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
         entryEditText.setText("")
     }
 
-    fun EditText.setOnTextChangedListener(closure: (s: CharSequence) -> Unit) {
+    fun EditText.onTextChanged(closure: (s: CharSequence) -> Unit) {
         this.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
