@@ -35,9 +35,6 @@ class DashboardActivity : BaseActivity() {
             exception.printStackTrace()
         }
 
-        persistedValues.carbohydrateFactor = 10.0
-        persistedValues.correctiveFactor = 2.0
-        persistedValues.desiredBloodGlucose = 6.5
         persistedValues.firstRun = false
 
         if (persistedValues.firstRun) {

@@ -1,7 +1,11 @@
 package com.bendywalker.insulator
 
 import android.content.Context
-import android.text.*
+import android.text.Editable
+import android.text.InputFilter
+import android.text.Selection
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -10,7 +14,6 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.text.InputFilter
 
 
 /**
@@ -30,6 +33,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private var addingFloatingPoint = false
 
     var onTextChangeListener: OnTextChangeListener? = null
+    var onFocusChangeListener: OnFocusChangeListener? = null
 
     var value: Double
         get() {
@@ -94,7 +98,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
                 onTextChangeListener?.onTextChange()
             }
 
-            entryEditText.setOnFocusChangeListener { view, hasFocus -> if (!hasFocus) persistedValues.setValueForKey(value, persistedValueKey) }
+            entryEditText.setOnFocusChangeListener { view, hasFocus -> onFocusChangeListener?.onFocusChange(id, hasFocus) }
 
             entryEditText.setOnEditorActionListener { textView, actionId, keyEvent ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -156,5 +160,9 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
     interface OnTextChangeListener {
         fun onTextChange()
+    }
+
+    interface OnFocusChangeListener {
+        fun onFocusChange(id: Int, hasFocus: Boolean)
     }
 }

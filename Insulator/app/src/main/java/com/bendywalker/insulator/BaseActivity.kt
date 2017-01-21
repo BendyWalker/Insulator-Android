@@ -1,7 +1,7 @@
 package com.bendywalker.insulator
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 
 /**
  * Created by Ben David Walker (bendywalker) on 09/01/2017.
