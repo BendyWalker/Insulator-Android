@@ -35,12 +35,7 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
             return if (string.isEmpty()) 0.0 else string.toDouble()
         }
         set(value) {
-            if (shouldDisplayFloatingPoint) {
-                entryEditText.setText(value.toString())
-            } else {
-                val roundedValue = Math.round(value)
-                entryEditText.setText(roundedValue.toString())
-            }
+            entryEditText.setText(value.toString())
         }
 
     private val shouldDisplayFloatingPoint: Boolean
