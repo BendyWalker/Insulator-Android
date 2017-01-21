@@ -21,6 +21,13 @@ class ConstantDataFragment : Fragment() {
         return inflater?.inflate(R.layout.fragment_constantdata, container, false)
     }
 
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        desiredBloodGlucoseLevelCard.value = persistedValues.desiredBloodGlucose
+        carbohydrateFactorCard.value = persistedValues.carbohydrateFactor
+        correctiveFactorCard.value = persistedValues.correctiveFactor
+    }
+
     companion object {
         fun newInstance(): ConstantDataFragment {
            return ConstantDataFragment()
