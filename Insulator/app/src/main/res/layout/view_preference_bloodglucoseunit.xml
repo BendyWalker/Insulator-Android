@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:divider="@drawable/divider_horizontal_50"
+    android:orientation="horizontal"
+    android:showDividers="middle">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/settings_preferences_heading_bloodGlucoseUnit"
+            android:textColor="@color/card_text_dark"/>
+
+        <TextView
+            style="@style/CardInfoText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/settings_preferences_description_bloodGlucoseUnit"
+            android:textColor="@color/card_text_dark"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView_preferences_bloodGlucoseUnit"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="@dimen/width_card_entry"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/card_hint_mmol"
+        android:textColor="@color/primary"/>
+</LinearLayout>
