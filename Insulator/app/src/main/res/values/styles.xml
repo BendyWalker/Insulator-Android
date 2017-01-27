@@ -49,7 +49,6 @@
         <item name="android:textColorHint">@color/card_text_light</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginRight">@dimen/spacing_100</item>
     </style>
 
     <style name="CardButton" parent="Base.TextAppearance.AppCompat.Button">
