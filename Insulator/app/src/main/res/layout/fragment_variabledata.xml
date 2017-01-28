@@ -15,21 +15,42 @@
         android:orientation="vertical"
         android:showDividers="beginning|middle|end">
 
-        <com.bendywalker.insulator.Card
-            android:id="@+id/card_variableData_currentBloodGlucoseLevel"
+        <android.support.v7.widget.CardView
+            style="@style/CardBase"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:descriptionText="@string/card_description_currentBloodGlucoseLevel"
-            app:hintText="@string/card_hint_mmol"
-            app:titleText="@string/card_title_currentBloodGlucoseLevel"/>
+            android:layout_height="wrap_content">
 
-        <com.bendywalker.insulator.Card
-            android:id="@+id/card_variableData_carbohydratesInMeal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:descriptionText="@string/card_description_carbohydratesInMeal"
-            app:hintText="@string/card_hint_grams"
-            app:titleText="@string/card_title_carbohydratesInMeal"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:divider="@drawable/divider_vertical_100"
+                android:orientation="vertical"
+                android:showDividers="middle">
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Variables"/>
+
+                <com.bendywalker.insulator.CardBody
+                    android:id="@+id/card_variableData_currentBloodGlucoseLevel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:descriptionText="@string/cardBody_description_currentBloodGlucoseLevel"
+                    app:hintText="@string/card_hint_mmol"
+                    app:titleText="@string/cardBody_title_currentBloodGlucoseLevel"/>
+
+                <com.bendywalker.insulator.CardBody
+                    android:id="@+id/card_variableData_carbohydratesInMeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:descriptionText="@string/cardBody_description_carbohydratesInMeal"
+                    app:hintText="@string/card_hint_grams"
+                    app:titleText="@string/cardBody_title_carbohydratesInMeal"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
 
         <android.support.v7.widget.CardView
             style="@style/CardBase"
@@ -39,86 +60,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:divider="@drawable/divider_vertical_100"
+                android:orientation="vertical"
+                android:showDividers="middle">
 
                 <TextView
                     style="@style/CardTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/card_title_suggestedDose"/>
+                    android:text="@string/card_title_suggestions"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:divider="@drawable/divider_horizontal_100"
-                    android:orientation="horizontal"
-                    android:showDividers="middle">
-
-                    <TextView
-                        android:id="@+id/textView_variableData_suggestedDose"
-                        style="@style/Base.TextAppearance.AppCompat.Display2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:width="@dimen/width_card_entry"
-                        android:gravity="center"
-                        android:maxLength="4"
-                        android:text="@string/dose_placeholder"
-                        android:textColor="@color/card_text_dark"/>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:divider="@drawable/divider_horizontal_50"
-                            android:orientation="horizontal"
-                            android:showDividers="middle">
-
-                            <TextView
-                                style="@style/CardInfoText"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/card_title_carbohydrateDose"/>
-
-                            <TextView
-                                android:id="@+id/textView_variableData_carbohydrateDose"
-                                style="@style/CardInfoText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/dose_placeholder"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="end"
-                            android:divider="@drawable/divider_horizontal_50"
-                            android:orientation="horizontal"
-                            android:showDividers="middle">
-
-                            <TextView
-                                style="@style/CardInfoText"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:text="@string/card_title_correctiveDose"/>
-
-                            <TextView
-                                android:id="@+id/textView_variableData_correctiveDose"
-                                style="@style/CardInfoText"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/dose_placeholder"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </LinearLayout>
+                <include layout="@layout/view_suggestions"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
     </LinearLayout>

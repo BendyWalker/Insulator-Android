@@ -19,28 +19,34 @@
     <!-- Card Titles -->
     <string name="card_title_welcome">Welcome to Insulator</string>
     <string name="card_title_readyToUse">Ready to use</string>
-    <string name="card_title_carbohydratesInMeal">Carbohydrates in meal</string>
-    <string name="card_title_carbohydrateFactor">Carbohydrate factor</string>
-    <string name="card_title_currentBloodGlucoseLevel">Current blood glucose</string>
-    <string name="card_title_desiredBloodGlucoseLevel">Desired blood glucose</string>
     <string name="card_title_totalDailyDose">Total daily dose</string>
-    <string name="card_title_correctiveFactor">Corrective factor</string>
-    <string name="card_title_suggestedDose">Suggested dose</string>
+    <string name="card_title_suggestions">Suggestions</string>
     <string name="card_title_carbohydrateDose">Carbohydrate dose</string>
     <string name="card_title_correctiveDose">Corrective dose</string>
     <string name="card_title_factorSuggestions">Factor suggestions</string>
     <string name="card_title_preferences">Preferences</string>
 
-    <!-- Card Descriptions -->
-    <string name="card_description_carbohydrateFactor">Enter how many carbohydrates 1 unit of fast-acting insulin covers</string>
-    <string name="card_description_carbohydratesInMeal">Enter how many carbohydrates you consumed in your meal</string>
-    <string name="card_description_totalDailyDose">Enter the total amount of insulin (basal and bolus) you take in a day</string>
-    <string name="card_description_currentBloodGlucoseLevel">Enter your current blood glucose level</string>
-    <string name="card_description_desiredBloodGlucoseLevel">Enter your desired blood glucose level</string>
-    <string name="card_description_correctiveFactor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
-    <string name="card_description_welcomeIntro">Insulator is the quickest way to easily calculate insulin doses. Scroll down to input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
-    <string name="card_description_welcomeComplete">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters provided.\n\nPlease remember: Insulator\'s suggestion should only be used as a guideline.</string>
-    <string name="card_description_factorSuggestion">If you\'re unsure of either your carbohydrate or corrective factor, Insulator can give you suggestions.\n\nEnter your total daily dose below, and tap Save on the suggestions you\'re happy with.</string>
+    <!-- Card Body Titles -->
+    <string name="cardBody_title_currentBloodGlucoseLevel">Current blood glucose</string>
+    <string name="cardBody_title_carbohydratesInMeal">Carbohydrates in meal</string>
+    <string name="cardBody_title_desiredBloodGlucoseLevel">Desired blood glucose</string>
+    <string name="cardBody_title_carbohydrateFactor">Carbohydrate factor</string>
+    <string name="cardBody_title_correctiveFactor">Corrective factor</string>
+    <string name="cardBody_title_bloodGlucoseUnit">Blood glucose unit</string>
+    <string name="cardBody_title_carbohydrateAccuracy">Carbohydrate accuracy</string>
+
+    <!-- Card Body Descriptions -->
+    <string name="cardBody_description_welcome">Insulator is the quickest way to easily calculate insulin doses. Scroll down to input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
+    <string name="cardBody_description_readyToUse">Insulator is now configured and ready to use!\n\nEnter your current blood glucose level and how many carbohydrates you\'ve consumed, and Insulator will calculate a dose based on the parameters provided.\n\nPlease remember: Insulator\'s suggestion should only be used as a guideline.</string>
+    <string name="cardBody_description_currentBloodGlucoseLevel">Enter your current blood glucose level</string>
+    <string name="cardBody_description_carbohydratesInMeal">Enter how many carbohydrates you consumed in your meal</string>
+    <string name="cardBody_description_desiredBloodGlucoseLevel">Enter your desired blood glucose level</string>
+    <string name="cardBody_description_carbohydrateFactor">Enter how many carbohydrates 1 unit of fast-acting insulin covers</string>
+    <string name="cardBody_description_correctiveFactor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
+    <string name="cardBody_description_bloodGlucoseUnit">Choose your preferred blood glucose measurement unit</string>
+    <string name="cardBody_description_carbohydrateAccuracy">Use decimals when entering carbohydrates</string>
+    <string name="cardBody_description_totalDailyDose">Enter the total amount of insulin (basal and bolus) you take in a day</string>
+    <string name="cardBody_description_factorSuggestion">If you\'re unsure of either your carbohydrate or corrective factor, Insulator can give you suggestions.\n\nEnter your total daily dose below, and tap Save on the suggestions you\'re happy with.</string>
 
     <!-- Card Entry Hints -->
     <string name="card_hint_mmol">mmol/L</string>
@@ -49,10 +55,6 @@
     <string name="card_hint_mgdl">mg/dL</string>
 
     <!-- Settings -->
-    <string name="settings_preferences_heading_bloodGlucoseUnit">Blood glucose unit</string>
-    <string name="settings_preferences_heading_carbohydrateAccuracy">Carbohydrate accuracy</string>
-    <string name="settings_preferences_description_bloodGlucoseUnit">Choose your preferred blood glucose measurement unit</string>
-    <string name="settings_preferences_description_carbohydrateAccuracy">Use decimals when entering carbohydrates</string>
     <string name="settings_feedback_heading">Feedback</string>
     <string name="settings_feedback_email">Email</string>
     <string name="settings_feedback_email_contact">mail\@insulatorapp.com</string>

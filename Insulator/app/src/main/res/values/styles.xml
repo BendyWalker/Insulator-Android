@@ -29,31 +29,32 @@
         <item name="cardUseCompatPadding">true</item>
     </style>
 
-    <style name="CardTitleText" parent="Base.TextAppearance.AppCompat.Headline">
+    <style name="CardTitleText" parent="TextAppearance.AppCompat.Headline">
         <item name="android:textColor">@color/primary</item>
-        <item name="android:layout_marginBottom">@dimen/spacing_50</item>
     </style>
 
+    <style name="CardBodyTitleText" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/card_text_dark</item>
+    </style>
 
-    <style name="CardInfoText" parent="Base.TextAppearance.AppCompat.Body1">
-        <item name="android:textColor">@color/card_text_light</item>
+    <style name="CardBodyDescriptionText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/card_text_dark</item>
 
     </style>
 
-    <style name="CardEntryText" parent="TextAppearance.AppCompat.Display2">
+    <style name="CardBodyEntryText" parent="TextAppearance.AppCompat.Display1">
         <item name="android:textSize">@dimen/text_card_entry_empty</item>
-        <item name="android:textColor">@drawable/selector_card_entry</item>
+        <item name="android:textColor">@drawable/selector_cardBody_entry</item>
         <item name="android:inputType">numberDecimal</item>
         <item name="android:imeOptions">actionDone</item>
         <item name="android:ellipsize">end</item>
         <item name="android:textColorHint">@color/card_text_light</item>
         <item name="android:selectAllOnFocus">true</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_marginRight">@dimen/spacing_100</item>
     </style>
 
     <style name="CardButton" parent="Base.TextAppearance.AppCompat.Button">
-        <!--<item name="android:textColor">@drawable/selector_button</item>-->
+        <item name="android:textColor">@drawable/selector_card_button</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>

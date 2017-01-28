@@ -15,17 +15,16 @@
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Title"
+            style="@style/CardBodyTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings_preferences_heading_carbohydrateAccuracy"
-            android:textColor="@color/card_text_dark"/>
+            android:text="@string/cardBody_title_carbohydrateAccuracy"/>
 
         <TextView
-            style="@style/CardInfoText"
+            style="@style/CardBodyDescriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/settings_preferences_description_carbohydrateAccuracy"
+            android:text="@string/cardBody_description_carbohydrateAccuracy"
             android:textColor="@color/card_text_dark"/>
     </LinearLayout>
 

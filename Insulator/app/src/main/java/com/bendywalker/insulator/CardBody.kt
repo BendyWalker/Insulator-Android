@@ -19,7 +19,7 @@ import android.widget.TextView
 /**
  * Created by Ben David Walker (bendywalker) on 11/01/2017.
  */
-class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
+class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0, 0)
     constructor(context: Context) : this(context, null, 0, 0)
@@ -29,11 +29,10 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
     private val entryEditText by lazy { findViewById(R.id.editText_card_entry) as EditText }
     private val persistedValues by lazy { PersistedValues(context) }
 
-    private val persistedValueKey: String?
-    private var addingFloatingPoint = false
-
     var onTextChangeListener: OnTextChangeListener? = null
     var onFocusChangeListener: OnFocusChangeListener? = null
+
+    private var addingFloatingPoint = false
 
     var value: Double
         get() {
@@ -67,14 +66,13 @@ class Card(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRe
 
     init {
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        layoutInflater.inflate(R.layout.view_card, this)
+        layoutInflater.inflate(R.layout.view_cardbody, this)
 
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.Card, 0, 0)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CardBody, 0, 0)
         try {
-            persistedValueKey = typedArray.getString(R.styleable.Card_persistedValueKey)
-            titleTextView.text = typedArray.getString(R.styleable.Card_titleText)
-            descriptionTextView.text = typedArray.getString(R.styleable.Card_descriptionText)
-            entryEditText.hint = typedArray.getString(R.styleable.Card_hintText)
+            titleTextView.text = typedArray.getString(R.styleable.CardBody_titleText)
+            descriptionTextView.text = typedArray.getString(R.styleable.CardBody_descriptionText)
+            entryEditText.hint = typedArray.getString(R.styleable.CardBody_hintText)
         } finally {
             typedArray.recycle()
         }
