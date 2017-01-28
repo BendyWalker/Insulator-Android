@@ -12,10 +12,10 @@ import android.widget.TextView
  * Created by Ben David Walker (bendywalker) on 14/01/2017.
  */
 
-class VariableDataFragment : Fragment(), Card.OnTextChangeListener {
+class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     private val rootView by lazy { view?.findViewById(R.id.root) as LinearLayout }
-    private val currentBloodGlucoseLevelCard by lazy { view?.findViewById(R.id.card_variableData_currentBloodGlucoseLevel) as Card }
-    private val carbohydratesInMealCard by lazy { view?.findViewById(R.id.card_variableData_carbohydratesInMeal) as Card }
+    private val currentBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.card_variableData_currentBloodGlucoseLevel) as CardBody }
+    private val carbohydratesInMealCardBody by lazy { view?.findViewById(R.id.card_variableData_carbohydratesInMeal) as CardBody }
     private val totalDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_suggestedDose) as TextView }
     private val carbohydrateDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_carbohydrateDose) as TextView }
     private val correctiveDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_correctiveDose) as TextView }
@@ -28,8 +28,8 @@ class VariableDataFragment : Fragment(), Card.OnTextChangeListener {
     }
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        currentBloodGlucoseLevelCard.onTextChangeListener = this
-        carbohydratesInMealCard.onTextChangeListener = this
+        currentBloodGlucoseLevelCardBody.onTextChangeListener = this
+        carbohydratesInMealCardBody.onTextChangeListener = this
 
         val parentActivity = activity as DashboardActivity
         parentActivity.toolbar.inflateMenu(R.menu.variabledata)
@@ -42,8 +42,8 @@ class VariableDataFragment : Fragment(), Card.OnTextChangeListener {
     }
 
     private fun resetCards() {
-        currentBloodGlucoseLevelCard.reset()
-        carbohydratesInMealCard.reset()
+        currentBloodGlucoseLevelCardBody.reset()
+        carbohydratesInMealCardBody.reset()
         totalDoseTextView.text = "0.0"
         carbohydrateDoseTextView.text = "0.0"
         correctiveDoseTextView.text = "0.0"
@@ -51,8 +51,8 @@ class VariableDataFragment : Fragment(), Card.OnTextChangeListener {
     }
 
     override fun onTextChange() {
-        calculator.currentBloodGlucose = currentBloodGlucoseLevelCard.value
-        calculator.carbohydratesInMeal = carbohydratesInMealCard.value
+        calculator.currentBloodGlucose = currentBloodGlucoseLevelCardBody.value
+        calculator.carbohydratesInMeal = carbohydratesInMealCardBody.value
         totalDoseTextView.text = calculator.totalDose.toString()
         carbohydrateDoseTextView.text = calculator.carbohydrateDose.toString()
         correctiveDoseTextView.text = calculator.correctiveDose.toString()

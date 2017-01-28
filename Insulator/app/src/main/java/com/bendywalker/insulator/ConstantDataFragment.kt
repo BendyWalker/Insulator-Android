@@ -10,10 +10,10 @@ import android.view.ViewGroup
  * Created by Ben David Walker (bendywalker) on 20/01/2017.
  */
 
-class ConstantDataFragment : Fragment(), Card.OnFocusChangeListener {
-    private val desiredBloodGlucoseLevelCard by lazy { view?.findViewById(R.id.card_constantdata_desiredBloodGlucoseLevel) as Card }
-    private val carbohydrateFactorCard by lazy { view?.findViewById(R.id.card_constantdata_carbohydrateFactor) as Card }
-    private val correctiveFactorCard by lazy { view?.findViewById(R.id.card_constantdata_correctiveFactor) as Card }
+class ConstantDataFragment : Fragment(), CardBody.OnFocusChangeListener {
+    private val desiredBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.card_constantdata_desiredBloodGlucoseLevel) as CardBody }
+    private val carbohydrateFactorCardBody by lazy { view?.findViewById(R.id.card_constantdata_carbohydrateFactor) as CardBody }
+    private val correctiveFactorCardBody by lazy { view?.findViewById(R.id.card_constantdata_correctiveFactor) as CardBody }
 
     private val persistedValues by lazy { PersistedValues(context) }
 
@@ -23,20 +23,20 @@ class ConstantDataFragment : Fragment(), Card.OnFocusChangeListener {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        desiredBloodGlucoseLevelCard.value = persistedValues.desiredBloodGlucose
-        carbohydrateFactorCard.value = persistedValues.carbohydrateFactor
-        correctiveFactorCard.value = persistedValues.correctiveFactor
+        desiredBloodGlucoseLevelCardBody.value = persistedValues.desiredBloodGlucose
+        carbohydrateFactorCardBody.value = persistedValues.carbohydrateFactor
+        correctiveFactorCardBody.value = persistedValues.correctiveFactor
 
-        desiredBloodGlucoseLevelCard.onFocusChangeListener = this
-        carbohydrateFactorCard.onFocusChangeListener = this
-        correctiveFactorCard.onFocusChangeListener = this
+        desiredBloodGlucoseLevelCardBody.onFocusChangeListener = this
+        carbohydrateFactorCardBody.onFocusChangeListener = this
+        correctiveFactorCardBody.onFocusChangeListener = this
     }
 
     override fun onFocusChange(id: Int, hasFocus: Boolean) {
         when (id) {
-            R.id.card_constantdata_desiredBloodGlucoseLevel -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCard.value
-            R.id.card_constantdata_carbohydrateFactor -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCard.value
-            R.id.card_constantdata_correctiveFactor -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCard.value
+            R.id.card_constantdata_desiredBloodGlucoseLevel -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
+            R.id.card_constantdata_carbohydrateFactor -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
+            R.id.card_constantdata_correctiveFactor -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
         }
     }
 

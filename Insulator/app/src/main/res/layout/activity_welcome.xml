@@ -105,21 +105,21 @@
                         android:orientation="vertical"
                         android:showDividers="middle">
 
-                        <com.bendywalker.insulator.Card
+                        <com.bendywalker.insulator.CardBody
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:descriptionText="@string/card_description_desiredBloodGlucoseLevel"
                             app:hintText="@string/card_hint_mmol"
                             app:titleText="@string/card_title_desiredBloodGlucoseLevel"/>
 
-                        <com.bendywalker.insulator.Card
+                        <com.bendywalker.insulator.CardBody
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:descriptionText="@string/card_description_carbohydrateFactor"
                             app:hintText="@string/card_hint_grams"
                             app:titleText="@string/card_title_carbohydrateFactor"/>
 
-                        <com.bendywalker.insulator.Card
+                        <com.bendywalker.insulator.CardBody
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             app:descriptionText="@string/card_description_correctiveFactor"

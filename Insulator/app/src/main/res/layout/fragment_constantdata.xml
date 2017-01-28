@@ -37,31 +37,28 @@
                     android:orientation="vertical"
                     android:showDividers="middle">
 
-                    <com.bendywalker.insulator.Card
+                    <com.bendywalker.insulator.CardBody
                         android:id="@+id/card_constantdata_desiredBloodGlucoseLevel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:descriptionText="@string/card_description_desiredBloodGlucoseLevel"
                         app:hintText="@string/card_hint_mmol"
-                        app:persistedValueKey="@string/key_desired_blood_glucose"
                         app:titleText="@string/card_title_desiredBloodGlucoseLevel"/>
 
-                    <com.bendywalker.insulator.Card
+                    <com.bendywalker.insulator.CardBody
                         android:id="@+id/card_constantdata_carbohydrateFactor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:descriptionText="@string/card_description_carbohydrateFactor"
                         app:hintText="@string/card_hint_mmol"
-                        app:persistedValueKey="@string/key_carbohydrate_factor"
                         app:titleText="@string/card_title_carbohydrateFactor"/>
 
-                    <com.bendywalker.insulator.Card
+                    <com.bendywalker.insulator.CardBody
                         android:id="@+id/card_constantdata_correctiveFactor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:descriptionText="@string/card_description_correctiveFactor"
                         app:hintText="@string/card_hint_mmol"
-                        app:persistedValueKey="@string/key_corrective_factor"
                         app:titleText="@string/card_title_correctiveFactor"/>
                 </LinearLayout>
             </LinearLayout>

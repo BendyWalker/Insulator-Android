@@ -38,7 +38,7 @@
                     android:orientation="vertical"
                     android:showDividers="middle">
 
-                    <com.bendywalker.insulator.Card
+                    <com.bendywalker.insulator.CardBody
                         android:id="@+id/card_variableData_currentBloodGlucoseLevel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -46,7 +46,7 @@
                         app:hintText="@string/card_hint_mmol"
                         app:titleText="@string/card_title_currentBloodGlucoseLevel"/>
 
-                    <com.bendywalker.insulator.Card
+                    <com.bendywalker.insulator.CardBody
                         android:id="@+id/card_variableData_carbohydratesInMeal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
