@@ -71,7 +71,9 @@
                         android:layout_height="wrap_content"
                         android:text="@string/card_title_preferences"/>
 
-                    <include layout="@layout/view_preference_bloodglucoseunit"/>
+                    <com.bendywalker.insulator.BloodGlucoseUnitPreference
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
 
                     <com.bendywalker.insulator.CarbohydrateAccuracyPreference
                         android:layout_width="match_parent"

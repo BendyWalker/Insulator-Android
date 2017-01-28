@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bloodGlucoseUnits">
+        <item>@string/card_hint_mmol</item>
+        <item>@string/card_hint_mgdl</item>
+    </string-array>
+</resources>
