@@ -22,7 +22,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:divider="@drawable/divider_vertical_100"
+                android:orientation="vertical"
+                android:showDividers="middle">
 
                 <TextView
                     style="@style/CardTitleText"

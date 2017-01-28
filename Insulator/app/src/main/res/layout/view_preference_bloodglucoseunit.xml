@@ -8,21 +8,19 @@
     android:showDividers="middle">
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
-            style="@style/TextAppearance.AppCompat.Title"
+            style="@style/CardBodyTitleText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/settings_preferences_heading_bloodGlucoseUnit"
-            android:textColor="@color/card_text_dark"/>
+            android:text="@string/settings_preferences_heading_bloodGlucoseUnit"/>
 
         <TextView
-            style="@style/CardInfoText"
+            style="@style/CardBodyInfoText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="@string/settings_preferences_description_bloodGlucoseUnit"

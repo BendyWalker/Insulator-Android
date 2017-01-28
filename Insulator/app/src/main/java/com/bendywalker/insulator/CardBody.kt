@@ -66,7 +66,7 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
 
     init {
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        layoutInflater.inflate(R.layout.view_card, this)
+        layoutInflater.inflate(R.layout.view_cardbody, this)
 
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.CardBody, 0, 0)
         try {

@@ -23,7 +23,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:divider="@drawable/divider_vertical_100"
+                android:orientation="vertical"
+                android:showDividers="middle">
 
                 <TextView
                     style="@style/CardTitleText"
@@ -31,29 +33,21 @@
                     android:layout_height="wrap_content"
                     android:text="Variables"/>
 
-                <LinearLayout
+                <com.bendywalker.insulator.CardBody
+                    android:id="@+id/card_variableData_currentBloodGlucoseLevel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="@drawable/divider_vertical_100"
-                    android:orientation="vertical"
-                    android:showDividers="middle">
+                    app:descriptionText="@string/card_description_currentBloodGlucoseLevel"
+                    app:hintText="@string/card_hint_mmol"
+                    app:titleText="@string/card_title_currentBloodGlucoseLevel"/>
 
-                    <com.bendywalker.insulator.CardBody
-                        android:id="@+id/card_variableData_currentBloodGlucoseLevel"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:descriptionText="@string/card_description_currentBloodGlucoseLevel"
-                        app:hintText="@string/card_hint_mmol"
-                        app:titleText="@string/card_title_currentBloodGlucoseLevel"/>
-
-                    <com.bendywalker.insulator.CardBody
-                        android:id="@+id/card_variableData_carbohydratesInMeal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:descriptionText="@string/card_description_carbohydratesInMeal"
-                        app:hintText="@string/card_hint_grams"
-                        app:titleText="@string/card_title_carbohydratesInMeal"/>
-                </LinearLayout>
+                <com.bendywalker.insulator.CardBody
+                    android:id="@+id/card_variableData_carbohydratesInMeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:descriptionText="@string/card_description_carbohydratesInMeal"
+                    app:hintText="@string/card_hint_grams"
+                    app:titleText="@string/card_title_carbohydratesInMeal"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
@@ -66,7 +60,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:divider="@drawable/divider_vertical_100"
+                android:orientation="vertical"
+                android:showDividers="middle">
 
                 <TextView
                     style="@style/CardTitleText"

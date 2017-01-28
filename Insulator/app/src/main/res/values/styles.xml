@@ -29,18 +29,20 @@
         <item name="cardUseCompatPadding">true</item>
     </style>
 
-    <style name="CardTitleText" parent="Base.TextAppearance.AppCompat.Headline">
+    <style name="CardTitleText" parent="TextAppearance.AppCompat.Headline">
         <item name="android:textColor">@color/primary</item>
-        <item name="android:layout_marginBottom">@dimen/spacing_50</item>
     </style>
 
+    <style name="CardBodyTitleText" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/card_text_dark</item>
+    </style>
 
-    <style name="CardInfoText" parent="Base.TextAppearance.AppCompat.Body1">
-        <item name="android:textColor">@color/card_text_light</item>
+    <style name="CardBodyInfoText" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textColor">@color/card_text_dark</item>
 
     </style>
 
-    <style name="CardEntryText" parent="TextAppearance.AppCompat.Display2">
+    <style name="CardBodyEntryText" parent="TextAppearance.AppCompat.Display1">
         <item name="android:textSize">@dimen/text_card_entry_empty</item>
         <item name="android:textColor">@drawable/selector_card_entry</item>
         <item name="android:inputType">numberDecimal</item>

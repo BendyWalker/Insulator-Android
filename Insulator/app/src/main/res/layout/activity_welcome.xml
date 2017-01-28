@@ -35,7 +35,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:divider="@drawable/divider_vertical_100"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
 
                     <TextView
                         style="@style/CardTitleText"
@@ -44,11 +46,10 @@
                         android:text="@string/card_title_welcome"/>
 
                     <TextView
-                        style="@style/CardInfoText"
+                        style="@style/CardBodyInfoText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/card_description_welcomeIntro"
-                        android:textColor="@color/card_text_dark"/>
+                        android:text="@string/card_description_welcomeIntro"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -60,7 +61,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:divider="@drawable/divider_vertical_100"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
 
                     <TextView
                         style="@style/CardTitleText"
@@ -68,17 +71,9 @@
                         android:layout_height="wrap_content"
                         android:text="@string/card_title_preferences"/>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:divider="@drawable/divider_vertical_100"
-                        android:orientation="vertical"
-                        android:showDividers="middle">
+                    <include layout="@layout/view_preference_bloodglucoseunit"/>
 
-                        <include layout="@layout/view_preference_bloodglucoseunit"/>
-
-                        <include layout="@layout/view_preferences_carbohydrateaccuracy"/>
-                    </LinearLayout>
+                    <include layout="@layout/view_preference_carbohydrateaccuracy"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -90,7 +85,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:divider="@drawable/divider_vertical_100"
+                    android:orientation="vertical"
+                    android:showDividers="middle">
 
                     <TextView
                         style="@style/CardTitleText"
@@ -98,34 +95,26 @@
                         android:layout_height="wrap_content"
                         android:text="Constant values"/>
 
-                    <LinearLayout
+                    <com.bendywalker.insulator.CardBody
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:divider="@drawable/divider_vertical_100"
-                        android:orientation="vertical"
-                        android:showDividers="middle">
+                        app:descriptionText="@string/card_description_desiredBloodGlucoseLevel"
+                        app:hintText="@string/card_hint_mmol"
+                        app:titleText="@string/card_title_desiredBloodGlucoseLevel"/>
 
-                        <com.bendywalker.insulator.CardBody
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:descriptionText="@string/card_description_desiredBloodGlucoseLevel"
-                            app:hintText="@string/card_hint_mmol"
-                            app:titleText="@string/card_title_desiredBloodGlucoseLevel"/>
+                    <com.bendywalker.insulator.CardBody
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:descriptionText="@string/card_description_carbohydrateFactor"
+                        app:hintText="@string/card_hint_grams"
+                        app:titleText="@string/card_title_carbohydrateFactor"/>
 
-                        <com.bendywalker.insulator.CardBody
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:descriptionText="@string/card_description_carbohydrateFactor"
-                            app:hintText="@string/card_hint_grams"
-                            app:titleText="@string/card_title_carbohydrateFactor"/>
-
-                        <com.bendywalker.insulator.CardBody
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:descriptionText="@string/card_description_correctiveFactor"
-                            app:hintText="@string/card_hint_mmol"
-                            app:titleText="@string/card_title_correctiveFactor"/>
-                    </LinearLayout>
+                    <com.bendywalker.insulator.CardBody
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:descriptionText="@string/card_description_correctiveFactor"
+                        app:hintText="@string/card_hint_mmol"
+                        app:titleText="@string/card_title_correctiveFactor"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>
