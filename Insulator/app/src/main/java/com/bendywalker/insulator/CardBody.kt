@@ -46,8 +46,8 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     private val displayFloatingPoint: Boolean
         get() {
             // TODO: Write logic for booleans once other layouts have been implemented
-            val carbohydratesInMeal = id == R.id.card_variableData_carbohydratesInMeal
-            val glucoseLevel = id == R.id.card_variableData_currentBloodGlucoseLevel || id == R.id.card_constantdata_desiredBloodGlucoseLevel
+            val carbohydratesInMeal = id == R.id.cardBody_variableData_carbohydratesInMeal
+            val glucoseLevel = id == R.id.cardBody_variableData_currentBloodGlucoseLevel || id == R.id.cardBody_constantdata_desiredBloodGlucoseLevel
             val totalDailyDose = false
 
             if (carbohydratesInMeal) {

@@ -31,10 +31,10 @@
                     style="@style/CardTitleText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Variables"/>
+                    android:text="@string/card_title_variables"/>
 
                 <com.bendywalker.insulator.CardBody
-                    android:id="@+id/card_variableData_currentBloodGlucoseLevel"
+                    android:id="@+id/cardBody_variableData_currentBloodGlucoseLevel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:descriptionText="@string/cardBody_description_currentBloodGlucoseLevel"
@@ -42,7 +42,7 @@
                     app:titleText="@string/cardBody_title_currentBloodGlucoseLevel"/>
 
                 <com.bendywalker.insulator.CardBody
-                    android:id="@+id/card_variableData_carbohydratesInMeal"
+                    android:id="@+id/cardBody_variableData_carbohydratesInMeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:descriptionText="@string/cardBody_description_carbohydratesInMeal"

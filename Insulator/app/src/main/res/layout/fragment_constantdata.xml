@@ -30,7 +30,7 @@
                     style="@style/CardTitleText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Constants"/>
+                    android:text="@string/card_title_constants"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                     android:showDividers="middle">
 
                     <com.bendywalker.insulator.CardBody
-                        android:id="@+id/card_constantdata_desiredBloodGlucoseLevel"
+                        android:id="@+id/cardBody_constantdata_desiredBloodGlucoseLevel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:descriptionText="@string/cardBody_description_desiredBloodGlucoseLevel"
@@ -48,7 +48,7 @@
                         app:titleText="@string/cardBody_title_desiredBloodGlucoseLevel"/>
 
                     <com.bendywalker.insulator.CardBody
-                        android:id="@+id/card_constantdata_carbohydrateFactor"
+                        android:id="@+id/cardBody_constantdata_carbohydrateFactor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:descriptionText="@string/cardBody_description_carbohydrateFactor"
@@ -56,7 +56,7 @@
                         app:titleText="@string/cardBody_title_carbohydrateFactor"/>
 
                     <com.bendywalker.insulator.CardBody
-                        android:id="@+id/card_constantdata_correctiveFactor"
+                        android:id="@+id/cardBody_constantdata_correctiveFactor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:descriptionText="@string/cardBody_description_correctiveFactor"

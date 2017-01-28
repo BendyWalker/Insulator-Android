@@ -14,8 +14,8 @@ import android.widget.TextView
 
 class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     private val rootView by lazy { view?.findViewById(R.id.root) as LinearLayout }
-    private val currentBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.card_variableData_currentBloodGlucoseLevel) as CardBody }
-    private val carbohydratesInMealCardBody by lazy { view?.findViewById(R.id.card_variableData_carbohydratesInMeal) as CardBody }
+    private val currentBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.cardBody_variableData_currentBloodGlucoseLevel) as CardBody }
+    private val carbohydratesInMealCardBody by lazy { view?.findViewById(R.id.cardBody_variableData_carbohydratesInMeal) as CardBody }
     private val totalDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_suggestedDose) as TextView }
     private val carbohydrateDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_carbohydrateDose) as TextView }
     private val correctiveDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_correctiveDose) as TextView }

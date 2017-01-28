@@ -44,7 +44,7 @@
 
     <style name="CardBodyEntryText" parent="TextAppearance.AppCompat.Display1">
         <item name="android:textSize">@dimen/text_card_entry_empty</item>
-        <item name="android:textColor">@drawable/selector_cardBody_entry</item>
+        <item name="android:textColor">@drawable/selector_cardbody_entry</item>
         <item name="android:inputType">numberDecimal</item>
         <item name="android:imeOptions">actionDone</item>
         <item name="android:ellipsize">end</item>

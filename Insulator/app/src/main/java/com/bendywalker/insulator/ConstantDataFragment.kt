@@ -11,9 +11,9 @@ import android.view.ViewGroup
  */
 
 class ConstantDataFragment : Fragment(), CardBody.OnFocusChangeListener {
-    private val desiredBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.card_constantdata_desiredBloodGlucoseLevel) as CardBody }
-    private val carbohydrateFactorCardBody by lazy { view?.findViewById(R.id.card_constantdata_carbohydrateFactor) as CardBody }
-    private val correctiveFactorCardBody by lazy { view?.findViewById(R.id.card_constantdata_correctiveFactor) as CardBody }
+    private val desiredBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_desiredBloodGlucoseLevel) as CardBody }
+    private val carbohydrateFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_carbohydrateFactor) as CardBody }
+    private val correctiveFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_correctiveFactor) as CardBody }
 
     private val persistedValues by lazy { PersistedValues(context) }
 
@@ -34,9 +34,9 @@ class ConstantDataFragment : Fragment(), CardBody.OnFocusChangeListener {
 
     override fun onFocusChange(id: Int, hasFocus: Boolean) {
         when (id) {
-            R.id.card_constantdata_desiredBloodGlucoseLevel -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
-            R.id.card_constantdata_carbohydrateFactor -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
-            R.id.card_constantdata_correctiveFactor -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
+            R.id.cardBody_constantdata_desiredBloodGlucoseLevel -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
+            R.id.cardBody_constantdata_carbohydrateFactor -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
+            R.id.cardBody_constantdata_correctiveFactor -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
         }
     }
 

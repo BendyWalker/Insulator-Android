@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView_preferences_bloodGlucoseUnit"
+        android:id="@+id/textView_bloodGlucoseUnit"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="@dimen/width_card_entry"
         android:layout_height="match_parent"

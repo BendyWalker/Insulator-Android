@@ -19,8 +19,10 @@
     <!-- Card Titles -->
     <string name="card_title_welcome">Welcome to Insulator</string>
     <string name="card_title_readyToUse">Ready to use</string>
-    <string name="card_title_totalDailyDose">Total daily dose</string>
+    <string name="card_title_variables">Variables</string>
+    <string name="card_title_constants">Constants</string>
     <string name="card_title_suggestions">Suggestions</string>
+    <string name="card_title_totalDailyDose">Total daily dose</string>
     <string name="card_title_carbohydrateDose">Carbohydrate dose</string>
     <string name="card_title_correctiveDose">Corrective dose</string>
     <string name="card_title_factorSuggestions">Factor suggestions</string>
