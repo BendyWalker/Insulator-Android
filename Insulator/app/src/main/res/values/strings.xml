@@ -25,7 +25,7 @@
     <string name="card_title_desiredBloodGlucoseLevel">Desired blood glucose</string>
     <string name="card_title_totalDailyDose">Total daily dose</string>
     <string name="card_title_correctiveFactor">Corrective factor</string>
-    <string name="card_title_suggestedDose">Suggested dose</string>
+    <string name="card_title_suggestions">Suggestions</string>
     <string name="card_title_carbohydrateDose">Carbohydrate dose</string>
     <string name="card_title_correctiveDose">Corrective dose</string>
     <string name="card_title_factorSuggestions">Factor suggestions</string>
