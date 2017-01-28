@@ -17,13 +17,13 @@
             style="@style/CardBodyTitleText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/settings_preferences_heading_bloodGlucoseUnit"/>
+            android:text="@string/cardBody_title_bloodGlucoseUnit"/>
 
         <TextView
-            style="@style/CardBodyInfoText"
+            style="@style/CardBodyDescriptionText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/settings_preferences_description_bloodGlucoseUnit"
+            android:text="@string/cardBody_description_bloodGlucoseUnit"
             android:textColor="@color/card_text_dark"/>
     </LinearLayout>
 

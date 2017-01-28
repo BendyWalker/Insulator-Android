@@ -46,10 +46,10 @@
                         android:text="@string/card_title_welcome"/>
 
                     <TextView
-                        style="@style/CardBodyInfoText"
+                        style="@style/CardBodyDescriptionText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/card_description_welcomeIntro"/>
+                        android:text="@string/cardBody_description_welcome"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
@@ -98,23 +98,23 @@
                     <com.bendywalker.insulator.CardBody
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:descriptionText="@string/card_description_desiredBloodGlucoseLevel"
+                        app:descriptionText="@string/cardBody_description_desiredBloodGlucoseLevel"
                         app:hintText="@string/card_hint_mmol"
-                        app:titleText="@string/card_title_desiredBloodGlucoseLevel"/>
+                        app:titleText="@string/cardBody_title_desiredBloodGlucoseLevel"/>
 
                     <com.bendywalker.insulator.CardBody
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:descriptionText="@string/card_description_carbohydrateFactor"
+                        app:descriptionText="@string/cardBody_description_carbohydrateFactor"
                         app:hintText="@string/card_hint_grams"
-                        app:titleText="@string/card_title_carbohydrateFactor"/>
+                        app:titleText="@string/cardBody_title_carbohydrateFactor"/>
 
                     <com.bendywalker.insulator.CardBody
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:descriptionText="@string/card_description_correctiveFactor"
+                        app:descriptionText="@string/cardBody_description_correctiveFactor"
                         app:hintText="@string/card_hint_mmol"
-                        app:titleText="@string/card_title_correctiveFactor"/>
+                        app:titleText="@string/cardBody_title_correctiveFactor"/>
                 </LinearLayout>
             </android.support.v7.widget.CardView>
         </LinearLayout>

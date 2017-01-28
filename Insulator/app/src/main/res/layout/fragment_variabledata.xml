@@ -37,17 +37,17 @@
                     android:id="@+id/card_variableData_currentBloodGlucoseLevel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:descriptionText="@string/card_description_currentBloodGlucoseLevel"
+                    app:descriptionText="@string/cardBody_description_currentBloodGlucoseLevel"
                     app:hintText="@string/card_hint_mmol"
-                    app:titleText="@string/card_title_currentBloodGlucoseLevel"/>
+                    app:titleText="@string/cardBody_title_currentBloodGlucoseLevel"/>
 
                 <com.bendywalker.insulator.CardBody
                     android:id="@+id/card_variableData_carbohydratesInMeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:descriptionText="@string/card_description_carbohydratesInMeal"
+                    app:descriptionText="@string/cardBody_description_carbohydratesInMeal"
                     app:hintText="@string/card_hint_grams"
-                    app:titleText="@string/card_title_carbohydratesInMeal"/>
+                    app:titleText="@string/cardBody_title_carbohydratesInMeal"/>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

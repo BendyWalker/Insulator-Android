@@ -23,7 +23,7 @@
 
         <TextView
             android:id="@+id/textView_card_description"
-            style="@style/CardBodyInfoText"
+            style="@style/CardBodyDescriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/description_placeholder"/>
