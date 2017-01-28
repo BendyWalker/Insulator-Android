@@ -1,6 +1,7 @@
 package com.bendywalker.insulator
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -35,10 +36,8 @@ class DashboardActivity : BaseActivity() {
             exception.printStackTrace()
         }
 
-        persistedValues.firstRun = false
-
         if (persistedValues.firstRun) {
-            // TODO: Start welcome activity
+            startActivity(Intent(this, WelcomeActivity::class.java))
             finish()
         } else {
             // TODO: Setup activity layout
