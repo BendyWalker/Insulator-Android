@@ -8,8 +8,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Ben David Walker (bendywalker) on 12/01/2017.
  */
 
-public class AddFloatingPointUnitTest
-{
+public class AddFloatingPointUnitTest {
     @Test
     public void zeroes_precisionOfOne_isCorrect() {
         String number = "0000000000";

@@ -11,7 +11,6 @@ import static org.junit.Assert.assertNotEquals;
  */
 
 public class CalculatorUnitTest {
-
     private static Calculator mmolCalculator;
     private static Calculator mgdlCalculator;
 
