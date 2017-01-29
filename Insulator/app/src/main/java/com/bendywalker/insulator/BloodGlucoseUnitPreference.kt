@@ -28,11 +28,11 @@ class BloodGlucoseUnitPreference(context: Context, attrs: AttributeSet?, defStyl
 
         selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
 
-        selectedUnitTextView.setOnClickListener {
+        setOnClickListener {
             val dialogBuilder = MaterialDialog.Builder(context)
             dialogBuilder.title(R.string.cardBody_title_bloodGlucoseUnit)
                     .items(R.array.bloodGlucoseUnits)
-                    .itemsCallbackSingleChoice(persistedValues.bloodGlucoseUnit.ordinal, object: MaterialDialog.ListCallbackSingleChoice {
+                    .itemsCallbackSingleChoice(persistedValues.bloodGlucoseUnit.ordinal, object : MaterialDialog.ListCallbackSingleChoice {
                         override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
                             when (which) {
                                 0 -> persistedValues.bloodGlucoseUnit = BloodGlucoseUnit.MMOL

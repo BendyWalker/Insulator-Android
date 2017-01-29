@@ -12,5 +12,5 @@ enum class BloodGlucoseUnit(val string: String) {
     MGDL("mg/dL");
 
     val displayString: String
-    get() = string
+        get() = string
 }

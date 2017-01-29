@@ -18,11 +18,22 @@ class CarbohydrateAccuracyPreference(context: Context, attrs: AttributeSet?, def
     private val carbohydrateAccuracySwitch by lazy { findViewById(R.id.switch_carbohydrateAccuracy) as Switch }
     private val persistedValues by lazy { PersistedValues(context) }
 
+    var onChangeListener: OnChangeListener? = null
+
     init {
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         layoutInflater.inflate(R.layout.view_preference_carbohydrateaccuracy, this)
 
         carbohydrateAccuracySwitch.isChecked = persistedValues.allowFloatingPointCarbohydrates
-        carbohydrateAccuracySwitch.setOnCheckedChangeListener { compoundButton, checked -> persistedValues.allowFloatingPointCarbohydrates = checked }
+
+        setOnClickListener { carbohydrateAccuracySwitch.isChecked = !carbohydrateAccuracySwitch.isChecked }
+        carbohydrateAccuracySwitch.setOnCheckedChangeListener { compoundButton, checked ->
+            persistedValues.allowFloatingPointCarbohydrates = checked
+            onChangeListener?.onCarbohydrateAccuracyChanged(checked)
+        }
+    }
+
+    interface OnChangeListener {
+        fun onCarbohydrateAccuracyChanged(allowFloatingPointCarbohydrates: Boolean)
     }
 }

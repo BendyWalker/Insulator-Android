@@ -32,7 +32,7 @@ class ConstantDataFragment : Fragment(), CardBody.OnFocusChangeListener {
         correctiveFactorCardBody.onFocusChangeListener = this
     }
 
-    override fun onFocusChange(id: Int, hasFocus: Boolean) {
+    override fun onCardBodyFocusChange(id: Int, hasFocus: Boolean) {
         when (id) {
             desiredBloodGlucoseLevelCardBody.id -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
             carbohydrateFactorCardBody.id -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value

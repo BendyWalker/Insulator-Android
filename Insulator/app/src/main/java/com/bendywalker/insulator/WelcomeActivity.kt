@@ -10,7 +10,7 @@ import android.widget.Button
  * Created by Ben David Walker (bendywalker) on 28/01/2017.
  */
 
-class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListener, CardBody.OnTextChangeListener, CardBody.OnFocusChangeListener {
+class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListener, CarbohydrateAccuracyPreference.OnChangeListener, CardBody.OnTextChangeListener, CardBody.OnFocusChangeListener {
     val bloodGlucoseUnitPreferencePicker by lazy { findViewById(R.id.bloodGlucoseUnitPreference_welcome) as BloodGlucoseUnitPreference }
     val desiredBloodGlucoseLevelCardBody by lazy { findViewById(R.id.cardBody_welcome_desiredBloodGlucoseLevel) as CardBody }
     val carbohydrateFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_carbohydrateFactor) as CardBody }
@@ -43,7 +43,11 @@ class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListe
         correctiveFactorCardBody.reset()
     }
 
-    override fun onTextChange(id: Int, string: String) {
+    override fun onCarbohydrateAccuracyChanged(allowFloatingPointCarbohydrates: Boolean) {
+        carbohydrateFactorCardBody.reset()
+    }
+
+    override fun onCardBodyTextChange(id: Int, string: String) {
         if (desiredBloodGlucoseLevelCardBody.value != 0.0 &&
                 carbohydrateFactorCardBody.value != 0.0 &&
                 correctiveFactorCardBody.value != 0.0) {
@@ -53,7 +57,7 @@ class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListe
         }
     }
 
-    override fun onFocusChange(id: Int, hasFocus: Boolean) {
+    override fun onCardBodyFocusChange(id: Int, hasFocus: Boolean) {
         when (id) {
             desiredBloodGlucoseLevelCardBody.id -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
             carbohydrateFactorCardBody.id -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
