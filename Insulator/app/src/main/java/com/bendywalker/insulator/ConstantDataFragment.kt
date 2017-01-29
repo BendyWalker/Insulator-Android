@@ -15,7 +15,7 @@ class ConstantDataFragment : Fragment(), CardBody.OnFocusChangeListener {
     private val carbohydrateFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_carbohydrateFactor) as CardBody }
     private val correctiveFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_correctiveFactor) as CardBody }
 
-    private val persistedValues by lazy { PersistedValues(context) }
+    private val persistedValues by lazy { (activity as DashboardActivity).persistedValues }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_constantdata, container, false)

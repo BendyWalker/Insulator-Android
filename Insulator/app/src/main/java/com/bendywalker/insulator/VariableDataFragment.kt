@@ -20,7 +20,7 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     private val carbohydrateDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_carbohydrateDose) as TextView }
     private val correctiveDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_correctiveDose) as TextView }
 
-    private val persistedValues by lazy { PersistedValues(context) }
+    private val persistedValues by lazy { (activity as DashboardActivity).persistedValues }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_variabledata, container, false)
