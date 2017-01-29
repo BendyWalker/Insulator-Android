@@ -5,7 +5,6 @@ import android.text.*
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -37,7 +36,7 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
             return if (string.isEmpty()) 0.0 else string.toDouble()
         }
         set(value) {
-            entryEditText.setText(value.toString())
+            entryEditText.setText(if (displayFloatingPoint) value.toString() else value.toInt().toString())
         }
 
     private val displayFloatingPoint: Boolean
@@ -47,13 +46,16 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
                     entryEditText.hint == resources.getString(R.string.card_hint_mgdl)
             val units = entryEditText.hint == resources.getString(R.string.card_hint_units)
 
-            if (grams) { return persistedValues.allowFloatingPointCarbohydrates }
-            else if (bloodGlucoseUnit) {
+            if (grams) {
+                return persistedValues.allowFloatingPointCarbohydrates
+            } else if (bloodGlucoseUnit) {
                 when (persistedValues.bloodGlucoseUnit) {
                     BloodGlucoseUnit.MMOL -> return true
                     BloodGlucoseUnit.MGDL -> return false
-                }}
-            else if (units) { return false }
+                }
+            } else if (units) {
+                return false
+            }
 
             return true
         }
