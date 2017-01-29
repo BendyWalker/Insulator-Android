@@ -50,7 +50,7 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         rootView.requestFocus()
     }
 
-    override fun onTextChange() {
+    override fun onTextChange(view: View, string: String) {
         calculator.currentBloodGlucose = currentBloodGlucoseLevelCardBody.value
         calculator.carbohydratesInMeal = carbohydratesInMealCardBody.value
         totalDoseTextView.text = calculator.totalDose.toString()

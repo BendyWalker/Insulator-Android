@@ -1,14 +1,11 @@
 package com.bendywalker.insulator
 
 import android.content.Context
-import android.text.Editable
-import android.text.InputFilter
-import android.text.Selection
-import android.text.TextUtils
-import android.text.TextWatcher
+import android.text.*
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -85,15 +82,15 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
                 entryEditText.selectAll()
             }
 
-            entryEditText.onTextChanged { s ->
+            entryEditText.onTextChanged { charSequence ->
                 if (!TextUtils.isEmpty(entryEditText.text)) {
                     if (displayFloatingPoint && !addingFloatingPoint) entryEditText.addFloatingPoint()
                 }
                 entryEditText.adjustTextSize()
-                onTextChangeListener?.onTextChange()
+                onTextChangeListener?.onTextChange(this, charSequence.toString())
             }
 
-            entryEditText.setOnFocusChangeListener { view, hasFocus -> onFocusChangeListener?.onFocusChange(id, hasFocus) }
+            entryEditText.setOnFocusChangeListener { view, hasFocus -> onFocusChangeListener?.onFocusChange(view, hasFocus) }
 
             entryEditText.setOnEditorActionListener { textView, actionId, keyEvent ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -154,10 +151,10 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     }
 
     interface OnTextChangeListener {
-        fun onTextChange()
+        fun onTextChange(view: View, string: String)
     }
 
     interface OnFocusChangeListener {
-        fun onFocusChange(id: Int, hasFocus: Boolean)
+        fun onFocusChange(view: View, hasFocus: Boolean)
     }
 }
