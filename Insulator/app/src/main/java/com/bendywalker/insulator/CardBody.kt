@@ -45,21 +45,18 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
 
     private val displayFloatingPoint: Boolean
         get() {
-            // TODO: Write logic for booleans once other layouts have been implemented
-            val carbohydratesInMeal = id == R.id.cardBody_variableData_carbohydratesInMeal
-            val glucoseLevel = id == R.id.cardBody_variableData_currentBloodGlucoseLevel || id == R.id.cardBody_constantdata_desiredBloodGlucoseLevel
-            val totalDailyDose = false
+            val grams = entryEditText.hint == resources.getString(R.string.card_hint_grams)
+            val bloodGlucoseUnit = entryEditText.hint == resources.getString(R.string.card_hint_mmol) ||
+                    entryEditText.hint == resources.getString(R.string.card_hint_mgdl)
+            val units = entryEditText.hint == resources.getString(R.string.card_hint_units)
 
-            if (carbohydratesInMeal) {
-                return persistedValues.allowFloatingPointCarbohydrates
-            } else if (glucoseLevel) {
+            if (grams) { return persistedValues.allowFloatingPointCarbohydrates }
+            else if (bloodGlucoseUnit) {
                 when (persistedValues.bloodGlucoseUnit) {
                     BloodGlucoseUnit.MMOL -> return true
                     BloodGlucoseUnit.MGDL -> return false
-                }
-            } else if (totalDailyDose) {
-                return false
-            }
+                }}
+            else if (units) { return false }
 
             return true
         }
