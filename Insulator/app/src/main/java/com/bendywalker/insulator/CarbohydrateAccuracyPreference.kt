@@ -22,6 +22,7 @@ class CarbohydrateAccuracyPreference(context: Context, attrs: AttributeSet?, def
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         layoutInflater.inflate(R.layout.view_preference_carbohydrateaccuracy, this)
 
+        carbohydrateAccuracySwitch.isChecked = persistedValues.allowFloatingPointCarbohydrates
         carbohydrateAccuracySwitch.setOnCheckedChangeListener { compoundButton, checked -> persistedValues.allowFloatingPointCarbohydrates = checked }
     }
 }

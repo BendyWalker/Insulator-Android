@@ -21,7 +21,6 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     private val correctiveDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_correctiveDose) as TextView }
 
     private val persistedValues by lazy { PersistedValues(context) }
-    private val calculator by lazy { Calculator(persistedValues = persistedValues) }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_variabledata, container, false)
@@ -51,6 +50,7 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     }
 
     override fun onTextChange(view: View, string: String) {
+        val calculator = Calculator(persistedValues = persistedValues)
         calculator.currentBloodGlucose = currentBloodGlucoseLevelCardBody.value
         calculator.carbohydratesInMeal = carbohydratesInMealCardBody.value
         totalDoseTextView.text = calculator.totalDose.toString()

@@ -20,9 +20,13 @@ class BloodGlucoseUnitPreference(context: Context, attrs: AttributeSet?, defStyl
     private val selectedUnitTextView by lazy { findViewById(R.id.textView_bloodGlucoseUnit) as TextView }
     private val persistedValues by lazy { PersistedValues(context) }
 
+    var onChangeListener: OnChangeListener? = null
+
     init {
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         layoutInflater.inflate(R.layout.view_preference_bloodglucoseunit, this)
+
+        selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
 
         selectedUnitTextView.setOnClickListener {
             val dialogBuilder = MaterialDialog.Builder(context)
@@ -36,9 +40,14 @@ class BloodGlucoseUnitPreference(context: Context, attrs: AttributeSet?, defStyl
                             }
 
                             selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
+                            onChangeListener?.onBloodGlucoseUnitPreferenceChange(persistedValues.bloodGlucoseUnit)
                             return true
                         }
                     }).show()
         }
+    }
+
+    interface OnChangeListener {
+        fun onBloodGlucoseUnitPreferenceChange(bloodGlucoseUnit: BloodGlucoseUnit)
     }
 }

@@ -40,7 +40,6 @@ class DashboardActivity : BaseActivity() {
             startActivity(Intent(this, WelcomeActivity::class.java))
             finish()
         } else {
-            // TODO: Setup activity layout
             setContentView(R.layout.activity_dashboard)
             toolbar.inflateMenu(R.menu.dashboard)
             toolbar.setOnMenuItemClickListener { menuItem ->
