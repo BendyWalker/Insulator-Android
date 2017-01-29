@@ -87,10 +87,10 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
                     if (displayFloatingPoint && !addingFloatingPoint) entryEditText.addFloatingPoint()
                 }
                 entryEditText.adjustTextSize()
-                onTextChangeListener?.onTextChange(this, charSequence.toString())
+                onTextChangeListener?.onTextChange(id, charSequence.toString())
             }
 
-            entryEditText.setOnFocusChangeListener { view, hasFocus -> onFocusChangeListener?.onFocusChange(view, hasFocus) }
+            entryEditText.setOnFocusChangeListener { view, hasFocus -> onFocusChangeListener?.onFocusChange(id, hasFocus) }
 
             entryEditText.setOnEditorActionListener { textView, actionId, keyEvent ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -162,10 +162,10 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     }
 
     interface OnTextChangeListener {
-        fun onTextChange(view: View, string: String)
+        fun onTextChange(id: Int, string: String)
     }
 
     interface OnFocusChangeListener {
-        fun onFocusChange(view: View, hasFocus: Boolean)
+        fun onFocusChange(id: Int, hasFocus: Boolean)
     }
 }

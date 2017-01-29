@@ -34,7 +34,9 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         parentActivity.toolbar.inflateMenu(R.menu.variabledata)
         parentActivity.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.action_reset -> { resetCards(); true }
+                R.id.action_reset -> {
+                    resetCards(); true
+                }
                 else -> false
             }
         }
@@ -49,7 +51,7 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         rootView.requestFocus()
     }
 
-    override fun onTextChange(view: View, string: String) {
+    override fun onTextChange(id: Int, string: String) {
         val calculator = Calculator(persistedValues = persistedValues)
         calculator.currentBloodGlucose = currentBloodGlucoseLevelCardBody.value
         calculator.carbohydratesInMeal = carbohydratesInMealCardBody.value

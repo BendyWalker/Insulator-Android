@@ -1,7 +1,6 @@
 package com.bendywalker.insulator
 
 import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
 import android.support.v7.widget.CardView
 import android.view.View
@@ -44,7 +43,7 @@ class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListe
         correctiveFactorCardBody.reset()
     }
 
-    override fun onTextChange(view: View, string: String) {
+    override fun onTextChange(id: Int, string: String) {
         if (desiredBloodGlucoseLevelCardBody.value != 0.0 &&
                 carbohydrateFactorCardBody.value != 0.0 &&
                 correctiveFactorCardBody.value != 0.0) {
@@ -54,11 +53,11 @@ class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListe
         }
     }
 
-    override fun onFocusChange(view: View, hasFocus: Boolean) {
-        when (view.id) {
-            R.id.cardBody_welcome_desiredBloodGlucoseLevel -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
-            R.id.cardBody_welcome_carbohydrateFactor -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
-            R.id.cardBody_welcome_correctiveFactor -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
+    override fun onFocusChange(id: Int, hasFocus: Boolean) {
+        when (id) {
+            desiredBloodGlucoseLevelCardBody.id -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
+            carbohydrateFactorCardBody.id -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
+            correctiveFactorCardBody.id -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
         }
     }
 }
