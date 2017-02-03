@@ -26,24 +26,28 @@ class BloodGlucoseUnitPreference(context: Context, attrs: AttributeSet?, defStyl
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         layoutInflater.inflate(R.layout.view_preference_bloodglucoseunit, this)
 
-        selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
+        if (isInEditMode) {
+            selectedUnitTextView.text = resources.getString(R.string.card_hint_mmol)
+        } else {
+            selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
 
-        setOnClickListener {
-            val dialogBuilder = MaterialDialog.Builder(context)
-            dialogBuilder.title(R.string.cardBody_title_bloodGlucoseUnit)
-                    .items(R.array.bloodGlucoseUnits)
-                    .itemsCallbackSingleChoice(persistedValues.bloodGlucoseUnit.ordinal, object : MaterialDialog.ListCallbackSingleChoice {
-                        override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
-                            when (which) {
-                                0 -> persistedValues.bloodGlucoseUnit = BloodGlucoseUnit.MMOL
-                                1 -> persistedValues.bloodGlucoseUnit = BloodGlucoseUnit.MGDL
+            setOnClickListener {
+                val dialogBuilder = MaterialDialog.Builder(context)
+                dialogBuilder.title(R.string.cardBody_title_bloodGlucoseUnit)
+                        .items(R.array.bloodGlucoseUnits)
+                        .itemsCallbackSingleChoice(persistedValues.bloodGlucoseUnit.ordinal, object : MaterialDialog.ListCallbackSingleChoice {
+                            override fun onSelection(dialog: MaterialDialog?, itemView: View?, which: Int, text: CharSequence?): Boolean {
+                                when (which) {
+                                    0 -> persistedValues.bloodGlucoseUnit = BloodGlucoseUnit.MMOL
+                                    1 -> persistedValues.bloodGlucoseUnit = BloodGlucoseUnit.MGDL
+                                }
+
+                                selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
+                                onChangeListener?.onBloodGlucoseUnitPreferenceChange(persistedValues.bloodGlucoseUnit)
+                                return true
                             }
-
-                            selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
-                            onChangeListener?.onBloodGlucoseUnitPreferenceChange(persistedValues.bloodGlucoseUnit)
-                            return true
-                        }
-                    }).show()
+                        }).show()
+            }
         }
     }
 
