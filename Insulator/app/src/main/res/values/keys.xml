@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="key_version_code">KEY_VERSION_CODE</string>
-    <string name="key_is_first_run">KEY_IS_FIRST_RUN</string>
-    <string name="key_allow_floating_point_carbohydrates">KEY_ALLOW_FLOATING_POINT_CARBOHYDRATES</string>
-    <string name="key_carbohydrate_factor">KEY_CARBOHYDRATE_FACTOR</string>
-    <string name="key_corrective_factor">KEY_CORRECTIVE_FACTOR</string>
-    <string name="key_desired_blood_glucose">KEY_DESIRED_BLOOD_GLUCOSE</string>
-    <string name="key_blood_glucose_unit">KEY_BLOOD_GLUCOSE_UNIT</string>
+    <string name="key_versionCode">KEY_VERSION_CODE</string>
+    <string name="key_isFirstRun">KEY_IS_FIRST_RUN</string>
+    <string name="key_bloodGlucoseUnit">KEY_BLOOD_GLUCOSE_UNIT</string>
+    <string name="key_allowFloatingPointCarbohydrates">KEY_ALLOW_FLOATING_POINT_CARBOHYDRATES</string>
+    <string name="key_saveSuggestionOnExit">KEY_SAVE_SUGGESTION_ON_EXIT</string>
+    <string name="key_carbohydrateFactor">KEY_CARBOHYDRATE_FACTOR</string>
+    <string name="key_correctiveFactor">KEY_CORRECTIVE_FACTOR</string>
+    <string name="key_desiredBloodGlucose">KEY_DESIRED_BLOOD_GLUCOSE</string>
 </resources>
