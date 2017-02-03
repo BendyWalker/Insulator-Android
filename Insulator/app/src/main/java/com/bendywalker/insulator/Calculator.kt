@@ -40,14 +40,6 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
     var currentBloodGlucose: Double = currentBloodGlucose
         get() = convertBloodGlucose(field)
 
-    private fun convertBloodGlucose(bloodGlucose: Double): Double {
-        when (bloodGlucoseUnit) {
-            BloodGlucoseUnit.MMOL -> return bloodGlucose
-            BloodGlucoseUnit.MGDL -> return (bloodGlucose / mgdlConversionValue).round(roundingPrecision)
-            else -> return bloodGlucose
-        }
-    }
-
     val carbohydrateDose: Double
         get() {
             if (carbohydrateFactor != 0.0) {
@@ -69,6 +61,14 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
             val totalDose = carbohydrateDose + correctiveDose
             return if (totalDose > 0) totalDose else 0.0
         }
+
+    private fun convertBloodGlucose(bloodGlucose: Double): Double {
+        when (bloodGlucoseUnit) {
+            BloodGlucoseUnit.MMOL -> return bloodGlucose
+            BloodGlucoseUnit.MGDL -> return (bloodGlucose / mgdlConversionValue).round(roundingPrecision)
+            else -> return bloodGlucose
+        }
+    }
 
     companion object {
         private val mgdlConversionValue = 18

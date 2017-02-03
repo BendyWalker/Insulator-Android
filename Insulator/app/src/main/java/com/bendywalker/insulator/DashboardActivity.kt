@@ -17,11 +17,10 @@ import android.support.v7.widget.Toolbar
 
 class DashboardActivity : BaseActivity() {
     val toolbar by lazy { findViewById(R.id.dashboard_toolbar) as Toolbar }
-    val viewPager by lazy { findViewById(R.id.dashboard_viewPager) as ViewPager }
-    val tabLayout by lazy { findViewById(R.id.dashboard_tabLayout) as TabLayout }
+    private val viewPager by lazy { findViewById(R.id.dashboard_viewPager) as ViewPager }
+    private val tabLayout by lazy { findViewById(R.id.dashboard_tabLayout) as TabLayout }
 
     val persistedValues by lazy { PersistedValues(this) }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

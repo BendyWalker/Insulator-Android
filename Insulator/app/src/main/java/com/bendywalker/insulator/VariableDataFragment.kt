@@ -34,9 +34,7 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         parentActivity.toolbar.inflateMenu(R.menu.variabledata)
         parentActivity.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.action_reset -> {
-                    resetCards(); true
-                }
+                R.id.action_reset -> { resetCards(); true }
                 else -> false
             }
         }
@@ -61,8 +59,6 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     }
 
     companion object {
-        fun newInstance(): VariableDataFragment {
-            return VariableDataFragment()
-        }
+        fun newInstance(): VariableDataFragment { return VariableDataFragment() }
     }
 }

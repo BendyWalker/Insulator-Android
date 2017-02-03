@@ -11,15 +11,15 @@ import android.widget.Button
  */
 
 class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListener, CarbohydrateAccuracyPreference.OnChangeListener, CardBody.OnTextChangeListener, CardBody.OnFocusChangeListener {
-    val bloodGlucoseUnitPreference by lazy { findViewById(R.id.bloodGlucoseUnitPreference_welcome) as BloodGlucoseUnitPreference }
-    val carbohydrateAccuracyPreference by lazy { findViewById(R.id.carbohydrateAccuracyPreference_welcome) as CarbohydrateAccuracyPreference }
-    val desiredBloodGlucoseLevelCardBody by lazy { findViewById(R.id.cardBody_welcome_desiredBloodGlucoseLevel) as CardBody }
-    val carbohydrateFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_carbohydrateFactor) as CardBody }
-    val correctiveFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_correctiveFactor) as CardBody }
-    val readyToUseCardView by lazy { findViewById(R.id.cardView_welcome_readyToUse) as CardView }
-    val useInsulatorButton by lazy { findViewById(R.id.button_welcome_useInsulator) as Button }
+    private val bloodGlucoseUnitPreference by lazy { findViewById(R.id.bloodGlucoseUnitPreference_welcome) as BloodGlucoseUnitPreference }
+    private val carbohydrateAccuracyPreference by lazy { findViewById(R.id.carbohydrateAccuracyPreference_welcome) as CarbohydrateAccuracyPreference }
+    private val desiredBloodGlucoseLevelCardBody by lazy { findViewById(R.id.cardBody_welcome_desiredBloodGlucoseLevel) as CardBody }
+    private val carbohydrateFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_carbohydrateFactor) as CardBody }
+    private val correctiveFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_correctiveFactor) as CardBody }
+    private val readyToUseCardView by lazy { findViewById(R.id.cardView_welcome_readyToUse) as CardView }
+    private val useInsulatorButton by lazy { findViewById(R.id.button_welcome_useInsulator) as Button }
 
-    val persistedValues by lazy { PersistedValues(this) }
+    private val persistedValues by lazy { PersistedValues(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
