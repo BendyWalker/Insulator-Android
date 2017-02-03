@@ -11,7 +11,8 @@ import android.widget.Button
  */
 
 class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListener, CarbohydrateAccuracyPreference.OnChangeListener, CardBody.OnTextChangeListener, CardBody.OnFocusChangeListener {
-    val bloodGlucoseUnitPreferencePicker by lazy { findViewById(R.id.bloodGlucoseUnitPreference_welcome) as BloodGlucoseUnitPreference }
+    val bloodGlucoseUnitPreference by lazy { findViewById(R.id.bloodGlucoseUnitPreference_welcome) as BloodGlucoseUnitPreference }
+    val carbohydrateAccuracyPreference by lazy { findViewById(R.id.carbohydrateAccuracyPreference_welcome) as CarbohydrateAccuracyPreference }
     val desiredBloodGlucoseLevelCardBody by lazy { findViewById(R.id.cardBody_welcome_desiredBloodGlucoseLevel) as CardBody }
     val carbohydrateFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_carbohydrateFactor) as CardBody }
     val correctiveFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_correctiveFactor) as CardBody }
@@ -24,10 +25,18 @@ class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListe
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        bloodGlucoseUnitPreferencePicker.onChangeListener = this
+        bloodGlucoseUnitPreference.onChangeListener = this
+
+        carbohydrateAccuracyPreference.onChangeListener = this
+
         desiredBloodGlucoseLevelCardBody.onTextChangeListener = this
+        desiredBloodGlucoseLevelCardBody.onFocusChangeListener = this
+
         carbohydrateFactorCardBody.onTextChangeListener = this
+        carbohydrateFactorCardBody.onFocusChangeListener = this
+
         correctiveFactorCardBody.onTextChangeListener = this
+        correctiveFactorCardBody.onFocusChangeListener = this
 
         useInsulatorButton.setOnClickListener {
             startActivity(Intent(this, DashboardActivity::class.java))
@@ -37,14 +46,12 @@ class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListe
     }
 
     override fun onBloodGlucoseUnitPreferenceChange(bloodGlucoseUnit: BloodGlucoseUnit) {
-        desiredBloodGlucoseLevelCardBody.updateHint()
-        correctiveFactorCardBody.updateHint()
-        desiredBloodGlucoseLevelCardBody.reset()
-        correctiveFactorCardBody.reset()
+        desiredBloodGlucoseLevelCardBody.updateUi()
+        correctiveFactorCardBody.updateUi()
     }
 
     override fun onCarbohydrateAccuracyChanged(allowFloatingPointCarbohydrates: Boolean) {
-        carbohydrateFactorCardBody.reset()
+        carbohydrateFactorCardBody.updateUi()
     }
 
     override fun onCardBodyTextChange(id: Int, string: String) {
@@ -59,9 +66,9 @@ class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListe
 
     override fun onCardBodyFocusChange(id: Int, hasFocus: Boolean) {
         when (id) {
-            desiredBloodGlucoseLevelCardBody.id -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
-            carbohydrateFactorCardBody.id -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
-            correctiveFactorCardBody.id -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
+            R.id.cardBody_welcome_desiredBloodGlucoseLevel -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
+            R.id.cardBody_welcome_carbohydrateFactor -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
+            R.id.cardBody_welcome_correctiveFactor -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
         }
     }
 }

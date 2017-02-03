@@ -105,7 +105,7 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
             }
 
             entryEditText.setMaxLength(if (displayFloatingPoint) 4 else 3)
-            updateHint()
+            updateUi()
         }
     }
 
@@ -113,7 +113,13 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
         entryEditText.setText("")
     }
 
-    fun updateHint() {
+    fun updateUi() {
+        entryEditText.setMaxLength(if (displayFloatingPoint) 4 else 3)
+        updateHint()
+        reset()
+    }
+
+    private fun updateHint() {
         if (entryEditText.hint == resources.getString(R.string.card_hint_mmol) ||
                 entryEditText.hint == resources.getString(R.string.card_hint_mgdl)) {
             when (persistedValues.bloodGlucoseUnit) {
