@@ -76,5 +76,5 @@
         android:maxLength="4"
         android:text="@string/dose_placeholder"
         android:textColor="@color/card_text_dark"
-        android:textSize="40sp"/>
+        android:textSize="48sp"/>
 </LinearLayout>
