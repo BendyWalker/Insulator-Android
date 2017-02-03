@@ -28,8 +28,6 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     var onTextChangeListener: OnTextChangeListener? = null
     var onFocusChangeListener: OnFocusChangeListener? = null
 
-    private var addingFloatingPoint = false
-
     var value: Double
         get() {
             val string = entryEditText.text.toString()
@@ -38,6 +36,8 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
         set(value) {
             entryEditText.setText(if (displayFloatingPoint) value.toString() else value.toInt().toString())
         }
+
+    private var addingFloatingPoint = false
 
     private val displayFloatingPoint: Boolean
         get() {
@@ -58,6 +58,13 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
             }
 
             return true
+        }
+
+    private val maxEntryLength: Int
+        get() {
+            return if (displayFloatingPoint) {
+                if (entryEditText.hint == resources.getString(R.string.card_hint_grams)) { 5 } else { 4 }
+            } else { 3 }
         }
 
     init {
@@ -104,7 +111,7 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
                 false
             }
 
-            entryEditText.setMaxLength(if (displayFloatingPoint) 4 else 3)
+            entryEditText.setMaxLength(maxEntryLength)
             updateUi()
         }
     }
@@ -114,7 +121,7 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     }
 
     fun updateUi() {
-        entryEditText.setMaxLength(if (displayFloatingPoint) 4 else 3)
+        entryEditText.setMaxLength(maxEntryLength)
         updateHint()
         reset()
     }
