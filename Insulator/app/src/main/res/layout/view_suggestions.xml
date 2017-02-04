@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLength="4"
-                android:text="@string/dose_placeholder"
+                android:text="@string/dose_placeholder_short"
                 android:textColor="@color/card_text_dark"/>
         </LinearLayout>
 
@@ -56,7 +56,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLength="4"
-                android:text="@string/dose_placeholder"
+                android:text="@string/dose_placeholder_short"
                 android:textColor="@color/card_text_dark"/>
         </LinearLayout>
     </LinearLayout>
@@ -74,7 +74,7 @@
         android:width="@dimen/width_card_entry"
         android:gravity="center"
         android:maxLength="4"
-        android:text="@string/dose_placeholder"
+        android:text="@string/dose_placeholder_short"
         android:textColor="@color/card_text_dark"
         android:textSize="48sp"/>
 </LinearLayout>

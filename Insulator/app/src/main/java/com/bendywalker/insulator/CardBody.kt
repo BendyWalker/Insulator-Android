@@ -82,7 +82,7 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
 
         if (isInEditMode) {
             // Do this to have standardised values in the layout preview
-            entryEditText.setText(R.string.dose_placeholder)
+            entryEditText.setText(R.string.dose_placeholder_long)
             entryEditText.adjustTextSize()
             entryEditText.setMaxLength(4)
         } else {
