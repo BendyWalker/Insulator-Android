@@ -10,7 +10,7 @@ import android.view.ViewGroup
  * Created by Ben David Walker (bendywalker) on 20/01/2017.
  */
 
-class ConstantDataFragment : Fragment(), CardBody.OnFocusChangeListener {
+class ConstantDataFragment : Fragment(), CardBody.OnTextChangeListener {
     private val desiredBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_desiredBloodGlucoseLevel) as CardBody }
     private val carbohydrateFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_carbohydrateFactor) as CardBody }
     private val correctiveFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_correctiveFactor) as CardBody }
@@ -27,18 +27,17 @@ class ConstantDataFragment : Fragment(), CardBody.OnFocusChangeListener {
         carbohydrateFactorCardBody.value = persistedValues.carbohydrateFactor
         correctiveFactorCardBody.value = persistedValues.correctiveFactor
 
-        desiredBloodGlucoseLevelCardBody.onFocusChangeListener = this
-        carbohydrateFactorCardBody.onFocusChangeListener = this
-        correctiveFactorCardBody.onFocusChangeListener = this
+        desiredBloodGlucoseLevelCardBody.onTextChangeListener = this
+        carbohydrateFactorCardBody.onTextChangeListener = this
+        correctiveFactorCardBody.onTextChangeListener = this
     }
 
-    override fun onCardBodyFocusChange(id: Int, hasFocus: Boolean) {
+    override fun onCardBodyTextChange(id: Int, string: String) {
         when (id) {
-            desiredBloodGlucoseLevelCardBody.id -> if (!hasFocus) persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
-            carbohydrateFactorCardBody.id -> if (!hasFocus) persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
-            correctiveFactorCardBody.id -> if (!hasFocus) persistedValues.correctiveFactor = correctiveFactorCardBody.value
-        }
-    }
+            desiredBloodGlucoseLevelCardBody.id -> persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
+            carbohydrateFactorCardBody.id -> persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
+            correctiveFactorCardBody.id -> persistedValues.correctiveFactor = correctiveFactorCardBody.value
+        }    }
 
     companion object {
         fun newInstance(): ConstantDataFragment {

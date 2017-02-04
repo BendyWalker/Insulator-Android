@@ -40,6 +40,19 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         }
     }
 
+    override fun onCardBodyTextChange(id: Int, string: String) {
+        calculate()
+    }
+
+    private fun calculate() {
+        val calculator = Calculator(persistedValues = persistedValues)
+        calculator.currentBloodGlucose = currentBloodGlucoseLevelCardBody.value
+        calculator.carbohydratesInMeal = carbohydratesInMealCardBody.value
+        totalDoseTextView.text = calculator.totalDose.toString()
+        carbohydrateDoseTextView.text = calculator.carbohydrateDose.toString()
+        correctiveDoseTextView.text = calculator.correctiveDose.toString()
+    }
+
     private fun resetCards() {
         currentBloodGlucoseLevelCardBody.reset()
         carbohydratesInMealCardBody.reset()
@@ -47,15 +60,6 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         carbohydrateDoseTextView.text = "0.0"
         correctiveDoseTextView.text = "0.0"
         rootView.requestFocus()
-    }
-
-    override fun onCardBodyTextChange(id: Int, string: String) {
-        val calculator = Calculator(persistedValues = persistedValues)
-        calculator.currentBloodGlucose = currentBloodGlucoseLevelCardBody.value
-        calculator.carbohydratesInMeal = carbohydratesInMealCardBody.value
-        totalDoseTextView.text = calculator.totalDose.toString()
-        carbohydrateDoseTextView.text = calculator.carbohydrateDose.toString()
-        correctiveDoseTextView.text = calculator.correctiveDose.toString()
     }
 
     companion object {

@@ -26,7 +26,6 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     private val persistedValues by lazy { PersistedValues(context) }
 
     var onTextChangeListener: OnTextChangeListener? = null
-    var onFocusChangeListener: OnFocusChangeListener? = null
 
     var value: Double
         get() {
@@ -98,8 +97,6 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
                 entryEditText.adjustTextSize()
                 onTextChangeListener?.onCardBodyTextChange(id, charSequence.toString())
             }
-
-            entryEditText.setOnFocusChangeListener { view, hasFocus -> onFocusChangeListener?.onCardBodyFocusChange(id, hasFocus) }
 
             entryEditText.setOnEditorActionListener { textView, actionId, keyEvent ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -178,9 +175,5 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
 
     interface OnTextChangeListener {
         fun onCardBodyTextChange(id: Int, string: String)
-    }
-
-    interface OnFocusChangeListener {
-        fun onCardBodyFocusChange(id: Int, hasFocus: Boolean)
     }
 }
