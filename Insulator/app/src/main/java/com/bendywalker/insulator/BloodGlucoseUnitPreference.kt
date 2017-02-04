@@ -12,6 +12,10 @@ import com.afollestad.materialdialogs.MaterialDialog
  * Created by Ben David Walker (bendywalker) on 28/01/2017.
  */
 
+/**
+ * Custom view that uses [PersistedValues] to read and display the currently selected [BloodGlucoseUnit].
+ * Tapping the view will show a dialog allowing a different unit to be selected and saved.
+ */
 class BloodGlucoseUnitPreference(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0, 0)
