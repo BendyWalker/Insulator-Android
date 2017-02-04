@@ -18,7 +18,7 @@ class PersistedValues(context: Context) {
     private val firstRunKey = context.getString(R.string.key_isFirstRun)
     private val bloodGlucoseUnitKey = context.getString(R.string.key_bloodGlucoseUnit)
     private val allowFloatingPointCarbohydratesKey = context.getString(R.string.key_allowFloatingPointCarbohydrates)
-    private val saveSuggestionOnExitKey = context.getString(R.string.key_saveSuggestionOnExit)
+    private val copySuggestionOnExitKey = context.getString(R.string.key_copySuggestionOnExit)
     private val carbohydrateFactorKey = context.getString(R.string.key_carbohydrateFactor)
     private val correctiveFactorKey = context.getString(R.string.key_correctiveFactor)
     private val desiredBloodGlucoseKey = context.getString(R.string.key_desiredBloodGlucose)
@@ -41,9 +41,9 @@ class PersistedValues(context: Context) {
         get() = preferences.getBoolean(allowFloatingPointCarbohydratesKey, false)
         set(value) { preferences.edit().putBoolean(allowFloatingPointCarbohydratesKey, value).apply() }
 
-    var saveSuggestionOnExit: Boolean
-        get() = preferences.getBoolean(saveSuggestionOnExitKey, false)
-        set(value) { preferences.edit().putBoolean(saveSuggestionOnExitKey, value).apply() }
+    var copySuggestionOnExit: Boolean
+        get() = preferences.getBoolean(copySuggestionOnExitKey, false)
+        set(value) { preferences.edit().putBoolean(copySuggestionOnExitKey, value).apply() }
 
     var carbohydrateFactor: Double
         get() = preferences.getString(carbohydrateFactorKey, "0.0").toDouble()

@@ -58,7 +58,7 @@ class DashboardActivity : BaseActivity() {
 
     override fun onStop() {
         super.onStop()
-        if (persistedValues.saveSuggestionOnExit) {
+        if (persistedValues.copySuggestionOnExit) {
             val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
             val clipData = ClipData.newPlainText("Insulin dose suggestion", totalDoseSuggestion)
             clipboard.primaryClip = clipData

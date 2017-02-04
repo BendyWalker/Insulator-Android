@@ -4,7 +4,7 @@
     <string name="key_isFirstRun">KEY_IS_FIRST_RUN</string>
     <string name="key_bloodGlucoseUnit">KEY_BLOOD_GLUCOSE_UNIT</string>
     <string name="key_allowFloatingPointCarbohydrates">KEY_ALLOW_FLOATING_POINT_CARBOHYDRATES</string>
-    <string name="key_saveSuggestionOnExit">KEY_SAVE_SUGGESTION_ON_EXIT</string>
+    <string name="key_copySuggestionOnExit">KEY_COPY_SUGGESTION_ON_EXIT</string>
     <string name="key_carbohydrateFactor">KEY_CARBOHYDRATE_FACTOR</string>
     <string name="key_correctiveFactor">KEY_CORRECTIVE_FACTOR</string>
     <string name="key_desiredBloodGlucose">KEY_DESIRED_BLOOD_GLUCOSE</string>

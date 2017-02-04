@@ -36,7 +36,7 @@
     <string name="cardBody_title_correctiveFactor">Corrective factor</string>
     <string name="cardBody_title_bloodGlucoseUnit">Blood glucose unit</string>
     <string name="cardBody_title_carbohydrateAccuracy">Carbohydrate accuracy</string>
-    <string name="cardBody_title_saveSuggestionOnExit">Save suggestion on exit</string>
+    <string name="cardBody_title_copySuggestionOnExit">Copy suggestion on exit</string>
 
     <!-- Card Body Descriptions -->
     <string name="cardBody_description_welcome">Insulator is the quickest way to easily calculate insulin doses. Scroll down to input all the data needed to calculate your doses.\n\nIf you\'re unsure about any of the information requested or terms used, please contact your doctor before using Insulator.</string>
@@ -48,7 +48,7 @@
     <string name="cardBody_description_correctiveFactor">Enter how much 1 unit of fast-acting insulin lowers your blood glucose level</string>
     <string name="cardBody_description_bloodGlucoseUnit">Choose your preferred blood glucose measurement unit</string>
     <string name="cardBody_description_carbohydrateAccuracy">Use decimals when entering carbohydrates</string>
-    <string name="cardBody_description_saveSuggestionOnExit">Automatically copy dose suggestion to clipboard when exiting the app</string>
+    <string name="cardBody_description_copySuggestionOnExit">Automatically copy dose suggestion to clipboard when exiting the app</string>
     <string name="cardBody_description_totalDailyDose">Enter the total amount of insulin (basal and bolus) you take in a day</string>
     <string name="cardBody_description_factorSuggestion">If you\'re unsure of either your carbohydrate or corrective factor, Insulator can give you suggestions.\n\nEnter your total daily dose below, and tap Save on the suggestions you\'re happy with.</string>
 
