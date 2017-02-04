@@ -20,7 +20,7 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     private val carbohydrateDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_carbohydrateDose) as TextView }
     private val correctiveDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_correctiveDose) as TextView }
 
-    private val persistedValues by lazy { (activity as DashboardActivity).persistedValues }
+    private val parentActivity by lazy { activity as DashboardActivity }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_variabledata, container, false)
@@ -30,7 +30,6 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         currentBloodGlucoseLevelCardBody.onTextChangeListener = this
         carbohydratesInMealCardBody.onTextChangeListener = this
 
-        val parentActivity = activity as DashboardActivity
         parentActivity.toolbar.inflateMenu(R.menu.variabledata)
         parentActivity.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
@@ -45,12 +44,13 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
     }
 
     private fun calculate() {
-        val calculator = Calculator(persistedValues = persistedValues)
+        val calculator = Calculator(persistedValues = parentActivity.persistedValues)
         calculator.currentBloodGlucose = currentBloodGlucoseLevelCardBody.value
         calculator.carbohydratesInMeal = carbohydratesInMealCardBody.value
         totalDoseTextView.text = calculator.totalDose.toString()
         carbohydrateDoseTextView.text = calculator.carbohydrateDose.toString()
         correctiveDoseTextView.text = calculator.correctiveDose.toString()
+        parentActivity.totalDoseSuggestion = calculator.totalDose.toString()
     }
 
     private fun resetCards() {

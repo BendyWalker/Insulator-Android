@@ -15,7 +15,7 @@ class ConstantDataFragment : Fragment(), CardBody.OnTextChangeListener {
     private val carbohydrateFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_carbohydrateFactor) as CardBody }
     private val correctiveFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_correctiveFactor) as CardBody }
 
-    private val persistedValues by lazy { (activity as DashboardActivity).persistedValues }
+    private val parentActivity by lazy { activity as DashboardActivity }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_constantdata, container, false)
@@ -23,9 +23,9 @@ class ConstantDataFragment : Fragment(), CardBody.OnTextChangeListener {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        desiredBloodGlucoseLevelCardBody.value = persistedValues.desiredBloodGlucose
-        carbohydrateFactorCardBody.value = persistedValues.carbohydrateFactor
-        correctiveFactorCardBody.value = persistedValues.correctiveFactor
+        desiredBloodGlucoseLevelCardBody.value = parentActivity.persistedValues.desiredBloodGlucose
+        carbohydrateFactorCardBody.value = parentActivity.persistedValues.carbohydrateFactor
+        correctiveFactorCardBody.value = parentActivity.persistedValues.correctiveFactor
 
         desiredBloodGlucoseLevelCardBody.onTextChangeListener = this
         carbohydrateFactorCardBody.onTextChangeListener = this
@@ -34,9 +34,9 @@ class ConstantDataFragment : Fragment(), CardBody.OnTextChangeListener {
 
     override fun onCardBodyTextChange(id: Int, string: String) {
         when (id) {
-            desiredBloodGlucoseLevelCardBody.id -> persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
-            carbohydrateFactorCardBody.id -> persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
-            correctiveFactorCardBody.id -> persistedValues.correctiveFactor = correctiveFactorCardBody.value
+            desiredBloodGlucoseLevelCardBody.id -> parentActivity.persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
+            carbohydrateFactorCardBody.id -> parentActivity.persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
+            correctiveFactorCardBody.id -> parentActivity.persistedValues.correctiveFactor = correctiveFactorCardBody.value
         }    }
 
     companion object {

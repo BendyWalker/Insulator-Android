@@ -1,7 +1,6 @@
 package com.bendywalker.insulator
 
-import android.content.Context
-import android.content.Intent
+import android.content.*
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.design.widget.TabLayout
@@ -21,6 +20,8 @@ class DashboardActivity : BaseActivity() {
     private val tabLayout by lazy { findViewById(R.id.dashboard_tabLayout) as TabLayout }
 
     val persistedValues by lazy { PersistedValues(this) }
+
+    var totalDoseSuggestion: String = "0.0"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,6 +53,15 @@ class DashboardActivity : BaseActivity() {
             viewPager.adapter = pagerAdapter
             viewPager.offscreenPageLimit = 1
             tabLayout.setupWithViewPager(viewPager)
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (persistedValues.saveSuggestionOnExit) {
+            val clipboard = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+            val clipData = ClipData.newPlainText("Insulin dose suggestion", totalDoseSuggestion)
+            clipboard.primaryClip = clipData
         }
     }
 
