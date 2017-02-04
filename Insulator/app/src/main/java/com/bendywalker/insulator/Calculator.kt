@@ -59,7 +59,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
     val totalDose: Double
         get() {
             val totalDose = carbohydrateDose + correctiveDose
-            return if (totalDose > 0) totalDose else 0.0
+            return if (totalDose > 0) totalDose.round(roundingPrecision) else 0.0
         }
 
     private fun convertBloodGlucose(bloodGlucose: Double): Double {
