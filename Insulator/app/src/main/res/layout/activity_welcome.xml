@@ -82,7 +82,6 @@
                         android:layout_height="wrap_content"/>
 
                     <com.bendywalker.insulator.CopySuggestionOnExitPreference
-                        android:id="@+id/saveSuggestionOnExitPreference_welcome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
                 </LinearLayout>

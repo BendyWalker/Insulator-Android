@@ -1,5 +1,5 @@
 <resources>
-    <!-- UI elements width -->
+    <!-- UI elements -->
     <dimen name="width_card_entry">95dp</dimen>
 
     <!-- Text -->

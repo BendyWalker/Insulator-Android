@@ -27,6 +27,7 @@
     <string name="card_title_correctiveDose">Corrective dose</string>
     <string name="card_title_factorSuggestions">Factor suggestions</string>
     <string name="card_title_preferences">Preferences</string>
+    <string name="card_title_feedback">Feedback</string>
 
     <!-- Card Body Titles -->
     <string name="cardBody_title_currentBloodGlucoseLevel">Current blood glucose</string>
@@ -59,13 +60,10 @@
     <string name="card_hint_mgdl">mg/dL</string>
 
     <!-- Settings -->
-    <string name="settings_feedback_heading">Feedback</string>
-    <string name="settings_feedback_email">Email</string>
-    <string name="settings_feedback_email_contact">mail\@insulatorapp.com</string>
-    <string name="settings_feedback_twitter">Twitter</string>
-    <string name="settings_feedback_twitter_contact">\@insulatorapp</string>
     <string name="settings_feedback_play">Google Play</string>
     <string name="settings_feedback_play_contact">Rate Insulator</string>
+    <string name="settings_feedback_twitter">Twitter</string>
+    <string name="settings_feedback_twitter_contact">\@insulatorapp</string>
     <string name="settings_feedback_summary">All feedback is welcome so feel free to get in touch. In addition, please consider leaving a rating or review on Google Play.</string>
 
     <!-- Placeholders -->
