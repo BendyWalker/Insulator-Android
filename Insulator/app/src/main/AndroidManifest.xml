@@ -18,8 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity">
-        </activity>
-    </application>
 
+        <activity
+            android:name=".WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait"/>
+    </application>
 </manifest>

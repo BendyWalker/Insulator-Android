@@ -23,13 +23,16 @@ class ConstantDataFragment : Fragment(), CardBody.OnTextChangeListener {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        desiredBloodGlucoseLevelCardBody.value = parentActivity.persistedValues.desiredBloodGlucose
-        carbohydrateFactorCardBody.value = parentActivity.persistedValues.carbohydrateFactor
-        correctiveFactorCardBody.value = parentActivity.persistedValues.correctiveFactor
-
         desiredBloodGlucoseLevelCardBody.onTextChangeListener = this
         carbohydrateFactorCardBody.onTextChangeListener = this
         correctiveFactorCardBody.onTextChangeListener = this
+    }
+
+    override fun onResume() {
+        super.onResume()
+        desiredBloodGlucoseLevelCardBody.value = parentActivity.persistedValues.desiredBloodGlucose
+        carbohydrateFactorCardBody.value = parentActivity.persistedValues.carbohydrateFactor
+        correctiveFactorCardBody.value = parentActivity.persistedValues.correctiveFactor
     }
 
     override fun onCardBodyTextChange(id: Int, string: String) {

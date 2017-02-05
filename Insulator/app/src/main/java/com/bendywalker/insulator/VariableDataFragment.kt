@@ -1,5 +1,6 @@
 package com.bendywalker.insulator
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -34,6 +35,7 @@ class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
         parentActivity.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.action_reset -> { resetCards(); true }
+                R.id.action_settings -> {startActivity(Intent(parentActivity, SettingsActivity::class.java)); true } // TODO: Figure out how to have multiple menus inflated
                 else -> false
             }
         }

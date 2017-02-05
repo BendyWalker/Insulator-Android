@@ -71,7 +71,7 @@ class Calculator(currentBloodGlucose: Double = 0.0, var carbohydratesInMeal: Dou
     }
 
     companion object {
-        private val mgdlConversionValue = 18
+        val mgdlConversionValue = 18
         private val roundingPrecision = 1
 
         /**
