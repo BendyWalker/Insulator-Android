@@ -8,19 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.bendywalker.insulator.extension.viewId
 
 /**
  * Created by Ben David Walker (bendywalker) on 14/01/2017.
  */
 
 class VariableDataFragment : Fragment(), CardBody.OnTextChangeListener {
-    private val rootView by lazy { view?.findViewById(R.id.root) as LinearLayout }
-    private val currentBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.cardBody_variableData_currentBloodGlucoseLevel) as CardBody }
-    private val carbohydratesInMealCardBody by lazy { view?.findViewById(R.id.cardBody_variableData_carbohydratesInMeal) as CardBody }
-    private val totalDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_suggestedDose) as TextView }
-    private val carbohydrateDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_carbohydrateDose) as TextView }
-    private val correctiveDoseTextView by lazy { view?.findViewById(R.id.textView_variableData_correctiveDose) as TextView }
 
+    private val rootView: LinearLayout by viewId(R.id.root)
+    private val currentBloodGlucoseLevelCardBody: CardBody by viewId(R.id.cardBody_variableData_currentBloodGlucoseLevel)
+    private val carbohydratesInMealCardBody: CardBody by viewId(R.id.cardBody_variableData_carbohydratesInMeal)
+    private val totalDoseTextView: TextView by viewId(R.id.textView_variableData_suggestedDose)
+    private val carbohydrateDoseTextView: TextView by viewId(R.id.textView_variableData_carbohydrateDose)
+    private val correctiveDoseTextView: TextView by viewId(R.id.textView_variableData_correctiveDose)
     private val parentActivity by lazy { activity as DashboardActivity }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
