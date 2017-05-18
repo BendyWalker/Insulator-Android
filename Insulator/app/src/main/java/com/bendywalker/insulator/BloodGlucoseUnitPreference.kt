@@ -30,10 +30,7 @@ class BloodGlucoseUnitPreference(context: Context, attrs: AttributeSet?, defStyl
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         layoutInflater.inflate(R.layout.view_preference_bloodglucoseunit, this)
 
-        if (isInEditMode) {
-            selectedUnitTextView.text = resources.getString(R.string.card_hint_mmol)
-        } else {
-            selectedUnitTextView.text = persistedValues.bloodGlucoseUnit.displayString
+            selectedUnitTextView.text = if (isInEditMode) resources.getString(R.string.card_hint_mmol) else persistedValues.bloodGlucoseUnit.displayString
 
             setOnClickListener {
                 val dialogBuilder = MaterialDialog.Builder(context)
