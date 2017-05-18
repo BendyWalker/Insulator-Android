@@ -50,9 +50,9 @@ class BloodGlucoseUnitPreference(context: Context, attrs: AttributeSet?, defStyl
                         }).show()
             }
         }
-    }
 
     interface OnChangeListener {
         fun onBloodGlucoseUnitPreferenceChange(bloodGlucoseUnit: BloodGlucoseUnit)
     }
 }
+
