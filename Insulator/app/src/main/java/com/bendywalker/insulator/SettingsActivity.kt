@@ -1,18 +1,13 @@
 package com.bendywalker.insulator
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.LinearLayout
 import com.bendywalker.insulator.extension.round
+import kotlinx.android.synthetic.main.activity_settings.*
 
 /**
  * Created by Ben David Walker (bendywalker) on 05/02/2017.
  */
-class SettingsActivity: BaseActivity(), BloodGlucoseUnitPreference.OnChangeListener {
-    val bloodGlucoseUnitPreference by lazy { findViewById(R.id.bloodGlucoseUnitPreference_settings) as BloodGlucoseUnitPreference }
-    val googlePlayFeedbackView by lazy { findViewById(R.id.view_settings_feedback_googlePlay) as LinearLayout }
-    val twitterFeedbackView by lazy { findViewById(R.id.view_settings_feedback_twitter) as LinearLayout }
-
+class SettingsActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListener {
     val persistedValues by lazy { PersistedValues(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

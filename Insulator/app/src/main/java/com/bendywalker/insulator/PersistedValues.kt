@@ -27,33 +27,49 @@ class PersistedValues(context: Context) {
 
     var versionCode: Int
         get() = preferences.getInt(versionCodeKey, 0)
-        set(value) { preferences.edit().putInt(versionCodeKey, value).apply() }
+        set(value) {
+            preferences.edit().putInt(versionCodeKey, value).apply()
+        }
 
     var firstRun: Boolean
         get() = preferences.getBoolean(firstRunKey, true)
-        set(value) { preferences.edit().putBoolean(firstRunKey, value).apply() }
+        set(value) {
+            preferences.edit().putBoolean(firstRunKey, value).apply()
+        }
 
     var bloodGlucoseUnit: BloodGlucoseUnit
         get() = BloodGlucoseUnit.valueOf(preferences.getString(bloodGlucoseUnitKey, "MMOL"))
-        set(value) { preferences.edit().putString(bloodGlucoseUnitKey, value.toString()).apply() }
+        set(value) {
+            preferences.edit().putString(bloodGlucoseUnitKey, value.toString()).apply()
+        }
 
     var allowFloatingPointCarbohydrates: Boolean
         get() = preferences.getBoolean(allowFloatingPointCarbohydratesKey, false)
-        set(value) { preferences.edit().putBoolean(allowFloatingPointCarbohydratesKey, value).apply() }
+        set(value) {
+            preferences.edit().putBoolean(allowFloatingPointCarbohydratesKey, value).apply()
+        }
 
     var copySuggestionOnExit: Boolean
         get() = preferences.getBoolean(copySuggestionOnExitKey, false)
-        set(value) { preferences.edit().putBoolean(copySuggestionOnExitKey, value).apply() }
+        set(value) {
+            preferences.edit().putBoolean(copySuggestionOnExitKey, value).apply()
+        }
 
     var carbohydrateFactor: Double
         get() = preferences.getString(carbohydrateFactorKey, "0.0").toDouble()
-        set(value) { preferences.edit().putString(carbohydrateFactorKey, value.toString()).apply() }
+        set(value) {
+            preferences.edit().putString(carbohydrateFactorKey, value.toString()).apply()
+        }
 
     var correctiveFactor: Double
         get() = preferences.getString(correctiveFactorKey, "0.0").toDouble()
-        set(value) { preferences.edit().putString(correctiveFactorKey, value.toString()).apply() }
+        set(value) {
+            preferences.edit().putString(correctiveFactorKey, value.toString()).apply()
+        }
 
     var desiredBloodGlucose: Double
         get() = preferences.getString(desiredBloodGlucoseKey, "0.0").toDouble()
-        set(value) { preferences.edit().putString(desiredBloodGlucoseKey, value.toString()).apply() }
+        set(value) {
+            preferences.edit().putString(desiredBloodGlucoseKey, value.toString()).apply()
+        }
 }

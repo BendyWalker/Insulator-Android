@@ -26,7 +26,7 @@
                 android:textColor="@color/card_text_dark"/>
 
             <TextView
-                android:id="@+id/textView_variableData_carbohydrateDose"
+                android:id="@+id/carbohydrateDoseTextView"
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
                 android:textColor="@color/card_text_dark"/>
 
             <TextView
-                android:id="@+id/textView_variableData_correctiveDose"
+                android:id="@+id/correctiveDoseTextView"
                 style="@style/TextAppearance.AppCompat.Subhead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         android:layout_weight="1"/>
 
     <TextView
-        android:id="@+id/textView_variableData_suggestedDose"
+        android:id="@+id/totalDoseTextView"
         style="@style/TextAppearance.AppCompat.Display2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

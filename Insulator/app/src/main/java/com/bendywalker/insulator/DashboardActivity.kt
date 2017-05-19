@@ -1,24 +1,21 @@
 package com.bendywalker.insulator
 
-import android.content.*
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import android.support.v4.view.ViewPager
-import android.support.v7.widget.Toolbar
+import kotlinx.android.synthetic.main.activity_dashboard.*
 
 /**
  * Created by Ben David Walker (bendywalker) on 09/01/2017.
  */
 
 class DashboardActivity : BaseActivity() {
-    val toolbar by lazy { findViewById(R.id.dashboard_toolbar) as Toolbar }
-    private val viewPager by lazy { findViewById(R.id.dashboard_viewPager) as ViewPager }
-    private val tabLayout by lazy { findViewById(R.id.dashboard_tabLayout) as TabLayout }
-
     val persistedValues by lazy { PersistedValues(this) }
 
     var totalDoseSuggestion: String = "0.0"

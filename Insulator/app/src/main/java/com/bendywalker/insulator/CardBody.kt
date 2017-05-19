@@ -9,7 +9,7 @@ import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
-import android.widget.TextView
+import kotlinx.android.synthetic.main.view_cardbody.view.*
 
 
 /**
@@ -20,9 +20,6 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0, 0)
     constructor(context: Context) : this(context, null, 0, 0)
 
-    private val titleTextView by lazy { findViewById(R.id.textView_card_title) as TextView }
-    private val descriptionTextView by lazy { findViewById(R.id.textView_card_description) as TextView }
-    private val entryEditText by lazy { findViewById(R.id.editText_card_entry) as EditText }
     private val persistedValues by lazy { PersistedValues(context) }
 
     var onTextChangeListener: OnTextChangeListener? = null
@@ -62,8 +59,14 @@ class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defSty
     private val maxEntryLength: Int
         get() {
             return if (displayFloatingPoint) {
-                if (entryEditText.hint == resources.getString(R.string.card_hint_grams)) { 5 } else { 4 }
-            } else { 3 }
+                if (entryEditText.hint == resources.getString(R.string.card_hint_grams)) {
+                    5
+                } else {
+                    4
+                }
+            } else {
+                3
+            }
         }
 
     init {

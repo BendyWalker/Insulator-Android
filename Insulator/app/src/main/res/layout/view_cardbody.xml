@@ -15,14 +15,14 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView_card_title"
+            android:id="@+id/titleTextView"
             style="@style/CardBodyTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title_placeholder"/>
 
         <TextView
-            android:id="@+id/textView_card_description"
+            android:id="@+id/descriptionTextView"
             style="@style/CardBodyDescriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editText_card_entry"
+        android:id="@+id/entryEditText"
         style="@style/CardBodyEntryText"
         android:layout_width="@dimen/width_card_entry"
         android:layout_height="65dp"

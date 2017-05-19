@@ -5,16 +5,13 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_constantdata.*
 
 /**
  * Created by Ben David Walker (bendywalker) on 20/01/2017.
  */
 
 class ConstantDataFragment : Fragment(), CardBody.OnTextChangeListener {
-    private val desiredBloodGlucoseLevelCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_desiredBloodGlucoseLevel) as CardBody }
-    private val carbohydrateFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_carbohydrateFactor) as CardBody }
-    private val correctiveFactorCardBody by lazy { view?.findViewById(R.id.cardBody_constantdata_correctiveFactor) as CardBody }
-
     private val parentActivity by lazy { activity as DashboardActivity }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -40,7 +37,8 @@ class ConstantDataFragment : Fragment(), CardBody.OnTextChangeListener {
             desiredBloodGlucoseLevelCardBody.id -> parentActivity.persistedValues.desiredBloodGlucose = desiredBloodGlucoseLevelCardBody.value
             carbohydrateFactorCardBody.id -> parentActivity.persistedValues.carbohydrateFactor = carbohydrateFactorCardBody.value
             correctiveFactorCardBody.id -> parentActivity.persistedValues.correctiveFactor = correctiveFactorCardBody.value
-        }    }
+        }
+    }
 
     companion object {
         fun newInstance(): ConstantDataFragment {

@@ -2,23 +2,14 @@ package com.bendywalker.insulator
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.widget.CardView
 import android.view.View
-import android.widget.Button
+import kotlinx.android.synthetic.main.activity_welcome.*
 
 /**
  * Created by Ben David Walker (bendywalker) on 28/01/2017.
  */
 
 class WelcomeActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeListener, CarbohydrateAccuracyPreference.OnChangeListener, CardBody.OnTextChangeListener {
-    private val bloodGlucoseUnitPreference by lazy { findViewById(R.id.bloodGlucoseUnitPreference_welcome) as BloodGlucoseUnitPreference }
-    private val carbohydrateAccuracyPreference by lazy { findViewById(R.id.carbohydrateAccuracyPreference_welcome) as CarbohydrateAccuracyPreference }
-    private val desiredBloodGlucoseLevelCardBody by lazy { findViewById(R.id.cardBody_welcome_desiredBloodGlucoseLevel) as CardBody }
-    private val carbohydrateFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_carbohydrateFactor) as CardBody }
-    private val correctiveFactorCardBody by lazy { findViewById(R.id.cardBody_welcome_correctiveFactor) as CardBody }
-    private val readyToUseCardView by lazy { findViewById(R.id.cardView_welcome_readyToUse) as CardView }
-    private val useInsulatorButton by lazy { findViewById(R.id.button_welcome_useInsulator) as Button }
-
     private val persistedValues by lazy { PersistedValues(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {

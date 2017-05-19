@@ -44,7 +44,7 @@
                         android:text="@string/card_title_preferences"/>
 
                     <com.bendywalker.insulator.BloodGlucoseUnitPreference
-                        android:id="@+id/bloodGlucoseUnitPreference_settings"
+                        android:id="@+id/bloodGlucoseUnitPreference"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"/>
 
@@ -77,7 +77,7 @@
                         android:text="@string/card_title_feedback"/>
 
                     <LinearLayout
-                        android:id="@+id/view_settings_feedback_googlePlay"
+                        android:id="@+id/googlePlayFeedbackView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:divider="@drawable/divider_horizontal_50"
@@ -101,7 +101,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/view_settings_feedback_twitter"
+                        android:id="@+id/twitterFeedbackView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:divider="@drawable/divider_horizontal_50"

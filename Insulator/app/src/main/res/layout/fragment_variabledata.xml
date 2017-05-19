@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/root"
+        android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/spacing_card"
@@ -33,7 +33,7 @@
                     android:text="@string/card_title_variables"/>
 
                 <com.bendywalker.insulator.CardBody
-                    android:id="@+id/cardBody_variableData_currentBloodGlucoseLevel"
+                    android:id="@+id/currentBloodGlucoseLevelCardBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:descriptionText="@string/cardBody_description_currentBloodGlucoseLevel"
@@ -41,7 +41,7 @@
                     app:titleText="@string/cardBody_title_currentBloodGlucoseLevel"/>
 
                 <com.bendywalker.insulator.CardBody
-                    android:id="@+id/cardBody_variableData_carbohydratesInMeal"
+                    android:id="@+id/carbohydratesInMealCardBody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:descriptionText="@string/cardBody_description_carbohydratesInMeal"

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import android.widget.Switch
+import kotlinx.android.synthetic.main.view_preference_copysuggestiononexit.view.*
 
 /**
  * Created by Ben David Walker (bendywalker) on 28/01/2017.
@@ -19,7 +19,6 @@ class CopySuggestionOnExitPreference(context: Context, attrs: AttributeSet?, def
     constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0, 0)
     constructor(context: Context) : this(context, null, 0, 0)
 
-    private val copySuggestionOnExitSwitch by lazy { findViewById(R.id.switch_copySuggestionOnExit) as Switch }
     private val persistedValues by lazy { PersistedValues(context) }
 
     init {

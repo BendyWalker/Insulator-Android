@@ -33,7 +33,7 @@
         android:layout_height="match_parent">
 
         <Switch
-            android:id="@+id/switch_carbohydrateAccuracy"
+            android:id="@+id/carbohydrateAccuracySwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"/>
