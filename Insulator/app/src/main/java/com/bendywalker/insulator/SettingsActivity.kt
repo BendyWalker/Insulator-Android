@@ -13,6 +13,7 @@ class SettingsActivity : BaseActivity(), BloodGlucoseUnitPreference.OnChangeList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+        toolbar.setNavigationOnClickListener { finish() }
         bloodGlucoseUnitPreference.onChangeListener = this
         googlePlayFeedbackView.setOnClickListener { openGooglePlay() }
         twitterFeedbackView.setOnClickListener { openTwitter() }
