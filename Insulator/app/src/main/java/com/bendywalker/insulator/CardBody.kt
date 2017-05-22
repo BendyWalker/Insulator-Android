@@ -15,10 +15,8 @@ import kotlinx.android.synthetic.main.view_cardbody.view.*
 /**
  * Created by Ben David Walker (bendywalker) on 11/01/2017.
  */
-class CardBody(context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : this(context, attrs, defStyleAttr, 0)
-    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0, 0)
-    constructor(context: Context) : this(context, null, 0, 0)
+class CardBody @JvmOverloads
+constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0, defStyleRes: Int = 0) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     private val persistedValues by lazy { PersistedValues(context) }
 
