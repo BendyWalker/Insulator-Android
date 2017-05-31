@@ -23,15 +23,11 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         layoutInflater.inflate(R.layout.view_preference_copysuggestiononexit, this)
 
-        if (isInEditMode) {
-            copySuggestionOnExitSwitch.isChecked = false
-        } else {
-            copySuggestionOnExitSwitch.isChecked = persistedValues.copySuggestionOnExit
+        copySuggestionOnExitSwitch.isChecked = if (isInEditMode) false else persistedValues.copySuggestionOnExit
 
-            setOnClickListener { copySuggestionOnExitSwitch.isChecked = !copySuggestionOnExitSwitch.isChecked }
-            copySuggestionOnExitSwitch.setOnCheckedChangeListener { compoundButton, checked ->
-                persistedValues.copySuggestionOnExit = checked
-            }
+        setOnClickListener { copySuggestionOnExitSwitch.isChecked = !copySuggestionOnExitSwitch.isChecked }
+        copySuggestionOnExitSwitch.setOnCheckedChangeListener { compoundButton, checked ->
+            persistedValues.copySuggestionOnExit = checked
         }
     }
 }

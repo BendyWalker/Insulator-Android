@@ -25,16 +25,12 @@ constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
         val layoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         layoutInflater.inflate(R.layout.view_preference_carbohydrateaccuracy, this)
 
-        if (isInEditMode) {
-            carbohydrateAccuracySwitch.isChecked = false
-        } else {
-            carbohydrateAccuracySwitch.isChecked = persistedValues.allowFloatingPointCarbohydrates
+        carbohydrateAccuracySwitch.isChecked = if (isInEditMode) false else persistedValues.allowFloatingPointCarbohydrates
 
-            setOnClickListener { carbohydrateAccuracySwitch.isChecked = !carbohydrateAccuracySwitch.isChecked }
-            carbohydrateAccuracySwitch.setOnCheckedChangeListener { compoundButton, checked ->
-                persistedValues.allowFloatingPointCarbohydrates = checked
-                onChangeListener?.onCarbohydrateAccuracyChanged(checked)
-            }
+        setOnClickListener { carbohydrateAccuracySwitch.isChecked = !carbohydrateAccuracySwitch.isChecked }
+        carbohydrateAccuracySwitch.setOnCheckedChangeListener { compoundButton, checked ->
+            persistedValues.allowFloatingPointCarbohydrates = checked
+            onChangeListener?.onCarbohydrateAccuracyChanged(checked)
         }
     }
 
